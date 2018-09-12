@@ -1,0 +1,37 @@
+Package: fishflux
+Type: Package
+Title: A tool to model nutrient fluxes in fish
+Version: 0.0.0.9000
+Author: Nina Schiettekatte
+Maintainer: Nina Schiettekatte <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+Imports:
+   dplyr,
+   plyr,
+   tidyr,
+   rfishbase,
+   ggplot2,
+   cowplot,
+   devtools,
+   knitr,
+   rstan,
+   rstantools
+Depends:
+   Rcpp,
+   methods,
+   R (>= 3.0.2)
+LinkingTo: 
+   StanHeaders (>= 2.17.2),
+   rstan (>= 2.17.3), 
+   BH (>= 1.66.0-1), 
+   Rcpp (>= 0.12.18), 
+   RcppEigen (>= 0.3.3.4.0)
+SystemRequirements: GNU make
+NeedsCompilation: yes
+LazyData: true
+RoxygenNote: 6.1.0
+Suggests: rmarkdown
+VignetteBuilder: knitr
