@@ -18,6 +18,8 @@
 
 find_lw <- function(sp){
 
+  fishflux::check_name_fishbase(sp)
+
   sp_ <- gsub(" ","-",sp)
 
   page <-  readLines(paste('https://www.fishbase.de/summary/',sp_,'.html',sep=""))

@@ -29,22 +29,53 @@ set.seed(1234)
 
 ## Overview
 
-The **fishflux** package provides a tool to model nutrient fluxes in fish. It combines priciples from elemental stoichiometry and metabolic theory. The package offers a userfriendly interface to make nutrient dynamic modelling available for anyone. fishflux is mostly for fish ecologists, wishing to predict nutrient ingestion, egestion and excretion to study fluxes of nutrients and energy. 
+The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish. It combines basic priciples from elemental stoichiometry and metabolic theory. The package offers a userfriendly interface to make nutrient dynamic modelling available for anyone. `fishflux` is mostly targeted towards fish ecologists, wishing to predict nutrient ingestion, egestion and excretion to study fluxes of nutrients and energy. 
 
-## Underlying principle
+Main assets:
 
-The main function is using a mass balance approach, applying the principles of conservation of mass and...
-Central modeled components are growth, metabolism and nutrient turnover. Using these components to model the fish's requirements for C (carbon), N (nitrogen) and P (phosphourous), allows for the prediction of processes such as ingestion, excretion and egestion. 
+* Provides functions to model fluxes of Carbon, Nitrogen and Phosphorus for fish with or without the MCMC sampler provided by stan.
+* Provides some tools to find the right parameters as inputs into the model
+* Provides a plotting function to illustrate results
 
-## Installing fishflux
+
+## Theoretical framework
+
+For more information on the theoretical framework behind `cnp_model`, check out the paper (add link to paper).
+
+## Installing and loading fishflux
+
+`fishflux` uses Markov Chain Monte Carlo simulations provided by [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). Therefore, the first step is to install [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
+
+### GitHub
+
+The best way to install the latest development version of `fishflux` is to instal it from GitHub. 
 
 ```r
-devtools::install_github("nschiett/fishflux")
+install.packages("devtools")
+devtools::install_github("nschiett/fishflux", dependencies=TRUE)
+library(fishflux)
+```
+### CRAN
+
+`fishflux` will be available on CRAN in the future:
+
+```r
+install.packages("fishflux")
+library(fishflux)
 ```
 
-## How to use fishflux
+### Downloaded package file
+
+Another option is to download the source file available on github [here](https://github.com/nschiett/fishflux).
+
+```r
+install.packages(path_to_fishflux_file, repos = NULL, type="source")
+library(fishflux)
+```
 
 ## Documentation
-maybe add tutorial?
+add link to introduction
 
 ## Citation
+
+## Future releases
