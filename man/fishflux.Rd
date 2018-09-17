@@ -4,17 +4,7 @@
 \name{fishflux}
 \alias{fishflux}
 \alias{fishflux-package}
-\title{fishflux: A tool to predict N and P excretion of fish}
+\title{fishflux: A tool to model nutrient fluxes in fish}
 \description{
-fishflux provides a userfriendly framework to predict
-excretion rates of fish. It is based on principles of
-metabolic theory and stoichiometry.
-}
-\details{
-It has three main assets:
-
-\itemize{
-\item Provides tools to find and check parameters
-\item Provides functions to model excretion rates
-\item Provides plotting functions to illustrate results}
+fishflux: A tool to model nutrient fluxes in fish
 }

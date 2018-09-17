@@ -9,7 +9,7 @@ cnp_model_mcmc(TL, param, iter = 1000)
 \arguments{
 \item{TL}{total length of a fish in cm}
 
-\item{param}{list of all parameter means ("_m") and standard deviations ("_m") Default parameters are given with very low sd's. See \link[fishflux]{cnp_model}  for a list of all requested parameters}
+\item{param}{list of all parameter means ("_m") and standard deviations ("_sd") Default parameters are set with very low sd's. See \link[fishflux]{cnp_model}  for a list of all requested parameters}
 
 \item{iter}{A positive integer specifying the number of iterations. The default is 2000.}
 }
@@ -21,7 +21,7 @@ Returns a list with three objects: A stanfit object, a dataframe with a summary 
 }
 \examples{
 
-model <- cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4))
+model <- cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4, f=3))
 }
 \keyword{excretion,}
 \keyword{fish,}

@@ -3,7 +3,7 @@
 #' This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.
 #'
 #' @param TL      total length of a fish in cm
-#' @param param   list of all parameter means ("_m") and standard deviations ("_m") Default parameters are given with very low sd's. See \link[fishflux]{cnp_model}  for a list of all requested parameters
+#' @param param   list of all parameter means ("_m") and standard deviations ("_sd") Default parameters are set with very low sd's. See \link[fishflux]{cnp_model}  for a list of all requested parameters
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
 #' @details       Returns a list with three objects: A stanfit object, a dataframe with a summary of all model components and a vector containing the limiting element.
 #' @keywords      fish, stoichiometry, excretion, mcmc
@@ -11,7 +11,7 @@
 #'
 #' @examples
 #'
-#' model <- cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4))
+#' model <- cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4, f=3))
 
 cnp_model_mcmc <- function(TL, param , iter=1000){
 
