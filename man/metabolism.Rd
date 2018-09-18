@@ -2,75 +2,32 @@
 % Please edit documentation in R/metabolism.R
 \name{metabolism}
 \alias{metabolism}
-\title{A function to calculate mass C needed for metabolic rate}
+\title{A function to generate B0 and a}
 \usage{
-metabolism(temp, m_max, m, asp, troph, f, B0 = NA, a, growth_g_day)
+metabolism(family, temp, troph_m, troph_sd = 1e-10)
 }
 \arguments{
-\item{temp}{Temperature in degrees Celsius}
-
-\item{m_max}{Maximum biomass fish (in g)}
-
-\item{m}{Wet weight fish (in g)}
-
-\item{asp}{The caudal fin aspect ratio (= $h^2 / s$, where $h$ is the height of the caudal fin and $s$ is surface area), a proxy for activity level}
-
-\item{troph}{Trophic level (from 1 to 5)}
-
-\item{f}{Activity scope (from 1 to 4)}
-
-\item{B0}{Constant for resting metabolic rate. If NA, function will calculate an average.}
-
-\item{a}{Resting metabolic rate mass-scaling exponent}
-
-\item{growth_g_day}{Daily growth in grams of wet weight}
+\item{family}{family fish}
 
 \item{temp}{Temperature in degrees Celsius}
 
-\item{m_max}{Maximum biomass fish (in g)}
+\item{troph_m}{Trophic level mean (from 1 to 5)}
 
-\item{m}{Wet weight fish (in g)}
-
-\item{asp}{The caudal fin aspect ratio (= $h^2 / s$, where $h$ is the height
-of the caudal fin and $s$ is surface area), a proxy for activity level}
-
-\item{troph}{Trophic level (from 1 to 5)}
-
-\item{f}{Activity scope (from 1 to 4)}
-
-\item{B0}{Constant for resting metabolic rate. If NA, function will
-calculate an average.}
-
-\item{a}{Resting metabolic rate mass-scaling exponent}
-
-\item{growth_g_day}{Daily growth in grams of wet weight}
+\item{troph_sd}{Trophic level sd (optional)}
 }
 \description{
-Returns a dataframe with assimilation, resting metabolic rate and metabolism_C
+All model parameters below were estimated by Barneche & Allen 2018 Ecology
+Letters doi: 10.1111/ele.12947. These parameters are for the best model
+(Model 2 in the paper online supplementary material) of fish resting
+metabolic rates reported in the paper, which also includes trophic level as
+a covariate.
 }
 \details{
 All model parameters below were estimated by Barneche & Allen 2018 Ecology Letters doi: 10.1111/ele.12947. These parameters are for the best model (Model 2 in the paper online supplementary material) of fish resting metabolic rates reported in the paper, which also includes trophic level as a covariate.
 }
 \examples{
 
-metabolism(temp = 27, m_max = 600, m = 300, asp = 3, troph = 2, f = 2, growth_g_day = 0.05)
-A function to calculate mass C needed for metabolic rate
-
-Returns a dataframe with assimilation, resting metabolic rate and
-metabolism_C
-
-All model parameters below were estimated by Barneche & Allen 2018 Ecology
-Letters doi: 10.1111/ele.12947. These parameters are for the best model
-(Model 2 in the paper online supplementary material) of fish resting
-metabolic rates reported in the paper, which also includes trophic level as
-a covariate.
-
-
-
-metabolism(temp = 27, m_max = 600, m = 300, asp = 3, troph = 2, f = 2, growth_g_day = 0.05)
-
+fishflux::metabolism(family= "Pomacentridae", temp = 27, troph_m = 2)
 }
 \keyword{Fish,}
-\keyword{fishbase}
-\keyword{level,}
-\keyword{trophic}
+\keyword{metabolism}

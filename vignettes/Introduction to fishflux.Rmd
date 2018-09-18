@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
-The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish. It combines basic priciples from elemental stoichiometry and metabolic theory. The package offers a userfriendly interface to make nutrient dynamic modelling available for anyone. `fishflux` is mostly targeted towards fish ecologists, wishing to predict nutrient ingestion, egestion and excretion to study fluxes of nutrients and energy. 
+The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user friendly interface to make nutrient dynamic modelling available for anyone. `fishflux` is mostly targeted towards fish ecologists, wishing to predict nutrient ingestion, egestion and excretion to study fluxes of nutrients and energy. 
 
 Main assets:
 
@@ -37,7 +37,7 @@ Main assets:
 
 ### GitHub
 
-The best way to install the latest development version of `fishflux` is to instal it from GitHub. 
+The best way to install the latest development version of `fishflux` is to install it from GitHub. 
 
 ```r
 install.packages("devtools")
@@ -55,7 +55,7 @@ library(fishflux)
 
 ### Downloaded package file
 
-Another option is to download the source file available on github [here](https://github.com/nschiett/fishflux).
+Another option is to download the source file available on GitHub [here](https://github.com/nschiett/fishflux).
 
 ```r
 install.packages(path_to_fishflux_file, repos = NULL, type="source")
@@ -71,7 +71,7 @@ library(fishflux)
 
 ### Find parameters
 
-Below a table showing all parameters needed to run the mosel simulation. `fishflux` provides functions to find some of these parameters, but note that others have to be provided by the user at this stage. 
+Below a table showing all parameters needed to run the model simulation. `fishflux` provides functions to find some of these parameters, but note that others have to be provided by the user at this stage. 
 
 ```{r,message=FALSE,echo=FALSE,results='asis'}
 knitr::kable(data.frame(
@@ -83,20 +83,29 @@ knitr::kable(data.frame(
 A good place to start is to check if you are using the correct scientific name of your fish of interest. The function `name_errors` will tell you if the species name is correct. This function can be useful, especially when working with larger databases.  
 
 ```{r,message=TRUE,echo=TRUE}
+# example
 fishflux::name_errors("Zebrazoma scopas")
 ```
 
-When we have verified or corrected the species name we can start finding some parameters. 
+Once the species names are verified and/or corrected we can continue with specifying some parameters. 
 
-The `find_lw` function searches fishbase to find length-weight relationship parameters `lw_a` and `lw_b` obtained from *Froese, R., J. Thorson and R.B. Reyes Jr., 2013. A Bayesian approach for estimating length-weight relationships in fishes. J. Appl. Ichthyol. (2013):1-7.* 
+The `find_lw` function searches fishbase to find length-weight relationship parameters `lw_a` and `lw_b` obtained from @Froese2013. 
 
 ```{r,message=TRUE,echo=TRUE}
+# example
 fishflux::find_lw("Zebrasoma scopas")
 ```
 
-`growth_params()`, `trophic_level()` and ``
+Further, there are a couple more basic functions to get an indication of parameters that are available on fishbase such as `growth_params()`, `trophic_level()` and `aspect_ratio()`. Be aware to interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. It is always better to get the parameters yourself through experiments and otolith analys
 
+```{r,message=TRUE,echo=TRUE}
+# example
+# The option otolith=TRUE filters out sources that used otoliths for the estimation of growth parameters
+fishflux::growth_params("Zebrasoma scopas", otolith = TRUE)
+```
 
-
-
+```{r,message=TRUE,echo=TRUE}
+# example
+fishflux::model_parameters("Zebrasoma scopas", family = "Acanthuridae")
+```
 
