@@ -1,26 +1,28 @@
 ---
-title: "Introduction to fishflux"
-author: "Nina Schiettekatte"
+title: "Intro to fishflux"
+author: "Nina M. Schiettekatte"
+date: "`r Sys.Date()`"
 output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
   pdf_document:
     citation_package: natbib
     fig_caption: yes
     keep_tex: yes
     latex_engine: xelatex
-  html_document:
-    fig_caption: yes
-header-includes:
-- \usepackage{graphicx}
-- \usepackage{float}
-- \usepackage{caption}
-- \usepackage{graphicx}
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=8, fig.height=6
+)
 ```
-
-
 ## Introduction
   
 The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user friendly interface to make nutrient dynamic modelling available for anyone. `fishflux` is mostly targeted towards fish ecologists, wishing to predict nutrient ingestion, egestion and excretion to study fluxes of nutrients and energy. 
@@ -73,39 +75,34 @@ library(fishflux)
 ### Find parameters
 
 Below a table showing all parameters needed to run the model simulation. `fishflux` provides functions to find some of these parameters, but note that others have to be provided by the user at this stage. Ideally, all parameters should also have a standard deviation, so that uncertainty of parameters can be reflected in the model output parameters.
-
-
+\newline
 ```{r,message=FALSE,echo=FALSE,results='asis'}
 knitr::kable(data.frame(
   Parameters = c("C","N","P","Fc","Fn","Fp","AEc","AEn","AEp","Linf","k","t0","lwa","lwb","w_prop","Tn","Tp","B0","a","f","asp","troph","temp"), 
   Description = c("Carbon content of fish (%)", "Nitrogen content of fish (%)","Phosphorus content of fish (%)","C content of food (%)","N content of food (%)","P content of food (%)", "C-specific absorption efficiency", "N-specific absorption efficienct","P-specific absorption efficiency", "Von Bertalanffy growth parameter","Von Bertalanffy growth parameter","Von Bertalanffy growth parameter", "Parameter length-weight relationship","Parameter length-weight relationship","Ratio between dry weight and wet weight of fish","N-specific turnover rate","P-specific turnover rate","Normalisation constant for resting metabolic rate", "Resting metabolic rate mass-scaling exponent","Activity scope","Aspect ratio","Trophic level","Temperature (°C)")
 ),caption = "Overview all input variables")
 ```
-
-
+\newline
 A good place to start is to check if you are using the correct scientific name of your fish of interest. The function `name_errors` will tell you if the species name is correct. This function can be useful, especially when working with larger databases.  
-
-
+\newline
 ```{r,message=TRUE,echo=TRUE}
 # example
 fishflux::name_errors("Zebrazoma scopas")
 ```
-
-
+\newline
 Once the species names are verified and/or corrected we can continue with specifying some parameters. 
 
 The `find_lw` function searches fishbase to find length-weight relationship parameters `lw_a` and `lw_b` obtained from @Froese2013. 
-
-
+\newline
 ```{r,message=TRUE,echo=TRUE}
 # example
 fishflux::find_lw("Zebrasoma scopas")
 ```
-
-
+\newline
+The model uses Von Beralanfy patameters to approximate growth. A quick way to get available information from fishbase is the function `growth_params()`. This can be a good indication, but users should interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. Alternatively, it is advised to use otolith readings. The function `oto_growth()` allows for direct estimation of growth parameters from otolith data, using a hierarchical bayesian model and stan. In the case of absence of otolith data, one might consider extracting standardised estimations from Morais & Bellwood (2018).
+\newline
 For metabolic parameters B0 and a, there is a function to extract estimations from Barneche & Allen 2018 Ecology Letters doi: 10.1111/ele.12947. These parameters are for the best model (Model 2 in the paper online supplementary material) of fish resting metabolic rates reported in the paper, which also includes trophic level as a covariate. Please cite Barneche & Allen (2018), when using these values. 
-
-
+\newline
 ```{r,echo=TRUE,,cache=TRUE,results='hide',message=FALSE}
 # example
 metabolism <- fishflux::metabolism("Zebrasoma scopas", troph_m = 2, temp = 27)
@@ -113,23 +110,26 @@ metabolism <- fishflux::metabolism("Zebrasoma scopas", troph_m = 2, temp = 27)
 ```{r}
 print(metabolism)
 ```
-
-
-Further, there are a couple more basic functions to get an indication of parameters that are available on fishbase such as `growth_params()`, `trophic_level()` and `aspect_ratio()`.
-
-
-```{r,message=TRUE,echo=TRUE}
+\newline
+```{r,message=FALSE,echo=TRUE}
 # example
 # The option otolith=TRUE filters out sources that used otoliths for the estimation of growth parameters
-fishflux::growth_params("Zebrasoma scopas", otolith = TRUE)
+fishflux::growth_params("Sargocentron microstoma", otolith = FALSE)
+
+# Load example otolith data
+sarmi <- fishflux::sarmi
+# Fit bayesian model
+oto_growth <- fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, linf_m = 16, k_m = 0.4, iter = 2000, warmup = 1000)
+oto_growth$result
+
+## Note that in this example, there is a large difference between fishbase estimates and otolith analysis. This illustrates how important it is to check the quality of your parameter estimates.
 ```
-
-
-It is important to note that it is always better to get the approximations through experiments and otolith analysis over parameters extracted from functions, such as `growth_params()`, `trophic_level()` and `aspect_ratio()`. These functions give a good indication, but users should interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. Specifically, for the growth parameters, it is advised to either use otolith readings or in the case of absence of this data, estimations extracted from Morais & Bellwood (2018).
-
+\newline
+Further, there are a couple more basic functions to get an indication of parameters that are available on fishbase such as `trophic_level()` and `aspect_ratio()`.
+\newline
+It is important to note that it is always better to get the approximations through experiments and otolith analysis over parameters extracted from functions, such as `growth_params()`, `trophic_level()` and `aspect_ratio()`. 
 To get an overview of all parameters, `fishflux` provides a wrapper function `model_parameters`.
-
-
+\newline
 ```{r,cache=TRUE,results='hide',message=FALSE}
 # example
 zebsco <- fishflux::model_parameters("Zebrasoma scopas", family = "Acanthuridae", temp = 27)
@@ -137,16 +137,14 @@ zebsco <- fishflux::model_parameters("Zebrasoma scopas", family = "Acanthuridae"
 ```{r}
 print(zebsco)
 ```
-
-
+\newline
 All other parameters have to be provided by the user. For more information on how to aquire these paramers, take a look at "this paper".
 
 
 ### Run model
 
 Once we are satisfied with the parameters collected, we can run the cnp model. Note that the model can be run with or without specifying the sd's of each parameter. If a sd of a certain parameter is not provided, it will be automatically set to a very low value (1⁻10). As mentioned before, it is advisable to include incertainty of parameters. Fishflux is designed to use the mcmc sampler in order to predict uncertainty of predictions.
-
-
+\newline
 ```{r, message=FALSE}
 ## load the example parameters for Zebrasoma scopas, a list
 param_zebsco <- fishflux::param_zebsco
@@ -154,22 +152,17 @@ param_zebsco <- fishflux::param_zebsco
 model <- fishflux::cnp_model_mcmc(TL = 5:20, param = param_zebsco)
 model$lim
 ```
-
-
+\newline
 The object 'model' now contains all the samples generated from the mcmc simulation and a summary of all parameters generated. `model$lim` shows the limiting element at each length. To extract certain parameters of interest, use the `extract()` function. 
-
-
+\newline
 ```{r}
 fishflux::extract(model, c("N_ex","P_ex"))
 ```
-
-
-
+\newline
 ### Plot results 
 
 To visualize the main outputs of the model, `fishflux` contains a plotting function. It is also possible to specify the output parameter or element of interest. The lines show the mean of the predicted parameters and the segments illustrate the 95% CI.
-
-
+\newline
 ```{r, message=FALSE, warning=FALSE}
 ## General overview:
 fishflux::plot_cnp(model)
@@ -178,20 +171,17 @@ fishflux::plot_cnp(model, option = "egestion")
 ## plot one element with 'display':
 fishflux::plot_cnp(model, option = c("excretion", "egestion", "growth"), display = "p")
 ```
-
-
+\newline
 ### Sensitivity
 
 To check how sensitive the model prediction parameters are to the variation of the input variables, there is a function to investigate that sensitivity.
 Basically, the effect of input variables in question will be analysed by testing the effect of each variable on the output, while keeping the other input variables constant. The function gives back a matrix with the effect of each parameter on the sd of output variables of interest. The function also plots a heat map to quickly visualize the sensitivity.
-
-
+\newline
 ```{r, message=FALSE}
 ## General overview:
 fishflux::sensitivity(TL = 10, param = param_zebsco, par = c("Fn_sd", "Fp_sd", "C_sd", "N_sd", "P_sd", "k_sd"), out = c("N_ex", "P_ex", "C_in", "C_g", "N_in", "P_in"))
 ```
-
-
+\newline
 ## More information
 
 For more information on the theoretical framework of the model, read paper.
