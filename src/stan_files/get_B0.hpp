@@ -40,7 +40,7 @@ static int current_statement_begin__;
 stan::io::program_reader prog_reader__() {
     stan::io::program_reader reader;
     reader.add_event(0, 0, "start", "model_get_B0");
-    reader.add_event(44, 44, "end", "model_get_B0");
+    reader.add_event(43, 43, "end", "model_get_B0");
     return reader;
 }
 

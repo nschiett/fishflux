@@ -14,12 +14,14 @@
 #' @examples
 #'
 #' sarmi <- fishflux::sarmi
-#' oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, linf_m = 16, k_m = 0.4, iter = 100, warmup = 10)
+#' fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, linf_m = 16, k_m = 0.4, iter = 2000, warmup = 1000)
 #'
 
 
 
 oto_growth <- function(length, age, id, linf_min = 0, linf_m, k_m = 0.5, iter = 2000, warmup = 1000){
+
+require(ggplot2)
 
 data <- list(
   N = length(length),

@@ -19,6 +19,8 @@
 
 sensitivity <- function(TL, param, iter=1000, par, out = c("C_in", "N_in", "P_in", "C_g", "N_g", "P_g", "C_r", "N_ex", "P_ex", "C_eg", "N_eg", "P_eg")){
 
+require(ggplot2)
+
   #parameter SD's and means
   pm <- c("TL_m","AEc_m","AEn_m","AEp_m","Fc_m","Fn_m","Fp_m","Linf_m","k_m","t0_m","f_m","asp_m","troph_m","lwa_m","lwb_m","w_prop_m","temp_m","Tn_m","Tp_m","C_m","N_m","P_m","a_m","B0_m")
   psd <- c("TL_sd","AEc_sd","AEn_sd","AEp_sd","Fc_sd","Fn_sd","Fp_sd","Linf_sd","k_sd","t0_sd","f_sd","asp_sd","troph_sd","lwa_sd","lwb_sd","w_prop_sd","temp_sd","Tn_sd","Tp_sd","C_sd","N_sd","P_sd","a_sd","B0_sd")

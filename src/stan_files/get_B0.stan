@@ -42,4 +42,3 @@ B0 = get_B0_rng(troph_m,  troph_sd,  temp,  b0_m,  b0_sd);
 
 
 
-

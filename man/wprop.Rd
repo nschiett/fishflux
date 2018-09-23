@@ -16,7 +16,7 @@ This function searches the ratio of dry weight and wet weight of fish
 on the family level. If the family is not available, an average is returned.
 }
 \details{
-Returns a dataframe with the weight rtio (ww) and it's sd (ww_sd).
+Returns a dataframe with the weight ratio (ww) and it's sd (ww_sd).
 }
 \examples{
 

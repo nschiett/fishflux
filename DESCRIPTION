@@ -23,7 +23,7 @@ Depends:
    Rcpp,
    methods,
    R (>= 3.0.2)
-LinkingTo: 
+LinkingTo:
    StanHeaders (>= 2.17.2),
    rstan (>= 2.17.3), 
    BH (>= 1.66.0-1), 
@@ -33,5 +33,6 @@ SystemRequirements: GNU make
 NeedsCompilation: yes
 LazyData: true
 RoxygenNote: 6.1.0
-Suggests: rmarkdown
+Suggests: rmarkdown,
+    knitr
 VignetteBuilder: knitr

@@ -1,36 +1,30 @@
 #' A function to find a set of parameters
 #'
-#' This function searches length-weight parameters using rfishbase
-#' on the finest possible phylogenetic level
 #'
 #' @param sp Species name
 #' @param family family
 #' @param otolith TRUE or FALSE, if TRUE, function will only search fishbase for growth parameters that are based upon otolith analysis
+#' @param temp temperature
+#' @details Returns a dataframe with all parameters that can be estimated
 #' @keywords fish, find some parameters needed for cnp_model
 #' @export model_parameters
 #' @examples
 #'
-#' model_parameters(sp="Scarus psittacus",family="Scaridae")
+#' fishflux::model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)
 
-model_parameters <- function(sp, family, otolith = TRUE){
+model_parameters <- function(sp, family, otolith = TRUE, temp){
 
   #check species
   fishflux::check_name_fishbase(sp)
 
   #dry_weight/wet_weight
-  wprop <- fishflux::weight_prop
-  ww <- wprop[wprop$Family==family,"weight_prop"]
-  ww_sd <- wprop[wprop$Family==family,"weight_prop_sd"]
-  if (length(ww) ==0){
-    ww <- mean(wprop$weight_prop)
-    ww_sd <- sd(wprop$weight_prop)
-  }
+  wprop <- fishflux::wprop(family=family)
 
   #length weight
   length_weight <- fishflux::find_lw(sp)
 
   #growth parameters
-  growth <- fishflux::growth_params(sp = sp,otolith = otolith)
+  growth <- fishflux::growth_params(sp = sp, otolith = otolith)
 
   #trophic level
   troph <- fishflux::trophic_level(sp)
@@ -38,8 +32,8 @@ model_parameters <- function(sp, family, otolith = TRUE){
   #aspect ratio
   asp <- fishflux::aspect_ratio(sp)
 
-  #cnp content fish
-  cnp <- suppressMessages(fishflux::cnp_fishf(sp,family))
+  #metabolism
+  met <- fishflux::metabolism(family = family, troph_m = troph$trophic_level, temp = temp )
 
   #combine
   parameters <- data.frame( species  = sp,
@@ -50,25 +44,17 @@ model_parameters <- function(sp, family, otolith = TRUE){
                             troph    = troph$trophic_level,
                             lwa_m    = length_weight$lwa_m,
                             lwa_sd   = length_weight$lwa_sd,
-                            lwb_sd   = length_weight$lwb_sd,
                             lwb_m    = length_weight$lwb_m,
-                            w_prop   = ww,
-                            C_m      = cnp$C,
-                            N_m      = cnp$N,
-                            P_m      = cnp$P,
-                            C_sd     = cnp$C_sd,
-                            N_sd     = cnp$N_sd,
-                            P_sd     = cnp$P_sd )
+                            lwb_sd   = length_weight$lwb_sd,
+                            w_prop   = wprop$ww,
+                            B0_m     = met$B0_m,
+                            B0_sd    = met$B0_sd,
+                            a_m      = met$a_m,
+                            a_sd     = met$a_sd )
 
-  #list parameters and respective extra info
-  result <- list(parameters    = parameters,
-                 growth        = growth,
-                 cnp_content   = cnp,
-                 length_weight = length_weight,
-                 trophic       = troph,
-                 aspect_ratio  = asp)
 
-  return(result)
+
+  return(parameters)
 
 }
 

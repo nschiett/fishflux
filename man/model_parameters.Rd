@@ -4,7 +4,7 @@
 \alias{model_parameters}
 \title{A function to find a set of parameters}
 \usage{
-model_parameters(sp, family, otolith = TRUE)
+model_parameters(sp, family, otolith = TRUE, temp)
 }
 \arguments{
 \item{sp}{Species name}
@@ -12,14 +12,18 @@ model_parameters(sp, family, otolith = TRUE)
 \item{family}{family}
 
 \item{otolith}{TRUE or FALSE, if TRUE, function will only search fishbase for growth parameters that are based upon otolith analysis}
+
+\item{temp}{temperature}
 }
 \description{
-This function searches length-weight parameters using rfishbase
-on the finest possible phylogenetic level
+A function to find a set of parameters
+}
+\details{
+Returns a dataframe with all parameters that can be estimated
 }
 \examples{
 
-model_parameters(sp="Scarus psittacus",family="Scaridae")
+fishflux::model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)
 }
 \keyword{cnp_model}
 \keyword{find}

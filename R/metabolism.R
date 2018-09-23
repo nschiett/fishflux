@@ -23,7 +23,7 @@ metabolism <- function (family, temp, troph_m, troph_sd=0.0000000001) {
   require(rstan)
 
   ## get b0 and a from database
-  metpar <- fishflux::metpar
+  metpar <- fishflux::metabolic_parameters
   metpars <- metpar[metpar$family==family,]
 
   if (nrow(metpars)>0){

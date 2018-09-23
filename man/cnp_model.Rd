@@ -6,7 +6,7 @@
 \usage{
 cnp_model(TL, AEn = 0.8, AEp = 0.7, AEc = 0.8, Fn, Fp, Fc, t0, Linf,
   k, f, asp, troph, lwa, lwb, w_prop = 0.27, temp = 27, Tn = 0.0057,
-  Tp = 0.00016, N, C, P, a = 0.83, B0 = NA)
+  Tp = 0.00016, N, C, P, a = 0.77, B0)
 }
 \arguments{
 \item{TL}{total length of a fish in cm}
@@ -63,12 +63,12 @@ Returns a list, containing a dataframe with with all model components
 
 
 sp <- "Scarus psittacus"
-para <- model_parameters(sp,"Scaridae")$parameters
+para <- fishflux::model_parameters(sp,"Scaridae",temp = 27)
 para
-test <- fishflux::cnp_model(sp = sp,TL = 10:19,Fn = 1.3,Fp = 0.1,Fc = 65,
-               t0 = para$t0,Linf = para$Linf,k = para$k,Linf = para$Linf,
+test <- fishflux::cnp_model(TL = 10:19,Fn = 1.3,Fp = 0.1,Fc = 65,
+               t0 = para$t0, Linf = para$Linf,k = para$k,
                asp = para$asp,troph = para$troph,f = 3,w_prop = para$w_prop,
-               lwa = para$lwa,lwb = para$lwb,temp = 27,N = para$N,P=para$P,C=para$C)
+               lwa = para$lwa_m,lwb = para$lwb_m,temp = 27,N = 11,P = 3,C = 39, a = para$a_m, B0 = para$B0_m)
 
 }
 \keyword{excretion}

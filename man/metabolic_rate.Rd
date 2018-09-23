@@ -4,7 +4,7 @@
 \alias{metabolic_rate}
 \title{A function to generate B0 and a}
 \usage{
-metabolic_rate(temp, troph, asp, B0, m_max, a, growth_g_day)
+metabolic_rate(temp, troph, asp, B0, m_max, m, a, growth_g_day, f)
 }
 \arguments{
 \item{temp}{Temperature in degrees Celsius}
@@ -17,11 +17,11 @@ metabolic_rate(temp, troph, asp, B0, m_max, a, growth_g_day)
 
 \item{m_max}{Maximum biomass fish (in g)}
 
+\item{m}{Wet weight fish (in g)}
+
 \item{a}{Resting metabolic rate mass-scaling exponent}
 
 \item{growth_g_day}{Daily growth in grams of wet weight}
-
-\item{m}{Wet weight fish (in g)}
 
 \item{f}{Activity scope (from 1 to 4)}
 }
