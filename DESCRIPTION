@@ -17,11 +17,10 @@ Imports:
    cowplot,
    devtools,
    knitr,
-   rstan,
-   rstantools,
-   Rcpp
+   rstan (>= 2.17.3),
+   rstantools (>= 1.5.0),
 Depends:
-   Rcpp,
+   Rcpp (>= 0.12.18),
    methods,
    R (>= 3.0.2)
 LinkingTo:

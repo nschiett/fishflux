@@ -4,8 +4,7 @@
 \alias{oto_growth}
 \title{A function to extract growth parameters from otolith data}
 \usage{
-oto_growth(length, age, id, linf_min = 0, linf_m, k_m = 0.5,
-  iter = 2000, warmup = 1000)
+oto_growth(length, age, id, linf_min = 0, linf_m, k_m = 0.5, ...)
 }
 \arguments{
 \item{length}{Numerical vector with length}

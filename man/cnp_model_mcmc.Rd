@@ -4,7 +4,7 @@
 \alias{cnp_model_mcmc}
 \title{A function to predict N and P excretion, CNP egestion, CNP ingestion rate, using MCMC and stan}
 \usage{
-cnp_model_mcmc(TL, param, iter = 1000)
+cnp_model_mcmc(TL, param, iter = 1000, ...)
 }
 \arguments{
 \item{TL}{total length of a fish in cm}

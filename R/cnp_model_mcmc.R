@@ -13,17 +13,17 @@
 #'
 #' model <- cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4, f=3))
 
-cnp_model_mcmc <- function(TL, param , iter=1000, ...){
+cnp_model_mcmc <- function(TL, param, iter=1000, ...){
 
   require(rstan)
 
   ##standard parameters, all sd's are quite low here!
-  params_st <- list(TL_m = 10 ,
-                    AEc_m = 0.8 ,
-                    AEn_m = 0.8 ,
-                    AEp_m = 0.7 ,
-                    Fc_m = 2.5 ,
-                    Fn_m = 0.3 ,
+  params_st <- list(TL_m = 10,
+                    AEc_m = 0.8,
+                    AEn_m = 0.8,
+                    AEp_m = 0.7,
+                    Fc_m = 2.5,
+                    Fn_m = 0.3,
                     Fp_m = 0.1,
                     Linf_m = 20,
                     k_m = 0.4,
@@ -43,12 +43,12 @@ cnp_model_mcmc <- function(TL, param , iter=1000, ...){
                     a_m = 0.8,
                     B0_m = 0.002,
 
-                    TL_sd = 0.0000000001 ,
-                    AEc_sd = 0.0000000001 ,
-                    AEn_sd = 0.0000000001 ,
-                    AEp_sd = 0.0000000001 ,
-                    Fc_sd = 0.0000000001 ,
-                    Fn_sd = 0.0000000001 ,
+                    TL_sd = 0.0000000001,
+                    AEc_sd = 0.0000000001,
+                    AEn_sd = 0.0000000001,
+                    AEp_sd = 0.0000000001,
+                    Fc_sd = 0.0000000001,
+                    Fn_sd = 0.0000000001,
                     Fp_sd = 0.0000000001,
                     Linf_sd = 0.0000000001,
                     k_sd = 0.0000000001,
@@ -83,60 +83,59 @@ cnp_model_mcmc <- function(TL, param , iter=1000, ...){
 
   p_given <- names(param)
   p_all <- names(params_st)
-  unknown <- p_all[!p_all%in% p_given]
+  unknown <- p_all[!p_all %in% p_given]
 
-  if (length(unknown>0)){
+  if (length(unknown > 0)){
     warning("not inputting certain parameters may give wrong results")
     for (v in unknown){
       warning("adding standard values for ", v)
     }
   }
 
-  params_missing <- params_st[which(p_all%in%unknown)]
-  param <- append(param,params_missing)
+  params_missing <- params_st[which(p_all %in% unknown)]
+  param <- append(param, params_missing)
 
-  stanfit <-  rstan::sampling(stanmodels$cnp_model_mcmc, data=param, iter=iter, algorithm="Fixed_param", chains=1, ...)
+  stanfit <-  rstan::sampling(stanmodels$cnp_model_mcmc, data = param,
+                              iter = iter, algorithm = "Fixed_param", chains = 1, ...)
 
   result <- as.data.frame(rstan::summary(stanfit)$summary)
   result$variable <- rownames(result)
   result$TL_input <- TL
 
   ## limiting element
-  lim <- round(result[result$variable=="lim","mean"])
+  lim <- round(result[result$variable == "lim", "mean"])
   lim <- sapply(lim, FUN = function(x){
-    if (x==1){
+    if (x == 1){
       return("C")
-    } else if (x==2){
+    } else if (x == 2){
       return("N")
     } else{
       return("P")
     }
   })
 
-  return(list(stanfit,summary = result, lim = lim))
+  return(list(stanfit, summary = result, lim = lim))
 
   }
 
 
   if (length(TL) == 1){ ## option for only one length ##
-
-  result <- cnp_mcmc(TL,param,iter)
+  result <- cnp_mcmc(TL, param, iter)
   return(result)
 
   } else{ ## option for vector of lengths ##
+    result <- parallel::mclapply(TL, param = param, iter = iter, FUN = cnp_mcmc)
 
-    result <- parallel::mclapply(TL,param=param,iter=iter, FUN = cnp_mcmc)
-
-    stanfit <-lapply(result,FUN = function(x){x[[1]]})
-    summary <- lapply(result,FUN = function(x){x[[2]]})
+    stanfit <- lapply(result, FUN = function(x){x[[1]]})
+    summary <- lapply(result, FUN = function(x){x[[2]]})
     summary <- plyr::ldply(summary)
 
     ## limiting element
-    lim <- round(summary[summary$variable=="lim","mean"])
+    lim <- round(summary[summary$variable == "lim", "mean"])
     lim <- sapply(lim, FUN = function(x){
-      if (x==1){
+      if (x == 1){
         return("C")
-      } else if (x==2){
+      } else if (x == 2){
         return("N")
       } else{
         return("P")
@@ -147,4 +146,3 @@ cnp_model_mcmc <- function(TL, param , iter=1000, ...){
   }
 
 }
-

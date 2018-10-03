@@ -1343,7 +1343,7 @@ public:
 
 
             current_statement_begin__ = 175;
-            stan::math::assign(TL, normal_rng(TL_m,TL_sd, base_rng__));
+            stan::math::assign(TL, normal_lb_ub_rng(TL_m,TL_sd,0,1000, base_rng__, pstream__));
             current_statement_begin__ = 176;
             stan::math::assign(AEc, normal_lb_ub_rng(AEc_m,AEc_sd,0,1, base_rng__, pstream__));
             current_statement_begin__ = 177;
@@ -1357,29 +1357,29 @@ public:
             current_statement_begin__ = 181;
             stan::math::assign(Fp, normal_lb_ub_rng(Fp_m,Fp_sd,0,100, base_rng__, pstream__));
             current_statement_begin__ = 182;
-            stan::math::assign(Linf, normal_rng(Linf_m,Linf_sd, base_rng__));
+            stan::math::assign(Linf, normal_lb_ub_rng(Linf_m,Linf_sd,0,1000, base_rng__, pstream__));
             current_statement_begin__ = 183;
-            stan::math::assign(k, normal_lb_ub_rng(k_m,k_sd,0,1, base_rng__, pstream__));
+            stan::math::assign(k, normal_lb_ub_rng(k_m,k_sd,0,3, base_rng__, pstream__));
             current_statement_begin__ = 184;
             stan::math::assign(t0, normal_rng(t0_m,t0_sd, base_rng__));
             current_statement_begin__ = 185;
             stan::math::assign(f, normal_lb_ub_rng(f_m,f_sd,1,4, base_rng__, pstream__));
             current_statement_begin__ = 186;
-            stan::math::assign(asp, normal_lb_ub_rng(asp_m,asp_sd,1,5, base_rng__, pstream__));
+            stan::math::assign(asp, normal_lb_ub_rng(asp_m,asp_sd,0,8, base_rng__, pstream__));
             current_statement_begin__ = 187;
             stan::math::assign(troph, normal_lb_ub_rng(troph_m,troph_sd,1,5, base_rng__, pstream__));
             current_statement_begin__ = 188;
-            stan::math::assign(lwa, normal_rng(lwa_m,lwa_sd, base_rng__));
+            stan::math::assign(lwa, normal_lb_ub_rng(lwa_m,lwa_sd,0,1, base_rng__, pstream__));
             current_statement_begin__ = 189;
-            stan::math::assign(lwb, normal_rng(lwb_m,lwb_sd, base_rng__));
+            stan::math::assign(lwb, normal_lb_ub_rng(lwb_m,lwb_sd,1,5, base_rng__, pstream__));
             current_statement_begin__ = 190;
             stan::math::assign(w_prop, normal_lb_ub_rng(w_prop_m,w_prop_sd,0,1, base_rng__, pstream__));
             current_statement_begin__ = 191;
             stan::math::assign(temp, normal_rng(temp_m,temp_sd, base_rng__));
             current_statement_begin__ = 192;
-            stan::math::assign(Tn, normal_rng(Tn_m,Tn_sd, base_rng__));
+            stan::math::assign(Tn, normal_lb_ub_rng(Tn_m,Tn_sd,0,1, base_rng__, pstream__));
             current_statement_begin__ = 193;
-            stan::math::assign(Tp, normal_rng(Tp_m,Tp_sd, base_rng__));
+            stan::math::assign(Tp, normal_lb_ub_rng(Tp_m,Tp_sd,0,1, base_rng__, pstream__));
             current_statement_begin__ = 194;
             stan::math::assign(C, normal_lb_ub_rng(C_m,C_sd,0,100, base_rng__, pstream__));
             current_statement_begin__ = 195;
@@ -1387,9 +1387,9 @@ public:
             current_statement_begin__ = 196;
             stan::math::assign(P, normal_lb_ub_rng(P_m,P_sd,0,100, base_rng__, pstream__));
             current_statement_begin__ = 197;
-            stan::math::assign(a, normal_rng(a_m,a_sd, base_rng__));
+            stan::math::assign(a, normal_lb_ub_rng(a_m,a_sd,0.20000000000000001,1.2, base_rng__, pstream__));
             current_statement_begin__ = 198;
-            stan::math::assign(B0, normal_rng(B0_m,B0_sd, base_rng__));
+            stan::math::assign(B0, normal_lb_ub_rng(B0_m,B0_sd,0,1, base_rng__, pstream__));
             current_statement_begin__ = 203;
             stan::math::assign(m_max, (lwa * pow(Linf,lwb)));
             current_statement_begin__ = 207;
