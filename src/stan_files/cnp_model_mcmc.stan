@@ -172,30 +172,30 @@ generated quantities {
                      real IN;      // ingestion in g dry weight
                      real IN_cnp;
 
-                      TL = normal_rng(TL_m, TL_sd);
-                      AEc = normal_lb_ub_rng(AEc_m, AEc_sd,0,1);
-                      AEn = normal_lb_ub_rng(AEn_m, AEn_sd,0,1);
-                      AEp = normal_lb_ub_rng(AEp_m, AEp_sd,0,1);
-                      Fc = normal_lb_ub_rng(Fc_m, Fc_sd,0,100);
-                      Fn = normal_lb_ub_rng(Fn_m, Fn_sd,0,100);
-                      Fp = normal_lb_ub_rng(Fp_m, Fp_sd,0,100);
-                      Linf = normal_rng(Linf_m, Linf_sd);
-                      k = normal_lb_ub_rng(k_m, k_sd,0,1);
+                      TL = normal_lb_ub_rng(TL_m, TL_sd, 0, 1000);
+                      AEc = normal_lb_ub_rng(AEc_m, AEc_sd, 0, 1);
+                      AEn = normal_lb_ub_rng(AEn_m, AEn_sd, 0, 1);
+                      AEp = normal_lb_ub_rng(AEp_m, AEp_sd, 0, 1);
+                      Fc = normal_lb_ub_rng(Fc_m, Fc_sd, 0, 100);
+                      Fn = normal_lb_ub_rng(Fn_m, Fn_sd, 0, 100);
+                      Fp = normal_lb_ub_rng(Fp_m, Fp_sd, 0, 100);
+                      Linf = normal_lb_ub_rng(Linf_m, Linf_sd, 0, 1000);
+                      k = normal_lb_ub_rng(k_m, k_sd,0,3);
                       t0 = normal_rng(t0_m, t0_sd);
-                      f = normal_lb_ub_rng(f_m, f_sd,1,4);
-                      asp = normal_lb_ub_rng(asp_m, asp_sd,1,5);
-                      troph = normal_lb_ub_rng(troph_m, troph_sd,1,5);
-                      lwa = normal_rng(lwa_m, lwa_sd);
-                      lwb = normal_rng(lwb_m, lwb_sd);
-                      w_prop = normal_lb_ub_rng(w_prop_m, w_prop_sd,0,1);
+                      f = normal_lb_ub_rng(f_m, f_sd,1, 4);
+                      asp = normal_lb_ub_rng(asp_m, asp_sd,0, 8);
+                      troph = normal_lb_ub_rng(troph_m, troph_sd,1, 5);
+                      lwa = normal_lb_ub_rng(lwa_m, lwa_sd, 0, 1);
+                      lwb = normal_lb_ub_rng(lwb_m, lwb_sd, 1, 5);
+                      w_prop = normal_lb_ub_rng(w_prop_m, w_prop_sd, 0, 1);
                       temp = normal_rng(temp_m, temp_sd);
-                      Tn = normal_rng(Tn_m, Tn_sd);
-                      Tp = normal_rng(Tp_m, Tp_sd);
-                      C = normal_lb_ub_rng(C_m, C_sd,0,100);
-                      N = normal_lb_ub_rng(N_m, N_sd,0,100);
-                      P = normal_lb_ub_rng(P_m, P_sd,0,100);
-                      a = normal_rng(a_m, a_sd);
-                      B0 = normal_rng(B0_m, B0_sd);
+                      Tn = normal_lb_ub_rng(Tn_m, Tn_sd, 0, 1);
+                      Tp = normal_lb_ub_rng(Tp_m, Tp_sd, 0, 1);
+                      C = normal_lb_ub_rng(C_m, C_sd, 0, 100);
+                      N = normal_lb_ub_rng(N_m, N_sd, 0, 100);
+                      P = normal_lb_ub_rng(P_m, P_sd, 0, 100);
+                      a = normal_lb_ub_rng(a_m, a_sd, 0.2, 1.2);
+                      B0 = normal_lb_ub_rng(B0_m, B0_sd, 0, 1);
 
 
                      //Quantify derived values

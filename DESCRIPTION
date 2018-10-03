@@ -18,7 +18,8 @@ Imports:
    devtools,
    knitr,
    rstan,
-   rstantools
+   rstantools,
+   Rcpp
 Depends:
    Rcpp,
    methods,

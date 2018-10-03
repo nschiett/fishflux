@@ -19,7 +19,7 @@
 
 
 
-oto_growth <- function(length, age, id, linf_min = 0, linf_m, k_m = 0.5, iter = 2000, warmup = 1000){
+oto_growth <- function(length, age, id, linf_min = 0, linf_m, k_m = 0.5, iter = 2000, warmup = 1000, ...){
 
 require(ggplot2)
 
@@ -35,7 +35,7 @@ data <- list(
   k_m = k_m
 )
 
-fit <- rstan::sampling(stanmodels$vonbert, data=data, iter=iter, warmup=warmup, chains=4, seed=123,control = list(adapt_delta = 0.99,max_treedepth = 15))
+fit <- rstan::sampling(stanmodels$vonbert, data=data, iter=iter, warmup=warmup, chains=4, seed=123,control = list(adapt_delta = 0.99,max_treedepth = 15),...)
 
 summary <- as.data.frame(rstan::summary(fit)$summary)
 

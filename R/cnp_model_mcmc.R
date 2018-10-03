@@ -13,7 +13,7 @@
 #'
 #' model <- cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4, f=3))
 
-cnp_model_mcmc <- function(TL, param , iter=1000){
+cnp_model_mcmc <- function(TL, param , iter=1000, ...){
 
   require(rstan)
 
@@ -35,8 +35,8 @@ cnp_model_mcmc <- function(TL, param , iter=1000){
                     lwb_m = 3.083,
                     w_prop_m = 0.309,
                     temp_m = 27,
-                    Tn_m = 0.0057,
-                    Tp_m = 0.00016,
+                    Tn_m = 0.01,
+                    Tp_m = 0.0007,
                     C_m = 40,
                     N_m = 10,
                     P_m = 4,
@@ -76,7 +76,7 @@ cnp_model_mcmc <- function(TL, param , iter=1000){
 
   ## mcmc function
 
-  cnp_mcmc <- function(TL=TL, param = param, iter = iter){
+  cnp_mcmc <- function(TL=TL, param = param, iter = iter, ...){
 
   ## add TL to parameter list
   param[["TL_m"]] <- TL
@@ -95,7 +95,7 @@ cnp_model_mcmc <- function(TL, param , iter=1000){
   params_missing <- params_st[which(p_all%in%unknown)]
   param <- append(param,params_missing)
 
-  stanfit <-  rstan::sampling(stanmodels$cnp_model_mcmc, data=param, iter=iter, algorithm="Fixed_param", chains=1)
+  stanfit <-  rstan::sampling(stanmodels$cnp_model_mcmc, data=param, iter=iter, algorithm="Fixed_param", chains=1, ...)
 
   result <- as.data.frame(rstan::summary(stanfit)$summary)
   result$variable <- rownames(result)
