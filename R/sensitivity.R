@@ -17,15 +17,26 @@
 #' fishflux::sensitivity(TL=10, param = list(k_sd=0.2, Fn_sd=0.2, Fc_sd = 0.1), par = c("k_sd","Fn_sd","Fc_sd"), out = c("C_in", "N_in", "P_in", "C_g", "N_g", "P_g", "C_r", "N_ex", "P_ex", "C_eg", "N_eg", "P_eg"))
 #'
 
-sensitivity <- function(TL, param, iter=1000, par, out = c("C_in", "N_in", "P_in", "C_g", "N_g", "P_g", "C_r", "N_ex", "P_ex", "C_eg", "N_eg", "P_eg")){
+sensitivity <- function(TL, param, iter = 1000, par,
+                        out = c("C_in", "N_in", "P_in", "C_g",
+                                "N_g", "P_g", "C_r", "N_ex",
+                                "P_ex", "C_eg", "N_eg", "P_eg")){
 
 require(ggplot2)
 
   #parameter SD's and means
-  pm <- c("TL_m","AEc_m","AEn_m","AEp_m","Fc_m","Fn_m","Fp_m","Linf_m","k_m","t0_m","f_m","asp_m","troph_m","lwa_m","lwb_m","w_prop_m","temp_m","Tn_m","Tp_m","C_m","N_m","P_m","a_m","B0_m")
-  psd <- c("TL_sd","AEc_sd","AEn_sd","AEp_sd","Fc_sd","Fn_sd","Fp_sd","Linf_sd","k_sd","t0_sd","f_sd","asp_sd","troph_sd","lwa_sd","lwb_sd","w_prop_sd","temp_sd","Tn_sd","Tp_sd","C_sd","N_sd","P_sd","a_sd","B0_sd")
-  parm <- par[par%in%pm]
-  parsd <- par[par%in%psd]
+  pm <- c("TL_m", "AEc_m", "AEn_m", "AEp_m", "Fc_m",
+          "Fn_m", "Fp_m", "Linf_m", "k_m", "t0_m",
+          "f_m", "asp_m", "troph_m", "lwa_m", "lwb_m",
+          "w_prop_m", "temp_m", "Tn_m", "Tp_m", "C_m",
+          "N_m", "P_m", "a_m", "B0_m")
+  psd <- c("TL_sd", "AEc_sd", "AEn_sd", "AEp_sd",
+           "Fc_sd", "Fn_sd", "Fp_sd", "Linf_sd",
+           "k_sd", "t0_sd", "f_sd", "asp_sd", "troph_sd",
+           "lwa_sd", "lwb_sd", "w_prop_sd", "temp_sd",
+           "Tn_sd", "Tp_sd", "C_sd", "N_sd", "P_sd", "a_sd", "B0_sd")
+  parm <- par[par %in% pm]
+  parsd <- par[par %in% psd]
 
   param_m <- param[parm]
   param_sd <- param[parsd]
@@ -34,21 +45,22 @@ require(ggplot2)
 
   param_sdl <- param_sd
   param_sdl[1:length(parsd)] <- sd_low
-  param_msdl <- append(param_m,param_sdl)
+  param_msdl <- append(param_m, param_sdl)
 
   #run cnp_model for all sd's with rest very low
   sd <- parsd
   res_sd <- as.data.frame(
-    parallel::mcmapply(sd,FUN = function(sd){
+    parallel::mcmapply(sd, FUN = function(sd){
     param_msdl[sd] <- param_sd[sd]
     mod <- fishflux::cnp_model_mcmc(TL, param_msdl, iter)$summary
-    ext <- mod[match(out,mod$variable) ,"sd"]
+    ext <- mod[match(out, mod$variable), "sd"]
     return(ext)
   }))
 
-  row.names(res_sd) <- sapply(out,function(x){
-    rn <- paste(x,"_sd",sep = "")
-    return(rn)}
+  row.names(res_sd) <- sapply(out, function(x){
+    rn <- paste(x, "_sd", sep = "")
+    return(rn)
+    }
     )
 
   res_sd <- as.data.frame(t(res_sd))
@@ -57,26 +69,15 @@ require(ggplot2)
   require(ggplot2)
   res <- res_sd
   res$input_sd <- row.names(res)
-  res <- tidyr::gather(res,key,value,-input_sd)
-  plot <- ggplot(res)+
-    geom_tile(aes(x=key,y=input_sd,fill=value))+
-    scale_fill_continuous(trans="log")+
-    geom_text(aes(x=key,y=input_sd,label= formatC(value, format = "e", digits = 1)))+
-    labs(x="",y="",fill="sd")+
+  res <- tidyr::gather(res, key, value, -input_sd)
+  plot <- ggplot(res) +
+    geom_tile(aes(x = key, y = input_sd, fill = value)) +
+    scale_fill_continuous(trans = "log") +
+    geom_text(aes(x = key, y = input_sd, label = formatC(value, format = "e", digits = 1))) +
+    labs(x = "", y = "", fill = "sd") +
     theme_bw()
   print(plot)
 
   return(res_sd)
 
 }
-
-
-
-
-
-
-
-
-
-
-

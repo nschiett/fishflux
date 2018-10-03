@@ -21,21 +21,18 @@ extract <- function(mod, par){
   TL <- unique(summary$TL_input)
 
   list <- lapply(par, FUN = function(p){
-    name <- paste(p,"s",sep="_")
     sub <- dplyr::filter(summary, variable == p)
     sub <- data.frame(sub$mean, sub$sd, sub$`2.5%`, sub$`97.5%`)
-    colnames(sub) <- c(paste(p,"mean",sep="_"), paste(p,"sd",sep="_"), paste(p,"2.5%",sep="_"), paste(p,"97.5%",sep="_"))
+    colnames(sub) <- c(paste(p, "mean", sep = "_"),
+                       paste(p, "sd", sep = "_"),
+                       paste(p, "2.5%", sep = "_"),
+                       paste(p, "97.5%", sep = "_"))
     return(sub)
     })
 
   df <- do.call(cbind, list)
 
-  tl <- data.frame(TL=TL)
-  df <- cbind(tl,df)
+  tl <- data.frame(TL = TL)
+  df <- cbind(tl, df)
   return(df)
 }
-
-
-
-
-

@@ -7,6 +7,7 @@
 #' @param k_m    Prior for k, default is 0.5
 #' @param linf_m Prior for linf
 #' @param linf_min possibility to add a minimum for linf, default is 0
+#' @param ...     Arguments of rstan::sampling()
 #' @details      Returns a dataframe with estimates for Linf, k and t0
 #' @keywords      fish, growth, Von Bertalanfy
 #' @export oto_growth
@@ -22,14 +23,8 @@
 oto_growth <- function(length, age, id, linf_min = 0, linf_m, k_m = 0.5, ...){
 
 require(ggplot2)
+require(rstan)
 
-if (missing(iter)){
-  iter <- 2000
-}
-
-if (missing(warmup)){
-    warmup <- 1000
-}
 
 data <- list(
   N = length(length),

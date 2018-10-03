@@ -18,37 +18,36 @@
 #' fishflux::metabolism(family= "Pomacentridae", temp = 27, troph_m = 2)
 
 
-metabolism <- function (family, temp, troph_m, troph_sd=0.0000000001) {
+metabolism <- function (family, temp, troph_m, troph_sd = 0.0000000001) {
 
   require(rstan)
 
   ## get b0 and a from database
   metpar <- fishflux::metabolic_parameters
-  metpars <- metpar[metpar$family==family,]
+  metpars <- metpar[metpar$family == family, ]
 
-  if (nrow(metpars)>0){
+  if (nrow(metpars) > 0){
   message("values for b0 and a on family level")
   }
 
-  if (nrow(metpars)==0){
-    metpars <- metpar[metpar$family=="all",]
+  if (nrow(metpars) == 0){
+    metpars <- metpar[metpar$family == "all", ]
     message("average values for b0 and a used")
   }
 
-  metpars$troph_m = troph_m
-  metpars$troph_sd = troph_sd
-  metpars$temp = temp
-  metpars <- as.list(metpars[,-1])
+  metpars$troph_m <-  troph_m
+  metpars$troph_sd <-  troph_sd
+  metpars$temp <-  temp
+  metpars <- as.list(metpars[, -1])
 
   ## predict B0
-  stanfit <-  rstan::sampling(stanmodels$get_B0, data=metpars, iter=1000, algorithm="Fixed_param", chains=1)
+  stanfit <-  rstan::sampling(stanmodels$get_B0, data = metpars, iter = 1000,
+                              algorithm = "Fixed_param", chains = 1)
   result <- as.data.frame(rstan::summary(stanfit)$summary)
-  result <- result[1,c("mean","sd")]
+  result <- result[1, c("mean", "sd")]
   colnames(result) <- c("B0_m", "B0_sd")
   result <- cbind(result, metpars)
-  result <- result[, ! names(result) %in% c("troph_m","troph_sd","temp")]
+  result <- result[, ! names(result) %in% c("troph_m", "troph_sd", "temp")]
   rownames(result) <- NULL
   return(result)
 }
-
-

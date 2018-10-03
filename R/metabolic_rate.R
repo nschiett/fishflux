@@ -28,11 +28,18 @@ metabolic_rate <- function(temp, troph, asp, B0, m_max, m, a, growth_g_day, f){
 # the cost of growth (Em, in J / g)
 Em <- exp(4.38 + 0.1032 * log(temp) + 0.73 * log(troph) + 0.41 * log(asp + 1))
 
-# metabolic rates, B, are given in g C / day, while growth rates, G, are given in g / day, so B / G results g C / g. Em values, however, are expressed in Joules / g, so we need to convert g C to Joules. This conversion should be calculated based on the standard enthalpy combustion of glucose, i.e. a biochemical argument which corresponds to metabolism -- it includes both the energy to be sequestrated by ATP and the energy lost during this process. (2805 kJ / 1 mole Glucose) * (1 mole of Glucose / 6 moles C) * (1 mole C / 12 g C) = 2805 / 6 / 12 approx. 39 kJ per g C
+# metabolic rates, B, are given in g C / day, while growth rates, G, are given in g / day,
+# so B / G results g C / g.
+# Em values, however, are expressed in Joules / g, so we need to convert g C to Joules.
+# This conversion should be calculated based on the standard enthalpy combustion of glucose,
+# i.e. a biochemical argument which corresponds to metabolism --
+# it includes both the energy to be sequestrated by ATP and the energy lost during this process.
+# (2805 kJ / 1 mole Glucose) * (1 mole of Glucose / 6 moles C) * (1 mole C / 12 g C) = 2805 / 6 / 12 approx. 39 kJ per g C
+
 gC_to_J  <- 39e3
 
 Ec       <- 24e3 # combustion energy of biomass (Joules / g)
-Bm       <- B0 * gC_to_J * m_max^(a - 1)
+Bm       <- B0 * gC_to_J * m_max ^ (a - 1)
 B_main   <- Bm * m  # maintenance metabolic rate
 B_syn    <- Em * growth_g_day # cost of growth
 B_rest   <- B_main + B_syn # resting metabolic rate (Joules / day)
@@ -48,4 +55,3 @@ result <- data.frame(
 return(result)
 
 }
-

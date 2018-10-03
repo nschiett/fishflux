@@ -6,12 +6,12 @@
 #' @keywords fish, scientific names
 #' @export name_errors
 #' @examples
-#' name_errors(c("Chlorurus spilurus","Zebrasoma scopas"))
-#' name_errors(c("Chlorurus spilurus","Zebrasoma copas"))
+#' name_errors(c("Chlorurus spilurus", "Zebrasoma scopas"))
+#' name_errors(c("Chlorurus spilurus", "Zebrasoma copas"))
 
 name_errors  <- function (sp) {
 	sp_correct <- suppressWarnings(rfishbase::validate_names(sp))
-	sp_error   <- sp[!(sp %in% sp_correct)]
+	sp_error   <- sp[ ! (sp %in% sp_correct)]
 	if (length(sp_error) == 0) {
 	 	message("All species names are correct")
 	} else {

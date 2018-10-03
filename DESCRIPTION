@@ -33,6 +33,5 @@ SystemRequirements: GNU make
 NeedsCompilation: yes
 LazyData: true
 RoxygenNote: 6.1.0
-Suggests: rmarkdown,
-    knitr
+Suggests: rmarkdown
 VignetteBuilder: knitr

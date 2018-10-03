@@ -2,7 +2,6 @@
 
 export(aspect_ratio)
 export(check_name_fishbase)
-export(cnp_fishf)
 export(cnp_model)
 export(cnp_model_mcmc)
 export(extract)

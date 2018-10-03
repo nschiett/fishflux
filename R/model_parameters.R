@@ -18,7 +18,7 @@ model_parameters <- function(sp, family, otolith = TRUE, temp){
   fishflux::check_name_fishbase(sp)
 
   #dry_weight/wet_weight
-  wprop <- fishflux::wprop(family=family)
+  wprop <- fishflux::wprop(family = family)
 
   #length weight
   length_weight <- fishflux::find_lw(sp)
@@ -33,28 +33,25 @@ model_parameters <- function(sp, family, otolith = TRUE, temp){
   asp <- fishflux::aspect_ratio(sp)
 
   #metabolism
-  met <- fishflux::metabolism(family = family, troph_m = troph$trophic_level, temp = temp )
+  met <- fishflux::metabolism(family = family, troph_m = troph$trophic_level,
+                              temp = temp )
 
   #combine
-  parameters <- data.frame( species  = sp,
-                            t0       = mean(growth$t0,na.rm=TRUE),
-                            Linf     = mean(growth$Linf,na.rm=TRUE),
-                            k        = mean(growth$k,na.rm=TRUE),
-                            asp      = asp$aspect_ratio,
-                            troph    = troph$trophic_level,
-                            lwa_m    = length_weight$lwa_m,
-                            lwa_sd   = length_weight$lwa_sd,
-                            lwb_m    = length_weight$lwb_m,
-                            lwb_sd   = length_weight$lwb_sd,
-                            w_prop   = wprop$ww,
-                            B0_m     = met$B0_m,
-                            B0_sd    = met$B0_sd,
-                            a_m      = met$a_m,
-                            a_sd     = met$a_sd )
-
-
+  parameters <- data.frame(species  = sp,
+                           t0       = mean(growth$t0, na.rm = TRUE),
+                           Linf     = mean(growth$Linf, na.rm = TRUE),
+                           k        = mean(growth$k, na.rm = TRUE),
+                           asp      = asp$aspect_ratio,
+                           troph    = troph$trophic_level,
+                           lwa_m    = length_weight$lwa_m,
+                           lwa_sd   = length_weight$lwa_sd,
+                           lwb_m    = length_weight$lwb_m,
+                           lwb_sd   = length_weight$lwb_sd,
+                           w_prop   = wprop$ww,
+                           B0_m     = met$B0_m,
+                           B0_sd    = met$B0_sd,
+                           a_m      = met$a_m,
+                           a_sd     = met$a_sd)
 
   return(parameters)
-
 }
-

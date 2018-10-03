@@ -5,7 +5,6 @@
 #'
 #' Returns a dataframe with the weight ratio (ww) and it's sd (ww_sd).
 #'
-#' @param sp Species name
 #' @param family family
 #' @keywords fish, find some parameters needed for cnp_model
 #' @export wprop

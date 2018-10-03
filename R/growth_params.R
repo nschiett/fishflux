@@ -13,23 +13,26 @@
 #'
 #' growth_params("Lutjanus griseus")
 
-growth_params <- function(sp,otolith=TRUE){
-  if (length(suppressMessages(fishflux::name_errors(sp)))>0){
+growth_params <- function(sp, otolith=TRUE){
+  if (length(suppressMessages(fishflux::name_errors(sp))) > 0){
     stop("Species name is incorrect")
   }
  pop <- rfishbase::popgrowth(sp)
- if(length(pop)==0){
-   growth <- data.frame(species=NA,Locality=NA,k=NA,Linf=NA,t0=NA,method=NA,comments=NA)
+ if (length(pop) == 0){
+   growth <- data.frame(species = NA, Locality = NA, k = NA,
+                        Linf = NA, t0 = NA, method = NA, comments = NA)
  }else{
-   growth <- dplyr::select(pop,species=sciname,Locality,k=K,Linf=Loo,t0=to,method=Data,comments=Comment)
+   growth <- dplyr::select(pop, species = sciname, Locality, k = K,
+                           Linf = Loo, t0 = to, method = Data,
+                           comments = Comment)
     if (otolith){
-      growth <- dplyr::filter(growth,method%in%c("annuli on otoliths","annuli on many otoliths"))
+      growth <- dplyr::filter(growth, method %in%
+                c("annuli on otoliths", "annuli on many otoliths"))
     }
- if (nrow(growth)<1){
+ if (nrow(growth) < 1){
    stop("No otolith based parameters available in fishbase.
         Try otolith=FALSE or search literature.")
  }
 }
  return(growth)
 }
-

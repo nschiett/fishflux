@@ -50,7 +50,7 @@ cnp_model <- function(TL, AEn = 0.8, AEp = 0.7, AEc = 0.8,
   m_max  <- lwa * (Linf ^ lwb)
 
   #Growth per day
-  l1  <- TL                                     #TL1, Total length of the fish at the moment
+  l1  <- TL                                     #TL1, Total length of the fish
   a1  <- (log(1 - (l1 / Linf)) / (-k)) + t0     #Age1, Predicted age of the fish at length TL1
   a2  <- a1 + (1 / 365)                         #Age2, Age1 + 1 day
   l2  <- Linf * (1 - exp(-k * (a2 - t0)))       #TL2, Predicted total length at age 2
@@ -68,8 +68,9 @@ cnp_model <- function(TL, AEn = 0.8, AEp = 0.7, AEc = 0.8,
   C_g <- C * Wd / 100                       #C needed for growth in g
 
   #metabolism
-  metabolism <- fishflux::metabolic_rate(temp = temp,m_max = m_max, m = w1, asp = asp,
-                                         troph = troph, f = f, B0 = B0, a = a, growth_g_day = Ww)
+  metabolism <- fishflux::metabolic_rate(temp = temp, m_max = m_max, m = w1,
+                                         asp = asp, troph = troph, f = f,
+                                         B0 = B0, a = a, growth_g_day = Ww)
   C_m <- metabolism$Total_metabolic_rate_C_g_d
 
   #Biomass turnover
@@ -94,7 +95,7 @@ cnp_model <- function(TL, AEn = 0.8, AEp = 0.7, AEc = 0.8,
 
     ##limiting nutrients
     x <- 1:length(l1)
-    lim <- sapply(x,FUN = function(i){
+    lim <- sapply(x, FUN = function(i){
       if (st_cn[i] > stf_cn & st_cp[i] > stf_cp){
         lim <- "C"
       } else if  (st_cn[i] < stf_cn & st_np[i] > stf_np){
@@ -138,7 +139,7 @@ cnp_model <- function(TL, AEn = 0.8, AEp = 0.7, AEc = 0.8,
   P_ex <- P_in - P_eg - P_g
 
   #respiration
-  C_r = C_in - C_eg - C_g
+  C_r <- C_in - C_eg - C_g
 
   #leftover excretion
   N_l <- N_ex - N_t
@@ -149,6 +150,8 @@ cnp_model <- function(TL, AEn = 0.8, AEp = 0.7, AEc = 0.8,
   IN_cnp <-  C_in + N_in + P_in
 
 
-  result <- data.frame( TL, biomass = w1, C_in, N_in, P_in, N_ex, N_eg, P_ex, P_eg, N_l, P_l, C_m, C_g, N_g, P_g, N_t, P_t, C_eg, C_r, IN, IN_cnp,lim)
+  result <- data.frame(TL, biomass = w1, C_in, N_in, P_in, N_ex,
+                        N_eg, P_ex, P_eg, N_l, P_l, C_m, C_g, N_g,
+                        P_g, N_t, P_t, C_eg, C_r, IN, IN_cnp, lim)
   return(result)
 }

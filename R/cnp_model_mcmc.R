@@ -5,6 +5,7 @@
 #' @param TL      total length of a fish in cm
 #' @param param   list of all parameter means ("_m") and standard deviations ("_sd") Default parameters are set with very low sd's. See \link[fishflux]{cnp_model}  for a list of all requested parameters
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
+#' @param ...     Arguments of rstan::sampling()
 #' @details       Returns a list with three objects: A stanfit object, a dataframe with a summary of all model components and a vector containing the limiting element.
 #' @keywords      fish, stoichiometry, excretion, mcmc
 #' @export cnp_model_mcmc
