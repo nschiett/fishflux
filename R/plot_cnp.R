@@ -24,9 +24,6 @@
 #' mod2 <- cnp_model_mcmc(TL = 5:15, param = list(C_m = 40, N_m = 10, P_m = 4, Fn_sd = 0.05))
 #' plot_cnp(mod2)
 
-
-
-
 plot_cnp  <- function(mod,
                       option = c("overview", "ingestion", "excretion",
                                  "egestion", "growth", "respiration"),
@@ -47,8 +44,8 @@ plot_cnp  <- function(mod,
   }
 
   # check input
-  if (!option %in% c("overview", "ingestion", "excretion",
-                     "egestion", "growth", "respiration")){
+  if (length(option[option %in% c("overview", "ingestion", "excretion",
+                     "egestion", "growth", "respiration")]) == 0){
     stop("Input for argument option is not allowed. For more info on input arguments, run ?fishflux::plot_cnp")
   }
 
@@ -100,7 +97,7 @@ plot_cnp  <- function(mod,
           legend.text = element_text(size = ts - 5))
 
   legend <- ggplot() +
-    scale_x_continuous(limits = c(0.4, 1.6)) +
+    scale_x_continuous(limits = c(0.9, 2.5)) +
     geom_line(aes(x = c(1, 1.5), y = "f"), size = 1.5, color = "white") +
     geom_line(aes(x = c(1, 1.5), y = "1"), size = 1.5, color = "white") +
     theme_void()
@@ -207,17 +204,17 @@ plot_cnp  <- function(mod,
 
       legend <- legend +
         geom_line(aes(x = c(1, 1.5), y = "e"), size = 1.5,  color = "black") +
-        geom_text(aes(x = 0.5, y = "e", label = "Ingestion"),
+        geom_text(aes(x = 1.7, y = "e", label = "Ingestion"),
                   color = "black", size = 6, hjust = 0) +
         geom_line(aes(x = c(1, 1.5), y = "b"), size = 1.5,  color = cb[5]) +
-        geom_text(aes(x = 0.5, y = "b", label = "Excretion"), size = 6, hjust = 0) +
+        geom_text(aes(x = 1.7, y = "b", label = "Excretion"), size = 6, hjust = 0) +
         geom_line(aes(x = c(1, 1.5), y = "c"), size = 1.5,  color = cb[7]) +
-        geom_text(aes(x = 0.5, y = "c", label = "Egestion"),
+        geom_text(aes(x = 1.7, y = "c", label = "Egestion"),
                   color = "black", size = 6, hjust = 0) +
         geom_line(aes(x = c(1, 1.5), y = "d"), size = 1.5,  color = cb[4]) +
-        geom_text(aes(x = 0.5, y = "d", label = "Growth"), size = 6, hjust = 0) +
+        geom_text(aes(x = 1.7, y = "d", label = "Growth"), size = 6, hjust = 0) +
         geom_line(aes(x = c(1, 1.5), y = "a"), size = 1.5,  color = cb[6]) +
-        geom_text(aes(x = 0.5, y = "a", label = "Respiration"),
+        geom_text(aes(x = 1.7, y = "a", label = "Respiration"),
                   color = "black", size = 6,  hjust = 0)
 
     } else{
@@ -252,7 +249,7 @@ plot_cnp  <- function(mod,
 
        legend <- legend +
          geom_line(aes(x = c(1, 1.5), y = "e"), size = 1.5, color = "black") +
-         geom_text(aes(x = 0.5, y = "e", label = "Ingestion"),
+         geom_text(aes(x = 1.7, y = "e", label = "Ingestion"),
                    color = "black", size = 6, hjust = 0)
 
       }
@@ -269,7 +266,7 @@ plot_cnp  <- function(mod,
 
         legend <- legend +
           geom_line(aes(x = c(1, 1.5), y = "a"), size = 1.5,  color = cb[6]) +
-          geom_text(aes(x = 0.5, y = "a", label = "Respiration"),
+          geom_text(aes(x = 1.7, y = "a", label = "Respiration"),
                     color = "black", size = 6,  hjust = 0)
 
       }
@@ -304,7 +301,7 @@ plot_cnp  <- function(mod,
 
         legend <- legend +
           geom_line(aes(x = c(1, 1.5), y = "d"), size = 1.5,  color = cb[4]) +
-          geom_text(aes(x = 0.5, y = "d", label = "Growth"), size = 6, hjust = 0)
+          geom_text(aes(x = 1.7, y = "d", label = "Growth"), size = 6, hjust = 0)
 
         }
 
@@ -338,7 +335,7 @@ plot_cnp  <- function(mod,
 
         legend <- legend +
           geom_line(aes(x = c(1, 1.5), y = "c"), size = 1.5,  color = cb[7]) +
-          geom_text(aes(x = 0.5, y = "c", label = "Egestion"),
+          geom_text(aes(x = 1.7, y = "c", label = "Egestion"),
                     color = "black", size = 6, hjust = 0)
       }
 
@@ -362,7 +359,7 @@ plot_cnp  <- function(mod,
                     size = 1.5,  color = cb[5])
 
         legend <- legend +
-          geom_text(aes(x = 0.5, y = "b", label = "Excretion"), size = 6, hjust = 0) +
+          geom_text(aes(x = 1.7, y = "b", label = "Excretion"), size = 6, hjust = 0) +
           geom_line(aes(x = c(1, 1.5), y = "b"), size = 1.5,  color = cb[5])
       }
     }
@@ -415,15 +412,15 @@ plot_cnp  <- function(mod,
 
         legend <- legend +
           geom_line(aes(x = c(1, 1.5), y = "e"), size = 1.5,  color = "black") +
-          geom_text(aes(x = 0.5, y = "e", label = "Ingestion"),  color = "black", size = 6, hjust = 0) +
+          geom_text(aes(x = 1.7, y = "e", label = "Ingestion"),  color = "black", size = 6, hjust = 0) +
           geom_line(aes(x = c(1, 1.5), y = "b"), size = 1.5,  color = cb[5]) +
-          geom_text(aes(x = 0.5, y = "b", label = "Excretion"), size = 6, hjust = 0) +
+          geom_text(aes(x = 1.7, y = "b", label = "Excretion"), size = 6, hjust = 0) +
           geom_line(aes(x = c(1, 1.5), y = "c"), size = 1.5,  color = cb[7]) +
-          geom_text(aes(x = 0.5, y = "c", label = "Egestion"), color = "black", size = 6, hjust = 0) +
+          geom_text(aes(x = 1.7, y = "c", label = "Egestion"), color = "black", size = 6, hjust = 0) +
           geom_line(aes(x = c(1, 1.5), y = "d"), size = 1.5,  color = cb[4]) +
-          geom_text(aes(x = 0.5, y = "d", label = "Growth"), size = 6, hjust = 0) +
+          geom_text(aes(x = 1.7, y = "d", label = "Growth"), size = 6, hjust = 0) +
           geom_line(aes(x = c(1, 1.5), y = "a"), size = 1.5,  color = cb[6]) +
-          geom_text(aes(x = 0.5, y = "a", label = "Respiration"),  color = "black", size = 6, hjust = 0)
+          geom_text(aes(x = 1.7, y = "a", label = "Respiration"),  color = "black", size = 6, hjust = 0)
 
       } else{
         if ("ingestion" %in% option){
@@ -439,7 +436,7 @@ plot_cnp  <- function(mod,
 
           legend <- legend +
             geom_line(aes(x = c(1, 1.5), y = "e"), size = 1.5,  color = "black") +
-            geom_text(aes(x = 0.5, y = "e", label = "Ingestion"),  color = "black", size = 6, hjust = 0)
+            geom_text(aes(x = 1.7, y = "e", label = "Ingestion"),  color = "black", size = 6, hjust = 0)
 
         }
 
@@ -449,7 +446,7 @@ plot_cnp  <- function(mod,
 
           legend <- legend +
             geom_line(aes(x = c(1, 1.5), y = "a"), size = 1.5,  color = cb[6]) +
-            geom_text(aes(x = 0.5, y = "a", label = "Respiration"), size = 1.5,  color = "black", size = 6, hjust = 0)
+            geom_text(aes(x = 1.7, y = "a", label = "Respiration"), size = 1.5,  color = "black", size = 6, hjust = 0)
 
         }
 
@@ -465,7 +462,7 @@ plot_cnp  <- function(mod,
 
           legend <- legend +
             geom_line(aes(x = c(1, 1.5), y = "d"), size = 1.5,  color = cb[4]) +
-            geom_text(aes(x = 0.5, y = "d", label = "Growth"), size = 6, hjust = 0)
+            geom_text(aes(x = 1.7, y = "d", label = "Growth"), size = 6, hjust = 0)
 
         }
 
@@ -481,7 +478,7 @@ plot_cnp  <- function(mod,
 
           legend <- legend +
             geom_line(aes(x = c(1, 1.5), y = "c"), size = 1.5,  color = cb[7]) +
-            geom_text(aes(x = 0.5, y = "c", label = "Egestion"), size = 1.5,  color = "black", size = 6, hjust = 0)
+            geom_text(aes(x = 1.7, y = "c", label = "Egestion"), size = 1.5,  color = "black", size = 6, hjust = 0)
         }
 
         if ("excretion" %in% option){
@@ -492,7 +489,7 @@ plot_cnp  <- function(mod,
             geom_line(aes(x = mod$TL, y = mod$P_ex), size = 1.5,  color = cb[5])
 
           legend <- legend +
-            geom_text(aes(x = 0.5, y = "b", label = "Excretion"), size = 6, hjust = 0) +
+            geom_text(aes(x = 1.7, y = "b", label = "Excretion"), size = 6, hjust = 0) +
             geom_line(aes(x = c(1, 1.5), y = "b"), size = 1.5,  color = cb[5])
         }
       }
