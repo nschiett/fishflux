@@ -3,8 +3,10 @@
 #' A function to find estimates length-weight relationship parameters available on fishbase. It returns a list of means and standard deviations of a and b obtained from:
 #'*Froese, R., J. Thorson and R.B. Reyes Jr., 2013. A Bayesian approach for estimating length-weight relationships in fishes. J. Appl. Ichthyol. (2013):1-7.*
 #'Please cite Froese et al. (2013), when using these values.
+#'The default mirror for fishbase is set to "de", please change this if needed for your location
 #'
 #' @param sp A charachter value containing the species name
+#' @param mirror Mirror for fishbase (eg. "de", "org", "us", etc.) Default is "de".
 #' @keywords fish, l-w relationship, fishbase, bayesian
 #' @export
 #' @examples
@@ -16,13 +18,13 @@
 #' plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))
 #' @export find_lw
 
-find_lw <- function(sp){
+find_lw <- function(sp, mirror = "de"){
 
   fishflux::check_name_fishbase(sp)
 
   sp_ <- gsub(" ", "-", sp)
 
-  page <-  readLines(paste("https://www.fishbase.de/summary/", sp_, ".html", sep = ""))
+  page <-  readLines(paste("https://www.fishbase.", mirror, "/summary/", sp_, ".html", sep = ""))
 
   l <- grep("Bayesian length-weight:", page)
   line <- page[l]
