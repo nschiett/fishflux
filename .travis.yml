@@ -5,4 +5,4 @@ sudo: false
 cache: packages
 
 before_install:
-- travis_tool/configure
+- ./travis_tool/configure

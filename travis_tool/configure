@@ -14,3 +14,4 @@ if [[ "${CI}" == "true" ]]; then
         echo "** Overriding src/Makevars and removing C++14 on Travis only"
         sed -i 's|CXX_STD = CXX14||' src/Makevars
     fi
+fi
