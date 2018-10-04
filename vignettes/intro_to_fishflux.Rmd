@@ -74,7 +74,7 @@ library(fishflux)
 
 ### Find parameters
 
-Before running the model, the parameters have to be specified. Below, there is a table showing all parameters needed to run the model simulation. `fishflux` provides several functions to find some of these parameters, but note that others have to be provided by the user at this stage. Ideally, all parameters should also have a standard deviation, so that uncertainty of parameters can be reflected in the model output parameters.
+Before running the model, the parameters have to be specified. Below, there is a table showing all parameters needed to run the model simulation. `fishflux` provides several functions to find some of these parameters, but note that others have to be provided by the user at this stage. Ideally, all parameters should also have a standard deviation, so that uncertainty of parameters can be reflected in the model output parameters. 
 \newline
 
 ```{r,message=FALSE,echo=FALSE,results='asis'}
