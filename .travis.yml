@@ -1,14 +1,12 @@
-language: 
-  - R
+language: r
+r: devel
+sudo: FALSE
+cache: packages
 
-cache: 
-  - packages
-  
-sudo:
-  - required
+warnings_are_errors: TRUE
 
-warnings_are_errors: 
-  - false
+r_build_args: '--no-build-vignettes'
+r_check_args: '--ignore-vignettes'
 
 r_github_packages:
   - hadley/devtools@efa894ffa
