@@ -8,4 +8,7 @@ sudo:
   - required
 
 warnings_are_errors: 
-  - true
+  - false
+
+r_github_packages:
+  - hadley/devtools@efa894ffa
