@@ -9,7 +9,3 @@ sudo:
 
 warnings_are_errors: 
   - true
-
-## Use patched devtools
-r_github_packages:
-  - hadley/devtools@efa894ffa
