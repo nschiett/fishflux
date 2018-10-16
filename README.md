@@ -2,6 +2,8 @@
 fishflux: A tool to model nutrient fluxes in fish
 =================================================
 
+[![Build Status](https://api.travis-ci.org/nschiett/fishflux.png?branch=master)](https://travis-ci.org/nschiett/fishflux)
+
 <img src="man/figures/fishflux.png" width = 120 alt="fishflux logo"/>
 
 Overview
