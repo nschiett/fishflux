@@ -43,7 +43,7 @@ The best way to install the latest development version of `fishflux` is to insta
 
 ``` r
 install.packages("devtools")
-devtools::install_github("nschiett/fishflux", dependencies = TRUE)
+devtools::install_github("nschiett/fishflux", dependencies = TRUE) # if errors are returned, try adding `args = "--preclean"` to `install_github`
 library(fishflux)
 ```
 ### CRAN
