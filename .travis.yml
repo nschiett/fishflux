@@ -1,8 +1,21 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+language: 
+  - R
 
-language: R
-sudo: false
-cache: packages
+cache: 
+  - packages
+  
+sudo:
+  - required
+
+warnings_are_errors: 
+  - true
 
 before_install:
-- ./travis_tool/configure
+  - chmod 755 ./travis-tool/travis_timeout.sh
+
+script:
+  - ./travis-tool/travis_timeout.sh travis_wait
+
+## Use patched devtools
+r_github_packages:
+  - hadley/devtools@efa894ffa
