@@ -10,9 +10,6 @@ sudo:
 warnings_are_errors: 
   - true
 
-script:
-  - ./travis-tool/travis_timeout.sh travis_wait
-
 ## Use patched devtools
 r_github_packages:
   - hadley/devtools@efa894ffa
