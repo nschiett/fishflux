@@ -22,16 +22,13 @@ Imports:
    rstan (>= 2.17.3),
    rstantools (>= 1.5.0),
    Rcpp (>= 0.12.18),
-   methods,
-   R (>= 3.0.2)
-
+   methods
 LinkingTo:
    StanHeaders (>= 2.17.2),
    rstan (>= 2.17.3), 
    BH (>= 1.66.0-1), 
    Rcpp (>= 0.12.18), 
    RcppEigen (>= 0.3.3.4.0)
-   
 SystemRequirements: GNU make
 NeedsCompilation: yes
 LazyData: true
