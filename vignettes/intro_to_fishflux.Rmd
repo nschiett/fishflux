@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ```
 ## Introduction
   
-The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user friendly interface to make nutrient dynamic modelling available for anyone. `fishflux` is mostly targeted towards fish ecologists, wishing to predict nutrient ingestion, egestion and excretion to study fluxes of nutrients and energy. 
+The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user-friendly interface to make nutrient dynamic modelling available for anyone. `fishflux` is mostly targeted towards fish ecologists wishing to predict nutrient ingestion, egestion and excretion to study fluxes of nutrients and energy.
 
 Main assets:
   
@@ -35,7 +35,7 @@ Main assets:
 
 ## Installing and loading fishflux
 
-`fishflux` uses Markov Chain Monte Carlo simulations provided by [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). Therefore, the first step is to install [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
+`fishflux` uses Markov Chain Monte Carlo simulations provided by [rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). Therefore, the first step is to install [rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
 
 ### GitHub
 
@@ -43,7 +43,7 @@ The best way to install the latest development version of `fishflux` is to insta
 
 ``` r
 install.packages("devtools")
-devtools::install_github("nschiett/fishflux", dependencies=TRUE)
+devtools::install_github("nschiett/fishflux", dependencies = TRUE) # if errors are returned, try adding `args = "--preclean"` to `install_github`
 library(fishflux)
 ```
 ### CRAN
@@ -60,7 +60,7 @@ library(fishflux)
 Another option is to download the source file available on GitHub [here](https://github.com/nschiett/fishflux).
 
 ``` r
-install.packages(path_to_fishflux_file, repos = NULL, type="source")
+install.packages(path_to_fishflux_file, repos = NULL, type = "source")
 library(fishflux)
 ```
 
@@ -74,19 +74,19 @@ library(fishflux)
 
 ### Find parameters
 
-Before running the model, the parameters have to be specified. Below, there is a table showing all parameters needed to run the model simulation. `fishflux` provides several functions to find some of these parameters, but note that others have to be provided by the user at this stage. Ideally, all parameters should also have a standard deviation, so that uncertainty of parameters can be reflected in the model output parameters. 
+Before running the model, the parameters have to be specified. Below, there is a table showing all parameters needed to run the model simulation. `fishflux` provides several functions to find some of these parameters, but note that others have to be provided by the user at this stage. Ideally, all parameters should also have a standard deviation, so that their uncertainty can be reflected in the model output.
 \newline
 
 ```{r,message=FALSE,echo=FALSE,results='asis'}
 knitr::kable(data.frame(
   Parameters = c("C","N","P","Fc","Fn","Fp","AEc","AEn","AEp","Linf","k","t0","lwa","lwb","w_prop","Tn","Tp","B0","a","f","asp","troph","temp"), 
-  Description = c("Carbon content of fish (%)", "Nitrogen content of fish (%)","Phosphorus content of fish (%)","C content of food (%)","N content of food (%)","P content of food (%)", "C-specific absorption efficiency", "N-specific absorption efficienct","P-specific absorption efficiency", "Von Bertalanffy growth parameter","Von Bertalanffy growth parameter","Von Bertalanffy growth parameter", "Parameter length-weight relationship","Parameter length-weight relationship","Ratio between dry weight and wet weight of fish","N-specific turnover rate","P-specific turnover rate","Normalisation constant for resting metabolic rate", "Resting metabolic rate mass-scaling exponent","Activity scope","Aspect ratio","Trophic level","Temperature (°C)")
+  Description = c("Carbon content of fish (%)", "Nitrogen content of fish (%)","Phosphorus content of fish (%)","C content of food (%)","N content of food (%)","P content of food (%)", "C-specific absorption efficiency", "N-specific absorption efficienct","P-specific absorption efficiency", "von Bertalanffy's maximum length","von Bertalanffy's growth parameter","von Bertalanffy's time at birth", "length-weight relationship constant","length-weight relationship scaling exponent","Ratio between dry weight and wet weight of fish","N-specific turnover rate","P-specific turnover rate","Normalisation constant for resting metabolic rate", "Resting metabolic rate mass-scaling exponent","Activity scope","Aspect ratio","Trophic level","Temperature (°C)")
 ),caption = "Overview all input variables")
 ```
 
 \newline
 
-A good place to start is checking if you are using the correct scientific name of your fish of interest. The function `name_errors` will tell you if the species name is correct. This function can be useful, especially when working with larger databases.  
+A good place to start is checking if you are using the correct scientific name of your species of interest. The function `name_errors` will tell you if the species name is correct. This function can be useful, especially when working with larger databases.
 
 \newline
 ```{r,message=TRUE,echo=TRUE}
@@ -96,14 +96,16 @@ fishflux::name_errors("Zebrazoma scopas")
 \newline
 Once the species names are verified and/or corrected we can continue with specifying some parameters. 
 
-The `find_lw` function searches fishbase to find length-weight relationship parameters `lw_a` and `lw_b` extracted from @Froese2013. 
+The `find_lw` function searches [FishBase](https://www.fishbase.de/) to find length-weight relationship parameters `lw_a` and `lw_b` extracted from @Froese2013.
+
 \newline
 ```{r,message=TRUE,echo=TRUE}
 # example
 fishflux::find_lw("Zebrasoma scopas")
 ```
 \newline
-The model uses Von Beralanfy patameters to approximate growth. A quick way to get available information from fishbase is the function `growth_params()`. This can be a good indication, but users should interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. Alternatively, it is advised to use otolith readings. The function `oto_growth()` allows for direct estimation of growth parameters from otolith data, using a hierarchical bayesian model and stan. In the case of absence of otolith data, one might consider extracting standardised estimations from Morais & Bellwood (2018).
+The model uses parameters von Bertalanffy's growth model (VBGM) to estimate growth rates. A quick way to get available information from FishBase is the function `growth_params()`. This can be a good indication, but users should interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. Alternatively, it is advised to use otolith readings. The function `oto_growth()` allows for direct estimation of growth parameters from otolith data, using a hierarchical Bayesian model fitted using `rstan`. In the absence of otolith data, one might consider extracting standardised estimations from Morais & Bellwood (2018).
+
 \newline
 ```{r,message=FALSE,echo=TRUE}
 # example
@@ -116,11 +118,11 @@ sarmi <- fishflux::sarmi
 oto_growth <- fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, linf_m = 16, k_m = 0.4, iter = 2000, warmup = 1000)
 oto_growth$result
 
-## Note that in this example, there is a large difference between fishbase estimates and otolith analysis. This illustrates how important it is to check the quality of your parameter estimates.
+## Note that in this example, there is a large difference between FishBase estimates and otolith analysis. This illustrates how important it is to check the quality of your parameter estimates.
 ```
 \newline
 
-For metabolic parameters B0 and a, there is a function to extract estimations from Barneche & Allen 2018 Ecology Letters doi: 10.1111/ele.12947. These parameters are for the best model (Model 2 in the paper online supplementary material) of fish resting metabolic rates reported in the paper, which also includes trophic level as a covariate. Please cite Barneche & Allen (2018), when using these values. 
+For metabolic parameters B0 and a, there is a function to extract estimations from Barneche & Allen 2018 Ecology Letters doi: 10.1111/ele.12947. These parameters are for the best model (Model 2 in the paper's online supplementary material) of fish resting metabolic rates reported in the paper, which also includes trophic level as a covariate. Please cite Barneche & Allen (2018), when using these values. 
 \newline
 ```{r,echo=TRUE,,cache=TRUE,results='hide',message=FALSE}
 # example
@@ -131,7 +133,7 @@ print(metabolism)
 ```
 
 \newline
-Further, there are a couple more basic functions to get an indication of parameters that are available on fishbase such as `trophic_level()` and `aspect_ratio()`.
+Further, there are a couple more basic functions to get an indication of parameters that are available on FishBase such as `trophic_level()` and `aspect_ratio()`.
 \newline
 Note that it is always better to get the approximations through analysis, measurements and otolith analysis over parameters extracted from functions, such as `growth_params()`, `trophic_level()` and `aspect_ratio()`. 
 \newline
@@ -145,12 +147,12 @@ zebsco <- fishflux::model_parameters("Zebrasoma scopas", family = "Acanthuridae"
 print(zebsco)
 ```
 \newline
-All other parameters have to be provided by the user. For more information on how to aquire these paramers, take a look at ("this paper")add reference to methods paper).
+All other parameters have to be provided by the user. For more information on how to acquire these parameters, take a look at ("this paper")add reference to methods paper).
 
 
 ### Run model
 
-Once all the parameters are collected, we can run the model through `cnp_model_mcmc()`. Note that this model can be run with or without specifying the sd's of each parameter. If a sd of a certain parameter is not provided, it will be automatically set to a very low value (1⁻10). As mentioned before, it is advisable to include uncertainty of parameters. Fishflux is designed to use the mcmc sampler in order to predict uncertainty of predictions. Alternatively, to get a quick prediction of averages, without depending on stan, the function `cnp_model()` can be used. 
+Once all the parameters are collected, we can run the model through `cnp_model_mcmc()`. Note that this model can be run with or without specifying the standard deviation (sd) of each parameter. If the sd of a certain parameter is not provided, it will be automatically set to a very low value (1^-10^). As mentioned before, it is advisable to include uncertainty of parameters. `fishflux` is designed to use the MCMC sampler in order to predict uncertainty of predictions. Alternatively, to get a quick prediction of averages, without depending on rstan, the function `cnp_model()` can be used.
 \newline
 ```{r, message=FALSE}
 ## load the example parameters for Zebrasoma scopas, a list
@@ -160,7 +162,7 @@ model <- fishflux::cnp_model_mcmc(TL = 5:20, param = param_zebsco)
 model$lim
 ```
 \newline
-The object 'model' now contains all the samples generated from the mcmc simulation and a summary of all parameters generated. `model$lim` shows the limiting element at each length. To extract certain parameters of interest, use the `extract()` function. Predictions for fluxes of C, N and P are all in g/day.
+The object `model` now contains all the samples generated from the MCMC simulation and a summary of all parameters generated. `model$lim` shows the limiting element at each length. To extract certain parameters of interest, use the `extract()` function. Predictions for fluxes of C, N and P are all in g / day.
 \newline
 ```{r}
 fishflux::extract(model, c("N_ex","P_ex"))
@@ -183,7 +185,7 @@ fishflux::plot_cnp(model, option = c("excretion", "egestion", "growth"), display
 ### Sensitivity
   
 The function `sensitivity()` looks at how the distribution of the input variables affect the uncertainty of the model predictions. 
-Basically, the model is run for each input parameter, while keeping all the others fixed. The output of the function gives a matrix of sd's for all model predictions (columns), depending on theinput variables (rows). 
+Basically, the model is run for each input parameter, while keeping all the others fixed. The output of the function gives a matrix of sd's for all model predictions (columns), depending on the input variables (rows). 
 The input parameters and output variables of interest can be specified by arguments "par" and "out" respectively.
 \newline 
 ```{r, message=FALSE}
@@ -195,5 +197,5 @@ fishflux::sensitivity(TL = 10, param = param_zebsco, par = c("Fn_sd", "Fp_sd", "
 
 For more information on the theoretical framework of the model, read paper.
 Every function of `fishflux` has a help page with more documentation.
-In the case of errors, bugs or discomfort, you are invited to raise an issue at GitHub (should add link). 
-`fishflux` is always in development and we are happy to take your comments or suggestions into consideration. 
+In the case of errors, bugs or discomfort, you are invited to raise an [issue](https://github.com/nschiett/fishflux/issues) on GitHub.
+`fishflux` is always in development and we are happy to take your comments or suggestions into consideration.

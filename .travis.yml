@@ -1,8 +1,12 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
-language: R
-sudo: false
+language: r
+r: devel
+sudo: FALSE
 cache: packages
 
-before_install:
-- ./travis_tool/configure
+warnings_are_errors: TRUE
+
+r_build_args: '--no-build-vignettes'
+r_check_args: '--ignore-vignettes'
+
+r_github_packages:
+  - hadley/devtools@efa894ffa
