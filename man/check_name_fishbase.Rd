@@ -8,24 +8,12 @@ check_name_fishbase(sp)
 }
 \arguments{
 \item{sp}{A character value containing the species name}
-
-\item{sp}{A character value containing the species name}
 }
 \description{
-This is a wrapper function to which will return an error
-(via \code{\link[fishflux]{name_errors}}) if the provided species
-name is wrong.
+This is a wrapper function to which will return an error (via
+\code{\link[fishflux]{name_errors}}) if the provided species name is wrong.
 }
 \examples{
-
-check_name_fishbase("Lutjanus griseus")
-plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma copas"), check_name_fishbase))
-Returns error if name is incorrect
-
-This is a wrapper function to which will return an error (via
-\\code{\\link[fishflux]{name_errors}}) if the provided species name is wrong.
-
-
 
 
 check_name_fishbase("Lutjanus griseus")

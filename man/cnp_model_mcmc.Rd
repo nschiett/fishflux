@@ -12,6 +12,8 @@ cnp_model_mcmc(TL, param, iter = 1000, ...)
 \item{param}{list of all parameter means ("_m") and standard deviations ("_sd") Default parameters are set with very low sd's. See \link[fishflux]{cnp_model}  for a list of all requested parameters}
 
 \item{iter}{A positive integer specifying the number of iterations. The default is 2000.}
+
+\item{...}{Arguments of rstan::sampling()}
 }
 \description{
 This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.

@@ -16,6 +16,8 @@ Choices are one or more of the following:
 "ingestion", "excretion", "egestion", "growth", "respiration", or "overview", containing all of the before-mentioned results.
 Default is "overview".}
 
+\item{ts}{Size of the axis titles}
+
 \item{display}{Parameter to specify which element to show result for: "c", "n", "p" or "cnp", which will return three plots.
 Default is "cnp".}
 }

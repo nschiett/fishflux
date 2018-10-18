@@ -8,8 +8,6 @@ wprop(family)
 }
 \arguments{
 \item{family}{family}
-
-\item{sp}{Species name}
 }
 \description{
 This function searches the ratio of dry weight and wet weight of fish
