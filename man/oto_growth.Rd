@@ -18,6 +18,8 @@ oto_growth(length, age, id, linf_min = 0, linf_m, k_m = 0.5, ...)
 \item{linf_m}{Prior for linf}
 
 \item{k_m}{Prior for k, default is 0.5}
+
+\item{...}{Arguments of rstan::sampling()}
 }
 \description{
 A function to extract growth parameters from otolith data

@@ -12,11 +12,19 @@
 #'
 #' @examples
 #'
-#' model <- cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4, f=3))
+#' model <- fishflux::cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4, f_m = 3))
 
 cnp_model_mcmc <- function(TL, param, iter=1000, ...){
 
   require(rstan)
+
+  #check input variable names
+  if (TRUE %in% (!names(param) %in% names(params_st))){
+    wrong <- names(param)[!(names(param) %in% names(params_st))]
+    error <- paste("The following input parameters do not exist: ", paste(wrong, collapse = ", "),
+                   "  Check ?fishflux::cnp_model_mcmc for a description of valid input parameters")
+    stop(error)
+  }
 
   ##standard parameters, all sd's are quite low here!
   params_st <- list(TL_m = 10,
@@ -73,7 +81,75 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
 
   if (missing(TL)){
     stop("please provide TL: total length")
+  }
+
+  # check for bad parameter inputs
+
+  if ("Linf" %in% names(param)){
+   if (param$TL_m >= param$Linf_m){
+     stop("TL_m cannot be higher than Linf_m")
+   }
+  }
+
+  if ("C_m" %in% names(param)){
+    print("ok")
+    if (param$C_m <= 0 | param$C_m >= 100){
+      stop("C_m should be between 0 and 100")
+      print("a")
+   }
+  }
+
+  if ("N_m" %in% names(param)){
+    if (param$N_m <= 0 | param$N_m >= 100){
+      stop("N_m should be between 0 and 100")
     }
+  }
+
+  if ("P_m" %in% names(param)){
+    if (param$P_m <= 0 | param$P_m >= 100){
+      stop("P_m should be between 0 and 100")
+    }
+  }
+
+  if ("Fc_m" %in% names(param)){
+    if (param$Fc_m <= 0 | param$Fc_m >= 100){
+      stop("Fc_m should be between 0 and 100")
+    }
+  }
+
+  if ("Fn_m" %in% names(param)){
+    if (param$Fn_m <= 0 | param$Fn_m >= 100){
+      stop("Fn_m should be between 0 and 100")
+    }
+  }
+
+  if ("Fp_m" %in% names(param)){
+    if (param$Fp_m <= 0 | param$Fp_m >= 100){
+      stop("Fp_m should be between 0 and 100")
+    }
+  }
+
+  if ("AEc_m" %in% names(param)){
+    if (param$AEc_m <= 0 | param$AEc_m >= 1){
+      stop("AEc_m should be between 0 and 1")
+    }
+  }
+
+  if ("Fp_m" %in% names(param)){
+    if (param$AEn_m <= 0 | param$AEn_m >= 1){
+      stop("AEn_m should be between 0 and 1")
+    }
+  }
+
+  if ("AEp_m" %in% names(param)){
+    if (param$AEp_m <= 0 | param$AEp_m >= 1){
+      stop("AEp_m should be between 0 and 1")
+    }
+  }
+
+
+
+
 
   ## mcmc function
 
@@ -95,6 +171,9 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
 
   params_missing <- params_st[which(p_all %in% unknown)]
   param <- append(param, params_missing)
+
+
+
 
   stanfit <-  rstan::sampling(stanmodels$cnp_model_mcmc, data = param,
                               iter = iter, algorithm = "Fixed_param", chains = 1, ...)
@@ -132,7 +211,7 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
     summary <- plyr::ldply(summary)
 
     ## limiting element
-    lim <- round(summary[summary$variable == "lim", "mean"])
+    lim <- round(summary[summary$variable == "lim", "mean=fdw"])
     lim <- sapply(lim, FUN = function(x){
       if (x == 1){
         return("C")
@@ -142,8 +221,6 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
         return("P")
       }
     })
-
     return(list(stanfit = stanfit, summary = summary, lim = lim))
   }
-
 }

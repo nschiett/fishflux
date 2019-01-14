@@ -53,13 +53,13 @@ result <- data.frame(
   t0_sd = summary["mu_t0", "sd"]
 )
 
-predict <- result$linf_m * (1 - exp(-result$k_m * (sarmi$age - result$t0_m)))
+predict <- result$linf_m * (1 - exp(-result$k_m * (data$age - result$t0_m)))
 predict_l <- (result$linf_m - 1.96 * result$linf_sd) *
   (1 - exp(- (result$k_m - 1.96 * result$k_sd) *
-             (sarmi$age - (result$t0_m - 1.96 * result$t0_sd))))
+             (data$age - (result$t0_m - 1.96 * result$t0_sd))))
 predict_u <- (result$linf_m + 1.96 * result$linf_sd) *
   (1 - exp(- (result$k_m + 1.96 * result$k_sd) *
-             (sarmi$age - (result$t0_m + 1.96 * result$t0_sd))))
+             (data$age - (result$t0_m + 1.96 * result$t0_sd))))
 
 
 plot <-

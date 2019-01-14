@@ -214,12 +214,22 @@ generated quantities {
                      wd2 = w2 * w_prop;
                      Wd  = wd2 - wd1;                             // Growth in dry weight
                      Ww  = w2 - w1;                               // Growth in wet weight
+                     // Correct possible negative growth
+                     if (Wd < 0) {
+                       Wd = 0;
+                     }
+                     if (Ww < 0) {
+                       Ww = 0;
+                     }
+
                      C1  = C * wd1 / 100;
                      N1  = N * wd1 / 100;
                      P1  = P * wd1 / 100;
                      N_g = N * Wd / 100;
                      P_g = P * Wd / 100;
                      C_g = C * Wd / 100;
+
+
 
                      // metabolism
 
