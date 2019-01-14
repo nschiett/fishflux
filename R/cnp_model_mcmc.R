@@ -18,14 +18,6 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
 
   require(rstan)
 
-  #check input variable names
-  if (TRUE %in% (!names(param) %in% names(params_st))){
-    wrong <- names(param)[!(names(param) %in% names(params_st))]
-    error <- paste("The following input parameters do not exist: ", paste(wrong, collapse = ", "),
-                   "  Check ?fishflux::cnp_model_mcmc for a description of valid input parameters")
-    stop(error)
-  }
-
   ##standard parameters, all sd's are quite low here!
   params_st <- list(TL_m = 10,
                     AEc_m = 0.8,
@@ -77,6 +69,14 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
                     a_sd = 0.0000000001,
                     B0_sd = 0.0000000001
   )
+
+  #check input variable names
+  if (TRUE %in% (!names(param) %in% names(params_st))){
+    wrong <- names(param)[!(names(param) %in% names(params_st))]
+    error <- paste("The following input parameters do not exist: ", paste(wrong, collapse = ", "),
+                   "  Check ?fishflux::cnp_model_mcmc for a description of valid input parameters")
+    stop(error)
+  }
 
 
   if (missing(TL)){
