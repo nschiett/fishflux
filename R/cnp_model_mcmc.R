@@ -12,7 +12,7 @@
 #'
 #' @examples
 #'
-#' model <- fishflux::cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4, f_m = 3))
+#' model <- fishflux::cnp_model_mcmc(TL = 10:12, param = list(C_m = 40, N_m = 10, P_m = 4, f_m = 3))
 
 cnp_model_mcmc <- function(TL, param, iter=1000, ...){
 
@@ -92,10 +92,8 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
   }
 
   if ("C_m" %in% names(param)){
-    print("ok")
     if (param$C_m <= 0 | param$C_m >= 100){
       stop("C_m should be between 0 and 100")
-      print("a")
    }
   }
 
@@ -147,10 +145,6 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
     }
   }
 
-
-
-
-
   ## mcmc function
 
   cnp_mcmc <- function(TL=TL, param = param, iter = iter, ...){
@@ -172,18 +166,17 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
   params_missing <- params_st[which(p_all %in% unknown)]
   param <- append(param, params_missing)
 
-
-
-
   stanfit <-  rstan::sampling(stanmodels$cnp_model_mcmc, data = param,
                               iter = iter, algorithm = "Fixed_param", chains = 1, ...)
 
   result <- as.data.frame(rstan::summary(stanfit)$summary)
+
   result$variable <- rownames(result)
   result$TL_input <- TL
 
   ## limiting element
-  lim <- round(result[result$variable == "lim", "mean"])
+  lim <- result[result$variable == "lim", "mean"]
+  lim <- round(lim)
   lim <- sapply(lim, FUN = function(x){
     if (x == 1){
       return("C")
@@ -211,7 +204,7 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
     summary <- plyr::ldply(summary)
 
     ## limiting element
-    lim <- round(summary[summary$variable == "lim", "mean=fdw"])
+    lim <- round(summary[summary$variable == "lim", "mean"])
     lim <- sapply(lim, FUN = function(x){
       if (x == 1){
         return("C")

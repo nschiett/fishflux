@@ -24,7 +24,7 @@ trophic_level <- function (sp) {
     } else {
         level <- "species"
     }
-    troph       <- dplyr::select(ecogn, sciname, DietTroph, FoodTroph)
+    troph       <- dplyr::select(ecogn, Species, DietTroph, FoodTroph)
     troph$troph <- rowMeans(troph[, 2:3], na.rm = TRUE)
     troph       <- mean(troph$troph, na.rm = TRUE)
     data.frame(species       = sp,

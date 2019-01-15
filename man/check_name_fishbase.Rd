@@ -17,7 +17,6 @@ This is a wrapper function to which will return an error (via
 
 
 check_name_fishbase("Lutjanus griseus")
-plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma copas"), check_name_fishbase))
 
 }
 \keyword{fish,}

@@ -36,7 +36,7 @@ static int current_statement_begin__;
 stan::io::program_reader prog_reader__() {
     stan::io::program_reader reader;
     reader.add_event(0, 0, "start", "model_cnp_model_mcmc");
-    reader.add_event(316, 314, "end", "model_cnp_model_mcmc");
+    reader.add_event(314, 312, "end", "model_cnp_model_mcmc");
     return reader;
 }
 
@@ -1438,105 +1438,105 @@ public:
             stan::math::assign(P_g, ((P * Wd) / 100));
             current_statement_begin__ = 230;
             stan::math::assign(C_g, ((C * Wd) / 100));
-            current_statement_begin__ = 236;
+            current_statement_begin__ = 234;
             stan::math::assign(Em, stan::math::exp((((4.3799999999999999 + (0.1032 * stan::math::log(temp))) + (0.72999999999999998 * stan::math::log(troph))) + (0.40999999999999998 * stan::math::log((asp + 1.0))))));
-            current_statement_begin__ = 238;
+            current_statement_begin__ = 236;
             stan::math::assign(gC_to_J, 39000.0);
-            current_statement_begin__ = 239;
+            current_statement_begin__ = 237;
             stan::math::assign(Ec, 24000.0);
-            current_statement_begin__ = 240;
+            current_statement_begin__ = 238;
             stan::math::assign(Bm, ((B0 * gC_to_J) * pow(m_max,(a - 1.0))));
-            current_statement_begin__ = 241;
+            current_statement_begin__ = 239;
             stan::math::assign(B_main, (Bm * w1));
-            current_statement_begin__ = 242;
+            current_statement_begin__ = 240;
             stan::math::assign(B_syn, (Em * Ww));
-            current_statement_begin__ = 243;
+            current_statement_begin__ = 241;
             stan::math::assign(B_rest, (B_main + B_syn));
-            current_statement_begin__ = 244;
+            current_statement_begin__ = 242;
             stan::math::assign(B_tot, (B_rest * f));
-            current_statement_begin__ = 245;
+            current_statement_begin__ = 243;
             stan::math::assign(Cm, (B_tot / gC_to_J));
-            current_statement_begin__ = 249;
+            current_statement_begin__ = 247;
             stan::math::assign(N_t, (Tn * N1));
-            current_statement_begin__ = 250;
+            current_statement_begin__ = 248;
             stan::math::assign(P_t, (Tp * P1));
-            current_statement_begin__ = 253;
+            current_statement_begin__ = 251;
             stan::math::assign(N_n, ((N_g + N_t) / AEn));
-            current_statement_begin__ = 254;
+            current_statement_begin__ = 252;
             stan::math::assign(P_n, ((P_g + P_t) / AEp));
-            current_statement_begin__ = 255;
+            current_statement_begin__ = 253;
             stan::math::assign(C_n, ((C_g + Cm) / AEc));
-            current_statement_begin__ = 259;
+            current_statement_begin__ = 257;
             stan::math::assign(st_np, (N_n / P_n));
-            current_statement_begin__ = 260;
+            current_statement_begin__ = 258;
             stan::math::assign(st_cn, (C_n / N_n));
-            current_statement_begin__ = 261;
+            current_statement_begin__ = 259;
             stan::math::assign(st_cp, (C_n / P_n));
-            current_statement_begin__ = 264;
+            current_statement_begin__ = 262;
             stan::math::assign(stf_np, (Fn / Fp));
-            current_statement_begin__ = 265;
+            current_statement_begin__ = 263;
             stan::math::assign(stf_cn, (Fc / Fn));
-            current_statement_begin__ = 266;
+            current_statement_begin__ = 264;
             stan::math::assign(stf_cp, (Fc / Fp));
-            current_statement_begin__ = 270;
+            current_statement_begin__ = 268;
             if (as_bool((primitive_value(logical_gt(st_cn,stf_cn)) && primitive_value(logical_gt(st_cp,stf_cp))))) {
 
-                current_statement_begin__ = 271;
+                current_statement_begin__ = 269;
                 stan::math::assign(lim, 1);
             } else if (as_bool((primitive_value(logical_lt(st_cn,stf_cn)) && primitive_value(logical_gt(st_np,stf_np))))) {
 
-                current_statement_begin__ = 273;
+                current_statement_begin__ = 271;
                 stan::math::assign(lim, 2);
             } else {
 
-                current_statement_begin__ = 275;
+                current_statement_begin__ = 273;
                 stan::math::assign(lim, 3);
             }
-            current_statement_begin__ = 280;
+            current_statement_begin__ = 278;
             if (as_bool(logical_eq(lim,3))) {
 
-                current_statement_begin__ = 281;
+                current_statement_begin__ = 279;
                 stan::math::assign(P_in, P_n);
-                current_statement_begin__ = 282;
+                current_statement_begin__ = 280;
                 stan::math::assign(N_in, (P_in * stf_np));
-                current_statement_begin__ = 283;
+                current_statement_begin__ = 281;
                 stan::math::assign(C_in, (P_in * stf_cp));
             } else if (as_bool(logical_eq(lim,2))) {
 
-                current_statement_begin__ = 285;
+                current_statement_begin__ = 283;
                 stan::math::assign(N_in, N_n);
-                current_statement_begin__ = 286;
+                current_statement_begin__ = 284;
                 stan::math::assign(P_in, (N_in / stf_np));
-                current_statement_begin__ = 287;
+                current_statement_begin__ = 285;
                 stan::math::assign(C_in, (N_in * stf_cn));
             } else {
 
-                current_statement_begin__ = 289;
+                current_statement_begin__ = 287;
                 stan::math::assign(C_in, C_n);
-                current_statement_begin__ = 290;
+                current_statement_begin__ = 288;
                 stan::math::assign(P_in, (C_in / stf_cp));
-                current_statement_begin__ = 291;
+                current_statement_begin__ = 289;
                 stan::math::assign(N_in, (C_in / stf_cn));
             }
-            current_statement_begin__ = 295;
+            current_statement_begin__ = 293;
             stan::math::assign(C_eg, (C_in * (1 - AEc)));
-            current_statement_begin__ = 296;
+            current_statement_begin__ = 294;
             stan::math::assign(N_eg, (N_in * (1 - AEn)));
-            current_statement_begin__ = 297;
+            current_statement_begin__ = 295;
             stan::math::assign(P_eg, (P_in * (1 - AEp)));
-            current_statement_begin__ = 300;
+            current_statement_begin__ = 298;
             stan::math::assign(N_ex, ((N_in - N_eg) - N_g));
-            current_statement_begin__ = 301;
+            current_statement_begin__ = 299;
             stan::math::assign(P_ex, ((P_in - P_eg) - P_g));
-            current_statement_begin__ = 304;
+            current_statement_begin__ = 302;
             stan::math::assign(C_r, ((C_in - C_eg) - C_g));
-            current_statement_begin__ = 307;
+            current_statement_begin__ = 305;
             stan::math::assign(N_l, (N_ex - N_t));
-            current_statement_begin__ = 308;
+            current_statement_begin__ = 306;
             stan::math::assign(P_l, (P_ex - P_t));
-            current_statement_begin__ = 311;
+            current_statement_begin__ = 309;
             stan::math::assign(IN, ((C_in * 100) / Fc));
-            current_statement_begin__ = 312;
+            current_statement_begin__ = 310;
             stan::math::assign(IN_cnp, ((C_in + N_in) + P_in));
 
             // validate generated quantities

@@ -22,7 +22,7 @@ growth_params <- function(sp, otolith=TRUE){
    growth <- data.frame(species = NA, Locality = NA, k = NA,
                         Linf = NA, t0 = NA, method = NA, comments = NA)
  }else{
-   growth <- dplyr::select(pop, species = sciname, Locality, k = K,
+   growth <- dplyr::select(pop, species = Species, Locality, k = K,
                            Linf = Loo, t0 = to, method = Data,
                            comments = Comment)
     if (otolith){

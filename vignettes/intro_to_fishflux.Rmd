@@ -90,7 +90,7 @@ knitr::kable(data.frame(
 A good place to start is checking if you are using the correct scientific name of your species of interest. The function `name_errors` will tell you if the species name is correct. This function can be useful, especially when working with larger databases.
 
 \newline
-```{r,message=TRUE,echo=TRUE}
+```{r, message=TRUE, echo=TRUE}
 # example
 fishflux::name_errors("Zebrazoma scopas")
 ```

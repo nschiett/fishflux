@@ -10,8 +10,8 @@
 #'
 #' @examples
 #'
-#' model <- fishflux::cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4, f=3))
-#' extract(model, c("N_ex","P_ex"))
+#' model <- fishflux::cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4))
+#' fishflux::extract(model, c("N_ex","P_ex"))
 #'
 #'
 

@@ -10,7 +10,6 @@
 #'
 #'
 #' check_name_fishbase("Lutjanus griseus")
-#' plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma copas"), check_name_fishbase))
 #'
 #' @export check_name_fishbase
 check_name_fishbase <- function (sp) {

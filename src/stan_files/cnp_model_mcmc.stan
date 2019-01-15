@@ -229,8 +229,6 @@ generated quantities {
                      P_g = P * Wd / 100;
                      C_g = C * Wd / 100;
 
-
-
                      // metabolism
 
                      	 Em       = exp(4.38 + 0.1032 * log(temp) + 0.73 * log(troph) + 0.41 * log(asp + 1.0));  //cost of growth in J/g
