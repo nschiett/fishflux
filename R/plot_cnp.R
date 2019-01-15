@@ -13,13 +13,13 @@
 #' @export plot_cnp
 #' @examples
 #' sp <- "Scarus psittacus"
-#' para <- model_parameters(sp,"Scaridae")$parameters
-#' para
-#' mod1 <- fishflux::cnp_model(TL = 10:19,Fn = 1.3,Fp = 0.1,Fc = 50,
-#'                 t0 = para$t0,Linf = para$Linf,k = para$k,
-#'                asp = para$asp,troph = para$troph,f = 3,w_prop = para$w_prop,
-#'                lwa = para$lwa,lwb = para$lwb,temp = 27,N = para$N,P=para$P,C=para$C)
-#'  plot_cnp(test)
+#' # para <- model_parameters(sp,"Scaridae", temp = 27)
+#' # para
+#'  # mod1 <- fishflux::cnp_model(TL = 10:19, Fn = 1.3,Fp = 0.1,Fc = 50,
+#'  #               t0 = para$t0,Linf = para$Linf,k = para$k,
+#'  #             asp = para$asp,troph = para$troph,f = 3,w_prop = para$w_prop,
+#'  #            lwa = para$lwa,lwb = para$lwb,temp = 27,N = para$N,P=para$P,C=para$C, B0 = para$B0_m)
+#'  # plot_cnp(test)
 #'
 #' mod2 <- cnp_model_mcmc(TL = 5:15, param = list(C_m = 40, N_m = 10, P_m = 4, Fn_sd = 0.05))
 #' plot_cnp(mod2)

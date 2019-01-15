@@ -32,13 +32,13 @@
 #' @examples
 #'
 #'
-#' sp <- "Scarus psittacus"
-#' para <- fishflux::model_parameters(sp,"Scaridae",temp = 27)
-#' para
-#' test <- fishflux::cnp_model(TL = 10:19,Fn = 1.3,Fp = 0.1,Fc = 65,
-#'                t0 = para$t0, Linf = para$Linf,k = para$k,
-#'                asp = para$asp,troph = para$troph,f = 3,w_prop = para$w_prop,
-#'                lwa = para$lwa_m,lwb = para$lwb_m,temp = 27,N = 11,P = 3,C = 39, a = para$a_m, B0 = para$B0_m)
+#' # sp <- "Scarus psittacus"
+#' # para <- fishflux::model_parameters(sp,"Scaridae",temp = 27)
+#' # para
+#' # test <- fishflux::cnp_model(TL = 10:19,Fn = 1.3,Fp = 0.1,Fc = 65,
+#' #                t0 = para$t0, Linf = para$Linf,k = para$k,
+#' #               asp = para$asp,troph = para$troph,f = 3,w_prop = para$w_prop,
+#' #              lwa = para$lwa_m,lwb = para$lwb_m,temp = 27,N = 11,P = 3,C = 39, a = para$a_m, B0 = para$B0_m)
 #'
 #' @export cnp_model
 cnp_model <- function(TL, AEn = 0.8, AEp = 0.7, AEc = 0.8,
