@@ -23,7 +23,7 @@ Returns a list with three objects: A stanfit object, a dataframe with a summary 
 }
 \examples{
 
-model <- fishflux::cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4, f_m = 3))
+model <- fishflux::cnp_model_mcmc(TL = 10:12, param = list(C_m = 40, N_m = 10, P_m = 4, f_m = 3))
 }
 \keyword{excretion,}
 \keyword{fish,}
