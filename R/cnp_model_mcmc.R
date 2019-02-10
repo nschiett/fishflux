@@ -83,13 +83,7 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
     stop("please provide TL: total length")
   }
 
-  # check for bad parameter inputs
 
-  if ("Linf" %in% names(param)){
-   if (param$TL_m >= param$Linf_m){
-     stop("TL_m cannot be higher than Linf_m")
-   }
-  }
 
   if ("C_m" %in% names(param)){
     if (param$C_m <= 0 | param$C_m >= 100){

@@ -84,15 +84,15 @@ generated quantities {
                      real<lower=0> Fc;
                      real<lower=0> Fn;
                      real<lower=0> Fp;
-                     real<lower=(TL+1)> Linf;
-                     real<lower=0.001> k;
+                     real<lower=0> Linf;
+                     real<lower=0> k;
                      real t0;
-                     real<lower=1,upper=4> f;
+                     real<lower=0,upper=10> f;
                      real<lower=0> asp;
                      real<lower=0> troph;
-                     real<lower=0.001> lwa;
-                     real<lower=0.001> lwb;
-                     real<lower=0.001> w_prop;
+                     real<lower=0> lwa;
+                     real<lower=0> lwb;
+                     real<lower=0> w_prop;
                      real<lower=0> temp;
                      real<lower=0> Tn;
                      real<lower=0> Tp;
@@ -172,54 +172,59 @@ generated quantities {
                      real IN;      // ingestion in g dry weight
                      real IN_cnp;
 
-                      TL = normal_lb_ub_rng(TL_m, TL_sd, 0, 1000);
-                      AEc = normal_lb_ub_rng(AEc_m, AEc_sd, 0, 1);
-                      AEn = normal_lb_ub_rng(AEn_m, AEn_sd, 0, 1);
-                      AEp = normal_lb_ub_rng(AEp_m, AEp_sd, 0, 1);
-                      Fc = normal_lb_ub_rng(Fc_m, Fc_sd, 0, 100);
-                      Fn = normal_lb_ub_rng(Fn_m, Fn_sd, 0, 100);
-                      Fp = normal_lb_ub_rng(Fp_m, Fp_sd, 0, 100);
-                      Linf = normal_lb_ub_rng(Linf_m, Linf_sd, 0, 1000);
-                      k = normal_lb_ub_rng(k_m, k_sd,0,3);
+                      TL = normal_lb_ub_rng(TL_m, TL_sd, 0.5, 1000);
+                      AEc = normal_lb_ub_rng(AEc_m, AEc_sd, 0.0001, 1);
+                      AEn = normal_lb_ub_rng(AEn_m, AEn_sd, 0.0001, 1);
+                      AEp = normal_lb_ub_rng(AEp_m, AEp_sd, 0.0001, 1);
+                      Fc = normal_lb_ub_rng(Fc_m, Fc_sd, 0.001, 100);
+                      Fn = normal_lb_ub_rng(Fn_m, Fn_sd, 0.001, 100);
+                      Fp = normal_lb_ub_rng(Fp_m, Fp_sd, 0.001, 100);
+                      Linf = normal_lb_ub_rng(Linf_m, Linf_sd, 1, 1000);
+                      k = normal_lb_ub_rng(k_m, k_sd,0.0001,3);
                       t0 = normal_rng(t0_m, t0_sd);
-                      f = normal_lb_ub_rng(f_m, f_sd,1, 4);
-                      asp = normal_lb_ub_rng(asp_m, asp_sd,0, 8);
+                      f = normal_lb_ub_rng(f_m, f_sd,0.1, 6);
+                      asp = normal_lb_ub_rng(asp_m, asp_sd,0.001, 8);
                       troph = normal_lb_ub_rng(troph_m, troph_sd,1, 5);
-                      lwa = normal_lb_ub_rng(lwa_m, lwa_sd, 0, 1);
-                      lwb = normal_lb_ub_rng(lwb_m, lwb_sd, 1, 5);
-                      w_prop = normal_lb_ub_rng(w_prop_m, w_prop_sd, 0, 1);
+                      lwa = normal_lb_ub_rng(lwa_m, lwa_sd, 0.000001, 1);
+                      lwb = normal_lb_ub_rng(lwb_m, lwb_sd, 1, 10);
+                      w_prop = normal_lb_ub_rng(w_prop_m, w_prop_sd, 0.001, 1);
                       temp = normal_rng(temp_m, temp_sd);
-                      Tn = normal_lb_ub_rng(Tn_m, Tn_sd, 0, 1);
-                      Tp = normal_lb_ub_rng(Tp_m, Tp_sd, 0, 1);
-                      C = normal_lb_ub_rng(C_m, C_sd, 0, 100);
-                      N = normal_lb_ub_rng(N_m, N_sd, 0, 100);
-                      P = normal_lb_ub_rng(P_m, P_sd, 0, 100);
-                      a = normal_lb_ub_rng(a_m, a_sd, 0.2, 1.2);
-                      B0 = normal_lb_ub_rng(B0_m, B0_sd, 0, 1);
+                      Tn = normal_lb_ub_rng(Tn_m, Tn_sd, 0.000000000000001, 1);
+                      Tp = normal_lb_ub_rng(Tp_m, Tp_sd, 0.000000000000001, 1);
+                      C = normal_lb_ub_rng(C_m, C_sd, 0.001, 100);
+                      N = normal_lb_ub_rng(N_m, N_sd, 0.001, 100);
+                      P = normal_lb_ub_rng(P_m, P_sd, 0.001, 100);
+                      a = normal_lb_ub_rng(a_m, a_sd, 0.1, 2);
+                      B0 = normal_lb_ub_rng(B0_m, B0_sd, 0.00000001, 1);
 
 
                      //Quantify derived values
 
                      m_max = lwa * Linf^lwb;  //maximum weight based on linf
 
+                     l1  = TL;                                    // TL1, Total length of the fish at the moment
+                     w1  = lwa * (l1^lwb);                        // conversion to weight in g
+                     wd1 = w1 * w_prop;                           // conversion to dry weight in g
                      // Growth per day
 
-                     l1  = TL;                                    // TL1, Total length of the fish at the moment
+                     if (TL < Linf){
                      a1  = log(1.0 - (l1/Linf))/(-k) + t0;          // Age1, Predicted age of the fish at length TL1
                      a2  = a1 + (1.0 / 365);                        // Age2, Age1 + 1 day
                      l2  = Linf * (1.0 - exp(-k * (a2 - t0)));      // TL2, Predicted total length at age 2
-                     w1  = lwa * (l1^lwb);                        // conversion to weight in g
                      w2  = lwa * (l2^lwb);
-                     wd1 = w1 * w_prop;                           // conversion to dry weight in g
                      wd2 = w2 * w_prop;
                      Wd  = wd2 - wd1;                             // Growth in dry weight
                      Ww  = w2 - w1;                               // Growth in wet weight
-                     // Correct possible negative growth
-                     if (Wd < 0) {
-                       Wd = 0;
                      }
-                     if (Ww < 0) {
-                       Ww = 0;
+                     if (TL>= Linf){
+                     // if bigger than linf, growth is zero
+                     a1  = 100;  // arbitrary age, infinity
+                     a2  = a1;
+                     l2  = l1;
+                     w2  = w1;
+                     wd2 = wd1;
+                     Wd = 0;
+                     Ww = 0;
                      }
 
                      C1  = C * wd1 / 100;
