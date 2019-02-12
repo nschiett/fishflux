@@ -111,20 +111,20 @@ plot_cnp  <- function(mod,
     if ("overview" %in% option){
       c <- c +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "C_in", "97.5%"],
-                        ymin = result[result$variable == "C_in", "2.5%"]),
+                        ymax = result[result$variable == "C_in", "Q_97.5"],
+                        ymin = result[result$variable == "C_in", "Q_2.5"]),
                     alpha = 0.1) +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "C_r", "97.5%"],
-                        ymin = result[result$variable == "C_r", "2.5%"]),
+                        ymax = result[result$variable == "C_r", "Q_97.5"],
+                        ymin = result[result$variable == "C_r", "Q_2.5"]),
                     alpha = 0.1, fill = cb[6]) +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "C_g", "97.5%"],
-                        ymin = result[result$variable == "C_g", "2.5%"]),
+                        ymax = result[result$variable == "C_g", "Q_97.5"],
+                        ymin = result[result$variable == "C_g", "Q_2.5"]),
                     alpha = 0.1, fill = cb[4]) +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "C_eg", "97.5%"],
-                        ymin = result[result$variable == "C_eg", "2.5%"]),
+                        ymax = result[result$variable == "C_eg", "Q_97.5"],
+                        ymin = result[result$variable == "C_eg", "Q_2.5"]),
                     alpha = 0.1, fill = cb[7]) +
 
         geom_line(aes(x = result[result$variable == "TL", "mean"],
@@ -142,20 +142,20 @@ plot_cnp  <- function(mod,
 
       n <- n +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "N_in", "97.5%"],
-                        ymin = result[result$variable == "N_in", "2.5%"]),
+                        ymax = result[result$variable == "N_in", "Q_97.5"],
+                        ymin = result[result$variable == "N_in", "Q_2.5"]),
                     alpha = 0.1) +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "N_g", "97.5%"],
-                        ymin = result[result$variable == "N_g", "2.5%"]),
+                        ymax = result[result$variable == "N_g", "Q_97.5"],
+                        ymin = result[result$variable == "N_g", "Q_2.5"]),
                     alpha = 0.1, fill = cb[4]) +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "N_eg", "97.5%"],
-                        ymin = result[result$variable == "N_eg", "2.5%"]),
+                        ymax = result[result$variable == "N_eg", "Q_97.5"],
+                        ymin = result[result$variable == "N_eg", "Q_2.5"]),
                     alpha = 0.1, fill = cb[7]) +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "N_ex", "97.5%"],
-                        ymin = result[result$variable == "N_ex", "2.5%"]),
+                        ymax = result[result$variable == "N_ex", "Q_97.5"],
+                        ymin = result[result$variable == "N_ex", "Q_2.5"]),
                     alpha = 0.1, fill = cb[5]) +
 
         geom_line(aes(x = result[result$variable == "TL", "mean"],
@@ -173,20 +173,20 @@ plot_cnp  <- function(mod,
 
       p <- p +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "P_in", "97.5%"],
-                        ymin = result[result$variable == "P_in", "2.5%"]),
+                        ymax = result[result$variable == "P_in", "Q_97.5"],
+                        ymin = result[result$variable == "P_in", "Q_2.5"]),
                     alpha = 0.1) +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "P_g", "97.5%"],
-                        ymin = result[result$variable == "P_g", "2.5%"]),
+                        ymax = result[result$variable == "P_g", "Q_97.5"],
+                        ymin = result[result$variable == "P_g", "Q_2.5"]),
                     alpha = 0.1, fill = cb[4]) +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "P_eg", "97.5%"],
-                        ymin = result[result$variable == "P_eg", "2.5%"]),
+                        ymax = result[result$variable == "P_eg", "Q_97.5"],
+                        ymin = result[result$variable == "P_eg", "Q_2.5"]),
                     alpha = 0.1, fill = cb[7]) +
         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "P_ex", "97.5%"],
-                        ymin = result[result$variable == "P_ex", "2.5%"]),
+                        ymax = result[result$variable == "P_ex", "Q_97.5"],
+                        ymin = result[result$variable == "P_ex", "Q_2.5"]),
                     alpha = 0.1, fill = cb[5]) +
 
         geom_line(aes(x = result[result$variable == "TL", "mean"],
@@ -222,8 +222,8 @@ plot_cnp  <- function(mod,
 
        c <- c +
          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                         ymax = result[result$variable == "C_in", "97.5%"],
-                         ymin = result[result$variable == "C_in", "2.5%"]),
+                         ymax = result[result$variable == "C_in", "Q_97.5"],
+                         ymin = result[result$variable == "C_in", "Q_2.5"]),
                      alpha = 0.1) +
          geom_line(aes(x = result[result$variable == "TL", "mean"],
                        y = result[result$variable == "C_in", "mean"]),
@@ -231,8 +231,8 @@ plot_cnp  <- function(mod,
 
        n <- n +
          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                         ymax = result[result$variable == "N_in", "97.5%"],
-                         ymin = result[result$variable == "N_in", "2.5%"]),
+                         ymax = result[result$variable == "N_in", "Q_97.5"],
+                         ymin = result[result$variable == "N_in", "Q_2.5"]),
                      alpha = 0.1) +
          geom_line(aes(x = result[result$variable == "TL", "mean"],
                        y = result[result$variable == "N_in", "mean"]),
@@ -240,8 +240,8 @@ plot_cnp  <- function(mod,
 
        p <- p +
          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                         ymax = result[result$variable == "P_in", "97.5%"],
-                         ymin = result[result$variable == "P_in", "2.5%"]),
+                         ymax = result[result$variable == "P_in", "Q_97.5"],
+                         ymin = result[result$variable == "P_in", "Q_2.5"]),
                      alpha = 0.1) +
          geom_line(aes(x = result[result$variable == "TL", "mean"],
                        y = result[result$variable == "P_in", "mean"]),
@@ -257,8 +257,8 @@ plot_cnp  <- function(mod,
       if ("respiration" %in% option){
         c <- c +
           geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "C_r", "97.5%"],
-                          ymin = result[result$variable == "C_r", "2.5%"]),
+                          ymax = result[result$variable == "C_r", "Q_97.5"],
+                          ymin = result[result$variable == "C_r", "Q_2.5"]),
                       alpha = 0.1, fill = cb[6]) +
           geom_line(aes(x = result[result$variable == "TL", "mean"],
                         y = result[result$variable == "C_r", "mean"]),
@@ -274,8 +274,8 @@ plot_cnp  <- function(mod,
       if ("growth" %in% option){
         c <- c +
           geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "C_g", "97.5%"],
-                          ymin = result[result$variable == "C_g", "2.5%"]),
+                          ymax = result[result$variable == "C_g", "Q_97.5"],
+                          ymin = result[result$variable == "C_g", "Q_2.5"]),
                       alpha = 0.1, fill = cb[4]) +
           geom_line(aes(x = result[result$variable == "TL", "mean"],
                         y = result[result$variable == "C_g", "mean"]),
@@ -283,8 +283,8 @@ plot_cnp  <- function(mod,
 
         n <- n +
           geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "N_g", "97.5%"],
-                          ymin = result[result$variable == "N_g", "2.5%"]),
+                          ymax = result[result$variable == "N_g", "Q_97.5"],
+                          ymin = result[result$variable == "N_g", "Q_2.5"]),
                       alpha = 0.1, fill = cb[4]) +
           geom_line(aes(x = result[result$variable == "TL", "mean"],
                         y = result[result$variable == "N_g", "mean"]),
@@ -292,8 +292,8 @@ plot_cnp  <- function(mod,
 
         p <- p +
           geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "P_g", "97.5%"],
-                          ymin = result[result$variable == "P_g", "2.5%"]),
+                          ymax = result[result$variable == "P_g", "Q_97.5"],
+                          ymin = result[result$variable == "P_g", "Q_2.5"]),
                       alpha = 0.1, fill = cb[4]) +
           geom_line(aes(x = result[result$variable == "TL", "mean"],
                         y = result[result$variable == "P_g", "mean"]),
@@ -308,8 +308,8 @@ plot_cnp  <- function(mod,
       if ("egestion" %in% option){
         c <- c +
           geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "C_eg", "97.5%"],
-                          ymin = result[result$variable == "C_eg", "2.5%"]),
+                          ymax = result[result$variable == "C_eg", "Q_97.5"],
+                          ymin = result[result$variable == "C_eg", "Q_2.5"]),
                       alpha = 0.1, fill = cb[7]) +
           geom_line(aes(x = result[result$variable == "TL", "mean"],
                         y = result[result$variable == "C_eg", "mean"]),
@@ -317,8 +317,8 @@ plot_cnp  <- function(mod,
 
         n <- n +
           geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "N_eg", "97.5%"],
-                          ymin = result[result$variable == "N_eg", "2.5%"]),
+                          ymax = result[result$variable == "N_eg", "Q_97.5"],
+                          ymin = result[result$variable == "N_eg", "Q_2.5"]),
                       alpha = 0.1, fill = cb[7]) +
           geom_line(aes(x = result[result$variable == "TL", "mean"],
                         y = result[result$variable == "N_eg", "mean"]),
@@ -326,8 +326,8 @@ plot_cnp  <- function(mod,
 
         p <- p +
           geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "P_eg", "97.5%"],
-                          ymin = result[result$variable == "P_eg", "2.5%"]),
+                          ymax = result[result$variable == "P_eg", "Q_97.5"],
+                          ymin = result[result$variable == "P_eg", "Q_2.5"]),
                       alpha = 0.1, fill = cb[7]) +
           geom_line(aes(x = result[result$variable == "TL", "mean"],
                         y = result[result$variable == "P_eg", "mean"]),
@@ -342,8 +342,8 @@ plot_cnp  <- function(mod,
       if ("excretion" %in% option){
         n <- n +
           geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "N_ex", "97.5%"],
-                          ymin = result[result$variable == "N_ex", "2.5%"]),
+                          ymax = result[result$variable == "N_ex", "Q_97.5"],
+                          ymin = result[result$variable == "N_ex", "Q_2.5"]),
                       alpha = 0.1, fill = cb[5]) +
           geom_line(aes(x = result[result$variable == "TL", "mean"],
                         y = result[result$variable == "N_ex", "mean"]),
@@ -351,8 +351,8 @@ plot_cnp  <- function(mod,
 
         p <- p +
           geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "P_ex", "97.5%"],
-                          ymin = result[result$variable == "P_ex", "2.5%"]),
+                          ymax = result[result$variable == "P_ex", "Q_97.5"],
+                          ymin = result[result$variable == "P_ex", "Q_2.5"]),
                       alpha = 0.1, fill = cb[5]) +
           geom_line(aes(x = result[result$variable == "TL", "mean"],
                         y = result[result$variable == "P_ex", "mean"]),
