@@ -163,10 +163,25 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
   stanfit <-  rstan::sampling(stanmodels$cnp_model_mcmc, data = param,
                               iter = iter, algorithm = "Fixed_param", chains = 1, ...)
 
-  result <- as.data.frame(rstan::summary(stanfit)$summary)
+  ee <- rstan::extract(stanfit)
+  par <- names(ee)
 
-  result$variable <- rownames(result)
-  result$TL_input <- TL
+  result <-
+    plyr::ldply(lapply(par, function(par){
+      summary <-
+        data.frame(
+          TL = mean(ee[["TL"]]),
+          variable = par,
+          mean = mean(ee[[par]]),
+          median = median(ee[[par]]),
+          se = sd(ee[[par]])/sqrt(length(ee[[par]])),
+          sd = sd(ee[[par]]),
+          Q_2.5 = quantile(ee[[par]], 0.025),
+          Q_97.5 = quantile(ee[[par]], 0.975),
+          Q_25 = quantile(ee[[par]], 0.25),
+          Q_75 = quantile(ee[[par]], 0.75))
+      return(summary)
+    }))
 
   ## limiting element
   lim <- result[result$variable == "lim", "mean"]

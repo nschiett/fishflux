@@ -18,12 +18,13 @@
 extract <- function(mod, par){
 
   summary <- mod$summary
-  TL <- unique(summary$TL_input)
+  TL <- unique(summary$TL)
 
   list <- lapply(par, FUN = function(p){
     sub <- dplyr::filter(summary, variable == p)
-    sub <- data.frame(sub$mean, sub$sd, sub$`2.5%`, sub$`97.5%`)
+    sub <- data.frame(sub$mean, sub$median, sub$sd, sub$`Q_2.5`, sub$`Q_97.5`)
     colnames(sub) <- c(paste(p, "mean", sep = "_"),
+                       paste(p, "median", sep = "_"),
                        paste(p, "sd", sep = "_"),
                        paste(p, "2.5%", sep = "_"),
                        paste(p, "97.5%", sep = "_"))

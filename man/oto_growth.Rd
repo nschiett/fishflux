@@ -4,7 +4,8 @@
 \alias{oto_growth}
 \title{A function to extract growth parameters from otolith data}
 \usage{
-oto_growth(length, age, id, linf_min = 0, linf_m, k_m = 0.5, ...)
+oto_growth(length, age, id, linf_min = 0, lmax = 20, linf_m,
+  k_m = 0.5, ...)
 }
 \arguments{
 \item{length}{Numerical vector with length}
@@ -15,11 +16,13 @@ oto_growth(length, age, id, linf_min = 0, linf_m, k_m = 0.5, ...)
 
 \item{linf_min}{possibility to add a minimum for linf, default is 0}
 
+\item{lmax}{maximum size}
+
 \item{linf_m}{Prior for linf}
 
 \item{k_m}{Prior for k, default is 0.5}
 
-\item{...}{Arguments of rstan::sampling()}
+\item{...}{Additional arguments, see ?rstan::sampling()}
 }
 \description{
 A function to extract growth parameters from otolith data
@@ -30,7 +33,7 @@ Returns a dataframe with estimates for Linf, k and t0
 \examples{
 
 sarmi <- fishflux::sarmi
-fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, linf_m = 16, k_m = 0.4, iter = 2000, warmup = 1000)
+fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, lmax = 20, linf_m = 16, k_m = 0.4, iter = 2000)
 
 }
 \keyword{Bertalanfy}

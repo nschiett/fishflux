@@ -176,9 +176,9 @@ generated quantities {
                       AEc = normal_lb_ub_rng(AEc_m, AEc_sd, 0.0001, 1);
                       AEn = normal_lb_ub_rng(AEn_m, AEn_sd, 0.0001, 1);
                       AEp = normal_lb_ub_rng(AEp_m, AEp_sd, 0.0001, 1);
-                      Fc = normal_lb_ub_rng(Fc_m, Fc_sd, 0.001, 100);
-                      Fn = normal_lb_ub_rng(Fn_m, Fn_sd, 0.001, 100);
-                      Fp = normal_lb_ub_rng(Fp_m, Fp_sd, 0.001, 100);
+                      Fc = normal_lb_ub_rng(Fc_m, Fc_sd, 1, 80);
+                      Fn = normal_lb_ub_rng(Fn_m, Fn_sd, 0.001, 20);
+                      Fp = normal_lb_ub_rng(Fp_m, Fp_sd, 0.001, 15);
                       Linf = normal_lb_ub_rng(Linf_m, Linf_sd, 1, 1000);
                       k = normal_lb_ub_rng(k_m, k_sd,0.0001,3);
                       t0 = normal_rng(t0_m, t0_sd);
@@ -189,11 +189,11 @@ generated quantities {
                       lwb = normal_lb_ub_rng(lwb_m, lwb_sd, 1, 10);
                       w_prop = normal_lb_ub_rng(w_prop_m, w_prop_sd, 0.001, 1);
                       temp = normal_rng(temp_m, temp_sd);
-                      Tn = normal_lb_ub_rng(Tn_m, Tn_sd, 0.000000000000001, 1);
-                      Tp = normal_lb_ub_rng(Tp_m, Tp_sd, 0.000000000000001, 1);
-                      C = normal_lb_ub_rng(C_m, C_sd, 0.001, 100);
-                      N = normal_lb_ub_rng(N_m, N_sd, 0.001, 100);
-                      P = normal_lb_ub_rng(P_m, P_sd, 0.001, 100);
+                      Tn = normal_lb_ub_rng(Tn_m, Tn_sd, 0.000000000000001, 0.1);
+                      Tp = normal_lb_ub_rng(Tp_m, Tp_sd, 0.000000000000001, 0.1);
+                      C = normal_lb_ub_rng(C_m, C_sd, 10, 60);
+                      N = normal_lb_ub_rng(N_m, N_sd, 4, 15);
+                      P = normal_lb_ub_rng(P_m, P_sd, 0.5, 15);
                       a = normal_lb_ub_rng(a_m, a_sd, 0.1, 2);
                       B0 = normal_lb_ub_rng(B0_m, B0_sd, 0.00000001, 1);
 

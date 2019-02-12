@@ -7,7 +7,8 @@
 #' @param k_m    Prior for k, default is 0.5
 #' @param linf_m Prior for linf
 #' @param linf_min possibility to add a minimum for linf, default is 0
-#' @param ...     Arguments of rstan::sampling()
+#' @param lmax   maximum size
+#' @param ...     Additional arguments, see ?rstan::sampling()
 #' @details      Returns a dataframe with estimates for Linf, k and t0
 #' @keywords      fish, growth, Von Bertalanfy
 #' @export oto_growth
@@ -15,12 +16,12 @@
 #' @examples
 #'
 #' sarmi <- fishflux::sarmi
-#' fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, linf_m = 16, k_m = 0.4, iter = 2000, warmup = 1000)
+#' fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, lmax = 20, linf_m = 16, k_m = 0.4, iter = 2000, chains = 1)
 #'
 
 
 
-oto_growth <- function(length, age, id, linf_min = 0, linf_m, k_m = 0.5, ...){
+oto_growth <- function(length, age, id, linf_min = 0, lmax = 20, linf_m, k_m = 0.5, ...){
 
 require(ggplot2)
 require(rstan)
@@ -32,45 +33,37 @@ data <- list(
   l = length,
   age = age,
   ind = as.integer(as.factor(id)),
-  s = rep(1, length(length)),
   linf_min = linf_min,
   linf_m = linf_m,
-  k_m = k_m
+  lmax = lmax,
+  age_max = sapply(unique(id), function(x){max(age[which(id == x)] , na.rm = TRUE)})
 )
 
-fit <- rstan::sampling(stanmodels$vonbert, data = data, chains = 4, seed = 123,
-                       control = list(adapt_delta = 0.99, max_treedepth = 15),
-                       ...)
+fit <- rstan::sampling(stanmodels$vonbert, data = data, ...)
 
-summary <- as.data.frame(rstan::summary(fit)$summary)
+summary <-  as.data.frame(rstan::summary(fit)$summary)
 
-result <- data.frame(
-  k_m = summary["mu_k", "mean"],
-  linf_m = summary["mu_linf", "mean"],
-  t0_m = summary["mu_t0", "mean"],
-  k_sd = summary["mu_k", "sd"],
-  linf_sd = summary["mu_linf", "sd"],
-  t0_sd = summary["mu_t0", "sd"]
+result <- summary[c("mu_k", "mu_linf", "t0", "kmax"),1:8]
+
+ee <- rstan::extract(fit)
+ypred <- ee$y_m
+pred <- data.frame(
+  age = age,
+  ypred_m = apply(ypred,2,mean),
+  ypred_lb = apply(ypred,2,quantile, 0.025),
+  ypred_ub = apply(ypred,2,quantile, 0.975)
 )
-
-predict <- result$linf_m * (1 - exp(-result$k_m * (data$age - result$t0_m)))
-predict_l <- (result$linf_m - 1.96 * result$linf_sd) *
-  (1 - exp(- (result$k_m - 1.96 * result$k_sd) *
-             (data$age - (result$t0_m - 1.96 * result$t0_sd))))
-predict_u <- (result$linf_m + 1.96 * result$linf_sd) *
-  (1 - exp(- (result$k_m + 1.96 * result$k_sd) *
-             (data$age - (result$t0_m + 1.96 * result$t0_sd))))
 
 
 plot <-
   ggplot() +
   geom_point(aes(x = age, y = length)) +
-  geom_ribbon(aes(x = age, ymin = predict_l, ymax = predict_u), alpha = 0.4) +
-  geom_line(aes(x = age, y = predict)) +
+  geom_ribbon(aes(x = age, ymin = ypred_lb, ymax = ypred_ub), alpha = 0.4, data = pred) +
+  geom_line(aes(x = age, y = ypred_m), data = pred) +
   theme_bw()
 
 print(plot)
 
-return(list(result = result, stanfit = fit))
+return(list(summary = result, stanfit = fit))
 
 }
