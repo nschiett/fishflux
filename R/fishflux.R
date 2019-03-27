@@ -10,7 +10,7 @@
 #' \item Provides functions to model fluxes of Carbon, Nitrogen and Phosphorus for fish with or without the MCMC sampler provided by stan.
 #' \item Provides some tools to find the right parameters as inputs into the model
 #' \item Provides a plotting function to illustrate results
-#'
+#'}
 #' @docType package
 #' @name fishflux
 NULL

@@ -6,7 +6,7 @@
 \usage{
 sensitivity(TL, param, iter = 1000, par, out = c("C_in", "N_in",
   "P_in", "C_g", "N_g", "P_g", "C_r", "N_ex", "P_ex", "C_eg", "N_eg",
-  "P_eg"))
+  "P_eg", "IN"), ...)
 }
 \arguments{
 \item{TL}{total length of a fish in cm}
@@ -28,8 +28,7 @@ Returns a dataframe with sd's of model predictions. Row names indicate the varia
 }
 \examples{
 
-fishflux::sensitivity(TL=10, param = list(k_sd=0.2, Fn_sd=0.2, Fc_sd = 0.1), par = c("k_sd","Fn_sd","Fc_sd"), out = c("C_in", "N_in", "P_in", "C_g", "N_g", "P_g", "C_r", "N_ex", "P_ex", "C_eg", "N_eg", "P_eg"))
-
+fishflux::sensitivity(TL=10, param = list(k_sd=0.2, Fn_sd=0.2, Fc_sd = 0.1), par = c("k_sd","Fn_sd","Fc_sd"), out = c("C_in", "N_in", "P_in", "C_g", "N_g", "P_g", "C_r", "N_ex", "P_ex", "C_eg", "N_eg", "P_eg", "IN"))
 }
 \keyword{excretion,}
 \keyword{fish,}

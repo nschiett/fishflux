@@ -3,18 +3,28 @@
 #' This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.
 #'
 #' @param TL      total length of a fish in cm
-#' @param param   list of all parameter means ("_m") and standard deviations ("_sd") Default parameters are set with very low sd's. See \link[fishflux]{cnp_model}  for a list of all requested parameters
+#' @param param   list of all parameter means (add "_m") and standard deviations (add "_sd") Default parameters are set with very low sd's.
+#' parameters:
+#' \itemize{
+#' \item{Qc:} percentage C of dry mass fish
+#' \item{Qn}
+#' \item{Qp}
+#' }
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
 #' @param ...     Arguments of rstan::sampling()
+#'
 #' @details       Returns a list with three objects: A stanfit object, a dataframe with a summary of all model components and a vector containing the limiting element.
 #' @keywords      fish, stoichiometry, excretion, mcmc
 #' @export cnp_model_mcmc
 #'
 #' @examples
 #'
-#' model <- fishflux::cnp_model_mcmc(TL = 10:12, param = list(C_m = 40, N_m = 10, P_m = 4, f_m = 3))
+#' model <- fishflux::cnp_model_mcmc(TL = 10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, f_m = 3))
 
-cnp_model_mcmc <- function(TL, param, iter=1000, ...){
+cnp_model_mcmc <- function(TL, param, iter=1000,
+                           cor = list(ro_Qc_Qn = 0.5, ro_Qc_Qp = -0.3, ro_Qn_Qp = -0.2,
+                                      ro_Fc_Fn = 0.2, ro_Fc_Fp = -0.1, ro_Fn_Fp = -0.1,
+                                      ro_lwa_lwb = 0.9, ro_a_B0 = 0.9), ...){
 
   require(rstan)
 
@@ -38,9 +48,9 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
                     temp_m = 27,
                     Tn_m = 0.01,
                     Tp_m = 0.0007,
-                    C_m = 40,
-                    N_m = 10,
-                    P_m = 4,
+                    Qc_m = 40,
+                    Qn_m = 10,
+                    Qp_m = 4,
                     a_m = 0.8,
                     B0_m = 0.002,
 
@@ -63,9 +73,9 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
                     temp_sd = 0.0000000001,
                     Tn_sd = 0.0000000001,
                     Tp_sd = 0.0000000001,
-                    C_sd = 0.0000000001,
-                    N_sd = 0.0000000001,
-                    P_sd = 0.0000000001,
+                    Qc_sd = 0.0000000001,
+                    Qn_sd = 0.0000000001,
+                    Qp_sd = 0.0000000001,
                     a_sd = 0.0000000001,
                     B0_sd = 0.0000000001
   )
@@ -85,21 +95,21 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
 
 
 
-  if ("C_m" %in% names(param)){
-    if (param$C_m <= 0 | param$C_m >= 100){
-      stop("C_m should be between 0 and 100")
+  if ("Qc_m" %in% names(param)){
+    if (param$Qc_m <= 0 | param$Qc_m >= 100){
+      stop("Qc_m should be between 0 and 100")
    }
   }
 
-  if ("N_m" %in% names(param)){
-    if (param$N_m <= 0 | param$N_m >= 100){
-      stop("N_m should be between 0 and 100")
+  if ("Qn_m" %in% names(param)){
+    if (param$Qn_m <= 0 | param$Qn_m >= 100){
+      stop("Qn_m should be between 0 and 100")
     }
   }
 
-  if ("P_m" %in% names(param)){
-    if (param$P_m <= 0 | param$P_m >= 100){
-      stop("P_m should be between 0 and 100")
+  if ("Qp_m" %in% names(param)){
+    if (param$Qp_m <= 0 | param$Qp_m >= 100){
+      stop("Qp_m should be between 0 and 100")
     }
   }
 
@@ -159,6 +169,10 @@ cnp_model_mcmc <- function(TL, param, iter=1000, ...){
 
   params_missing <- params_st[which(p_all %in% unknown)]
   param <- append(param, params_missing)
+  param <- append(param, cor)
+
+
+  ##add others plus replace Qcnp
 
   stanfit <-  rstan::sampling(stanmodels$cnp_model_mcmc, data = param,
                               iter = iter, algorithm = "Fixed_param", chains = 1, ...)

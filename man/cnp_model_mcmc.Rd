@@ -4,12 +4,20 @@
 \alias{cnp_model_mcmc}
 \title{A function to predict N and P excretion, CNP egestion, CNP ingestion rate, using MCMC and stan}
 \usage{
-cnp_model_mcmc(TL, param, iter = 1000, ...)
+cnp_model_mcmc(TL, param, iter = 1000, cor = list(ro_Qc_Qn = 0.5,
+  ro_Qc_Qp = -0.3, ro_Qn_Qp = -0.2, ro_Fc_Fn = 0.2, ro_Fc_Fp = -0.1,
+  ro_Fn_Fp = -0.1, ro_lwa_lwb = 0.9, ro_a_B0 = 0.9), ...)
 }
 \arguments{
 \item{TL}{total length of a fish in cm}
 
-\item{param}{list of all parameter means ("_m") and standard deviations ("_sd") Default parameters are set with very low sd's. See \link[fishflux]{cnp_model}  for a list of all requested parameters}
+\item{param}{list of all parameter means (add "_m") and standard deviations (add "_sd") Default parameters are set with very low sd's.
+parameters:
+\itemize{
+\item{Qc:} percentage C of dry mass fish
+\item{Qn}
+\item{Qp}
+}}
 
 \item{iter}{A positive integer specifying the number of iterations. The default is 2000.}
 
@@ -23,7 +31,7 @@ Returns a list with three objects: A stanfit object, a dataframe with a summary 
 }
 \examples{
 
-model <- fishflux::cnp_model_mcmc(TL = 10:12, param = list(C_m = 40, N_m = 10, P_m = 4, f_m = 3))
+model <- fishflux::cnp_model_mcmc(TL = 10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, f_m = 3))
 }
 \keyword{excretion,}
 \keyword{fish,}

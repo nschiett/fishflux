@@ -21,7 +21,8 @@ Imports:
    rstan (>= 2.18.1),
    rstantools (>= 1.5.0),
    Rcpp (>= 0.12.18),
-   methods
+   methods,
+   purrr
 Depends:
    R (>= 3.4.0),
    Rcpp (>= 0.12.18)

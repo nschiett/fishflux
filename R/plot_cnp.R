@@ -21,8 +21,8 @@
 #'  #            lwa = para$lwa,lwb = para$lwb,temp = 27,N = para$N,P=para$P,C=para$C, B0 = para$B0_m)
 #'  # plot_cnp(test)
 #'
-#' mod2 <- cnp_model_mcmc(TL = 5:15, param = list(C_m = 40, N_m = 10, P_m = 4, Fn_sd = 0.05))
-#' plot_cnp(mod2)
+#' mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(C_m = 40, N_m = 10, P_m = 4, Fn_sd = 0.05))
+#' fishflux::plot_cnp(mod2)
 
 plot_cnp  <- function(mod,
                       option = c("overview", "ingestion", "excretion",

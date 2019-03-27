@@ -2,11 +2,11 @@
 
 export(aspect_ratio)
 export(check_name_fishbase)
-export(cnp_model)
 export(cnp_model_mcmc)
 export(extract)
 export(find_lw)
 export(growth_params)
+export(limitation)
 export(metabolic_rate)
 export(metabolism)
 export(model_parameters)
