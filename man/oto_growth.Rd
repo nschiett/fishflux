@@ -5,7 +5,7 @@
 \title{A function to extract growth parameters from otolith data}
 \usage{
 oto_growth(length, age, id, linf_min = 0, lmax = 20, linf_m,
-  k_m = 0.5, ...)
+  k_m = 0.5, plot = TRUE, ...)
 }
 \arguments{
 \item{length}{Numerical vector with length}
@@ -16,11 +16,11 @@ oto_growth(length, age, id, linf_min = 0, lmax = 20, linf_m,
 
 \item{linf_min}{possibility to add a minimum for linf, default is 0}
 
-\item{lmax}{maximum size}
+\item{lmax}{maximum size. Based on this value, maximum growth rate kmax will be computed.}
 
 \item{linf_m}{Prior for linf}
 
-\item{k_m}{Prior for k, default is 0.5}
+\item{plot}{option to plot model fit (TRUE or FALSE)}
 
 \item{...}{Additional arguments, see ?rstan::sampling()}
 }
@@ -28,12 +28,15 @@ oto_growth(length, age, id, linf_min = 0, lmax = 20, linf_m,
 A function to extract growth parameters from otolith data
 }
 \details{
-Returns a dataframe with estimates for Linf, k and t0
+Returns a dataframe with estimates for linf, k and t0.
+There is a hierarchical structure for linf and k, so that there is a unique estimate for these parameters per individual.
+linf_global and k_global are the full distributions for linf and k with linf_glob and k_glob the averages of these distributions.
+mu_linf and mu_k are the weighted averages of linf and k, where each estimates for all individuals are weighted linearly to their maximum age.
 }
 \examples{
 
-sarmi <- fishflux::sarmi
-fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, lmax = 20, linf_m = 16, k_m = 0.4, iter = 2000)
+zs <- fishflux::zebsco_growth
+fishflux::oto_growth(length = zs$length, age = zs$age, id = zs$id, lmax = 25, linf_m = 20, iter = 2000, chains = 4, control = list(adapt_delta = 0.99))
 
 }
 \keyword{Bertalanfy}

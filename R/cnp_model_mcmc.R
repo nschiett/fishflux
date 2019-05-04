@@ -13,7 +13,7 @@
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
 #' @param ...     Arguments of rstan::sampling()
 #'
-#' @details       Returns a list with three objects: A stanfit object, a dataframe with a summary of all model components and a vector containing the limiting element.
+#' @Value       Returns a list with two objects: A stanfit object and a dataframe with a summary of all model components.
 #' @keywords      fish, stoichiometry, excretion, mcmc
 #' @export cnp_model_mcmc
 #'

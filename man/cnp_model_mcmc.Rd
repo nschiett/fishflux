@@ -26,9 +26,6 @@ parameters:
 \description{
 This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.
 }
-\details{
-Returns a list with three objects: A stanfit object, a dataframe with a summary of all model components and a vector containing the limiting element.
-}
 \examples{
 
 model <- fishflux::cnp_model_mcmc(TL = 10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, f_m = 3))
