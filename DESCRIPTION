@@ -15,14 +15,14 @@ Imports:
    tidyr,
    rfishbase,
    ggplot2,
-   cowplot,
    devtools,
    knitr,
    rstan (>= 2.18.1),
    rstantools (>= 1.5.0),
    Rcpp (>= 0.12.18),
    methods,
-   purrr
+   purrr,
+   tidybayes
 Depends:
    R (>= 3.4.0),
    Rcpp (>= 0.12.18)

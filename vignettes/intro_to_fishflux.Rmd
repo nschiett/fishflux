@@ -142,7 +142,7 @@ Further, there are a couple more basic functions to get an indication of paramet
 \newline
 Note that it is always better to get the approximations through analysis, measurements and otolith analysis over parameters extracted from functions, such as `growth_params()`, `trophic_level()` and `aspect_ratio()`. 
 \newline
-To get an overview of all parameters available, `fishflux` provides a wrapper function `model_parameters`.
+To get an overview of all parameters available, `fishflux` provides a wrapper function `model_parameters()`.
 \newline
 ```{r,cache=TRUE,results='hide',message=FALSE}
 # example
@@ -158,7 +158,7 @@ All other parameters have to be provided by the user. For more information on ho
 
 ### Run model
 
-Once all the parameters are collected, we can run the model through `cnp_model_mcmc()`. Note that this model can be run with or without specifying the standard deviation (sd) of each parameter. If the sd of a certain parameter is not provided, it will be automatically set to a very low value (1^-10^). As mentioned before, it is advisable to include uncertainty of parameters. `fishflux` is designed to use the MCMC sampler in order to predict uncertainty of predictions. 
+Once all the parameters are collected, we can run the model through `cnp_model_mcmc()`. Note that this model can be run with or without specifying the standard deviation (sd) of each parameter. If the sd of a certain parameter is not provided, it will be automatically set to a very low value (1^-10^). As mentioned before, it is advisable to include uncertainty of parameters. `fishflux` is designed to use the MCMC sampler in order to include uncertainty of predictions. 
 
 \newline
 ```{r, message=FALSE}
@@ -176,27 +176,26 @@ fishflux::extract(model, c("N_ex","P_ex"))
 \newline
 ### Plot results 
 
-To visualize the main outputs of the model, `fishflux` contains a plotting function. It is also possible to specify the output parameter or element of interest. The lines show the mean of the predicted parameters and the segments illustrate the 95% CI.
+To visualize main outputs of the model, `fishflux` contains a plotting function. 
+
 \newline
 ```{r, message=FALSE, warning=FALSE}
-## General overview:
-fishflux::plot_cnp(model)
-## plot certain parameters with 'option':
-fishflux::plot_cnp(model, option = "egestion")
-## plot one element with 'display':
-fishflux::plot_cnp(model, option = c("excretion", "egestion", "growth"), display = "p")
+## Plot one variable:
+fishflux::plot_cnp(model, x = "tl", y = "P_ex", probs = c(0.5, 0.8, 0.95))
+## Plot multiple variables:
+fishflux::plot_cnp(model, x = "tl", y = c("P_ex", "P_eg", "P_in", "P_g"), probs = 0.5)
 ```
 \newline
   
 ### Sensitivity
   
-The function `sensitivity()` looks at how the distribution of the input variables affect the uncertainty of the model predictions. 
-Basically, the model is run for each input parameter, while keeping all the others fixed. The output of the function gives a matrix of sd's for all model predictions (columns), depending on the input variables (rows). 
+The function `sensitivity()` looks at how the distribution of the input variables affects the uncertainty of the model predictions. 
+Basically, the model is run for each input parameter, while keeping all the others fixed. The output of the function gives a matrix of the width of the 95% CI for all model predictions (columns), depending on the input variables (rows). 
 The input parameters and output variables of interest can be specified by arguments "par" and "out" respectively.
 \newline 
 ```{r, message=FALSE}
 ## General overview:
-fishflux::sensitivity(TL = 10, param = param_zebsco, par = c("Fn_sd", "Fp_sd", "C_sd", "N_sd", "P_sd", "k_sd"), out = c("N_ex", "P_ex", "C_in", "C_g", "N_in", "P_in"))
+fishflux::sensitivity(TL = 10, param = param_zebsco, par = c("Fn_sd", "Fp_sd", "Qc_sd", "Qn_sd", "Qp_sd", "k_sd"), out = c("N_ex", "P_ex", "C_in", "C_g", "N_in", "P_in"))
 ```
 \newline
 ## More information

@@ -9,22 +9,15 @@ fishflux: A tool to model nutrient fluxes in fish
 Overview
 --------
 
-The `fishflux` package provides a tool to model fluxes of C (carbon), N
-(nitrogen) and P (phosphorus) in fish. It combines basic priciples from
-elemental stoichiometry and metabolic theory. The package offers a
-userfriendly interface to make nutrient dynamic modelling available for
-anyone. `fishflux` is mostly targeted towards fish ecologists, wishing
-to predict nutrient ingestion, egestion and excretion to study fluxes of
-nutrients and energy.
+The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user-friendly interface to apply a bioenergetic model. `fishflux` is ideal for fish ecologists wishing to predict ingestion, egestion and excretion to study fluxes of nutrients and energy. 
 
 Main assets:
+  
+-   Provides function to model fluxes of Carbon, Nitrogen and Phosphorus for fish
+-   Allows for the estimation of uncertainty, dpending on the uncertainy of the input parameters
+-   Provides some functions to find the right parameters as inputs into the model
+-   Provides functions to illustrate results
 
--   Provides functions to model fluxes of Carbon, Nitrogen and
-    Phosphorus for fish with or without the MCMC sampler provided by
-    stan.
--   Provides some tools to find the right parameters as inputs into the
-    model
--   Provides a plotting function to illustrate results
 
 Theoretical framework
 ---------------------
@@ -43,7 +36,7 @@ Therefore, the first step is to install
 ### GitHub
 
 The best way to install the latest development version of `fishflux` is
-to instal it from GitHub.
+to install it from GitHub.
 
 ``` r
 install.packages("devtools")
@@ -73,7 +66,7 @@ library(fishflux)
 Documentation
 -------------
 
-add link to introduction
+See package vignettes.
 
 Citation
 --------

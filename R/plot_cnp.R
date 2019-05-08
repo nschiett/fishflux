@@ -1,515 +1,88 @@
 #' A function to plot results model
 #'
 #' This function allows you to plot an overview of the model results in function of the total length of fish
-#' @param mod Model output from cnp_model or cnp_model_mcmc.
-#' @param option Argument to specify which type of model results to plot. Can be either a charachter or a charachter vector with multiple choices.
-#'               Choices are one or more of the following:
-#'               "ingestion", "excretion", "egestion", "growth", "respiration", or "overview", containing all of the before-mentioned results.
-#'               Default is "overview".
-#' @param display Parameter to specify which element to show result for: "c", "n", "p" or "cnp", which will return three plots.
-#'                Default is "cnp".
-#' @param ts     Size of the axis titles
-#' @keywords fish, plot, TL
+#' @param mod Model output from cnp_model_mcmc()
+#' @param x   Variable to be put on x-axis, "biomass" or "tl"
+#' @param y   Output variable(s) to be plotted. Can be a character or a character vector.
+#' @param probs Width of the confidence
+#' @keywords fish, plot, bioenergetic model, stoichiometry
 #' @export plot_cnp
 #' @examples
-#' sp <- "Scarus psittacus"
-#' # para <- model_parameters(sp,"Scaridae", temp = 27)
-#' # para
-#'  # mod1 <- fishflux::cnp_model(TL = 10:19, Fn = 1.3,Fp = 0.1,Fc = 50,
-#'  #               t0 = para$t0,Linf = para$Linf,k = para$k,
-#'  #             asp = para$asp,troph = para$troph,f = 3,w_prop = para$w_prop,
-#'  #            lwa = para$lwa,lwb = para$lwb,temp = 27,N = para$N,P=para$P,C=para$C, B0 = para$B0_m)
-#'  # plot_cnp(test)
-#'
-#' mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(C_m = 40, N_m = 10, P_m = 4, Fn_sd = 0.05))
-#' fishflux::plot_cnp(mod2)
+#' mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Fn_sd = 0.05))
+#' plot_cnp(mod = mod, y = c("P_ex", "P_g", "P_eg", "P_in"), x = "tl", probs = c(0.5, 0.8))
+#' plot_cnp(mod = mod, y = "P_ex", x = "tl", probs = c(0.5, 0.8, 0.95))
 
-plot_cnp  <- function(mod,
-                      option = c("overview", "ingestion", "excretion",
-                                 "egestion", "growth", "respiration"),
-                      ts=20, display = c("cnp", "c", "n", "p")){
+plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
 
-  require("ggplot2")
-  require("cowplot")
+  require(ggplot2)
+  require(purrr)
+  require(dplyr)
+  require(tidybayes)
 
-
-  # set defaults
-
-  if (missing(option)){
-    option <- "overview"
+  get_iter <- function(x){
+    get <- t(plyr::ldply(x))
+    colnames(get) <- get[1,]
+    get <- data.frame(apply(get[-1,],2,as.numeric))
+    get$iter <- 1:nrow(get)
+    return(get)
   }
 
-  if (missing(display)){
-    display <- "cnp"
-  }
+  vars <- c("l1", "lwa", "lwb", y)
 
-  # check input
-  if (length(option[option %in% c("overview", "ingestion", "excretion",
-                     "egestion", "growth", "respiration")]) == 0){
-    stop("Input for argument option is not allowed. For more info on input arguments, run ?fishflux::plot_cnp")
-  }
+  iter <- (lapply(mod$stanfit, FUN = function(x){rstan::extract(x, vars)})) %>%
+    lapply( FUN = get_iter) %>%
+    dplyr::bind_rows() %>%
+    mutate(l1 = round(l1))
+  iter$w <- mean(iter$lwa)*iter$l1^mean(iter$lwb)
 
-  if (!display %in% c("cnp", "c", "n", "p")){
-    stop("Input for argument display is not allowed. For more info on input arguments, run ?fishflux::plot_cnp")
-  }
+  if (length(y) > 1){
 
-  if (length(display) > 1){
-    stop("display should be a charachter, not a vector. For more info on input arguments, run ?fishflux::plot_cnp")
-  }
+    iter_t <- tidyr::gather(iter, "output", "value", y)
 
+    if (x == "biomass"){
 
-  ## prepare general empty ggplot objects
-  cb <- c("#1a1a1a",
-           "#e69f00",
-           "#56b4e9",
-           "#009e73",
-           "#f0e442",
-           "#0072b2",
-           "#9d2f00") ##color scale
+      plot <-
+        ggplot(group_by(iter_t, iter), aes(x = w, y = value, color = output)) +
+        stat_lineribbon(alpha = 0.4, show.legend = FALSE, .width = probs) +
+        scale_fill_brewer(palette = "Set2") +
+        scale_color_brewer(palette = "Dark2") +
+        theme_bw() +
+        labs(x = "Biomass (g)", y = "Output (g/day)")
 
-  scalefun <- function(x) sprintf("%.3f", x)  ##function for scales of y axis
+    } else if (x == "tl"){
 
-  c <- ggplot() +
-    scale_y_continuous(labels = scalefun) +
-    labs( x = "TL (cm)", y = "C (g/d)") +
-    theme_bw() +
-    theme(axis.title  = element_text(size = ts),
-          title       = element_text(size = ts),
-          axis.text   = element_text(size = ts - 5),
-          legend.text = element_text(size = ts - 5))
-
-  n <- ggplot() +
-    scale_y_continuous(labels = scalefun) +
-    labs( x = "TL (cm)", y = "N (g/d)") +
-    theme_bw() +
-    theme(axis.title  = element_text(size = ts),
-          title       = element_text(size = ts),
-          axis.text   = element_text(size = ts - 5),
-          legend.text = element_text(size = ts - 5))
-
-  p <- ggplot() +
-    scale_y_continuous(labels = scalefun) +
-    labs( x = "TL (cm)", y = "P (g/d)") +
-    theme_bw() +
-    theme(axis.title  = element_text(size = ts),
-          title       = element_text(size = ts),
-          axis.text   = element_text(size = ts - 5),
-          legend.text = element_text(size = ts - 5))
-
-  legend <- ggplot() +
-    scale_x_continuous(limits = c(0.9, 2.5)) +
-    geom_line(aes(x = c(1, 1.5), y = "f"), size = 1.5, color = "white") +
-    geom_line(aes(x = c(1, 1.5), y = "1"), size = 1.5, color = "white") +
-    theme_void()
-
-  ## option  for model_cnp_mcmc ##
-
-  if (is.list(mod)){
-
-    result <- mod[[2]]
-
-    if ("overview" %in% option){
-      c <- c +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "C_in", "Q_97.5"],
-                        ymin = result[result$variable == "C_in", "Q_2.5"]),
-                    alpha = 0.1) +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "C_r", "Q_97.5"],
-                        ymin = result[result$variable == "C_r", "Q_2.5"]),
-                    alpha = 0.1, fill = cb[6]) +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "C_g", "Q_97.5"],
-                        ymin = result[result$variable == "C_g", "Q_2.5"]),
-                    alpha = 0.1, fill = cb[4]) +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "C_eg", "Q_97.5"],
-                        ymin = result[result$variable == "C_eg", "Q_2.5"]),
-                    alpha = 0.1, fill = cb[7]) +
-
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "C_in", "mean"]),
-                  size = 1.5) +
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "C_r", "mean"]),
-                  size = 1.5, color = cb[6]) +
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "C_g", "mean"]),
-                  size = 1.5, color = cb[4]) +
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "C_eg", "mean"]),
-                  size = 1.5, color = cb[7])
-
-      n <- n +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "N_in", "Q_97.5"],
-                        ymin = result[result$variable == "N_in", "Q_2.5"]),
-                    alpha = 0.1) +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "N_g", "Q_97.5"],
-                        ymin = result[result$variable == "N_g", "Q_2.5"]),
-                    alpha = 0.1, fill = cb[4]) +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "N_eg", "Q_97.5"],
-                        ymin = result[result$variable == "N_eg", "Q_2.5"]),
-                    alpha = 0.1, fill = cb[7]) +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "N_ex", "Q_97.5"],
-                        ymin = result[result$variable == "N_ex", "Q_2.5"]),
-                    alpha = 0.1, fill = cb[5]) +
-
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "N_in", "mean"]),
-                  size = 1.5) +
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "N_g", "mean"]),
-                  size = 1.5,  color = cb[4]) +
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "N_eg", "mean"]),
-                  size = 1.5,  color = cb[7]) +
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "N_ex", "mean"]),
-                  size = 1.5,  color = cb[5])
-
-      p <- p +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "P_in", "Q_97.5"],
-                        ymin = result[result$variable == "P_in", "Q_2.5"]),
-                    alpha = 0.1) +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "P_g", "Q_97.5"],
-                        ymin = result[result$variable == "P_g", "Q_2.5"]),
-                    alpha = 0.1, fill = cb[4]) +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "P_eg", "Q_97.5"],
-                        ymin = result[result$variable == "P_eg", "Q_2.5"]),
-                    alpha = 0.1, fill = cb[7]) +
-        geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                        ymax = result[result$variable == "P_ex", "Q_97.5"],
-                        ymin = result[result$variable == "P_ex", "Q_2.5"]),
-                    alpha = 0.1, fill = cb[5]) +
-
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "P_in", "mean"]),
-                  size = 1.5) +
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "P_g", "mean"]),
-                  size = 1.5,  color = cb[4]) +
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "P_eg", "mean"]),
-                  size = 1.5,  color = cb[7]) +
-        geom_line(aes(x = result[result$variable == "TL", "mean"],
-                      y = result[result$variable == "P_ex", "mean"]),
-                  size = 1.5,  color = cb[5])
-
-      legend <- legend +
-        geom_line(aes(x = c(1, 1.5), y = "e"), size = 1.5,  color = "black") +
-        geom_text(aes(x = 1.7, y = "e", label = "Ingestion"),
-                  color = "black", size = 6, hjust = 0) +
-        geom_line(aes(x = c(1, 1.5), y = "b"), size = 1.5,  color = cb[5]) +
-        geom_text(aes(x = 1.7, y = "b", label = "Excretion"), size = 6, hjust = 0) +
-        geom_line(aes(x = c(1, 1.5), y = "c"), size = 1.5,  color = cb[7]) +
-        geom_text(aes(x = 1.7, y = "c", label = "Egestion"),
-                  color = "black", size = 6, hjust = 0) +
-        geom_line(aes(x = c(1, 1.5), y = "d"), size = 1.5,  color = cb[4]) +
-        geom_text(aes(x = 1.7, y = "d", label = "Growth"), size = 6, hjust = 0) +
-        geom_line(aes(x = c(1, 1.5), y = "a"), size = 1.5,  color = cb[6]) +
-        geom_text(aes(x = 1.7, y = "a", label = "Respiration"),
-                  color = "black", size = 6,  hjust = 0)
-
-    } else{
-      if ("ingestion" %in% option){
-
-       c <- c +
-         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                         ymax = result[result$variable == "C_in", "Q_97.5"],
-                         ymin = result[result$variable == "C_in", "Q_2.5"]),
-                     alpha = 0.1) +
-         geom_line(aes(x = result[result$variable == "TL", "mean"],
-                       y = result[result$variable == "C_in", "mean"]),
-                   size = 1.5)
-
-       n <- n +
-         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                         ymax = result[result$variable == "N_in", "Q_97.5"],
-                         ymin = result[result$variable == "N_in", "Q_2.5"]),
-                     alpha = 0.1) +
-         geom_line(aes(x = result[result$variable == "TL", "mean"],
-                       y = result[result$variable == "N_in", "mean"]),
-                   size = 1.5)
-
-       p <- p +
-         geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                         ymax = result[result$variable == "P_in", "Q_97.5"],
-                         ymin = result[result$variable == "P_in", "Q_2.5"]),
-                     alpha = 0.1) +
-         geom_line(aes(x = result[result$variable == "TL", "mean"],
-                       y = result[result$variable == "P_in", "mean"]),
-                   size = 1.5)
-
-       legend <- legend +
-         geom_line(aes(x = c(1, 1.5), y = "e"), size = 1.5, color = "black") +
-         geom_text(aes(x = 1.7, y = "e", label = "Ingestion"),
-                   color = "black", size = 6, hjust = 0)
-
-      }
-
-      if ("respiration" %in% option){
-        c <- c +
-          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "C_r", "Q_97.5"],
-                          ymin = result[result$variable == "C_r", "Q_2.5"]),
-                      alpha = 0.1, fill = cb[6]) +
-          geom_line(aes(x = result[result$variable == "TL", "mean"],
-                        y = result[result$variable == "C_r", "mean"]),
-                    size = 1.5,  color = cb[6])
-
-        legend <- legend +
-          geom_line(aes(x = c(1, 1.5), y = "a"), size = 1.5,  color = cb[6]) +
-          geom_text(aes(x = 1.7, y = "a", label = "Respiration"),
-                    color = "black", size = 6,  hjust = 0)
-
-      }
-
-      if ("growth" %in% option){
-        c <- c +
-          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "C_g", "Q_97.5"],
-                          ymin = result[result$variable == "C_g", "Q_2.5"]),
-                      alpha = 0.1, fill = cb[4]) +
-          geom_line(aes(x = result[result$variable == "TL", "mean"],
-                        y = result[result$variable == "C_g", "mean"]),
-                    size = 1.5,  color = cb[4])
-
-        n <- n +
-          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "N_g", "Q_97.5"],
-                          ymin = result[result$variable == "N_g", "Q_2.5"]),
-                      alpha = 0.1, fill = cb[4]) +
-          geom_line(aes(x = result[result$variable == "TL", "mean"],
-                        y = result[result$variable == "N_g", "mean"]),
-                    size = 1.5,  color = cb[4])
-
-        p <- p +
-          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "P_g", "Q_97.5"],
-                          ymin = result[result$variable == "P_g", "Q_2.5"]),
-                      alpha = 0.1, fill = cb[4]) +
-          geom_line(aes(x = result[result$variable == "TL", "mean"],
-                        y = result[result$variable == "P_g", "mean"]),
-                    size = 1.5,  color = cb[4])
-
-        legend <- legend +
-          geom_line(aes(x = c(1, 1.5), y = "d"), size = 1.5,  color = cb[4]) +
-          geom_text(aes(x = 1.7, y = "d", label = "Growth"), size = 6, hjust = 0)
-
-        }
-
-      if ("egestion" %in% option){
-        c <- c +
-          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "C_eg", "Q_97.5"],
-                          ymin = result[result$variable == "C_eg", "Q_2.5"]),
-                      alpha = 0.1, fill = cb[7]) +
-          geom_line(aes(x = result[result$variable == "TL", "mean"],
-                        y = result[result$variable == "C_eg", "mean"]),
-                    size = 1.5,  color = cb[7])
-
-        n <- n +
-          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "N_eg", "Q_97.5"],
-                          ymin = result[result$variable == "N_eg", "Q_2.5"]),
-                      alpha = 0.1, fill = cb[7]) +
-          geom_line(aes(x = result[result$variable == "TL", "mean"],
-                        y = result[result$variable == "N_eg", "mean"]),
-                    size = 1.5,  color = cb[7])
-
-        p <- p +
-          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "P_eg", "Q_97.5"],
-                          ymin = result[result$variable == "P_eg", "Q_2.5"]),
-                      alpha = 0.1, fill = cb[7]) +
-          geom_line(aes(x = result[result$variable == "TL", "mean"],
-                        y = result[result$variable == "P_eg", "mean"]),
-                    size = 1.5,  color = cb[7])
-
-        legend <- legend +
-          geom_line(aes(x = c(1, 1.5), y = "c"), size = 1.5,  color = cb[7]) +
-          geom_text(aes(x = 1.7, y = "c", label = "Egestion"),
-                    color = "black", size = 6, hjust = 0)
-      }
-
-      if ("excretion" %in% option){
-        n <- n +
-          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "N_ex", "Q_97.5"],
-                          ymin = result[result$variable == "N_ex", "Q_2.5"]),
-                      alpha = 0.1, fill = cb[5]) +
-          geom_line(aes(x = result[result$variable == "TL", "mean"],
-                        y = result[result$variable == "N_ex", "mean"]),
-                    size = 1.5,  color = cb[5])
-
-        p <- p +
-          geom_ribbon(aes(x = result[result$variable == "TL", "mean"],
-                          ymax = result[result$variable == "P_ex", "Q_97.5"],
-                          ymin = result[result$variable == "P_ex", "Q_2.5"]),
-                      alpha = 0.1, fill = cb[5]) +
-          geom_line(aes(x = result[result$variable == "TL", "mean"],
-                        y = result[result$variable == "P_ex", "mean"]),
-                    size = 1.5,  color = cb[5])
-
-        legend <- legend +
-          geom_text(aes(x = 1.7, y = "b", label = "Excretion"), size = 6, hjust = 0) +
-          geom_line(aes(x = c(1, 1.5), y = "b"), size = 1.5,  color = cb[5])
-      }
+      plot <-
+        ggplot(group_by(iter_t, iter), aes(x = l1, y = value, color = output, fill = output)) +
+        stat_lineribbon(alpha = 0.4,  .width = probs ) +
+        scale_fill_brewer(palette = "Set2") +
+        scale_color_brewer(palette = "Dark2") +
+        theme_bw() +
+        labs(x = "Total length (cm)", y = "Output (g/day)")
     }
 
+  } else if (length(y) == 1){
 
-      if (display  ==  "cnp"){
-        cnp <- cowplot::plot_grid(c, n, p, legend, nrow = 2)
-        cnp
-        return(cnp)
-      }
+    colnames(iter) <- c("l1", "lwa", "lwb", "value", "iter", "w")
 
-      if (display  ==  "c"){
-        c <- cowplot::plot_grid(c,  legend,  nrow = 1,  rel_widths = c(2, 1))
-        c
-        return(c)
-      }
-      if (display  ==  "n"){
-        n <- cowplot::plot_grid(n,  legend,  nrow = 1,  rel_widths = c(2, 1))
-        n
-        return(n)
-      }
-      if (display  ==  "p"){
-        p <- cowplot::plot_grid(p,  legend,  nrow = 1,  rel_widths = c(2, 1))
-        p
-        return(p)
-      }
-  }
+    if (x == "biomass"){
 
- ## for model_cnp output
-    if (is.data.frame(mod))  {
-      if (overview %in% option){
-        c <- c +
-          geom_line(aes(x = mod$TL, y = mod$C_in),  size = 1.5) +
-          geom_line(aes(x = mod$TL, y = mod$C_r), size = 1.5,  color = cb[6]) +
-          geom_line(aes(x = mod$TL, y = mod$C_g), size = 1.5,  color = cb[4]) +
-          geom_line(aes(x = mod$TL, y = mod$C_eg), size = 1.5,  color = cb[7])
+      plot <-
+        ggplot(group_by(iter, iter), aes(x = w, y = value)) +
+        stat_lineribbon(alpha = 0.9, show.legend = FALSE, .width = probs) +
+        scale_fill_brewer() +
+        theme_bw() +
+        labs(x = "Biomass (g)", y = paste(y, "(g/day)", sep = " "))
 
-        n <- n +
-          geom_line(aes(x = mod$TL, y = mod$N_in),  size = 1.5) +
-          geom_line(aes(x = mod$TL, y = mod$N_g), size = 1.5,  color = cb[4]) +
-          geom_line(aes(x = mod$TL, y = mod$N_eg), size = 1.5,  color = cb[7]) +
-          geom_line(aes(x = mod$TL, y = mod$N_ex), size = 1.5,  color = cb[5])
+    } else if (x == "tl"){
 
-        p <- p +
-          geom_line(aes(x = mod$TL, y = mod$P_in)) +
-          geom_line(aes(x = mod$TL, y = mod$P_g), size = 1.5,  color = cb[4]) +
-          geom_line(aes(x = mod$TL, y = mod$P_eg), size = 1.5,  color = cb[7]) +
-          geom_line(aes(x = mod$TL, y = mod$P_ex), size = 1.5,  color = cb[5])
-
-
-        legend <- legend +
-          geom_line(aes(x = c(1, 1.5), y = "e"), size = 1.5,  color = "black") +
-          geom_text(aes(x = 1.7, y = "e", label = "Ingestion"),  color = "black", size = 6, hjust = 0) +
-          geom_line(aes(x = c(1, 1.5), y = "b"), size = 1.5,  color = cb[5]) +
-          geom_text(aes(x = 1.7, y = "b", label = "Excretion"), size = 6, hjust = 0) +
-          geom_line(aes(x = c(1, 1.5), y = "c"), size = 1.5,  color = cb[7]) +
-          geom_text(aes(x = 1.7, y = "c", label = "Egestion"), color = "black", size = 6, hjust = 0) +
-          geom_line(aes(x = c(1, 1.5), y = "d"), size = 1.5,  color = cb[4]) +
-          geom_text(aes(x = 1.7, y = "d", label = "Growth"), size = 6, hjust = 0) +
-          geom_line(aes(x = c(1, 1.5), y = "a"), size = 1.5,  color = cb[6]) +
-          geom_text(aes(x = 1.7, y = "a", label = "Respiration"),  color = "black", size = 6, hjust = 0)
-
-      } else{
-        if ("ingestion" %in% option){
-
-          c <- c +
-            geom_line(aes(x = mod$TL, y = mod$C_in), size = 1.5)
-
-          n <- n +
-            geom_line(aes(x = mod$TL, y = mod$N_in), size = 1.5)
-
-          p <- p +
-            geom_line(aes(x = mod$TL, y = mod$P_in), size = 1.5)
-
-          legend <- legend +
-            geom_line(aes(x = c(1, 1.5), y = "e"), size = 1.5,  color = "black") +
-            geom_text(aes(x = 1.7, y = "e", label = "Ingestion"),  color = "black", size = 6, hjust = 0)
-
-        }
-
-        if ("respiration" %in% option){
-          c <- c +
-            geom_line(aes(x = mod$TL, y = mod$C_r), size = 1.5,  color = cb[6])
-
-          legend <- legend +
-            geom_line(aes(x = c(1, 1.5), y = "a"), size = 1.5,  color = cb[6]) +
-            geom_text(aes(x = 1.7, y = "a", label = "Respiration"), size = 1.5,  color = "black", size = 6, hjust = 0)
-
-        }
-
-        if ("growth" %in% option){
-          c <- c +
-            geom_line(aes(x = mod$TL, y = mod$C_g), size = 1.5,  color = cb[4])
-
-          n <- n +
-            geom_line(aes(x = mod$TL, y = mod$N_g), size = 1.5,  color = cb[4])
-
-          p <- p +
-            geom_line(aes(x = mod$TL, y = mod$P_g), size = 1.5,  color = cb[4])
-
-          legend <- legend +
-            geom_line(aes(x = c(1, 1.5), y = "d"), size = 1.5,  color = cb[4]) +
-            geom_text(aes(x = 1.7, y = "d", label = "Growth"), size = 6, hjust = 0)
-
-        }
-
-        if ("egestion" %in% option){
-          c <- c +
-            geom_line(aes(x = mod$TL, y = mod$C_eg), size = 1.5,  color = cb[7])
-
-          n <- n +
-            geom_line(aes(x = mod$TL, y = mod$N_eg), size = 1.5,  color = cb[7])
-
-          p <- p +
-            geom_line(aes(x = mod$TL, y = mod$P_eg), size = 1.5,  color = cb[7])
-
-          legend <- legend +
-            geom_line(aes(x = c(1, 1.5), y = "c"), size = 1.5,  color = cb[7]) +
-            geom_text(aes(x = 1.7, y = "c", label = "Egestion"), size = 1.5,  color = "black", size = 6, hjust = 0)
-        }
-
-        if ("excretion" %in% option){
-          n <- n +
-            geom_line(aes(x = mod$TL, y = mod$N_ex), size = 1.5,  color = cb[5])
-
-          p <- p +
-            geom_line(aes(x = mod$TL, y = mod$P_ex), size = 1.5,  color = cb[5])
-
-          legend <- legend +
-            geom_text(aes(x = 1.7, y = "b", label = "Excretion"), size = 6, hjust = 0) +
-            geom_line(aes(x = c(1, 1.5), y = "b"), size = 1.5,  color = cb[5])
-        }
-      }
-
-        if (display == "cnp"){
-          cnp <- cowplot::plot_grid(c, n, p, legend, nrow = 2)
-          cnp
-          return(cnp)
-        }
-
-        if (display == "c"){
-          c
-          return(c)
-        }
-        if (display == "n"){
-          n
-          return(n)
-        }
-        if (display == "p"){
-          return(p)
-        }
+      plot <-
+        ggplot(group_by(iter, iter), aes(x = l1, y = value)) +
+        stat_lineribbon(alpha = 0.9,  .width = probs ) +
+        scale_fill_brewer() +
+        theme_bw() +
+        labs(x = "Total length (cm)", y = paste(y, "(g/day)", sep = " "))
     }
   }
+ return(plot)
+}
+

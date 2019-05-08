@@ -4,39 +4,27 @@
 \alias{plot_cnp}
 \title{A function to plot results model}
 \usage{
-plot_cnp(mod, option = c("overview", "ingestion", "excretion",
-  "egestion", "growth", "respiration"), ts = 20, display = c("cnp",
-  "c", "n", "p"))
+plot_cnp(mod, y, x = "tl", probs = c(0.8, 0.95))
 }
 \arguments{
-\item{mod}{Model output from cnp_model or cnp_model_mcmc.}
+\item{mod}{Model output from cnp_model_mcmc()}
 
-\item{option}{Argument to specify which type of model results to plot. Can be either a charachter or a charachter vector with multiple choices.
-Choices are one or more of the following:
-"ingestion", "excretion", "egestion", "growth", "respiration", or "overview", containing all of the before-mentioned results.
-Default is "overview".}
+\item{y}{Output variable(s) to be plotted. Can be a character or a character vector.}
 
-\item{ts}{Size of the axis titles}
+\item{x}{Variable to be put on x-axis, "biomass" or "tl"}
 
-\item{display}{Parameter to specify which element to show result for: "c", "n", "p" or "cnp", which will return three plots.
-Default is "cnp".}
+\item{probs}{Width of the confidence}
 }
 \description{
 This function allows you to plot an overview of the model results in function of the total length of fish
 }
 \examples{
-sp <- "Scarus psittacus"
-# para <- model_parameters(sp,"Scaridae", temp = 27)
-# para
- # mod1 <- fishflux::cnp_model(TL = 10:19, Fn = 1.3,Fp = 0.1,Fc = 50,
- #               t0 = para$t0,Linf = para$Linf,k = para$k,
- #             asp = para$asp,troph = para$troph,f = 3,w_prop = para$w_prop,
- #            lwa = para$lwa,lwb = para$lwb,temp = 27,N = para$N,P=para$P,C=para$C, B0 = para$B0_m)
- # plot_cnp(test)
-
-mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(C_m = 40, N_m = 10, P_m = 4, Fn_sd = 0.05))
-fishflux::plot_cnp(mod2)
+mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Fn_sd = 0.05))
+plot_cnp(mod = mod, y = c("P_ex", "P_g", "P_eg", "P_in"), x = "tl", probs = c(0.5, 0.8))
+plot_cnp(mod = mod, y = "P_ex", x = "tl", probs = c(0.5, 0.8, 0.95))
 }
-\keyword{TL}
+\keyword{bioenergetic}
 \keyword{fish,}
+\keyword{model,}
 \keyword{plot,}
+\keyword{stoichiometry}

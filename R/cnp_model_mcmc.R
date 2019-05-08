@@ -2,19 +2,42 @@
 #'
 #' This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.
 #'
-#' @param TL      total length of a fish in cm
+#' @param TL      total length(s) in cm
 #' @param param   list of all parameter means (add "_m") and standard deviations (add "_sd") Default parameters are set with very low sd's.
 #' parameters:
 #' \itemize{
-#' \item{Qc:} percentage C of dry mass fish
-#' \item{Qn}
-#' \item{Qp}
+#' \item{Qc_m, Qc_sd:} percentage C of dry mass fish
+#' \item{Qn_m, Qn_sd:} percentage N of dry mass fish
+#' \item{Qp_m, Qp_sd:} percentage P of dry mass fish
+#' \item{Fc_m, Fc_sd:} percentage C of dry mass food
+#' \item{Fn_m, Fn_sd:} percentage N of dry mass food
+#' \item{Fp_m, Fp_sd:} percentage P of dry mass food
+#' \item{AEc_m, AEc_sd:} C-specific assimilation efficiency
+#' \item{AEn_m, AEn_sd:} N-specific assimilation efficiency
+#' \item{AEp_m, AEp_sd:} P-specific assimilation efficiency
+#' \item{Linf_m, Linf_sd:} Von Bertalanffy Growth parameter, theoretical maximum size in TL
+#' \item{k_m, k_sd:} Von Bertalanffy Growth parameter, growth rate
+#' \item{lwa_m, lwa_sd:} Parameter length-weight relationship
+#' \item{lwb_m, lwb_sd:} Parameter length-weight relationship
+#' \item{w_prop_m, wprop_sd:} Ratio between dry weight and wet weight of fish
+#' \item{Tn_m, Tn_sd:} N-specific turnover rate
+#' \item{Tp_m, Tp_sd:} P-specific turnover rate
+#' \item{B0_m, B0_sd:} Normalization constant for resting metabolic rate
+#' \item{a_m, a_sd:} Resting metabolic rate mass-scaling exponent
+#' \item{f_m, f_sd:} Activity scope
+#' \item{asp_m, asp_sd:} Aspect ratio
+#' \item{troph_m, troph_sd:} Trophic level
+#' \item{temp_m, temp_sd:} Temperature
 #' }
+#' @param cor     A list of correlations between certain parameters: ro_Qc_Qn, ro_Qc_Qp, ro_Qn_Qp,
+#' ro_Fc_Fn, ro_Fc_Fp, ro_Fn_Fp, ro_lwa_lwb, ro_a_B0
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
 #' @param ...     Arguments of rstan::sampling()
 #'
-#' @Value       Returns a list with two objects: A stanfit object and a dataframe with a summary of all model components.
-#' @keywords      fish, stoichiometry, excretion, mcmc
+#' @details     Returns a list with two objects: A stanfit object and a dataframe with a summary of all model components.
+#'  See fishflux::extract() to extract a summary of predicted variables and
+#'  fishflux::limitation() to get information on the limiting element.
+#' @keywords    fish, stoichiometry, excretion, mcmc
 #' @export cnp_model_mcmc
 #'
 #' @examples
