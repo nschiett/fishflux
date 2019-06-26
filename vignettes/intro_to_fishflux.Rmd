@@ -119,9 +119,9 @@ fishflux::growth_params("Sargocentron microstoma", otolith = FALSE)
 # Load example otolith data
 sarmi <- fishflux::sarmi
 # Fit bayesian regression model
-oto_growth <- fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, linf_m = 16, k_m = 0.4,  control = list(adapt_delta = 0.99))
+oto_growth <- fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, linf_m = 16)
 oto_growth$result
-## linf_m indicate the prior knowledge on this parameters. The species has a maximum length of 16 cm. 
+## linf_m indicates the prior knowledge on this parameters. The species has a maximum length of 16 cm. 
 ## Note that in this example, there is a large difference between FishBase estimates and otolith analysis. This illustrates how important it is to check the quality of your parameter estimates.
 ```
 \newline
