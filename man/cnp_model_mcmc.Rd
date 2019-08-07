@@ -5,8 +5,8 @@
 \title{A function to predict N and P excretion, CNP egestion, CNP ingestion rate, using MCMC and stan}
 \usage{
 cnp_model_mcmc(TL, param, iter = 1000, cor = list(ro_Qc_Qn = 0.5,
-  ro_Qc_Qp = -0.3, ro_Qn_Qp = -0.2, ro_Fc_Fn = 0.2, ro_Fc_Fp = -0.1,
-  ro_Fn_Fp = -0.1, ro_lwa_lwb = 0.9, ro_a_B0 = 0.9), ...)
+  ro_Qc_Qp = -0.3, ro_Qn_Qp = -0.2, ro_Dc_Dn = 0.2, ro_Dc_Dp = -0.1,
+  ro_Dn_Dp = -0.1, ro_lwa_lwb = 0.9, ro_alpha_f0 = 0.9), ...)
 }
 \arguments{
 \item{TL}{total length(s) in cm}
@@ -17,31 +17,32 @@ parameters:
 \item{Qc_m, Qc_sd:} percentage C of dry mass fish
 \item{Qn_m, Qn_sd:} percentage N of dry mass fish
 \item{Qp_m, Qp_sd:} percentage P of dry mass fish
-\item{Fc_m, Fc_sd:} percentage C of dry mass food
-\item{Fn_m, Fn_sd:} percentage N of dry mass food
-\item{Fp_m, Fp_sd:} percentage P of dry mass food
-\item{AEc_m, AEc_sd:} C-specific assimilation efficiency
-\item{AEn_m, AEn_sd:} N-specific assimilation efficiency
-\item{AEp_m, AEp_sd:} P-specific assimilation efficiency
-\item{Linf_m, Linf_sd:} Von Bertalanffy Growth parameter, theoretical maximum size in TL
-\item{k_m, k_sd:} Von Bertalanffy Growth parameter, growth rate
-\item{lwa_m, lwa_sd:} Parameter length-weight relationship
+\item{Dc_m, Dc_sd:} percentage C of dry mass food
+\item{Dn_m, Dn_sd:} percentage N of dry mass food
+\item{Dp_m, Dp_sd:} percentage P of dry mass food
+\item{ac_m, ac_sd:} C-specific assimilation efficiency
+\item{an_m, an_sd:} N-specific assimilation efficiency
+\item{ap_m, ap_sd:} P-specific assimilation efficiency
+\item{linf_m, linf_sd:} Von Bertalanffy Growth parameter, theoretical maximum size in TL (cm)
+\item{k_m, k_sd:} Von Bertalanffy Growth parameter, growth rate (yr^-1)
+\item{t0_m, tO_sd:} Von Bertalanffy Growth parameter (yr)
+\item{lwa_m, lwa_sd:} Parameter length-weight relationship (g cm^-1)
 \item{lwb_m, lwb_sd:} Parameter length-weight relationship
-\item{w_prop_m, wprop_sd:} Ratio between dry weight and wet weight of fish
-\item{Tn_m, Tn_sd:} N-specific turnover rate
-\item{Tp_m, Tp_sd:} P-specific turnover rate
-\item{B0_m, B0_sd:} Normalization constant for resting metabolic rate
-\item{a_m, a_sd:} Resting metabolic rate mass-scaling exponent
-\item{f_m, f_sd:} Activity scope
-\item{asp_m, asp_sd:} Aspect ratio
-\item{troph_m, troph_sd:} Trophic level
-\item{temp_m, temp_sd:} Temperature
+\item{mdw_m, wprop_sd:} Ratio between dry weight and wet weight of fish
+\item{F0nz_m, F0nz_sd:} N-specific turnover rate
+\item{F0pz_m, F0pz_sd:} P-specific turnover rate
+\item{f0_m, f0_sd:} Metabolic normalisation constant independent of body mass (g C g^−α d^−1)
+\item{alpha_m, alpha_sd:} Metabolic rate mass-scaling exponent
+\item{theta_m, theta_sd:} Activity scope
+\item{r_m, r_sd:} Aspect ratio of caudal fin
+\item{h_m, h_sd:} Trophic level
+\item{v_m, v_sd:} Environmental temperature (degrees celcius)
 }}
 
 \item{iter}{A positive integer specifying the number of iterations. The default is 2000.}
 
 \item{cor}{A list of correlations between certain parameters: ro_Qc_Qn, ro_Qc_Qp, ro_Qn_Qp,
-ro_Fc_Fn, ro_Fc_Fp, ro_Fn_Fp, ro_lwa_lwb, ro_a_B0}
+ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0}
 
 \item{...}{Arguments of rstan::sampling()}
 }
@@ -55,7 +56,7 @@ Returns a list with two objects: A stanfit object and a dataframe with a summary
 }
 \examples{
 
-model <- fishflux::cnp_model_mcmc(TL = 10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, f_m = 3))
+model <- fishflux::cnp_model_mcmc(TL = 10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, theta_m = 3))
 }
 \keyword{excretion,}
 \keyword{fish,}

@@ -9,28 +9,29 @@
 #' \item{Qc_m, Qc_sd:} percentage C of dry mass fish
 #' \item{Qn_m, Qn_sd:} percentage N of dry mass fish
 #' \item{Qp_m, Qp_sd:} percentage P of dry mass fish
-#' \item{Fc_m, Fc_sd:} percentage C of dry mass food
-#' \item{Fn_m, Fn_sd:} percentage N of dry mass food
-#' \item{Fp_m, Fp_sd:} percentage P of dry mass food
-#' \item{AEc_m, AEc_sd:} C-specific assimilation efficiency
-#' \item{AEn_m, AEn_sd:} N-specific assimilation efficiency
-#' \item{AEp_m, AEp_sd:} P-specific assimilation efficiency
-#' \item{Linf_m, Linf_sd:} Von Bertalanffy Growth parameter, theoretical maximum size in TL
-#' \item{k_m, k_sd:} Von Bertalanffy Growth parameter, growth rate
-#' \item{lwa_m, lwa_sd:} Parameter length-weight relationship
+#' \item{Dc_m, Dc_sd:} percentage C of dry mass food
+#' \item{Dn_m, Dn_sd:} percentage N of dry mass food
+#' \item{Dp_m, Dp_sd:} percentage P of dry mass food
+#' \item{ac_m, ac_sd:} C-specific assimilation efficiency
+#' \item{an_m, an_sd:} N-specific assimilation efficiency
+#' \item{ap_m, ap_sd:} P-specific assimilation efficiency
+#' \item{linf_m, linf_sd:} Von Bertalanffy Growth parameter, theoretical maximum size in TL (cm)
+#' \item{k_m, k_sd:} Von Bertalanffy Growth parameter, growth rate (yr^-1)
+#' \item{t0_m, tO_sd:} Von Bertalanffy Growth parameter (yr)
+#' \item{lwa_m, lwa_sd:} Parameter length-weight relationship (g cm^-1)
 #' \item{lwb_m, lwb_sd:} Parameter length-weight relationship
-#' \item{w_prop_m, wprop_sd:} Ratio between dry weight and wet weight of fish
-#' \item{Tn_m, Tn_sd:} N-specific turnover rate
-#' \item{Tp_m, Tp_sd:} P-specific turnover rate
-#' \item{B0_m, B0_sd:} Normalization constant for resting metabolic rate
-#' \item{a_m, a_sd:} Resting metabolic rate mass-scaling exponent
-#' \item{f_m, f_sd:} Activity scope
-#' \item{asp_m, asp_sd:} Aspect ratio
-#' \item{troph_m, troph_sd:} Trophic level
-#' \item{temp_m, temp_sd:} Temperature
+#' \item{mdw_m, wprop_sd:} Ratio between dry weight and wet weight of fish
+#' \item{F0nz_m, F0nz_sd:} N-specific turnover rate
+#' \item{F0pz_m, F0pz_sd:} P-specific turnover rate
+#' \item{f0_m, f0_sd:} Metabolic normalisation constant independent of body mass (g C g^−α d^−1)
+#' \item{alpha_m, alpha_sd:} Metabolic rate mass-scaling exponent
+#' \item{theta_m, theta_sd:} Activity scope
+#' \item{r_m, r_sd:} Aspect ratio of caudal fin
+#' \item{h_m, h_sd:} Trophic level
+#' \item{v_m, v_sd:} Environmental temperature (degrees celcius)
 #' }
 #' @param cor     A list of correlations between certain parameters: ro_Qc_Qn, ro_Qc_Qp, ro_Qn_Qp,
-#' ro_Fc_Fn, ro_Fc_Fp, ro_Fn_Fp, ro_lwa_lwb, ro_a_B0
+#' ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
 #' @param ...     Arguments of rstan::sampling()
 #'
@@ -42,65 +43,65 @@
 #'
 #' @examples
 #'
-#' model <- fishflux::cnp_model_mcmc(TL = 10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, f_m = 3))
+#' model <- fishflux::cnp_model_mcmc(TL = 10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, theta_m = 3))
 
 cnp_model_mcmc <- function(TL, param, iter=1000,
                            cor = list(ro_Qc_Qn = 0.5, ro_Qc_Qp = -0.3, ro_Qn_Qp = -0.2,
-                                      ro_Fc_Fn = 0.2, ro_Fc_Fp = -0.1, ro_Fn_Fp = -0.1,
-                                      ro_lwa_lwb = 0.9, ro_a_B0 = 0.9), ...){
+                                      ro_Dc_Dn = 0.2, ro_Dc_Dp = -0.1, ro_Dn_Dp = -0.1,
+                                      ro_lwa_lwb = 0.9, ro_alpha_f0 = 0.9), ...){
 
   require(rstan)
 
   ##standard parameters, all sd's are quite low here!
-  params_st <- list(TL_m = 10,
-                    AEc_m = 0.8,
-                    AEn_m = 0.8,
-                    AEp_m = 0.7,
-                    Fc_m = 2.5,
-                    Fn_m = 0.3,
-                    Fp_m = 0.1,
-                    Linf_m = 20,
+  params_st <- list(lt_m = 10,
+                    ac_m = 0.8,
+                    an_m = 0.8,
+                    ap_m = 0.7,
+                    Dc_m = 2.5,
+                    Dn_m = 0.3,
+                    Dp_m = 0.1,
+                    linf_m = 20,
                     k_m = 0.4,
                     t0_m = 0,
-                    f_m = 2,
-                    asp_m = 2,
-                    troph_m = 2,
+                    theta_m = 2,
+                    r_m = 2,
+                    h_m = 2,
                     lwa_m = 0.0137,
                     lwb_m = 3.083,
-                    w_prop_m = 0.309,
-                    temp_m = 27,
-                    Tn_m = 0.01,
-                    Tp_m = 0.0007,
+                    mdw_m = 0.309,
+                    v_m = 27,
+                    F0nz_m = 0.01,
+                    F0pz_m = 0.0007,
                     Qc_m = 40,
                     Qn_m = 10,
                     Qp_m = 4,
-                    a_m = 0.8,
-                    B0_m = 0.002,
+                    alpha_m = 0.8,
+                    f0_m = 0.002,
 
-                    TL_sd = 0.0000000001,
-                    AEc_sd = 0.0000000001,
-                    AEn_sd = 0.0000000001,
-                    AEp_sd = 0.0000000001,
-                    Fc_sd = 0.0000000001,
-                    Fn_sd = 0.0000000001,
-                    Fp_sd = 0.0000000001,
-                    Linf_sd = 0.0000000001,
+                    lt_sd = 0.0000000001,
+                    ac_sd = 0.0000000001,
+                    an_sd = 0.0000000001,
+                    ap_sd = 0.0000000001,
+                    Dc_sd = 0.0000000001,
+                    Dn_sd = 0.0000000001,
+                    Dp_sd = 0.0000000001,
+                    linf_sd = 0.0000000001,
                     k_sd = 0.0000000001,
                     t0_sd = 0.0000000001,
-                    f_sd = 0.0000000001,
-                    asp_sd = 0.0000000001,
-                    troph_sd = 0.0000000001,
+                    theta_sd = 0.0000000001,
+                    r_sd = 0.0000000001,
+                    h_sd = 0.0000000001,
                     lwa_sd = 0.0000000001,
                     lwb_sd = 0.0000000001,
-                    w_prop_sd = 0.0000000001,
-                    temp_sd = 0.0000000001,
-                    Tn_sd = 0.0000000001,
-                    Tp_sd = 0.0000000001,
+                    mdw_sd = 0.0000000001,
+                    v_sd = 0.0000000001,
+                    F0nz_sd = 0.0000000001,
+                    F0pz_sd = 0.0000000001,
                     Qc_sd = 0.0000000001,
                     Qn_sd = 0.0000000001,
                     Qp_sd = 0.0000000001,
-                    a_sd = 0.0000000001,
-                    B0_sd = 0.0000000001
+                    alpha_sd = 0.0000000001,
+                    f0_sd = 0.0000000001
   )
 
   #check input variable names
@@ -136,39 +137,39 @@ cnp_model_mcmc <- function(TL, param, iter=1000,
     }
   }
 
-  if ("Fc_m" %in% names(param)){
-    if (param$Fc_m <= 0 | param$Fc_m >= 100){
-      stop("Fc_m should be between 0 and 100")
+  if ("Dc_m" %in% names(param)){
+    if (param$Dc_m <= 0 | param$Dc_m >= 100){
+      stop("Dc_m should be between 0 and 100")
     }
   }
 
-  if ("Fn_m" %in% names(param)){
-    if (param$Fn_m <= 0 | param$Fn_m >= 100){
-      stop("Fn_m should be between 0 and 100")
+  if ("Dn_m" %in% names(param)){
+    if (param$Dn_m <= 0 | param$Dn_m >= 100){
+      stop("Dn_m should be between 0 and 100")
     }
   }
 
-  if ("Fp_m" %in% names(param)){
-    if (param$Fp_m <= 0 | param$Fp_m >= 100){
-      stop("Fp_m should be between 0 and 100")
+  if ("Dp_m" %in% names(param)){
+    if (param$Dp_m <= 0 | param$Dp_m >= 100){
+      stop("Dp_m should be between 0 and 100")
     }
   }
 
-  if ("AEc_m" %in% names(param)){
-    if (param$AEc_m <= 0 | param$AEc_m >= 1){
-      stop("AEc_m should be between 0 and 1")
+  if ("ac_m" %in% names(param)){
+    if (param$ac_m <= 0 | param$ac_m >= 1){
+      stop("ac_m should be between 0 and 1")
     }
   }
 
-  if ("Fp_m" %in% names(param)){
-    if (param$AEn_m <= 0 | param$AEn_m >= 1){
-      stop("AEn_m should be between 0 and 1")
+  if ("Dp_m" %in% names(param)){
+    if (param$an_m <= 0 | param$an_m >= 1){
+      stop("an_m should be between 0 and 1")
     }
   }
 
-  if ("AEp_m" %in% names(param)){
-    if (param$AEp_m <= 0 | param$AEp_m >= 1){
-      stop("AEp_m should be between 0 and 1")
+  if ("ap_m" %in% names(param)){
+    if (param$ap_m <= 0 | param$ap_m >= 1){
+      stop("ap_m should be between 0 and 1")
     }
   }
 
@@ -177,7 +178,7 @@ cnp_model_mcmc <- function(TL, param, iter=1000,
   cnp_mcmc <- function(TL=TL, param = param, iter = iter, ...){
 
   ## add TL to parameter list
-  param[["TL_m"]] <- TL
+  param[["lt_m"]] <- TL
 
   p_given <- names(param)
   p_all <- names(params_st)
@@ -207,7 +208,7 @@ cnp_model_mcmc <- function(TL, param, iter=1000,
     plyr::ldply(lapply(par, function(par){
       summary <-
         data.frame(
-          TL = mean(ee[["TL"]]),
+          TL = mean(ee[["lt"]]),
           variable = par,
           mean = mean(ee[[par]]),
           median = median(ee[[par]]),
@@ -220,20 +221,8 @@ cnp_model_mcmc <- function(TL, param, iter=1000,
       return(summary)
     }))
 
-  ## limiting element
-  lim <- result[result$variable == "lim", "mean"]
-  lim <- round(lim)
-  lim <- sapply(lim, FUN = function(x){
-    if (x == 1){
-      return("C")
-    } else if (x == 2){
-      return("N")
-    } else{
-      return("P")
-    }
-  })
 
-  return(list(stanfit, summary = result, lim = lim))
+  return(list(stanfit, summary = result))
 
   }
 
@@ -249,17 +238,6 @@ cnp_model_mcmc <- function(TL, param, iter=1000,
     summary <- lapply(result, FUN = function(x){x[[2]]})
     summary <- plyr::ldply(summary)
 
-    ## limiting element
-    lim <- round(summary[summary$variable == "lim", "mean"])
-    lim <- sapply(lim, FUN = function(x){
-      if (x == 1){
-        return("C")
-      } else if (x == 2){
-        return("N")
-      } else{
-        return("P")
-      }
-    })
-    return(list(stanfit = stanfit, summary = summary, lim = lim))
+    return(list(stanfit = stanfit, summary = summary))
   }
 }

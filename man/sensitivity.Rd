@@ -4,20 +4,21 @@
 \alias{sensitivity}
 \title{A function to check the sensitivity of cnp_model predictions based on the variation of input parameters}
 \usage{
-sensitivity(TL, param, iter = 1000, par, out = c("C_in", "N_in",
-  "P_in", "C_g", "N_g", "P_g", "C_r", "N_ex", "P_ex", "C_eg", "N_eg",
-  "P_eg", "IN"), ...)
+sensitivity(TL, param, iter = 1000, par, out = c("Ic", "In", "Ip",
+  "Gc", "Gn", "Gp", "Fc", "Fn", "Fp", "Wc", "Wn", "Wp"), ...)
 }
 \arguments{
 \item{TL}{total length of a fish in cm}
 
-\item{param}{list of all parameter means ("_m") and standard deviations ("_sd") Default parameters are set with very low sd's. See \link[fishflux]{cnp_model}  for a list of all requested parameters}
+\item{param}{list of all parameter means ("_m") and standard deviations ("_sd") Default parameters are set with very low sd's. See \link[fishflux]{cnp_model_mcmc}  for a list of all requested parameters}
 
 \item{iter}{A positive integer specifying the number of iterations. The default is 1000}
 
 \item{par}{Charachter vector specifying which input parameter sd's should be used for sensitivity.}
 
 \item{out}{Charachter vector specifying which output parameter sd's should be returned.}
+
+\item{...}{Other arguments that can be used from \link[fishflux]{cnp_model_mcmc}}
 }
 \description{
 This function runs the cnp_model fixing all parameters SD's but one to test for sensitivity
@@ -28,7 +29,7 @@ Returns a dataframe with sd's of model predictions. Row names indicate the varia
 }
 \examples{
 
-fishflux::sensitivity(TL=10, param = list(k_sd=0.2, Fn_sd=0.2, Fc_sd = 0.1), par = c("k_sd","Fn_sd","Fc_sd"), out = c("C_in", "N_in", "P_in", "C_g", "N_g", "P_g", "C_r", "N_ex", "P_ex", "C_eg", "N_eg", "P_eg", "IN"))
+fishflux::sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1), par = c("k_sd","Dn_sd","Dc_sd"), out = c("Ic", "In", "Ip", "Gc"))
 }
 \keyword{excretion,}
 \keyword{fish,}

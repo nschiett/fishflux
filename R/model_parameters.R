@@ -47,9 +47,9 @@ model_parameters <- function(sp, family, otolith = TRUE, temp){
                            lwa_sd   = length_weight$lwa_sd,
                            lwb_m    = length_weight$lwb_m,
                            lwb_sd   = length_weight$lwb_sd,
-                           w_prop   = wprop$ww,
-                           B0_m     = met$B0_m,
-                           B0_sd    = met$B0_sd,
+                           mdw_m    = wprop$mdw,
+                           f0_m     = met$B0_m,
+                           f0_sd    = met$B0_sd,
                            a_m      = met$a_m,
                            a_sd     = met$a_sd)
 

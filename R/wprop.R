@@ -3,7 +3,7 @@
 #' This function searches the ratio of dry weight and wet weight of fish
 #' on the family level. If the family is not available, an average is returned.
 #'
-#' Returns a dataframe with the weight ratio (ww) and it's sd (ww_sd).
+#' Returns a dataframe with the weight ratio (mdw) and it's sd (mdw_sd).
 #'
 #' @param family family
 #' @keywords fish, find some parameters needed for cnp_model
@@ -21,5 +21,5 @@ wprop <- function(family){
     ww_sd <- sd(wprop$weight_prop)
     warning("family not in database, average used")
   }
-  return(data.frame(ww=ww, ww_sd=ww_sd))
+  return(data.frame(mdw = ww, mdw_sd = ww_sd))
 }

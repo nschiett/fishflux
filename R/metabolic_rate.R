@@ -9,7 +9,7 @@
 #' @param temp  Temperature in degrees Celsius
 #' @param m_max Maximum biomass fish (in g)
 #' @param m     Wet weight fish (in g)
-#' @param asp   The caudal fin aspect ratio (= $h^2 / s$, where $h$ is the height of the caudal fin and $s$ is surface area), a proxy for activity level
+#' @param asp   The caudal fin aspect ratio , a proxy for activity level
 #' @param troph Trophic level (from 1 to 5)
 #' @param f     Activity scope (from 1 to 4)
 #' @param a     Resting metabolic rate mass-scaling exponent

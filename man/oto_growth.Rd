@@ -33,7 +33,7 @@ linf and k are the population level estimates of linf and k. kmax is the standar
 \examples{
 
 zs <- fishflux::zebsco_growth
-fishflux::oto_growth(length = zs$length, age = zs$age, id = zs$id, lmax = 25, linf_m = 20, iter = 2000, chains = 4)
+fishflux::oto_growth(length = zs$length, age = zs$age, id = zs$id, lmax = 25, linf_m = 15, iter = 2000, chains = 1)
 
 }
 \keyword{Bertalanfy}

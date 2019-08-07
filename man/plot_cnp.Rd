@@ -19,9 +19,9 @@ plot_cnp(mod, y, x = "tl", probs = c(0.8, 0.95))
 This function allows you to plot an overview of the model results in function of the total length of fish
 }
 \examples{
-mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Fn_sd = 0.05))
-plot_cnp(mod = mod, y = c("P_ex", "P_g", "P_eg", "P_in"), x = "tl", probs = c(0.5, 0.8))
-plot_cnp(mod = mod, y = "P_ex", x = "tl", probs = c(0.5, 0.8, 0.95))
+mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Dn_sd = 0.05))
+fishflux::plot_cnp(mod = mod, y = c("Fp", "Gp", "Wp", "Ip"), x = "tl", probs = c(0.5, 0.8))
+plot_cnp(mod = mod, y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))
 }
 \keyword{bioenergetic}
 \keyword{fish,}

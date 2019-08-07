@@ -6,27 +6,24 @@
 #' @param par     Character vector specifying which output parameter that should be returned.
 #' Main model output parameters:
 #' \itemize{
-#' \item{C_n:} Minimal required carbon (g/day)
-#' \item{N_n:} Minimal required nitrogen (g/day)
-#' \item{P_n:} Minimal required phosphorus (g/day)
-#' \item{C_g:} Carbon-specific growth rate (g/day)
-#' \item{N_g:} Nitrogen-specific growth rate (g/day)
-#' \item{P_g:} Phosphorus-specific growth rate (g/day)
-#' \item{B_r:} Resting metabolic rate (J/d)
-#' \item{B_m:} Maintenance metabolic rate (J/day)
-#' \item{B_t:} Total field metabolic rate (J/day)
-#' \item{C_m:} Total field metabolic rate (g/day) (~ B_t)
-#' \item{T_n:} Nitrogen-specific maintenance rate (g/day)
-#' \item{T_p:} Phosphorus-specific maintenance rate (g/day)
-#' \item{C_in:} Ingestion rate of C (g/day)
-#' \item{N_in:} Ingestion rate of N (g/day)
-#' \item{P_in:} Ingestion rate of P (g/day)
-#' \item{C_eg:} Egestion rate of C (g/day)
-#' \item{N_eg:} Egestion rate of N (g/day)
-#' \item{P_eg:} Egestion rate of P (g/day)
-#' \item{C_r:} Total respiration rate (g/day)
-#' \item{N_ex:} Excretion rate of N (g/day)
-#' \item{P_ex:} Excretion rate of P (g/day)
+#' \item{F0c:} C-specific minimal inorganic flux (g/day)
+#' \item{F0n:} N-specific minimal inorganic flux (g/day)
+#' \item{F0p:} P-specific minimal inorganic flux (g/day)
+#' \item{Gc:} Carbon-specific growth rate (g/day)
+#' \item{Gn:} Nitrogen-specific growth rate (g/day)
+#' \item{Gp:} Phosphorus-specific growth rate (g/day)
+#' \item{Sc:} C-specific minimal supply rate (g/day)
+#' \item{Sn:} N-specific minimal supply rate (g/day)
+#' \item{Sp:} P-specific minimal supply rate (g/day)
+#' \item{Ic:} Ingestion rate of C (g/day)
+#' \item{In:} Ingestion rate of N (g/day)
+#' \item{Ip:} Ingestion rate of P (g/day)
+#' \item{Wc:} Egestion rate of C (g/day)
+#' \item{Wn:} Egestion rate of N (g/day)
+#' \item{Wp:} Egestion rate of P (g/day)
+#' \item{Fc:} Total inorganic flux of C (respiration) (g/day)
+#' \item{Fn:} Total inorganic flux of N (excretion) (g/day)
+#' \item{Fp:} Total inorganic flux of P (excretion) (g/day)
 #' }
 #' @details       Returns a dataframe with a summary of the selected output parameters
 #' @keywords      fish, stoichiometry, excretion, mcmc
@@ -34,8 +31,8 @@
 #'
 #' @examples
 #'
-#' model <- fishflux::cnp_model_mcmc(TL = 5:10, param = list(C_m = 40, N_m = 10, P_m = 4))
-#' fishflux::extract(model, c("N_ex","P_ex"))
+#' model <- fishflux::cnp_model_mcmc(TL = 5:10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4))
+#' fishflux::extract(model, c("Fn","Fp"))
 #'
 #'
 

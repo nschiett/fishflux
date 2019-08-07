@@ -8,9 +8,9 @@
 #' @keywords fish, plot, bioenergetic model, stoichiometry
 #' @export plot_cnp
 #' @examples
-#' mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Fn_sd = 0.05))
-#' plot_cnp(mod = mod, y = c("P_ex", "P_g", "P_eg", "P_in"), x = "tl", probs = c(0.5, 0.8))
-#' plot_cnp(mod = mod, y = "P_ex", x = "tl", probs = c(0.5, 0.8, 0.95))
+#' mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Dn_sd = 0.05))
+#' fishflux::plot_cnp(mod = mod, y = c("Fp", "Gp", "Wp", "Ip"), x = "tl", probs = c(0.5, 0.8))
+#' plot_cnp(mod = mod, y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))
 
 plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
 
@@ -27,13 +27,14 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
     return(get)
   }
 
-  vars <- c("l1", "lwa", "lwb", y)
+  vars <- c("lt", "lwa", "lwb", y)
 
   iter <- (lapply(mod$stanfit, FUN = function(x){rstan::extract(x, vars)})) %>%
     lapply( FUN = get_iter) %>%
     dplyr::bind_rows() %>%
-    mutate(l1 = round(l1))
-  iter$w <- mean(iter$lwa)*iter$l1^mean(iter$lwb)
+    mutate(lt = round(lt))
+
+  iter$w <- mean(iter$lwa)*iter$lt^mean(iter$lwb)
 
   if (length(y) > 1){
 
@@ -52,7 +53,7 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
     } else if (x == "tl"){
 
       plot <-
-        ggplot(group_by(iter_t, iter), aes(x = l1, y = value, color = output, fill = output)) +
+        ggplot(group_by(iter_t, iter), aes(x = lt, y = value, color = output, fill = output)) +
         stat_lineribbon(alpha = 0.4,  .width = probs ) +
         scale_fill_brewer(palette = "Set2") +
         scale_color_brewer(palette = "Dark2") +
@@ -62,7 +63,7 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
 
   } else if (length(y) == 1){
 
-    colnames(iter) <- c("l1", "lwa", "lwb", "value", "iter", "w")
+    colnames(iter) <- c("lt", "lwa", "lwb", "value", "iter", "w")
 
     if (x == "biomass"){
 
@@ -76,7 +77,7 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
     } else if (x == "tl"){
 
       plot <-
-        ggplot(group_by(iter, iter), aes(x = l1, y = value)) +
+        ggplot(group_by(iter, iter), aes(x = lt, y = value)) +
         stat_lineribbon(alpha = 0.9,  .width = probs ) +
         scale_fill_brewer() +
         theme_bw() +

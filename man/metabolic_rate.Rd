@@ -11,7 +11,7 @@ metabolic_rate(temp, troph, asp, B0, m_max, m, a, growth_g_day, f)
 
 \item{troph}{Trophic level (from 1 to 5)}
 
-\item{asp}{The caudal fin aspect ratio (= $h^2 / s$, where $h$ is the height of the caudal fin and $s$ is surface area), a proxy for activity level}
+\item{asp}{The caudal fin aspect ratio , a proxy for activity level}
 
 \item{B0}{Constant for resting metabolic rate. If NA, function will calculate an average.}
 

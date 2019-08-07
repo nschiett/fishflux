@@ -13,7 +13,7 @@
 #' @export limitation
 #' @examples
 #' mod <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4,
-#'                                                         Fc_sd = 0.1, Fn_sd = 0.05, Fp_sd = 0.05))
+#'                                                         Dc_sd = 0.1, Dn_sd = 0.05, Dp_sd = 0.05))
 #' limitation(mod)
 
 

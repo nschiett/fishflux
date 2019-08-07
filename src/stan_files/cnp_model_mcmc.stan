@@ -30,67 +30,67 @@ data {
 
                      //means of all parameters
 
-                     real TL_m;
-                     real AEc_m;
-                     real AEn_m;
-                     real AEp_m;
-                     real Fc_m;
-                     real Fn_m;
-                     real Fp_m;
-                     real Linf_m;
+                     real lt_m;
+                     real ac_m;
+                     real an_m;
+                     real ap_m;
+                     real Dc_m;
+                     real Dn_m;
+                     real Dp_m;
+                     real linf_m;
                      real k_m;
                      real t0_m;
-                     real f_m;
-                     real asp_m;
-                     real troph_m;
+                     real theta_m;
+                     real r_m;
+                     real h_m;
                      real lwa_m;
                      real lwb_m;
-                     real w_prop_m;
-                     real temp_m;
-                     real Tn_m;
-                     real Tp_m;
+                     real mdw_m;
+                     real v_m;
+                     real F0nz_m;
+                     real F0pz_m;
                      real Qc_m;
                      real Qn_m;
                      real Qp_m;
-                     real a_m;
-                     real B0_m;
+                     real alpha_m;
+                     real f0_m;
 
                      //sd of all parameters
 
-                     real TL_sd;
-                     real AEc_sd;
-                     real AEn_sd;
-                     real AEp_sd;
-                     real Fc_sd;
-                     real Fn_sd;
-                     real Fp_sd;
-                     real Linf_sd;
+                     real lt_sd;
+                     real ac_sd;
+                     real an_sd;
+                     real ap_sd;
+                     real Dc_sd;
+                     real Dn_sd;
+                     real Dp_sd;
+                     real linf_sd;
                      real k_sd;
                      real t0_sd;
-                     real f_sd;
-                     real asp_sd;
-                     real troph_sd;
+                     real theta_sd;
+                     real r_sd;
+                     real h_sd;
                      real lwa_sd;
                      real lwb_sd;
-                     real w_prop_sd;
-                     real temp_sd;
-                     real Tn_sd;
-                     real Tp_sd;
+                     real mdw_sd;
+                     real v_sd;
+                     real F0nz_sd;
+                     real F0pz_sd;
                      real Qc_sd;
                      real Qn_sd;
                      real Qp_sd;
-                     real a_sd;
-                     real B0_sd;
+                     real alpha_sd;
+                     real f0_sd;
 
                      // correlations ro
                      real ro_Qc_Qn;
                      real ro_Qc_Qp;
                      real ro_Qn_Qp;
-                     real ro_Fc_Fn;
-                     real ro_Fc_Fp;
-                     real ro_Fn_Fp;
+                     real ro_Dc_Dn;
+                     real ro_Dc_Dp;
+                     real ro_Dn_Dp;
                      real ro_lwa_lwb;
-                     real ro_a_B0;
+                     real ro_alpha_f0;
 
                      }
 
@@ -102,22 +102,22 @@ transformed data{
   real logQp_m = get_log_mu(Qp_m, Qp_sd);
   real logQp_sd = get_log_sd(Qp_m, Qp_sd);
 
-  real logFc_m = get_log_mu(Fc_m, Fc_sd);
-  real logFc_sd = get_log_sd(Fc_m, Fc_sd);
-  real logFn_m = get_log_mu(Fn_m, Fn_sd);
-  real logFn_sd = get_log_sd(Fn_m, Fn_sd);
-  real logFp_m = get_log_mu(Fp_m, Fp_sd);
-  real logFp_sd = get_log_sd(Fp_m, Fp_sd);
+  real logDc_m = get_log_mu(Dc_m, Dc_sd);
+  real logDc_sd = get_log_sd(Dc_m, Dc_sd);
+  real logDn_m = get_log_mu(Dn_m, Dn_sd);
+  real logDn_sd = get_log_sd(Dn_m, Dn_sd);
+  real logDp_m = get_log_mu(Dp_m, Dp_sd);
+  real logDp_sd = get_log_sd(Dp_m, Dp_sd);
 
   real loglwa_m = get_log_mu(lwa_m, lwa_sd);
   real loglwa_sd = get_log_sd(lwa_m, lwa_sd);
   real loglwb_m = get_log_mu(lwb_m, lwb_sd);
   real loglwb_sd = get_log_sd(lwb_m, lwb_sd);
 
-  real loga_m = get_log_mu(a_m, a_sd);
-  real loga_sd = get_log_sd(a_m, a_sd);
-  real logB0_m = get_log_mu(B0_m, B0_sd);
-  real logB0_sd = get_log_sd(B0_m, B0_sd);
+  real loga_m = get_log_mu(alpha_m, alpha_sd);
+  real loga_sd = get_log_sd(alpha_m, alpha_sd);
+  real logf0_m = get_log_mu(f0_m, f0_sd);
+  real logf0_sd = get_log_sd(f0_m, f0_sd);
 }
 
 model{
@@ -129,35 +129,35 @@ generated quantities {
 
                      //all paramaters
 
-                     real<lower=0.001> TL;
-                     real<lower=0> AEc;
-                     real<lower=0> AEn;
-                     real<lower=0> AEp;
-                     real<lower=0> Fc;
-                     real<lower=0> Fn;
-                     real<lower=0> Fp;
-                     real<lower=0> Linf;
+                     real<lower=0.001> lt;
+                     real<lower=0> ac;
+                     real<lower=0> an;
+                     real<lower=0> ap;
+                     real<lower=0> Dc;
+                     real<lower=0> Dn;
+                     real<lower=0> Dp;
+                     real<lower=0> linf;
                      real<lower=0> k;
                      real t0;
-                     real<lower=0,upper=10> f;
-                     real<lower=0> asp;
-                     real<lower=0> troph;
+                     real<lower=0,upper=10> theta;
+                     real<lower=0> r;
+                     real<lower=0> h;
                      real<lower=0> lwa;
                      real<lower=0> lwb;
-                     real<lower=0> w_prop;
-                     real<lower=0> temp;
-                     real<lower=0> Tn;
-                     real<lower=0> Tp;
+                     real<lower=0> mdw;
+                     real<lower=0> v;
+                     real<lower=0> F0nz;
+                     real<lower=0> F0pz;
                      real<lower=0> Qc;
                      real<lower=0> Qn;
                      real<lower=0> Qp;
-                     real<lower=0> a;
-                     real<lower=0> B0;
+                     real<lower=0> alpha;
+                     real<lower=0> f0;
 
                      //derived variables
 
                      real<lower=0> m_max;   //max weight
-                     real l1;      //same as TL
+                     real l1;      //same as lt
                      real a1;      //age at length l1
                      real a2;      // age at next time interval
                      real l2;      // predicted length at age a2
@@ -171,9 +171,9 @@ generated quantities {
                      real Qc1;      // mass C of fish at l1 in g
                      real Qn1;      // mass N of fish at l1 in g
                      real Qp1;      // mass P of fish at l1 in g
-                     real C_g;     // C gain for growth in g
-                     real N_g;     // N gain for growth in g
-                     real P_g;     // P gain for growth in g
+                     real Gc;     // C gain for growth in g
+                     real Gn;     // N gain for growth in g
+                     real Gp;     // P gain for growth in g
 
                      real Em;      //cost of growth in J/g
                      real gC_to_J; // conversion factor
@@ -183,14 +183,14 @@ generated quantities {
 	                   real B_syn;   // cost of growth
 	                   real B_rest;  // resting metabolic rate (Joules / day)
 	                   real B_tot;   // assimilation rate in joule per day
-	                   real Cm;      // amount of mass C needed for metabolism
+	                   real F0c;      // amount of mass C needed for metabolism
 
-                     real N_t;     // N needed for cell renewal
-                     real P_t;     // P needed for cell renewal
+                     real F0n;     // N needed for cell renewal
+                     real F0p;     // P needed for cell renewal
 
-                     real N_n;
-                     real P_n;
-                     real C_n;
+                     real Sn;
+                     real Sp;
+                     real Sc;
 
                     // needed nutrients
                      real st_np;
@@ -205,21 +205,21 @@ generated quantities {
                      int lim;      // limiting element
 
 
-                     real C_in;    // ingestion
-                     real N_in;
-                     real P_in;
+                     real Ic;    // ingestion
+                     real In;
+                     real Ip;
 
-                     real C_eg;
-                     real N_eg;    // egestion
-                     real P_eg;
+                     real Wc;
+                     real Wn;    // egestion
+                     real Wp;
 
-                     real N_ex;    // excretion
-                     real P_ex;
+                     real Fn;    // excretion
+                     real Fp;
 
                      real C_r;     // total respiration
 
-                     real N_l;     // leftover excretion
-                     real P_l;
+                     real Frn;     // leftover excretion
+                     real Frp;
 
                      real IN;      // ingestion in g dry weight
                      real IN_cnp;
@@ -228,18 +228,18 @@ generated quantities {
 
                      // covariance matrices
                      matrix[3,3] Sigma_Qcnp;
-                     matrix[3,3] Sigma_Fcnp;
+                     matrix[3,3] Sigma_Dcnp;
                      matrix[2,2] Sigma_lw;
                      matrix[2,2] Sigma_ab;
                      // vectors of parameter means
                      vector[3] mu_Qcnp;
-                     vector[3] mu_Fcnp;
+                     vector[3] mu_Dcnp;
                      vector[2] mu_lw;
                      vector[2] mu_ab;
 
                      // vectors of parameter estimates from multinormal sampling
                      vector[3] Qcnp;
-                     vector[3] Fcnp;
+                     vector[3] Dcnp;
                      vector[2] lw;
                      vector[2] ab;
 
@@ -248,15 +248,15 @@ generated quantities {
                      mu_Qcnp[2] = logQn_m;
                      mu_Qcnp[3] = logQp_m;
 
-                     mu_Fcnp[1] = logFc_m;
-                     mu_Fcnp[2] = logFn_m;
-                     mu_Fcnp[3] = logFp_m;
+                     mu_Dcnp[1] = logDc_m;
+                     mu_Dcnp[2] = logDn_m;
+                     mu_Dcnp[3] = logDp_m;
 
                      mu_lw[1] = loglwa_m;
                      mu_lw[2] = loglwb_m;
 
                      mu_ab[1] = loga_m;
-                     mu_ab[2] = logB0_m;
+                     mu_ab[2] = logf0_m;
 
                      // construct cov matrices
                      Sigma_Qcnp[1,1] = logQc_sd^2;
@@ -269,15 +269,15 @@ generated quantities {
                      Sigma_Qcnp[2,3] = logQn_sd * logQp_sd * ro_Qn_Qp;
                      Sigma_Qcnp[3,2] = logQn_sd * logQp_sd * ro_Qn_Qp;
 
-                     Sigma_Fcnp[1,1] = logFc_sd^2;
-                     Sigma_Fcnp[2,2] = logFn_sd^2;
-                     Sigma_Fcnp[3,3] = logFp_sd^2;
-                     Sigma_Fcnp[1,2] = logFc_sd * logFn_sd * ro_Fc_Fn;
-                     Sigma_Fcnp[2,1] = logFc_sd * logFn_sd * ro_Fc_Fn;
-                     Sigma_Fcnp[1,3] = logFc_sd * logFp_sd * ro_Fc_Fp;
-                     Sigma_Fcnp[3,1] = logFc_sd * logFp_sd * ro_Fc_Fp;
-                     Sigma_Fcnp[2,3] = logFn_sd * logFp_sd * ro_Fn_Fp;
-                     Sigma_Fcnp[3,2] = logFn_sd * logFp_sd * ro_Fn_Fp;
+                     Sigma_Dcnp[1,1] = logDc_sd^2;
+                     Sigma_Dcnp[2,2] = logDn_sd^2;
+                     Sigma_Dcnp[3,3] = logDp_sd^2;
+                     Sigma_Dcnp[1,2] = logDc_sd * logDn_sd * ro_Dc_Dn;
+                     Sigma_Dcnp[2,1] = logDc_sd * logDn_sd * ro_Dc_Dn;
+                     Sigma_Dcnp[1,3] = logDc_sd * logDp_sd * ro_Dc_Dp;
+                     Sigma_Dcnp[3,1] = logDc_sd * logDp_sd * ro_Dc_Dp;
+                     Sigma_Dcnp[2,3] = logDn_sd * logDp_sd * ro_Dn_Dp;
+                     Sigma_Dcnp[3,2] = logDn_sd * logDp_sd * ro_Dn_Dp;
 
                      Sigma_lw[1,1] = loglwa_sd^2;
                      Sigma_lw[2,2] = loglwb_sd^2;
@@ -285,13 +285,13 @@ generated quantities {
                      Sigma_lw[2,1] = loglwa_sd * loglwb_sd * ro_lwa_lwb;
 
                      Sigma_ab[1,1] = loga_sd^2;
-                     Sigma_ab[2,2] = logB0_sd^2;
-                     Sigma_ab[1,2] = loga_sd * logB0_sd * ro_a_B0;
-                     Sigma_ab[2,1] = loga_sd * logB0_sd * ro_a_B0;
+                     Sigma_ab[2,2] = logf0_sd^2;
+                     Sigma_ab[1,2] = loga_sd * logf0_sd * ro_alpha_f0;
+                     Sigma_ab[2,1] = loga_sd * logf0_sd * ro_alpha_f0;
 
                      // sample from multinormal distributions
                      Qcnp = multi_normal_rng(mu_Qcnp, Sigma_Qcnp);
-                     Fcnp = multi_normal_rng(mu_Fcnp, Sigma_Fcnp);
+                     Dcnp = multi_normal_rng(mu_Dcnp, Sigma_Dcnp);
                      lw = multi_normal_rng(mu_lw, Sigma_lw);
                      ab = multi_normal_rng(mu_ab, Sigma_ab);
 
@@ -301,53 +301,53 @@ generated quantities {
                      Qn = exp(Qcnp[2]);
                      Qp = exp(Qcnp[3]);
 
-                     Fc = exp(Fcnp[1]);
-                     Fn = exp(Fcnp[2]);
-                     Fp = exp(Fcnp[3]);
+                     Dc = exp(Dcnp[1]);
+                     Dn = exp(Dcnp[2]);
+                     Dp = exp(Dcnp[3]);
 
                      lwa = exp(lw[1]);
                      lwb = exp(lw[2]);
 
-                     a = exp(ab[1]);
-                     B0 = exp(ab[2]);
+                     alpha = exp(ab[1]);
+                     f0 = exp(ab[2]);
 
                      // Sample other parameters
 
-                      TL = normal_lb_ub_rng(TL_m, TL_sd, 0.5, 1000);
-                      AEc = normal_lb_ub_rng(AEc_m, AEc_sd, 0.0001, 1);
-                      AEn = normal_lb_ub_rng(AEn_m, AEn_sd, 0.0001, 1);
-                      AEp = normal_lb_ub_rng(AEp_m, AEp_sd, 0.0001, 1);
-                      Linf = normal_lb_ub_rng(Linf_m, Linf_sd, 1, 1000);
+                      lt = normal_lb_ub_rng(lt_m, lt_sd, 0.5, 1000);
+                      ac = normal_lb_ub_rng(ac_m, ac_sd, 0.0001, 1);
+                      an = normal_lb_ub_rng(an_m, an_sd, 0.0001, 1);
+                      ap = normal_lb_ub_rng(ap_m, ap_sd, 0.0001, 1);
+                      linf = normal_lb_ub_rng(linf_m, linf_sd, 1, 1000);
                       k = normal_lb_ub_rng(k_m, k_sd,0.0001,3);
                       t0 = normal_rng(t0_m, t0_sd);
-                      f = normal_lb_ub_rng(f_m, f_sd,0.1, 6);
-                      asp = normal_lb_ub_rng(asp_m, asp_sd,0.001, 8);
-                      troph = normal_lb_ub_rng(troph_m, troph_sd,1, 5);
-                      w_prop = normal_lb_ub_rng(w_prop_m, w_prop_sd, 0.001, 1);
-                      temp = normal_rng(temp_m, temp_sd);
-                      Tn = normal_lb_ub_rng(Tn_m, Tn_sd, 0.000000000000001, 0.1);
-                      Tp = normal_lb_ub_rng(Tp_m, Tp_sd, 0.000000000000001, 0.1);
+                      theta = normal_lb_ub_rng(theta_m, theta_sd,0.1, 6);
+                      r = normal_lb_ub_rng(r_m, r_sd,0.001, 8);
+                      h = normal_lb_ub_rng(h_m, h_sd,1, 5);
+                      mdw = normal_lb_ub_rng(mdw_m, mdw_sd, 0.001, 1);
+                      v = normal_rng(v_m, v_sd);
+                      F0nz = normal_lb_ub_rng(F0nz_m, F0nz_sd, 0.000000000000001, 0.1);
+                      F0pz = normal_lb_ub_rng(F0pz_m, F0pz_sd, 0.000000000000001, 0.1);
 
                      //Quantify derived values
 
-                     m_max = lwa * Linf^lwb;  //maximum weight based on linf
+                     m_max = lwa * linf^lwb;  //maximum weight based on linf
 
-                     l1  = TL;                                    // TL1, Total length of the fish at the moment
+                     l1  = lt;                                    // lt1, Total length of the fish at the moment
                      w1  = lwa * (l1^lwb);                        // conversion to weight in g
-                     wd1 = w1 * w_prop;                           // conversion to dry weight in g
+                     wd1 = w1 * mdw;                           // conversion to dry weight in g
 
                      // Growth per day
 
-                     if (TL < Linf){
-                     a1  = log(1.0 - (l1/Linf))/(-k) + t0;          // Age1, Predicted age of the fish at length TL1
+                     if (lt < linf){
+                     a1  = log(1.0 - (l1/linf))/(-k) + t0;          // Age1, Predicted age of the fish at length lt
                      a2  = a1 + (1.0 / 365);                        // Age2, Age1 + 1 day
-                     l2  = Linf * (1.0 - exp(-k * (a2 - t0)));      // TL2, Predicted total length at age 2
+                     l2  = linf * (1.0 - exp(-k * (a2 - t0)));      // lt2, Predicted total length at age 2
                      w2  = lwa * (l2^lwb);
-                     wd2 = w2 * w_prop;
+                     wd2 = w2 * mdw;
                      Wd  = wd2 - wd1;                             // Growth in dry weight
                      Ww  = w2 - w1;                               // Growth in wet weight
                      }
-                     if (TL>= Linf){
+                     if (lt>= linf){
                      // if bigger than linf, growth is zero
                      a1  = 100;  // arbitrary age, infinity
                      a2  = a1;
@@ -361,43 +361,43 @@ generated quantities {
                      Qc1  = Qc * wd1 / 100;
                      Qn1  = Qn * wd1 / 100;
                      Qp1  = Qp * wd1 / 100;
-                     C_g = Qc * Wd / 100;
-                     N_g = Qn * Wd / 100;
-                     P_g = Qp * Wd / 100;
+                     Gc = Qc * Wd / 100;
+                     Gn = Qn * Wd / 100;
+                     Gp = Qp * Wd / 100;
 
                      // metabolism
 
-                     	 Em       = exp(4.38 + 0.1032 * log(temp) + 0.73 * log(troph) + 0.41 * log(asp + 1.0));  //cost of growth in J/g
+                     	 Em       = exp(4.38 + 0.1032 * log(v) + 0.73 * log(h) + 0.41 * log(r + 1.0));  //cost of growth in J/g
 
                      	 gC_to_J  = 39e3;                         // conversion factor
                      	 Ec       = 24e3;                         // combustion energy of biomass (Joules / g)
-	                     Bm       = B0 * gC_to_J * m_max^(a - 1.0);
+	                     Bm       = f0 * gC_to_J * m_max^(alpha - 1.0);
 	                     B_main   = Bm * w1;                       // maintenance metabolic rate
 	                     B_syn    = Em * Ww;                       // cost of growth
 	                     B_rest   = B_main + B_syn;                // resting metabolic rate (Joules / day)
-	                     B_tot    = B_rest * f;                    // assimilation rate in joule per day
-	                     Cm       = B_tot / gC_to_J;               // amount of mass C needed for metabolism
+	                     B_tot    = B_rest * theta;                    // assimilation rate in joule per day
+	                     F0c       = B_tot / gC_to_J;               // amount of mass C needed for metabolism
 
                      // biomass turnover
 
-                       N_t = Tn * Qn1;                            // N needed for cell renewal
-                       P_t = Tp * Qp1;                            // P needed for cell renewal
+                       F0n = F0nz * Qn1;                            // N needed for cell renewal
+                       F0p = F0pz * Qp1;                            // P needed for cell renewal
 
                      // Needed ingestion of each element
-                       N_n = (N_g + N_t) / AEn;
-                       P_n = (P_g + P_t) / AEp;
-                       C_n = (C_g + Cm) / AEc;
+                       Sn = (Gn + F0n) / an;
+                       Sp = (Gp + F0p) / ap;
+                       Sc = (Gc + F0c) / ac;
 
                      // Stoichiometry and determining limiting element
                       // needed nutrients
-                       st_np = N_n / P_n;
-                       st_cn = C_n / N_n;
-                       st_cp = C_n / P_n;
+                       st_np = Sn / Sp;
+                       st_cn = Sc / Sn;
+                       st_cp = Sc / Sp;
 
                       // food
-                       stf_np = Fn / Fp;
-                       stf_cn = Fc / Fn;
-                       stf_cp = Fc / Fp;
+                       stf_np = Dn / Dp;
+                       stf_cn = Dc / Dn;
+                       stf_cp = Dc / Dp;
 
                      // limiting nutrients: C=1, N=2, P=3
 
@@ -412,37 +412,37 @@ generated quantities {
                      // ingestion, based upon limiting element
 
                        if (lim==3){                       // P limiting
-                               P_in = P_n;
-                               N_in = P_in * stf_np;
-                               C_in = P_in * stf_cp;
+                               Ip = Sp;
+                               In = Ip * stf_np;
+                               Ic = Ip * stf_cp;
                        } else if (lim==2){                // N limiting
-                               N_in = N_n;
-                               P_in = N_in / stf_np;
-                               C_in = N_in * stf_cn;
+                               In = Sn;
+                               Ip = In / stf_np;
+                               Ic = In * stf_cn;
                        } else{                            // C limiting
-                               C_in = C_n;
-                               P_in = C_in / stf_cp;
-                               N_in = C_in / stf_cn;
+                               Ic = Sc;
+                               Ip = Ic / stf_cp;
+                               In = Ic / stf_cn;
                        }
 
                      // egestion
-                       C_eg = C_in * (1-AEc);
-                       N_eg = N_in * (1-AEn);
-                       P_eg = P_in * (1-AEp);
+                       Wc = Ic * (1-ac);
+                       Wn = In * (1-an);
+                       Wp = Ip * (1-ap);
 
                      // excretion
-                       N_ex = N_in - N_eg - N_g;
-                       P_ex = P_in - P_eg - P_g;
+                       Fn = In - Wn - Gn;
+                       Fp = Ip - Wp - Gp;
 
                      // respiration
-                       C_r = C_in - C_eg - C_g;
+                       C_r = Ic - Wc - Gc;
 
                      // leftover excretion
-                       N_l = N_ex - N_t;
-                       P_l = P_ex - P_t;
+                       Frn = Fn - F0n;
+                       Frp = Fp - F0p;
 
                      // ingestion in dry weight
-                       IN = C_in * 100 / Fc;
-                       IN_cnp = C_in + N_in + P_in;
+                       IN = Ic * 100 / Dc;
+                       IN_cnp = Ic + In + Ip;
 
                      }
