@@ -39,6 +39,7 @@
 #'  See fishflux::extract() to extract a summary of predicted variables and
 #'  fishflux::limitation() to get information on the limiting element.
 #' @keywords    fish, stoichiometry, excretion, mcmc
+#' @import rstan
 #' @export cnp_model_mcmc
 #'
 #' @examples

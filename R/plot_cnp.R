@@ -6,6 +6,10 @@
 #' @param y   Output variable(s) to be plotted. Can be a character or a character vector.
 #' @param probs Width of the confidence
 #' @keywords fish, plot, bioenergetic model, stoichiometry
+#' @import ggplot2
+#' @import purrr
+#' @import dplyr
+#' @import tidybayes
 #' @export plot_cnp
 #' @examples
 #' mod <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Dn_sd = 0.05))

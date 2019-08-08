@@ -14,6 +14,8 @@
 #' (kmax = exp(sl * log(lmax) + gp), see Morais and Bellwood (2018) for details)
 #'
 #' @keywords      fish, growth, Von Bertalanfy
+#' @import ggplot2
+#' @import rstan
 #' @export oto_growth
 #'
 #' @examples

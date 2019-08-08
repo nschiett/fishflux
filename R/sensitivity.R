@@ -11,6 +11,7 @@
 #' @details       Returns a dataframe with sd's of model predictions. Row names indicate the variable, who's sd was used for the model run.
 #'                Plots a heatplot with sd values for predictions.
 #' @keywords      fish, stoichiometry, excretion, mcmc
+#' @import ggplot2
 #' @export sensitivity
 #'
 #' @examples
@@ -22,7 +23,7 @@ sensitivity <- function(TL, param, iter = 1000, par,
                                 "Gn", "Gp", "Fc", "Fn",
                                 "Fp", "Wc", "Wn", "Wp"), ...){
 
-requireNamespace(ggplot2)
+requireNamespace("ggplot2")
 
   #parameter SD's and means
   pm <- c("lt_m", "ac_m", "an_m", "ap_m", "Dc_m",
@@ -67,7 +68,6 @@ requireNamespace(ggplot2)
   res_sd <- as.data.frame(t(res_sd))
 
   #plot
-  require(ggplot2)
   res <- res_sd
   res$input_sd <- row.names(res)
   res <- tidyr::gather(res, key, value, -input_sd)

@@ -10,6 +10,8 @@
 #'   \item{prop_lim}{the proportion of iterations for which there is limitation by the element}
 #' }
 #' @keywords fish, plot, limitation
+#' @import ggplot2
+#' @import purrr
 #' @export limitation
 #' @examples
 #' mod <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4,
