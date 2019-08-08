@@ -8,16 +8,16 @@
 #' @keywords fish, plot, bioenergetic model, stoichiometry
 #' @export plot_cnp
 #' @examples
-#' mod2 <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Dn_sd = 0.05))
+#' mod <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Dn_sd = 0.05))
 #' fishflux::plot_cnp(mod = mod, y = c("Fp", "Gp", "Wp", "Ip"), x = "tl", probs = c(0.5, 0.8))
-#' plot_cnp(mod = mod, y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))
+#' fishflux::plot_cnp(mod = mod, y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))
 
 plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
 
-  require(ggplot2)
-  require(purrr)
-  require(dplyr)
-  require(tidybayes)
+  requireNamespace("ggplot2")
+  requireNamespace("purrr")
+  requireNamespace("dplyr")
+  requireNamespace("tidybayes")
 
   get_iter <- function(x){
     get <- t(plyr::ldply(x))

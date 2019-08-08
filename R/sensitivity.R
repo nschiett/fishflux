@@ -22,7 +22,7 @@ sensitivity <- function(TL, param, iter = 1000, par,
                                 "Gn", "Gp", "Fc", "Fn",
                                 "Fp", "Wc", "Wn", "Wp"), ...){
 
-require(ggplot2)
+requireNamespace(ggplot2)
 
   #parameter SD's and means
   pm <- c("lt_m", "ac_m", "an_m", "ap_m", "Dc_m",

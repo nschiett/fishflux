@@ -50,7 +50,7 @@ cnp_model_mcmc <- function(TL, param, iter=1000,
                                       ro_Dc_Dn = 0.2, ro_Dc_Dp = -0.1, ro_Dn_Dp = -0.1,
                                       ro_lwa_lwb = 0.9, ro_alpha_f0 = 0.9), ...){
 
-  require(rstan)
+  requireNamespace("rstan")
 
   ##standard parameters, all sd's are quite low here!
   params_st <- list(lt_m = 10,

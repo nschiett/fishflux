@@ -15,12 +15,12 @@
 #' @export metabolism
 #' @examples
 #'
-#' fishflux::metabolism(family= "Pomacentridae", temp = 27, troph_m = 2)
+#' fishflux::metabolism(family = "Pomacentridae", temp = 27, troph_m = 2)
 
 
 metabolism <- function (family, temp, troph_m, troph_sd = 0.0000000001) {
 
-  require(rstan)
+  requireNamespace("rstan")
 
   ## get b0 and a from database
   metpar <- fishflux::metabolic_parameters

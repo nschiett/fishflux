@@ -19,8 +19,8 @@
 
 limitation <- function(mod, plot = TRUE){
 
-  require("ggplot2")
-  require("purrr")
+  requireNamespace("ggplot2")
+  requireNamespace("purrr")
 
   lim <- lapply(mod$stanfit, function(x){
     ee <- rstan::extract(x,"lim")[[1]]

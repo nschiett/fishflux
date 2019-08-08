@@ -27,7 +27,7 @@ All model parameters below were estimated by Barneche & Allen 2018 Ecology Lette
 }
 \examples{
 
-fishflux::metabolism(family= "Pomacentridae", temp = 27, troph_m = 2)
+fishflux::metabolism(family = "Pomacentridae", temp = 27, troph_m = 2)
 }
 \keyword{Fish,}
 \keyword{metabolism}

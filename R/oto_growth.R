@@ -26,8 +26,8 @@
 
 oto_growth <- function(length, age, id, lmax = 20, linf_m, plot = TRUE, ...){
 
-require(ggplot2)
-require(rstan)
+requireNamespace("ggplot2")
+requireNamespace("rstan")
 
 
 data <- list(
