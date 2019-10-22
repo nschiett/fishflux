@@ -964,7 +964,7 @@ public:
         names__.push_back("Wp");
         names__.push_back("Fn");
         names__.push_back("Fp");
-        names__.push_back("C_r");
+        names__.push_back("Fc");
         names__.push_back("Frn");
         names__.push_back("Frp");
         names__.push_back("IN");
@@ -1628,10 +1628,10 @@ public:
             stan::math::fill(Fp, DUMMY_VAR__);
 
             current_statement_begin__ = 219;
-            double C_r;
-            (void) C_r;  // dummy to suppress unused var warning
-            stan::math::initialize(C_r, DUMMY_VAR__);
-            stan::math::fill(C_r, DUMMY_VAR__);
+            double Fc;
+            (void) Fc;  // dummy to suppress unused var warning
+            stan::math::initialize(Fc, DUMMY_VAR__);
+            stan::math::fill(Fc, DUMMY_VAR__);
 
             current_statement_begin__ = 221;
             double Frn;
@@ -2117,7 +2117,7 @@ public:
             current_statement_begin__ = 435;
             stan::math::assign(Fp, ((Ip - Wp) - Gp));
             current_statement_begin__ = 438;
-            stan::math::assign(C_r, ((Ic - Wc) - Gc));
+            stan::math::assign(Fc, ((Ic - Wc) - Gc));
             current_statement_begin__ = 441;
             stan::math::assign(Frn, (Fn - F0n));
             current_statement_begin__ = 442;
@@ -2388,7 +2388,7 @@ public:
             vars__.push_back(Fp);
 
             current_statement_begin__ = 219;
-            vars__.push_back(C_r);
+            vars__.push_back(Fc);
 
             current_statement_begin__ = 221;
             vars__.push_back(Frn);
@@ -2738,7 +2738,7 @@ public:
         param_name_stream__ << "Fp";
         param_names__.push_back(param_name_stream__.str());
         param_name_stream__.str(std::string());
-        param_name_stream__ << "C_r";
+        param_name_stream__ << "Fc";
         param_names__.push_back(param_name_stream__.str());
         param_name_stream__.str(std::string());
         param_name_stream__ << "Frn";
@@ -3061,7 +3061,7 @@ public:
         param_name_stream__ << "Fp";
         param_names__.push_back(param_name_stream__.str());
         param_name_stream__.str(std::string());
-        param_name_stream__ << "C_r";
+        param_name_stream__ << "Fc";
         param_names__.push_back(param_name_stream__.str());
         param_name_stream__.str(std::string());
         param_name_stream__ << "Frn";
