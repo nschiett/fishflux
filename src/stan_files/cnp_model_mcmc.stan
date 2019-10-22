@@ -216,7 +216,7 @@ generated quantities {
                      real Fn;    // excretion
                      real Fp;
 
-                     real C_r;     // total respiration
+                     real Fc;     // total respiration
 
                      real Frn;     // leftover excretion
                      real Frp;
@@ -435,7 +435,7 @@ generated quantities {
                        Fp = Ip - Wp - Gp;
 
                      // respiration
-                       C_r = Ic - Wc - Gc;
+                       Fc = Ic - Wc - Gc;
 
                      // leftover excretion
                        Frn = Fn - F0n;

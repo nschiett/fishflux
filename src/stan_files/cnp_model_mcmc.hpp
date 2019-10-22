@@ -255,7 +255,7 @@ private:
         double ro_Dc_Dp;
         double ro_Dn_Dp;
         double ro_lwa_lwb;
-        double ro_a_f0;
+        double ro_alpha_f0;
         double logQc_m;
         double logQc_sd;
         double logQn_m;
@@ -698,11 +698,11 @@ public:
             ro_lwa_lwb = vals_r__[pos__++];
 
             current_statement_begin__ = 93;
-            context__.validate_dims("data initialization", "ro_a_f0", "double", context__.to_vec());
-            ro_a_f0 = double(0);
-            vals_r__ = context__.vals_r("ro_a_f0");
+            context__.validate_dims("data initialization", "ro_alpha_f0", "double", context__.to_vec());
+            ro_alpha_f0 = double(0);
+            vals_r__ = context__.vals_r("ro_alpha_f0");
             pos__ = 0;
-            ro_a_f0 = vals_r__[pos__++];
+            ro_alpha_f0 = vals_r__[pos__++];
 
 
             // initialize transformed data variables
@@ -1907,12 +1907,12 @@ public:
             current_statement_begin__ = 289;
             stan::model::assign(Sigma_ab, 
                         stan::model::cons_list(stan::model::index_uni(1), stan::model::cons_list(stan::model::index_uni(2), stan::model::nil_index_list())), 
-                        ((loga_sd * logf0_sd) * ro_a_f0), 
+                        ((loga_sd * logf0_sd) * ro_alpha_f0), 
                         "assigning variable Sigma_ab");
             current_statement_begin__ = 290;
             stan::model::assign(Sigma_ab, 
                         stan::model::cons_list(stan::model::index_uni(2), stan::model::cons_list(stan::model::index_uni(1), stan::model::nil_index_list())), 
-                        ((loga_sd * logf0_sd) * ro_a_f0), 
+                        ((loga_sd * logf0_sd) * ro_alpha_f0), 
                         "assigning variable Sigma_ab");
             current_statement_begin__ = 293;
             stan::math::assign(Qcnp, multi_normal_rng(mu_Qcnp, Sigma_Qcnp, base_rng__));

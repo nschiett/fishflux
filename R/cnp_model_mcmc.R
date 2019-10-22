@@ -230,7 +230,7 @@ cnp_model_mcmc <- function(TL, param, iter=1000,
 
   if (length(TL) == 1){ ## option for only one length ##
   result <- cnp_mcmc(TL, param, iter)
-  return(result)
+  return(list(stanfit = result[[1]], summary = result[[2]]))
 
   } else{ ## option for vector of lengths ##
     result <- parallel::mclapply(TL, param = param, iter = iter, FUN = cnp_mcmc)
