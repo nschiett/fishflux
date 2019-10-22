@@ -25,7 +25,7 @@ limitation <- function(mod, plot = TRUE){
   requireNamespace("purrr")
 
   if (length(unique(mod$summary$TL)) == 1){
-    ee <- rstan::extract(x,"lim")[[1]]
+    ee <- rstan::extract(mod$stanfit,"lim")[[1]]
     c <- length(which(ee==1))/length(ee)
     n <- length(which(ee==2))/length(ee)
     p <- length(which(ee==3))/length(ee)
