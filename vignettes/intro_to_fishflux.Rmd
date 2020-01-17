@@ -1,20 +1,15 @@
 ---
 title: "Intro to fishflux"
-author: "Nina M. Schiettekatte"
+author: "Nina M. D. Schiettekatte"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     fig_caption: yes
-  pdf_document:
-    citation_package: natbib
-    fig_caption: yes
-    keep_tex: yes
-    latex_engine: xelatex
-vignette: >
-  %\VignetteIndexEntry{Intro to fishflux}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 bibliography: bibliography.bib
+vignette: >
+  %\VignetteIndexEntry{Intro to fishflux}   
+  %\VignetteEncoding{UTF-8} 
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ```{r setup, include = FALSE}
@@ -78,35 +73,51 @@ library(fishflux)
 
 Before running the model, the parameters have to be specified. Below, there is a table showing all parameters needed to run the model simulation. `fishflux` provides several functions to find some of these parameters, but note that others have to be provided by the user at this stage. Ideally, all parameters should also have a standard deviation, so that their uncertainty can be reflected in the model predictions
 \newline
-\begin{table}[h!]
-\centering
-\caption{. Overview of inputs, including input parameters, to be specified by the user of the model. k indicates c, n or p. VBGC = von Bertalanffy growth curve.}
-\begin{tabular}{l l l}
-\hline
-\rowcolor{lightgrey}
-Symbol & Description & Unit\\
-\hline
-$a_\textrm{k}$  & Element-specific assimilation efficiency & \% \\
-$l_\textrm{t}$  & Total length of individual & cm \\
-$linf$  & Asymptotic adult length (VBGC) & cm \\
-$\kappa$  & Growth rate parameter (VBGC) & $\textrm{yr}^{-1}$ \\
-$t_0$  & Age at settlement (VBGC) & $\textrm{yr}$ \\
-$lw_a$  & Parameter length-weight relationship & $\textrm{g cm}^{-1}$ \\
-$lw_b$  & Parameter length-weight relationship & \_\\
-$Q_\textrm{k}$  & Element-specific body content percentage & \% \\
-$f_\textrm{0}$  & Metabolic normalisation constant independent of body mass & $\textrm{g C} \textrm{g}^{-\alpha} \textrm{d}^{-1}$ \\
-$alpha$  & Mass-scaling exponent &  \_\\
-$theta$  & Activity scope & \_ \\
-$v$  & Environmental temperature & \textdegree C \\
-$h$  & trophic level & \_ \\
-$r$  & Aspect ratio of caudal fin & \_ \\
-$F0nz$  & Mass-specific turnover rate of N & $\textrm{g N} \textrm{g}^{-1} \textrm{d}^{-1}$ \\
-$F0pz$  & Mass-specific turnover rate of P & $\textrm{g P} \textrm{g}^{-1} \textrm{d}^{-1}$ \\
-$mdw$ & Ratio of dry mass and wet mass of fish & \_ \\
-$D_\textrm{k}$  & Elemental stoichiometry of diet & \% \\
-\hline
-\end{tabular}
-\end{table}
+
+```{r, echo = FALSE, results = "asis", message = FALSE}
+library(knitr)
+
+tex2markdown <- function(texstring) {
+  writeLines(text = texstring,
+             con = myfile <- tempfile(fileext = ".tex"))
+  texfile <- pandoc(input = myfile, format = "html")
+  cat(readLines(texfile), sep = "\n")
+  unlink(c(myfile, texfile))
+}
+
+textable <- "
+\\begin{table}[h!]
+\\centering
+\\caption{. Overview of inputs, including input parameters, to be specified by the user of the model. k indicates c, n or p. VBGC = von Bertalanffy growth curve.}
+\\begin{tabular}{l l l}
+\\hline
+Symbol & Description & Unit\\\\
+\\hline
+$a_\\textrm{k}$  & Element-specific assimilation efficiency & \\% \\\\
+$l_\\textrm{t}$  & Total length of individual & cm \\\\
+$linf$  & Asymptotic adult length (VBGC) & cm \\\\
+$\\kappa$  & Growth rate parameter (VBGC) & $\\textrm{yr}^{-1}$ \\\\
+$t_0$  & Age at settlement (VBGC) & $\\textrm{yr}$ \\\\
+$lw_a$  & Parameter length-weight relationship & $\\textrm{g cm}^{-1}$ \\\\
+$lw_b$  & Parameter length-weight relationship & \\_\\\\
+$Q_\\textrm{k}$  & Element-specific body content percentage & \\% \\\\
+$f_\\textrm{0}$  & Metabolic normalisation constant independent of body mass & $\\textrm{g C} \\textrm{g}^{-\\alpha} \\textrm{d}^{-1}$ \\\\
+$alpha$  & Mass-scaling exponent &  \\_\\\\
+$theta$  & Activity scope & \\_ \\\\
+$v$  & Environmental temperature & \\textdegree C \\\\
+$h$  & trophic level & \\_ \\\\
+$r$  & Aspect ratio of caudal fin & \\_ \\\\
+$F0nz$  & Mass-specific turnover rate of N & $\\textrm{g N} \\textrm{g}^{-1} \\textrm{d}^{-1}$ \\\\
+$F0pz$  & Mass-specific turnover rate of P & $\\textrm{g P} \\textrm{g}^{-1} \\textrm{d}^{-1}$ \\\\
+$mdw$ & Ratio of dry mass and wet mass of fish & \\_ \\\\
+$D_\\textrm{k}$  & Elemental stoichiometry of diet & \\% \\\\
+\\hline
+\\end{tabular}
+\\end{table}
+"
+
+tex2markdown(textable)
+```
 
 \newline
 
@@ -125,24 +136,16 @@ The `find_lw` function searches [FishBase](https://www.fishbase.de/) to find len
 \newline
 ```{r,message=TRUE,echo=TRUE}
 # example
-fishflux::find_lw("Zebrasoma scopas")
+fishflux::find_lw("Zebrasoma scopas", mirror = "se")
 ```
 \newline
-The model uses parameters von Bertalanffy's growth model (VBGM) to estimate growth rates. A quick way to get available information from FishBase is the function `growth_params()`. This can be a good indication, but users should interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. Alternatively, it is advised to use growth curves derived from otolith readings. The function `oto_growth()` allows for direct estimation of growth parameters from otolith data, using a hierarchical Bayesian model fitted using `rstan`. In the absence of otolith data, one might consider extracting standardised estimations from @Morais2018.
+The model uses parameters von Bertalanffy's growth model (VBGM) to estimate growth rates. A quick way to get available information from FishBase is the function `growth_params()`. This can be a good indication, but users should interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. Alternatively, it is advised to use growth curves derived from otolith readings. In the absence of otolith data, one might consider extracting standardised estimations from @morais2018.
 
 \newline
 ```{r,message=FALSE,echo=TRUE}
 # example
 # The option otolith=TRUE filters out sources that used otoliths for the estimation of growth parameters
 fishflux::growth_params("Sargocentron microstoma", otolith = FALSE)
-
-# Load example otolith data
-sarmi <- fishflux::sarmi
-# Fit bayesian regression model
-oto_growth <- fishflux::oto_growth(length = sarmi$length, age = sarmi$age, id = sarmi$id, linf_m = 16)
-oto_growth$summary
-## linf_m indicates the prior knowledge on this parameters. The species has a maximum length of 16 cm. 
-## Note that in this example, there is a large difference between FishBase estimates and otolith analysis. This illustrates how important it is to check the parameter estimates you're using.
 ```
 
 \newline
@@ -154,7 +157,7 @@ To get an overview of all parameters available, `fishflux` provides a wrapper fu
 \newline
 ```{r,cache=TRUE,results='hide',message=FALSE}
 # example
-zebsco <- fishflux::model_parameters("Zebrasoma scopas", family = "Acanthuridae", temp = 27)
+zebsco <- fishflux::model_parameters("Zebrasoma scopas", family = "Acanthuridae", temp = 27, mirror = "se")
 ## Here we set the temperature at 27 degrees as an example, this the average sea temperature in Moorea, French Polynesia
 ```
 ```{r}
@@ -196,7 +199,7 @@ fishflux::plot_cnp(model, x = "tl", y = c("Fp", "Wp", "Ip", "Gp"), probs = 0.5)
 \newline
 
 ### Plot results 
-The function `limitation()` returns the proportion of iterations of the model simulation that had limitation of C, N and P respectively. The function `plot_cnp()` plots the predicted output of the model. 
+To visualize main outputs of the model, `fishflux` contains a plotting function. The function `limitation()` returns the proportion of iterations of the model simulation that had limitation of C, N and P respectively. The function `plot_cnp()` plots the predicted output of the model. 
 \newline
 ```{r, message=FALSE, warning=FALSE}
 ## limitation

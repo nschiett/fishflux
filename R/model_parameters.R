@@ -5,6 +5,7 @@
 #' @param family family
 #' @param otolith TRUE or FALSE, if TRUE, function will only search fishbase for growth parameters that are based upon otolith analysis
 #' @param temp temperature
+#' @param ... Additional arguments. See find_lw()
 #' @details Returns a dataframe with all parameters that can be estimated
 #' @keywords fish, find some parameters needed for cnp_model
 #' @export model_parameters
@@ -12,7 +13,7 @@
 #'
 #' fishflux::model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)
 
-model_parameters <- function(sp, family, otolith = TRUE, temp){
+model_parameters <- function(sp, family, otolith = TRUE, temp, ...){
 
   #check species
   fishflux::check_name_fishbase(sp)
@@ -21,7 +22,7 @@ model_parameters <- function(sp, family, otolith = TRUE, temp){
   wprop <- fishflux::wprop(family = family)
 
   #length weight
-  length_weight <- fishflux::find_lw(sp)
+  length_weight <- fishflux::find_lw(sp, ...)
 
   #growth parameters
   growth <- fishflux::growth_params(sp = sp, otolith = otolith)

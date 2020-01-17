@@ -1,0 +1,6 @@
+pandoc: 2.1.2
+pkgdown: 1.3.0
+pkgdown_sha: ~
+articles:
+  intro_to_fishflux: intro_to_fishflux.html
+

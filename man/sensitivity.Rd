@@ -4,8 +4,14 @@
 \alias{sensitivity}
 \title{A function to check the sensitivity of cnp_model predictions based on the variation of input parameters}
 \usage{
-sensitivity(TL, param, iter = 1000, par, out = c("Ic", "In", "Ip",
-  "Gc", "Gn", "Gp", "Fc", "Fn", "Fp", "Wc", "Wn", "Wp"), ...)
+sensitivity(
+  TL,
+  param,
+  iter = 1000,
+  par,
+  out = c("Ic", "In", "Ip", "Gc", "Gn", "Gp", "Fc", "Fn", "Fp", "Wc", "Wn", "Wp"),
+  ...
+)
 }
 \arguments{
 \item{TL}{total length of a fish in cm}

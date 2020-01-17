@@ -23,9 +23,9 @@ Returns a data frame with:
 }
 }
 \examples{
-mod <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4,
+mod <- fishflux::cnp_model_mcmc(TL = 5, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4,
                                                         Dc_sd = 0.1, Dn_sd = 0.05, Dp_sd = 0.05))
-limitation(mod)
+fishflux::limitation(mod)
 }
 \keyword{fish,}
 \keyword{limitation}
