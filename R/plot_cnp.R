@@ -10,11 +10,15 @@
 #' @import purrr
 #' @import dplyr
 #' @import tidybayes
+#' @import fishualize
 #' @export plot_cnp
 #' @examples
-#' mod <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, Dn_sd = 0.05))
-#' fishflux::plot_cnp(mod = mod, y = c("Fp", "Gp", "Wp", "Ip"), x = "tl", probs = c(0.5, 0.8))
-#' fishflux::plot_cnp(mod = mod, y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))
+#' mod <- fishflux::cnp_model_mcmc(TL = 5:15, param = list(
+#'           Qc_m = 40, Qn_m = 10, Qp_m = 4, Dn_sd = 0.05))
+#' fishflux::plot_cnp(mod = mod, y = c("Fp", "Gp", "Wp", "Ip"),
+#'                x = "tl", probs = c(0.5, 0.8))
+#' fishflux::plot_cnp(mod = mod, y = "Fp", x = "tl",
+#'                    probs = c(0.5, 0.8, 0.95))
 
 plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
 
@@ -22,6 +26,7 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
   requireNamespace("purrr")
   requireNamespace("dplyr")
   requireNamespace("tidybayes")
+  requireNamespace("fishualize")
 
   get_iter <- function(x){
     get <- t(plyr::ldply(x))
@@ -36,7 +41,7 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
   iter <- (lapply(mod$stanfit, FUN = function(x){rstan::extract(x, vars)})) %>%
     lapply( FUN = get_iter) %>%
     dplyr::bind_rows() %>%
-    mutate(lt = round(lt))
+    mutate(lt = round(.data$lt))
 
   iter$w <- mean(iter$lwa)*iter$lt^mean(iter$lwb)
 
@@ -47,22 +52,26 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
     if (x == "biomass"){
 
       plot <-
-        ggplot(group_by(iter_t, iter), aes(x = w, y = value, color = output)) +
+        ggplot(group_by(iter_t, iter),
+               aes(x = .data$w, y = .data$value, color = .data$output,
+                   fill = .data$output)) +
         stat_lineribbon(alpha = 0.4, show.legend = FALSE, .width = probs) +
-        scale_fill_brewer(palette = "Set2") +
-        scale_color_brewer(palette = "Dark2") +
+        fishualize::scale_color_fish_d(option = "Scarus_quoyi") +
+        fishualize::scale_fill_fish_d(option = "Scarus_quoyi") +
         theme_bw() +
-        labs(x = "Biomass (g)", y = "Output (g/day)")
+        labs(x = "Biomass (g)", y = "Output (g/day)", fill = "output", color = "output")
 
     } else if (x == "tl"){
 
       plot <-
-        ggplot(group_by(iter_t, iter), aes(x = lt, y = value, color = output, fill = output)) +
-        stat_lineribbon(alpha = 0.4,  .width = probs ) +
-        scale_fill_brewer(palette = "Set2") +
-        scale_color_brewer(palette = "Dark2") +
+        ggplot(group_by(iter_t, iter),
+               aes(x = .data$lt, y = .data$value, color = .data$output,
+                   fill = .data$output)) +
+        stat_lineribbon(alpha = 0.4, .width = probs) +
+        fishualize::scale_color_fish_d(option = "Scarus_quoyi") +
+        fishualize::scale_fill_fish_d(option = "Scarus_quoyi") +
         theme_bw() +
-        labs(x = "Total length (cm)", y = "Output (g/day)")
+        labs(x = "Total length (cm)", y = "Output (g/day)", fill = "output", color = "output")
     }
 
   } else if (length(y) == 1){
@@ -72,7 +81,8 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
     if (x == "biomass"){
 
       plot <-
-        ggplot(group_by(iter, iter), aes(x = w, y = value)) +
+        ggplot(group_by(iter, iter),
+               aes(x = .data$w, y = .data$value)) +
         stat_lineribbon(alpha = 0.9, show.legend = FALSE, .width = probs) +
         scale_fill_brewer() +
         theme_bw() +
@@ -81,7 +91,8 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)){
     } else if (x == "tl"){
 
       plot <-
-        ggplot(group_by(iter, iter), aes(x = lt, y = value)) +
+        ggplot(group_by(iter, iter),
+               aes(x = .data$lt, y = .data$value)) +
         stat_lineribbon(alpha = 0.9,  .width = probs ) +
         scale_fill_brewer() +
         theme_bw() +

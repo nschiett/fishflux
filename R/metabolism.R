@@ -1,4 +1,4 @@
-#' A function to generate B0 and a
+#' A function to estimate f0 and alpha
 #'
 #' All model parameters below were estimated by Barneche & Allen 2018 Ecology
 #' Letters doi: 10.1111/ele.12947. These parameters are for the best model
@@ -28,12 +28,12 @@ metabolism <- function (family, temp, troph_m, troph_sd = 0.0000000001) {
   metpars <- metpar[metpar$family == family, ]
 
   if (nrow(metpars) > 0){
-  message("values for b0 and a on family level")
+  message("values for b0 and alpha on family level")
   }
 
   if (nrow(metpars) == 0){
     metpars <- metpar[metpar$family == "all", ]
-    message("average values for b0 and a used")
+    message("average values for b0 and alpha used")
   }
 
   metpars$troph_m <-  troph_m
@@ -50,5 +50,6 @@ metabolism <- function (family, temp, troph_m, troph_sd = 0.0000000001) {
   result <- cbind(result, metpars)
   result <- result[, ! names(result) %in% c("troph_m", "troph_sd", "temp")]
   rownames(result) <- NULL
+  colnames(result) <- c("f0_m", "f0_sd", "alpha_m", "alpha_sd", "b0_m", "b0_sd")
   return(result)
 }

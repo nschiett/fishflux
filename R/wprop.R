@@ -8,6 +8,8 @@
 #' @param family family
 #' @keywords fish, find some parameters needed for cnp_model
 #' @export wprop
+#' @importFrom stats median quantile sd
+#'
 #' @examples
 #'
 #' wprop(family="Scaridae")

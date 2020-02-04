@@ -73,7 +73,7 @@
       <h1>Intro to fishflux</h1>
                         <h4 class="author">Nina M. D. Schiettekatte</h4>
             
-            <h4 class="date">2020-01-17</h4>
+            <h4 class="date">2020-02-04</h4>
       
       
       <div class="hidden name"><code>intro_to_fishflux.Rmd</code></div>
@@ -88,16 +88,16 @@
 <p>The <code>fishflux</code> package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fishes. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user-friendly interface to apply the model. <code>fishflux</code> is ideal for fish ecologists wishing to predict ingestion, egestion and excretion to study fluxes of nutrients and energy.</p>
 <p>Main assets:</p>
 <ul>
-<li>Provides function to model fluxes of Carbon, Nitrogen and Phosphorus for fish</li>
+<li>Provides function to model fluxes of Carbon, Nitrogen and Phosphorus for fishes</li>
 <li>Allows for the estimation of uncertainty, dpending on the uncertainy of the input parameters</li>
-<li>Provides some functions to find the right parameters as inputs into the model</li>
-<li>Provides functions to illustrate results</li>
+<li>Provides some functions to help find parameters as inputs for the model</li>
+<li>Provides functions to extract and illustrate results</li>
 </ul>
 </div>
 <div id="installing-and-loading-fishflux" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installing-and-loading-fishflux" class="anchor"></a>Installing and loading fishflux</h2>
-<p><code>fishflux</code> uses Markov Chain Monte Carlo simulations provided by <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">rstan</a>. Therefore, the first step is to install <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">rstan</a>.</p>
+<p><code>fishflux</code> uses Markov Chain Monte Carlo simulations provided by <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">stan</a>. Therefore, the first step is to install <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">rstan</a>. It’s important to closely follow all the steps described on the page depending on your operating system.</p>
 <div id="github" class="section level3">
 <h3 class="hasAnchor">
 <a href="#github" class="anchor"></a>GitHub</h3>
@@ -158,7 +158,7 @@ Unit
 Element-specific assimilation efficiency
 </td>
 <td style="text-align: left;">
-%
+_
 </td>
 </tr>
 <tr class="even">
@@ -382,8 +382,8 @@ Elemental stoichiometry of diet
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(zebsco)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt;            species    t0 Linf     k     asp troph   lwa_m      lwa_sd lwb_m</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; 1 Zebrasoma scopas -0.49 13.3 0.425 2.02091     2 0.02455 0.002637755  2.98</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;      lwb_sd     mdw_m        f0_m        f0_sd  a_m       a_sd</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 1 0.0255102 0.2504833 0.001517989 3.223872e-10 0.77 0.05286288</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;      lwb_sd     mdw_m        f0_m       f0_sd alpha_m   alpha_sd</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 1 0.0255102 0.2504833 0.001517989 3.34101e-10    0.77 0.05286288</span></a></code></pre></div>
 
 <p>All other parameters have to be provided by the user. For more information on how to acquire these parameters, take a look at (“this paper” add reference to methods paper).</p>
 </div>
@@ -400,159 +400,141 @@ Elemental stoichiometry of diet
 <p>The object <code>model</code> now contains all the samples generated from the MCMC simulation and a summary of all parameters generated. To extract certain variables of interest, use the <code><a href="../reference/extract.html">extract()</a></code> function. Predictions for fluxes of C, N and P are all in g / day. </p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">fishflux<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/fishflux/topics/extract">extract</a></span>(model, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Fn"</span>,<span class="st">"Fp"</span>))</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt;    TL      Fn_mean    Fn_median        Fn_sd      Fn_2.5%    Fn_97.5%</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; 1   5 0.0008955479 0.0008258226 0.0004255824 0.0002345458 0.001941146</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; 2   6 0.0012970052 0.0011949484 0.0006013236 0.0003141779 0.002732121</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; 3   7 0.0018342374 0.0017248965 0.0008860071 0.0004454368 0.004046822</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; 4   8 0.0025842204 0.0023882759 0.0012257510 0.0007321250 0.005569339</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 5   9 0.0034331222 0.0031397740 0.0017625430 0.0008056597 0.007667440</span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 6  10 0.0044807912 0.0040576121 0.0023534496 0.0013303526 0.010224647</span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 7  11 0.0055435698 0.0049826437 0.0030960897 0.0012359501 0.012493653</span></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 8  12 0.0070316328 0.0062330231 0.0040647715 0.0016656244 0.016733256</span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; 9  13 0.0089270936 0.0073108848 0.0055551922 0.0019005316 0.021912133</span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; 10 14 0.0117367675 0.0100877695 0.0073311069 0.0021171526 0.029513242</span></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt; 11 15 0.0129703886 0.0113134189 0.0079068551 0.0026511095 0.030766392</span></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt; 12 16 0.0164940138 0.0148962428 0.0104098264 0.0028909888 0.041558551</span></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt; 13 17 0.0191816849 0.0166885958 0.0131506188 0.0035676143 0.052499762</span></a>
-<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt; 14 18 0.0228250163 0.0196105294 0.0146841479 0.0048277291 0.055757211</span></a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt; 15 19 0.0279548736 0.0229176413 0.0189190890 0.0066906772 0.076827068</span></a>
-<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; 16 20 0.0310337521 0.0265333541 0.0196774406 0.0075222516 0.078932704</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; 1   5 0.0008735445 0.0008180902 0.0004359919 0.0001931906 0.001822702</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; 2   6 0.0013351424 0.0012399102 0.0006359550 0.0003345099 0.002867569</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; 3   7 0.0018864724 0.0017489422 0.0008734124 0.0005468159 0.003905995</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; 4   8 0.0026232163 0.0024212966 0.0012770616 0.0007387469 0.005692280</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 5   9 0.0034281785 0.0031073802 0.0017616968 0.0009498458 0.007764198</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 6  10 0.0043735420 0.0039673175 0.0024173887 0.0010182236 0.010351635</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 7  11 0.0057297302 0.0051429801 0.0032188070 0.0011074336 0.013484843</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 8  12 0.0076006411 0.0063911685 0.0046294737 0.0017015228 0.018014232</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; 9  13 0.0089506133 0.0076260658 0.0057673118 0.0018587129 0.023048813</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; 10 14 0.0112200882 0.0093699664 0.0073112930 0.0021846644 0.028050767</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt; 11 15 0.0136631904 0.0113353883 0.0089891773 0.0022461928 0.035089276</span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt; 12 16 0.0164711547 0.0142855882 0.0108606140 0.0028397809 0.042580874</span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt; 13 17 0.0198420979 0.0176556616 0.0124254845 0.0036700164 0.048381888</span></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt; 14 18 0.0234751405 0.0203215432 0.0151906701 0.0050884560 0.059875514</span></a>
+<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt; 15 19 0.0267734981 0.0229151627 0.0171714462 0.0062456734 0.067188799</span></a>
+<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; 16 20 0.0322448868 0.0276996582 0.0201435548 0.0080854162 0.079898606</span></a>
 <a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt;          Fn_25%      Fn_75%      Fp_mean    Fp_median        Fp_sd      Fp_2.5%</span></a>
-<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt; 1  0.0006123054 0.001134264 8.524345e-05 4.339963e-05 0.0001172360 3.725471e-06</span></a>
-<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; 2  0.0009017472 0.001612954 1.665594e-04 8.869752e-05 0.0001825659 7.130607e-06</span></a>
-<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; 3  0.0011864627 0.002266722 2.824865e-04 1.435468e-04 0.0003214136 1.604043e-05</span></a>
-<a class="sourceLine" id="cb10-23" data-line-number="23"><span class="co">#&gt; 4  0.0017000616 0.003209660 4.566419e-04 2.757722e-04 0.0004824821 1.730468e-05</span></a>
-<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co">#&gt; 5  0.0022295972 0.004242143 7.432737e-04 5.081601e-04 0.0006875274 3.577810e-05</span></a>
-<a class="sourceLine" id="cb10-25" data-line-number="25"><span class="co">#&gt; 6  0.0027355438 0.005668304 1.065994e-03 7.471790e-04 0.0009727661 6.135989e-05</span></a>
-<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#&gt; 7  0.0032919948 0.007000382 1.473398e-03 1.070635e-03 0.0012907134 9.170480e-05</span></a>
-<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">#&gt; 8  0.0038494131 0.009236494 2.044074e-03 1.669268e-03 0.0016778940 8.848423e-05</span></a>
-<a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">#&gt; 9  0.0047344655 0.012307162 2.764868e-03 2.193149e-03 0.0022492280 2.390001e-04</span></a>
-<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">#&gt; 10 0.0060942701 0.015894948 3.919020e-03 3.298661e-03 0.0029573556 3.453247e-04</span></a>
-<a class="sourceLine" id="cb10-30" data-line-number="30"><span class="co">#&gt; 11 0.0064191675 0.018450422 4.463500e-03 3.761123e-03 0.0031687030 4.874340e-04</span></a>
-<a class="sourceLine" id="cb10-31" data-line-number="31"><span class="co">#&gt; 12 0.0083058135 0.021809421 5.936874e-03 5.258918e-03 0.0041042267 8.207641e-04</span></a>
-<a class="sourceLine" id="cb10-32" data-line-number="32"><span class="co">#&gt; 13 0.0088364634 0.025678045 7.222604e-03 6.254870e-03 0.0052898013 9.691334e-04</span></a>
-<a class="sourceLine" id="cb10-33" data-line-number="33"><span class="co">#&gt; 14 0.0103949387 0.031444284 8.873268e-03 7.658643e-03 0.0058819930 1.773699e-03</span></a>
-<a class="sourceLine" id="cb10-34" data-line-number="34"><span class="co">#&gt; 15 0.0134682428 0.036450599 1.111057e-02 9.085239e-03 0.0075046451 2.689997e-03</span></a>
-<a class="sourceLine" id="cb10-35" data-line-number="35"><span class="co">#&gt; 16 0.0151608032 0.042837238 1.237205e-02 1.061192e-02 0.0078553665 3.003296e-03</span></a>
+<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt; 1  0.0005688334 0.001099530 8.781951e-05 4.741228e-05 0.0001108144 2.937049e-06</span></a>
+<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; 2  0.0008548028 0.001705604 1.495573e-04 8.486750e-05 0.0001680721 6.999828e-06</span></a>
+<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; 3  0.0012563771 0.002405411 2.979977e-04 1.753525e-04 0.0003210321 9.049682e-06</span></a>
+<a class="sourceLine" id="cb10-23" data-line-number="23"><span class="co">#&gt; 4  0.0016393910 0.003382563 4.779228e-04 2.591227e-04 0.0004888600 1.689194e-05</span></a>
+<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co">#&gt; 5  0.0022567991 0.004175215 7.225021e-04 4.447142e-04 0.0007192473 4.361310e-05</span></a>
+<a class="sourceLine" id="cb10-25" data-line-number="25"><span class="co">#&gt; 6  0.0025795293 0.005631954 1.063564e-03 7.869423e-04 0.0009499247 4.523667e-05</span></a>
+<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#&gt; 7  0.0033512834 0.007552008 1.546335e-03 1.112779e-03 0.0012960196 8.112747e-05</span></a>
+<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">#&gt; 8  0.0041015015 0.010137403 2.231559e-03 1.701252e-03 0.0018995291 7.096956e-05</span></a>
+<a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">#&gt; 9  0.0046656915 0.011801141 2.787657e-03 2.181890e-03 0.0023308848 1.840863e-04</span></a>
+<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">#&gt; 10 0.0058123160 0.014658110 3.733102e-03 3.018849e-03 0.0029698339 2.489114e-04</span></a>
+<a class="sourceLine" id="cb10-30" data-line-number="30"><span class="co">#&gt; 11 0.0066851223 0.019029803 4.759137e-03 3.854950e-03 0.0035776898 3.795909e-04</span></a>
+<a class="sourceLine" id="cb10-31" data-line-number="31"><span class="co">#&gt; 12 0.0075952025 0.022044947 5.960292e-03 5.013881e-03 0.0043699257 5.843967e-04</span></a>
+<a class="sourceLine" id="cb10-32" data-line-number="32"><span class="co">#&gt; 13 0.0094459180 0.027140718 7.453111e-03 6.623888e-03 0.0049619118 1.129155e-03</span></a>
+<a class="sourceLine" id="cb10-33" data-line-number="33"><span class="co">#&gt; 14 0.0105604470 0.032818757 9.112051e-03 7.907569e-03 0.0060452083 1.734314e-03</span></a>
+<a class="sourceLine" id="cb10-34" data-line-number="34"><span class="co">#&gt; 15 0.0130209334 0.035868497 1.063475e-02 9.058850e-03 0.0068264008 2.504863e-03</span></a>
+<a class="sourceLine" id="cb10-35" data-line-number="35"><span class="co">#&gt; 16 0.0159217273 0.044387356 1.281987e-02 1.108297e-02 0.0080119227 3.213206e-03</span></a>
 <a class="sourceLine" id="cb10-36" data-line-number="36"><span class="co">#&gt;        Fp_97.5%       Fp_25%       Fp_75%</span></a>
-<a class="sourceLine" id="cb10-37" data-line-number="37"><span class="co">#&gt; 1  0.0004260949 2.205774e-05 8.877818e-05</span></a>
-<a class="sourceLine" id="cb10-38" data-line-number="38"><span class="co">#&gt; 2  0.0006306971 4.425134e-05 2.319040e-04</span></a>
-<a class="sourceLine" id="cb10-39" data-line-number="39"><span class="co">#&gt; 3  0.0011511451 7.583635e-05 3.643716e-04</span></a>
-<a class="sourceLine" id="cb10-40" data-line-number="40"><span class="co">#&gt; 4  0.0018839593 1.311611e-04 6.163505e-04</span></a>
-<a class="sourceLine" id="cb10-41" data-line-number="41"><span class="co">#&gt; 5  0.0026595366 2.577621e-04 1.037118e-03</span></a>
-<a class="sourceLine" id="cb10-42" data-line-number="42"><span class="co">#&gt; 6  0.0036538476 3.434465e-04 1.578784e-03</span></a>
-<a class="sourceLine" id="cb10-43" data-line-number="43"><span class="co">#&gt; 7  0.0045746373 4.764752e-04 2.091847e-03</span></a>
-<a class="sourceLine" id="cb10-44" data-line-number="44"><span class="co">#&gt; 8  0.0058357300 6.928179e-04 2.918448e-03</span></a>
-<a class="sourceLine" id="cb10-45" data-line-number="45"><span class="co">#&gt; 9  0.0082253632 9.510004e-04 4.063798e-03</span></a>
-<a class="sourceLine" id="cb10-46" data-line-number="46"><span class="co">#&gt; 10 0.0112795489 1.611900e-03 5.542323e-03</span></a>
-<a class="sourceLine" id="cb10-47" data-line-number="47"><span class="co">#&gt; 11 0.0116397724 1.789601e-03 6.610044e-03</span></a>
-<a class="sourceLine" id="cb10-48" data-line-number="48"><span class="co">#&gt; 12 0.0152541826 2.644415e-03 8.106738e-03</span></a>
-<a class="sourceLine" id="cb10-49" data-line-number="49"><span class="co">#&gt; 13 0.0205718228 2.960951e-03 9.739162e-03</span></a>
-<a class="sourceLine" id="cb10-50" data-line-number="50"><span class="co">#&gt; 14 0.0223344396 3.817202e-03 1.235350e-02</span></a>
-<a class="sourceLine" id="cb10-51" data-line-number="51"><span class="co">#&gt; 15 0.0304947175 5.383908e-03 1.442856e-02</span></a>
-<a class="sourceLine" id="cb10-52" data-line-number="52"><span class="co">#&gt; 16 0.0309298952 5.972641e-03 1.726109e-02</span></a></code></pre></div>
+<a class="sourceLine" id="cb10-37" data-line-number="37"><span class="co">#&gt; 1  0.0004156623 2.420137e-05 9.459909e-05</span></a>
+<a class="sourceLine" id="cb10-38" data-line-number="38"><span class="co">#&gt; 2  0.0006167611 4.144985e-05 1.959777e-04</span></a>
+<a class="sourceLine" id="cb10-39" data-line-number="39"><span class="co">#&gt; 3  0.0012747827 8.575189e-05 4.061961e-04</span></a>
+<a class="sourceLine" id="cb10-40" data-line-number="40"><span class="co">#&gt; 4  0.0017410581 1.362305e-04 7.110341e-04</span></a>
+<a class="sourceLine" id="cb10-41" data-line-number="41"><span class="co">#&gt; 5  0.0025333628 2.194086e-04 1.040918e-03</span></a>
+<a class="sourceLine" id="cb10-42" data-line-number="42"><span class="co">#&gt; 6  0.0037629598 3.453690e-04 1.523614e-03</span></a>
+<a class="sourceLine" id="cb10-43" data-line-number="43"><span class="co">#&gt; 7  0.0050591103 5.621744e-04 2.243619e-03</span></a>
+<a class="sourceLine" id="cb10-44" data-line-number="44"><span class="co">#&gt; 8  0.0067085565 6.921928e-04 3.295376e-03</span></a>
+<a class="sourceLine" id="cb10-45" data-line-number="45"><span class="co">#&gt; 9  0.0083097010 9.169752e-04 3.923727e-03</span></a>
+<a class="sourceLine" id="cb10-46" data-line-number="46"><span class="co">#&gt; 10 0.0107180223 1.408698e-03 5.165333e-03</span></a>
+<a class="sourceLine" id="cb10-47" data-line-number="47"><span class="co">#&gt; 11 0.0133959519 1.809977e-03 7.043751e-03</span></a>
+<a class="sourceLine" id="cb10-48" data-line-number="48"><span class="co">#&gt; 12 0.0164823476 2.317655e-03 8.043810e-03</span></a>
+<a class="sourceLine" id="cb10-49" data-line-number="49"><span class="co">#&gt; 13 0.0190360443 3.310860e-03 1.042042e-02</span></a>
+<a class="sourceLine" id="cb10-50" data-line-number="50"><span class="co">#&gt; 14 0.0231881495 3.955894e-03 1.271516e-02</span></a>
+<a class="sourceLine" id="cb10-51" data-line-number="51"><span class="co">#&gt; 15 0.0270900513 5.179962e-03 1.399752e-02</span></a>
+<a class="sourceLine" id="cb10-52" data-line-number="52"><span class="co">#&gt; 16 0.0313480239 6.338790e-03 1.767301e-02</span></a></code></pre></div>
 
 </div>
 <div id="plot-results" class="section level3">
 <h3 class="hasAnchor">
 <a href="#plot-results" class="anchor"></a>Plot results</h3>
-<p>To visualize main outputs of the model, <code>fishflux</code> contains a plotting function.</p>
-
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">## Plot one variable:</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">fishflux<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/fishflux/topics/plot_cnp">plot_cnp</a></span>(model, <span class="dt">x =</span> <span class="st">"tl"</span>, <span class="dt">y =</span> <span class="st">"Fp"</span>, <span class="dt">probs =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">0.95</span>))</a></code></pre></div>
-<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-1.png" width="768"></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">## Plot multiple variables:</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">fishflux<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/fishflux/topics/plot_cnp">plot_cnp</a></span>(model, <span class="dt">x =</span> <span class="st">"tl"</span>, <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Fp"</span>, <span class="st">"Wp"</span>, <span class="st">"Ip"</span>, <span class="st">"Gp"</span>), <span class="dt">probs =</span> <span class="fl">0.5</span>)</a></code></pre></div>
-<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-2.png" width="768"></p>
-</div>
-<div id="plot-results-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#plot-results-1" class="anchor"></a>Plot results</h3>
 <p>To visualize main outputs of the model, <code>fishflux</code> contains a plotting function. The function <code><a href="../reference/limitation.html">limitation()</a></code> returns the proportion of iterations of the model simulation that had limitation of C, N and P respectively. The function <code><a href="../reference/plot_cnp.html">plot_cnp()</a></code> plots the predicted output of the model. </p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">## limitation</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">fishflux<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/fishflux/topics/limitation">limitation</a></span>(model)</a></code></pre></div>
-<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">## limitation</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">fishflux<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/fishflux/topics/limitation">limitation</a></span>(model)</a></code></pre></div>
+<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-1.png" width="768"></p>
 <pre><code><a href="../reference/plot_cnp.html">#&gt;    tl nutrient prop_lim
 #&gt; 1   5        c    0.000
 #&gt; 2   6        c    0.000
 #&gt; 3   7        c    0.000
 #&gt; 4   8        c    0.000
 #&gt; 5   9        c    0.000
-#&gt; 6  10        c    0.000
+#&gt; 6  10        c    0.002
 #&gt; 7  11        c    0.000
 #&gt; 8  12        c    0.000
-#&gt; 9  13        c    0.000
+#&gt; 9  13        c    0.004
 #&gt; 10 14        c    0.004
-#&gt; 11 15        c    0.020
-#&gt; 12 16        c    0.030
-#&gt; 13 17        c    0.092
-#&gt; 14 18        c    0.108
-#&gt; 15 19        c    0.154
-#&gt; 16 20        c    0.154
-#&gt; 17  5        n    0.330
-#&gt; 18  6        n    0.432
-#&gt; 19  7        n    0.474
-#&gt; 20  8        n    0.548
-#&gt; 21  9        n    0.632
-#&gt; 22 10        n    0.692
-#&gt; 23 11        n    0.716
-#&gt; 24 12        n    0.756
-#&gt; 25 13        n    0.766
-#&gt; 26 14        n    0.832
-#&gt; 27 15        n    0.840
-#&gt; 28 16        n    0.868
-#&gt; 29 17        n    0.852
-#&gt; 30 18        n    0.822
-#&gt; 31 19        n    0.836
-#&gt; 32 20        n    0.824
-#&gt; 33  5        p    0.670
-#&gt; 34  6        p    0.568
-#&gt; 35  7        p    0.526
-#&gt; 36  8        p    0.452
-#&gt; 37  9        p    0.368
-#&gt; 38 10        p    0.308
-#&gt; 39 11        p    0.284
-#&gt; 40 12        p    0.244
-#&gt; 41 13        p    0.234
-#&gt; 42 14        p    0.164
-#&gt; 43 15        p    0.140
-#&gt; 44 16        p    0.102
-#&gt; 45 17        p    0.056
-#&gt; 46 18        p    0.070
-#&gt; 47 19        p    0.010
-#&gt; 48 20        p    0.022
+#&gt; 11 15        c    0.018
+#&gt; 12 16        c    0.038
+#&gt; 13 17        c    0.082
+#&gt; 14 18        c    0.156
+#&gt; 15 19        c    0.158
+#&gt; 16 20        c    0.116
+#&gt; 17  5        n    0.354
+#&gt; 18  6        n    0.406
+#&gt; 19  7        n    0.496
+#&gt; 20  8        n    0.542
+#&gt; 21  9        n    0.614
+#&gt; 22 10        n    0.680
+#&gt; 23 11        n    0.742
+#&gt; 24 12        n    0.764
+#&gt; 25 13        n    0.796
+#&gt; 26 14        n    0.836
+#&gt; 27 15        n    0.826
+#&gt; 28 16        n    0.864
+#&gt; 29 17        n    0.868
+#&gt; 30 18        n    0.826
+#&gt; 31 19        n    0.826
+#&gt; 32 20        n    0.864
+#&gt; 33  5        p    0.646
+#&gt; 34  6        p    0.594
+#&gt; 35  7        p    0.504
+#&gt; 36  8        p    0.458
+#&gt; 37  9        p    0.386
+#&gt; 38 10        p    0.318
+#&gt; 39 11        p    0.258
+#&gt; 40 12        p    0.236
+#&gt; 41 13        p    0.200
+#&gt; 42 14        p    0.160
+#&gt; 43 15        p    0.156
+#&gt; 44 16        p    0.098
+#&gt; 45 17        p    0.050
+#&gt; 46 18        p    0.018
+#&gt; 47 19        p    0.016
+#&gt; 48 20        p    0.020
 ## Plot one variable:
 fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))</a></code></pre>
-<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-10-2.png" width="768"></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">## Plot multiple variables:</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">fishflux<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/fishflux/topics/plot_cnp">plot_cnp</a></span>(model,  <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Fp"</span>, <span class="st">"Gp"</span>, <span class="st">"Ip"</span>, <span class="st">"Wp"</span>), <span class="dt">x =</span> <span class="st">"tl"</span>, <span class="dt">probs =</span> <span class="fl">0.5</span>)</a></code></pre></div>
-<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-10-3.png" width="768"></p>
+<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-2.png" width="768"></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">## Plot multiple variables:</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">fishflux<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/fishflux/topics/plot_cnp">plot_cnp</a></span>(model,  <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Fp"</span>, <span class="st">"Gp"</span>, <span class="st">"Ip"</span>, <span class="st">"Wp"</span>), <span class="dt">x =</span> <span class="st">"tl"</span>, <span class="dt">probs =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-3.png" width="768"></p>
 </div>
 <div id="sensitivity" class="section level3">
 <h3 class="hasAnchor">
 <a href="#sensitivity" class="anchor"></a>Sensitivity</h3>
 <p>The function <code><a href="../reference/sensitivity.html">sensitivity()</a></code> looks at how the distribution of the input variables affects the uncertainty of the model predictions. Basically, the model is run for each input parameter, while keeping all the others fixed. The output of the function gives a matrix of the width of the 95% CI for all model predictions (columns), depending on the input variables (rows). The input parameters and output variables of interest can be specified by arguments “par” and “out” respectively. </p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">## General overview:</a>
-<a class="sourceLine" id="cb16-2" data-line-number="2">fishflux<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/fishflux/topics/sensitivity">sensitivity</a></span>(<span class="dt">TL =</span> <span class="dv">10</span>, <span class="dt">param =</span> param_zebsco, <span class="dt">par =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Dn_sd"</span>, <span class="st">"Dp_sd"</span>, <span class="st">"Qn_sd"</span>, <span class="st">"Qp_sd"</span>, <span class="st">"k_sd"</span>), <span class="dt">out =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Fn"</span>, <span class="st">"Fp"</span>, <span class="st">"Ic"</span>, <span class="st">"Gc"</span>, <span class="st">"In"</span>, <span class="st">"Ip"</span>))</a></code></pre></div>
-<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-11-1.png" width="768"></p>
-<pre><code>#&gt;              Fn_CI        Fp_CI        Ic_CI        Gc_CI        In_CI
-#&gt; Dn_sd 2.060680e-10 0.0002633991 9.407112e-03 6.956253e-11 2.586562e-10
-#&gt; Dp_sd 1.895431e-10 0.0007477561 1.974235e-09 6.715260e-11 2.366667e-10
-#&gt; Qn_sd 1.971459e-03 0.0007693984 2.747852e-02 7.362494e-11 3.297422e-03
-#&gt; Qp_sd 1.921434e-10 0.0007327634 1.975851e-09 7.163988e-11 2.373929e-10
-#&gt; k_sd  1.997203e-10 0.0001084489 1.042778e-02 4.004266e-03 1.251333e-03
-#&gt;              Ip_CI
-#&gt; Dn_sd 3.762845e-04
-#&gt; Dp_sd 1.068223e-03
-#&gt; Qn_sd 1.099141e-03
-#&gt; Qp_sd 7.932045e-11
-#&gt; k_sd  4.171110e-04</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">## General overview:</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">fishflux<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/fishflux/topics/sensitivity">sensitivity</a></span>(<span class="dt">TL =</span> <span class="dv">10</span>, <span class="dt">param =</span> param_zebsco, <span class="dt">par =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Dn_sd"</span>, <span class="st">"Dp_sd"</span>, <span class="st">"Qn_sd"</span>, <span class="st">"Qp_sd"</span>, <span class="st">"k_sd"</span>), <span class="dt">out =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Fn"</span>, <span class="st">"Fp"</span>, <span class="st">"Ic"</span>))</a></code></pre></div>
+<p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
+<pre><code>#&gt;              Fn_CI        Fp_CI        Ic_CI
+#&gt; Dn_sd 1.850928e-10 0.0002543572 9.084184e-03
+#&gt; Dp_sd 2.117035e-10 0.0008266495 2.152719e-09
+#&gt; Qn_sd 2.044842e-03 0.0007980373 2.850133e-02
+#&gt; Qp_sd 1.833040e-10 0.0007572609 1.905014e-09
+#&gt; k_sd  2.111679e-10 0.0001075590 1.034221e-02</code></pre>
 
 </div>
 </div>
 <div id="more-information" class="section level2">
 <h2 class="hasAnchor">
 <a href="#more-information" class="anchor"></a>More information</h2>
-<p>For more information on the theoretical framework of the model, read paper. Every function of <code>fishflux</code> has a help page with more documentation. In the case of errors, bugs or discomfort, you are invited to raise an <a href="https://github.com/nschiett/fishflux/issues">issue</a> on GitHub. <code>fishflux</code> is always in development and we are happy to take your comments or suggestions into consideration.</p>
+<p>For more information on the theoretical framework of the model, see paper (<strong>ADD LINK</strong>). Every function of <code>fishflux</code> has a help page with more documentation. In the case of errors, bugs or discomfort, you are invited to raise an <a href="https://github.com/nschiett/fishflux/issues">issue</a> on GitHub. <code>fishflux</code> is always in development and we are happy to take your comments or suggestions into consideration.</p>
 <div id="refs" class="references">
 <div id="ref-Froese2018">
 <p>Froese, R., and D. Pauly. 2018. “FishBase.” <em>World Wide Web Electronic Publication.</em></p>
@@ -582,7 +564,7 @@ fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))</a></c
 
 
       <footer><div class="copyright">
-  <p>Developed by Nina Schiettekatte.</p>
+  <p>Developed by Nina M. D. Schiettekatte, Barneche Diego.</p>
 </div>
 
 <div class="pkgdown">

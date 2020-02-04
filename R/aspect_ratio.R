@@ -7,7 +7,7 @@
 
 #' @param sp A character value containing the species name
 #' @keywords fish, aspect ratio, fishbase
-#' @export
+#'
 #' @examples
 #'
 #' aspect_ratio("Lutjanus griseus")
@@ -21,12 +21,12 @@ aspect_ratio <- function (sp) {
         genus <- strsplit(sp, " ")[[1]][1]
         gn    <- rfishbase::species_list(Genus = genus)
         ma    <- rfishbase::morphometrics(gn)
-        asp   <- dplyr::select(ma, Species, AspectRatio, SL, TL)
-        asp   <- dplyr::summarise(dplyr::group_by(asp, Species), AspectRatio = mean(AspectRatio))
+        asp   <- dplyr::select(ma, .data$Species, .data$AspectRatio, .data$SL, .data$TL)
+        asp   <- dplyr::summarise(dplyr::group_by(asp, .data$Species), AspectRatio = mean(.data$AspectRatio))
         asp   <- mean(asp$AspectRatio, na.rm = TRUE)
         level <- "genus"
     } else{
-        asp   <- dplyr::select(ma, Species, AspectRatio, SL, TL)
+        asp   <- dplyr::select(ma, .data$Species, .data$AspectRatio, .data$SL, .data$TL)
         asp   <- mean(asp$AspectRatio, na.rm = TRUE)
         level <- "species"
     }

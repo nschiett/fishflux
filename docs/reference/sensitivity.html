@@ -158,14 +158,15 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Returns a dataframe with sd's of model predictions. Row names indicate the variable, who's sd was used for the model run.
-               Plots a heatplot with sd values for predictions.</p>
+               Plots a heatplot with width of the 95<!-- %CI of output predictions. --></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw pkg'>fishflux</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/fishflux/topics/sensitivity'>sensitivity</a></span>(<span class='kw'>TL</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>k_sd</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>Dn_sd</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>Dc_sd</span> <span class='kw'>=</span> <span class='fl'>0.1</span>), <span class='kw'>par</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"k_sd"</span>,<span class='st'>"Dn_sd"</span>,<span class='st'>"Dc_sd"</span>), <span class='kw'>out</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Ic"</span>, <span class='st'>"In"</span>, <span class='st'>"Ip"</span>, <span class='st'>"Gc"</span>))</div><div class='img'><img src='sensitivity-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;            Ic_CI        In_CI        Ip_CI        Gc_CI
-#&gt; k_sd  0.03282605 3.939126e-03 1.313042e-03 1.260520e-02
-#&gt; Dn_sd 0.25480153 3.604669e-03 1.019206e-02 7.177321e-11
-#&gt; Dc_sd 0.01121197 2.500406e-10 8.279711e-11 6.994449e-11</div></pre>
+<span class='kw pkg'>fishflux</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/fishflux/topics/sensitivity'>sensitivity</a></span>(<span class='kw'>TL</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>k_sd</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>Dn_sd</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='kw'>Dc_sd</span> <span class='kw'>=</span> <span class='fl'>0.1</span>),
+ <span class='kw'>par</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"k_sd"</span>,<span class='st'>"Dn_sd"</span>,<span class='st'>"Dc_sd"</span>), <span class='kw'>out</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Ic"</span>, <span class='st'>"In"</span>, <span class='st'>"Ip"</span>, <span class='st'>"Gc"</span>))</div><div class='output co'>#&gt; <span class='message'>Joining, by = "key"</span></div><div class='img'><img src='sensitivity-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;            Ic_CI        In_CI        Ip_CI        Gc_CI
+#&gt; k_sd  0.03284884 3.941861e-03 1.313954e-03 1.261395e-02
+#&gt; Dn_sd 0.28042796 4.940031e-03 1.121712e-02 6.954567e-11
+#&gt; Dc_sd 0.01125024 2.608876e-10 8.692042e-11 6.860404e-11</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -180,7 +181,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nina Schiettekatte.</p>
+  <p>Developed by Nina M. D. Schiettekatte, Barneche Diego.</p>
 </div>
 
 <div class="pkgdown">

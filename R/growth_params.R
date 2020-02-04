@@ -22,11 +22,12 @@ growth_params <- function(sp, otolith=TRUE){
    growth <- data.frame(species = NA, Locality = NA, k = NA,
                         Linf = NA, t0 = NA, method = NA, comments = NA)
  }else{
-   growth <- dplyr::select(pop, species = Species, Locality, k = K,
-                           Linf = Loo, t0 = to, method = Data,
-                           comments = Comment)
+   growth <- dplyr::select(pop, species = .data$Species, .data$Locality,
+                           k = .data$K, Linf = .data$Loo, t0 = .data$to,
+                           method = .data$Data,
+                           comments = .data$Comment)
     if (otolith){
-      growth <- dplyr::filter(growth, method %in%
+      growth <- dplyr::filter(growth, .data$method %in%
                 c("annuli on otoliths", "annuli on many otoliths"))
     }
  if (nrow(growth) < 1){

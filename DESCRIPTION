@@ -1,40 +1,46 @@
 Package: fishflux
 Type: Package
-Title: A tool to model nutrient fluxes in fish
+Title: A tool to model elemental fluxes in fishes
 Version: 0.0.0.9001
-Author: Nina Schiettekatte
-Maintainer: Nina Schiettekatte <nina.schiettekatte@gmail.com>
-Description: More about what it does (maybe more than one line)
-Url: https://github.com/nschiett/fishflux
+Authors@R: c(
+  person("Nina M. D.", "Schiettekatte", email = "nina.schiettekatte@gmail.com",
+  role = c("aut", "cre")),
+  person("Barneche", "Diego", role = "aut"))
+Description: Model fluxes of carbon, nitrogen, and phosphorus with the use of a coupled 
+   bioenergetics and stoichiometric model that incorporates flexible elemental limitation. 
+   Additional functions to help the user to find parameters are included. Finally, functions to 
+   extract and visualize results are available as well. For an introduction, see vignette. 
+Url: https://nschiett.github.io/fishflux/
 BugReports: https://github.com/nschiett/fishflux/issues
-License: What license is it under?
+License: GPL-2
 Encoding: UTF-8
 Imports:
-   dplyr,
-   plyr,
-   tidyr,
-   rfishbase,
-   ggplot2,
-   devtools,
-   knitr,
-   rstan (>= 2.18.1),
-   rstantools (>= 1.5.0),
-   Rcpp (>= 0.12.18),
-   methods,
-   purrr,
-   tidybayes
+    devtools,
+    dplyr,
+    ggplot2,
+    knitr,
+    methods,
+    plyr,
+    purrr,
+    rfishbase,
+    rstan (>= 2.18.1),
+    rstantools (>= 2.0.0.9000),
+    tidybayes,
+    tidyr,
+    fishualize
 Depends:
    R (>= 3.4.0),
    Rcpp (>= 0.12.18)
 LinkingTo:
-   StanHeaders (>= 2.18.0),
-   rstan (>= 2.18.1), 
-   BH (>= 1.66.0), 
-   Rcpp (>= 0.12.18),
-   RcppEigen (>= 0.3.3.4.0)
+    BH (>= 1.66.0),
+    Rcpp (>= 0.12.0),
+    RcppEigen (>= 0.3.3.4.0),
+    rstan (>= 2.18.1),
+    StanHeaders (>= 2.18.0)
 SystemRequirements: GNU make
 NeedsCompilation: yes
 LazyData: true
 RoxygenNote: 7.0.2
 Suggests: rmarkdown
 VignetteBuilder: knitr
+Biarch: true

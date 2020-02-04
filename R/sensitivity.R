@@ -9,21 +9,25 @@
 #' @param out     Charachter vector specifying which output parameter sd's should be returned.
 #' @param ...     Other arguments that can be used from \link[fishflux]{cnp_model_mcmc}
 #' @details       Returns a dataframe with sd's of model predictions. Row names indicate the variable, who's sd was used for the model run.
-#'                Plots a heatplot with sd values for predictions.
+#'                Plots a heatplot with width of the 95%CI of output predictions.
 #' @keywords      fish, stoichiometry, excretion, mcmc
 #' @import ggplot2
+#' @import fishualize
 #' @export sensitivity
 #'
 #' @examples
 #'
-#' fishflux::sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1), par = c("k_sd","Dn_sd","Dc_sd"), out = c("Ic", "In", "Ip", "Gc"))
+#' fishflux::sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1),
+#'  par = c("k_sd","Dn_sd","Dc_sd"), out = c("Ic", "In", "Ip", "Gc"))
 
 sensitivity <- function(TL, param, iter = 1000, par,
                         out = c("Ic", "In", "Ip", "Gc",
                                 "Gn", "Gp", "Fc", "Fn",
                                 "Fp", "Wc", "Wn", "Wp"), ...){
 
-requireNamespace("ggplot2")
+  requireNamespace("ggplot2")
+  requireNamespace("fishualize")
+
 
   #parameter SD's and means
   pm <- c("lt_m", "ac_m", "an_m", "ap_m", "Dc_m",
@@ -52,8 +56,8 @@ requireNamespace("ggplot2")
   #run cnp_model for all sd's with rest very low
   sd <- parsd
   res_sd <- as.data.frame(
-    parallel::mcmapply(sd, FUN = function(sd){
-    param_msdl[sd] <- param_sd[sd]
+    parallel::mcmapply(sd, FUN = function(x){
+    param_msdl[x] <- param_sd[x]
     mod <- fishflux::cnp_model_mcmc(TL, param_msdl, iter, ...)$summary
     ext <- mod[match(out, mod$variable), "Q_97.5"] - mod[match(out, mod$variable), "Q_2.5"]
     return(ext)
@@ -70,13 +74,17 @@ requireNamespace("ggplot2")
   #plot
   res <- res_sd
   res$input_sd <- row.names(res)
-  res <- tidyr::gather(res, key, value, -input_sd)
+  res <- tidyr::gather(res, "key", "value", -.data$input_sd)
+  sum <- dplyr::summarise(group_by(res, .data$key), sum = sum(.data$value))
+  res <- res %>% dplyr::left_join(sum) %>%
+    mutate(scale = .data$value/.data$sum)
   plot <- ggplot(res) +
-    geom_tile(aes(x = key, y = input_sd, fill = value)) +
-    scale_fill_continuous(trans = "log") +
-    geom_text(aes(x = key, y = input_sd, label = formatC(value, format = "e", digits = 1))) +
-    labs(x = "", y = "", fill = "Width 95% CI") +
-    theme_bw()
+    geom_tile(aes(x = .data$key, y = .data$input_sd, fill = .data$scale)) +
+    fishualize::scale_fill_fish(option = "Trimma_lantana", end = 0.9) +
+    geom_text(aes(x = .data$key, y = .data$input_sd,
+                  label = formatC(.data$value, format = "e", digits = 1))) +
+    labs(x = "", y = "", fill = "Relative width 95% CI") +
+    theme_bw() + theme(legend.position = "bottom")
   print(plot)
 
   return(res_sd)

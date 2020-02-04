@@ -12,6 +12,7 @@
 #' @keywords fish, plot, limitation
 #' @import ggplot2
 #' @import purrr
+#' @import fishualize
 #' @export limitation
 #' @examples
 #' mod <- fishflux::cnp_model_mcmc(TL = 5, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4,
@@ -23,6 +24,8 @@ limitation <- function(mod, plot = TRUE){
 
   requireNamespace("ggplot2")
   requireNamespace("purrr")
+  requireNamespace("fishualize")
+
 
   if (length(unique(mod$summary$TL)) == 1){
     ee <- rstan::extract(mod$stanfit,"lim")[[1]]
@@ -33,7 +36,7 @@ limitation <- function(mod, plot = TRUE){
                        n = n,
                        p = p)) %>%
       dplyr::mutate(tl = unique(mod$summary$TL)) %>%
-      tidyr::gather("nutrient", "prop_lim", - tl)
+      tidyr::gather("nutrient", "prop_lim", - .data$tl)
   }else{
     lim <- lapply(mod$stanfit, function(x){
       ee <- rstan::extract(x,"lim")[[1]]
@@ -47,15 +50,16 @@ limitation <- function(mod, plot = TRUE){
 
       dplyr::bind_rows() %>%
       dplyr::mutate(tl = unique(mod$summary$TL)) %>%
-      tidyr::gather("nutrient", "prop_lim", - tl)
+      tidyr::gather("nutrient", "prop_lim", - .data$tl)
   }
 
 
 
   if (plot){
   p <- ggplot(lim) +
-    geom_point(aes(x = tl, y = prop_lim, color = nutrient)) +
-    geom_line(aes(x = tl, y = prop_lim, color = nutrient)) +
+    geom_point(aes(x = .data$tl, y = .data$prop_lim, color = .data$nutrient)) +
+    geom_line(aes(x = .data$tl, y = .data$prop_lim, color = .data$nutrient)) +
+    fishualize::scale_color_fish_d(option = "Hypsypops_rubicundus") +
     labs(x = "TL (cm)", y = "Proportion of iterations", color = "Limiting element") +
     theme_bw() +
     theme(legend.position = "bottom")

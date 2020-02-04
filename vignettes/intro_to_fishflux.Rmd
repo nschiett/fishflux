@@ -25,14 +25,17 @@ The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitroge
 
 Main assets:
   
-* Provides function to model fluxes of Carbon, Nitrogen and Phosphorus for fish
+* Provides function to model fluxes of Carbon, Nitrogen and Phosphorus for fishes
 * Allows for the estimation of uncertainty, dpending on the uncertainy of the input parameters
-* Provides some functions to find the right parameters as inputs into the model
-* Provides functions to illustrate results
+* Provides some functions to help find parameters as inputs for the model
+* Provides functions to extract and illustrate results
 
 ## Installing and loading fishflux
 
-`fishflux` uses Markov Chain Monte Carlo simulations provided by [rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). Therefore, the first step is to install [rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
+`fishflux` uses Markov Chain Monte Carlo simulations provided by
+[stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
+Therefore, the first step is to install
+[rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). It's important to closely follow all the steps described on the page depending on your operating system. 
 
 ### GitHub
 
@@ -93,7 +96,7 @@ textable <- "
 \\hline
 Symbol & Description & Unit\\\\
 \\hline
-$a_\\textrm{k}$  & Element-specific assimilation efficiency & \\% \\\\
+$a_\\textrm{k}$  & Element-specific assimilation efficiency & \\_ \\\\
 $l_\\textrm{t}$  & Total length of individual & cm \\\\
 $linf$  & Asymptotic adult length (VBGC) & cm \\\\
 $\\kappa$  & Growth rate parameter (VBGC) & $\\textrm{yr}^{-1}$ \\\\
@@ -184,18 +187,7 @@ The object `model` now contains all the samples generated from the MCMC simulati
 ```{r}
 fishflux::extract(model, c("Fn","Fp"))
 ```
-\newline
-### Plot results 
 
-To visualize main outputs of the model, `fishflux` contains a plotting function. 
-
-\newline
-```{r, message=FALSE, warning=FALSE}
-## Plot one variable:
-fishflux::plot_cnp(model, x = "tl", y = "Fp", probs = c(0.5, 0.8, 0.95))
-## Plot multiple variables:
-fishflux::plot_cnp(model, x = "tl", y = c("Fp", "Wp", "Ip", "Gp"), probs = 0.5)
-```
 \newline
 
 ### Plot results 
@@ -218,12 +210,12 @@ The input parameters and output variables of interest can be specified by argume
 \newline 
 ```{r, message=FALSE}
 ## General overview:
-fishflux::sensitivity(TL = 10, param = param_zebsco, par = c("Dn_sd", "Dp_sd", "Qn_sd", "Qp_sd", "k_sd"), out = c("Fn", "Fp", "Ic", "Gc", "In", "Ip"))
+fishflux::sensitivity(TL = 10, param = param_zebsco, par = c("Dn_sd", "Dp_sd", "Qn_sd", "Qp_sd", "k_sd"), out = c("Fn", "Fp", "Ic"))
 ```
 \newline
 ## More information
 
-For more information on the theoretical framework of the model, read paper.
+For more information on the theoretical framework of the model, see paper (**ADD LINK**).
 Every function of `fishflux` has a help page with more documentation.
 In the case of errors, bugs or discomfort, you are invited to raise an [issue](https://github.com/nschiett/fishflux/issues) on GitHub.
 `fishflux` is always in development and we are happy to take your comments or suggestions into consideration.

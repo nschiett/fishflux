@@ -1,4 +1,4 @@
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 fishflux: A tool to model nutrient fluxes in fish
 =================================================
 
@@ -9,14 +9,15 @@ fishflux: A tool to model nutrient fluxes in fish
 Overview
 --------
 
-The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user-friendly interface to apply a bioenergetic model. `fishflux` is ideal for fish ecologists wishing to predict ingestion, egestion and excretion to study fluxes of nutrients and energy. 
+The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fishes. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user-friendly interface to apply the model. `fishflux` is ideal for fish ecologists wishing to predict ingestion, egestion and excretion to study fluxes of nutrients and energy. 
 
 Main assets:
   
--   Provides function to model fluxes of Carbon, Nitrogen and Phosphorus for fish
--   Allows for the estimation of uncertainty, dpending on the uncertainy of the input parameters
--   Provides some functions to find the right parameters as inputs into the model
--   Provides functions to illustrate results
+- Provides function to model fluxes of Carbon, Nitrogen and Phosphorus for fishes
+- Allows for the estimation of uncertainty, dpending on the uncertainy of the input parameters
+- Provides some functions to help find parameters as inputs for the model
+- Provides functions to extract and illustrate results
+
 
 
 Theoretical framework
@@ -31,7 +32,7 @@ Installing and loading fishflux
 `fishflux` uses Markov Chain Monte Carlo simulations provided by
 [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
 Therefore, the first step is to install
-[stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
+[rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). It's important to closely follow all the steps described on the page depending on your operating system. 
 
 ### GitHub
 

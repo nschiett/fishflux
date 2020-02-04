@@ -31,11 +31,12 @@ This function runs the cnp_model fixing all parameters SD's but one to test for 
 }
 \details{
 Returns a dataframe with sd's of model predictions. Row names indicate the variable, who's sd was used for the model run.
-               Plots a heatplot with sd values for predictions.
+               Plots a heatplot with width of the 95%CI of output predictions.
 }
 \examples{
 
-fishflux::sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1), par = c("k_sd","Dn_sd","Dc_sd"), out = c("Ic", "In", "Ip", "Gc"))
+fishflux::sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1),
+ par = c("k_sd","Dn_sd","Dc_sd"), out = c("Ic", "In", "Ip", "Gc"))
 }
 \keyword{excretion,}
 \keyword{fish,}

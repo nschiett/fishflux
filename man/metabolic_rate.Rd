@@ -2,7 +2,7 @@
 % Please edit documentation in R/metabolic_rate.R
 \name{metabolic_rate}
 \alias{metabolic_rate}
-\title{A function to generate B0 and a}
+\title{A function to calculate metabolic rates}
 \usage{
 metabolic_rate(temp, troph, asp, B0, m_max, m, a, growth_g_day, f)
 }
@@ -37,7 +37,8 @@ All model parameters below were estimated by Barneche & Allen 2018 Ecology Lette
 }
 \examples{
 
-fishflux::metabolic_rate(temp = 27, m_max = 600, m = 300, asp = 3, troph = 2, f = 2, growth_g_day = 0.05, B0 = 0.2, a = 0.6 )
+fishflux::metabolic_rate(temp = 27, m_max = 600, m = 300, asp = 3,
+troph = 2, f = 2, growth_g_day = 0.05, B0 = 0.2, a = 0.6 )
 }
 \keyword{Fish,}
 \keyword{fishbase}

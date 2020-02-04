@@ -42,7 +42,7 @@ extract <- function(mod, par){
   TL <- unique(summary$TL)
 
   list <- lapply(par, FUN = function(p){
-    sub <- dplyr::filter(summary, variable == p)
+    sub <- dplyr::filter(summary, .data$variable == p)
     sub <- data.frame(sub$mean, sub$median, sub$sd, sub$`Q_2.5`, sub$`Q_97.5`,  sub$`Q_25`,  sub$`Q_75` )
     colnames(sub) <- c(paste(p, "mean", sep = "_"),
                        paste(p, "median", sep = "_"),

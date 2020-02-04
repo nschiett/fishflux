@@ -61,7 +61,8 @@ Returns a list with two objects: A stanfit object and a dataframe with a summary
 }
 \examples{
 
-model <- fishflux::cnp_model_mcmc(TL = 10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4, theta_m = 3))
+model <- fishflux::cnp_model_mcmc(TL = 10, param = list(
+Qc_m = 40, Qn_m = 10, Qp_m = 4, theta_m = 3))
 }
 \keyword{excretion,}
 \keyword{fish,}

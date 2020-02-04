@@ -2,7 +2,7 @@
 % Please edit documentation in R/metabolism.R
 \name{metabolism}
 \alias{metabolism}
-\title{A function to generate B0 and a}
+\title{A function to estimate f0 and alpha}
 \usage{
 metabolism(family, temp, troph_m, troph_sd = 1e-10)
 }
