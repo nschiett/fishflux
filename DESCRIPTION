@@ -24,7 +24,7 @@ Imports:
     purrr,
     rfishbase,
     rstan (>= 2.18.1),
-    rstantools (>= 2.0.0.9000),
+    rstantools (>= 2.0.0),
     tidybayes,
     tidyr,
     fishualize
