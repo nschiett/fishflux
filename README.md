@@ -28,16 +28,14 @@ check out the paper (add link to paper).
 
 Installing and loading fishflux
 -------------------------------
-
-`fishflux` uses Markov Chain Monte Carlo simulations provided by
+First, make sure your R version is 3.4 or higher. Further, `fishflux` uses Markov Chain Monte Carlo simulations provided by
 [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
 Therefore, the first step is to install
-[rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). It's important to closely follow all the steps described on the page depending on your operating system. 
+[rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). It's important to closely follow all the steps described on the page depending on your operating system, because rstan requires a functioning C++ compiler. Furthermore, `fishflux` depends on the package `rstantools` version 2.0.0 or higher. This means that if you already have an older version of `rstantools` installed, you will have to reinstall it, prior to the installation of `fishflux`.
 
 ### GitHub
 
-The best way to install the latest development version of `fishflux` is
-to install it from GitHub.
+Once you have your c++ compiler set up correctly, the best way to install the latest version of `fishflux` is to install it from GitHub.
 
 ``` r
 install.packages("devtools")
@@ -67,10 +65,9 @@ library(fishflux)
 Documentation
 -------------
 
-See package vignettes.
+See package [vignette](https://nschiett.github.io/fishflux/articles/intro_to_fishflux.html) for an introduction and help pages.
 
 Citation
 --------
 
-Future releases
----------------
+
