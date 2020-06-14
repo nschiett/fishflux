@@ -4,7 +4,9 @@
 \name{metabolic_parameters}
 \alias{metabolic_parameters}
 \title{Data with metabolic parameters on family level}
-\format{An object of class \code{data.frame} with 20 rows and 5 columns.}
+\format{
+An object of class \code{data.frame} with 20 rows and 5 columns.
+}
 \usage{
 data(metabolic_parameters)
 }

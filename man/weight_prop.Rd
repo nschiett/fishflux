@@ -4,7 +4,9 @@
 \name{weight_prop}
 \alias{weight_prop}
 \title{Data frame with dry weight/ wet weight proportions for multiple reef fish families.}
-\format{An object of class \code{data.frame} with 15 rows and 4 columns.}
+\format{
+An object of class \code{data.frame} with 15 rows and 4 columns.
+}
 \usage{
 data(weight_prop)
 }

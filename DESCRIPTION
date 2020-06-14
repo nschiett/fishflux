@@ -17,17 +17,18 @@ Encoding: UTF-8
 Imports:
     devtools,
     dplyr,
+    fishualize,
     ggplot2,
     knitr,
     methods,
     plyr,
     purrr,
+    RcppParallel (>= 5.0.1),
     rfishbase,
     rstan (>= 2.18.1),
     rstantools (>= 2.0.0),
     tidybayes,
-    tidyr,
-    fishualize
+    tidyr
 Depends:
    R (>= 3.4.0),
    Rcpp (>= 0.12.18)
@@ -35,12 +36,13 @@ LinkingTo:
     BH (>= 1.66.0),
     Rcpp (>= 0.12.0),
     RcppEigen (>= 0.3.3.4.0),
+    RcppParallel (>= 5.0.1),
     rstan (>= 2.18.1),
     StanHeaders (>= 2.18.0)
 SystemRequirements: GNU make
 NeedsCompilation: yes
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests: rmarkdown
 VignetteBuilder: knitr
 Biarch: true

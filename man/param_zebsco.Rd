@@ -4,7 +4,9 @@
 \name{param_zebsco}
 \alias{param_zebsco}
 \title{List of all parameters needed to run cnp_model for *Zebrasoma scopas*}
-\format{An object of class \code{list} of length 37.}
+\format{
+An object of class \code{list} of length 37.
+}
 \usage{
 data(param_zebsco)
 }
