@@ -54,7 +54,9 @@ jobs:
           sudo -s eval "$sysreqs"
           sudo apt-get -y install devscripts
           sudo apt-get -y install libtbb-dev
-        if: os == 'macOS-latest'
+
+      - name: Install OSX system dependencies
+        if: runner.os == 'macOS'
         run: |
           brew install checkbashisms
           brew install tbb
