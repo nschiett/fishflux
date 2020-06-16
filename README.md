@@ -5,7 +5,7 @@ fishflux: A tool to model nutrient fluxes in fish
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Build
-Status](https://api.travis-ci.org/nschiett/fishflux.png?branch=master)](https://travis-ci.org/nschiett/fishflux)
+Status](http://badges.herokuapp.com/travis/nschiett/fishflux?branch=master&label=build&style=plastic&logo=travisci)](https://travis-ci.org/nschiett/fishflux)
 [![Actions
 Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishflux/actions)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9001-orange.svg)](commits/master)
