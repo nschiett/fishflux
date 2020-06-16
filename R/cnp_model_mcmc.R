@@ -2,8 +2,8 @@
 #'
 #' This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.
 #'
-#' @param TL      total length(s) in cm
-#' @param param   list of all parameter means (add "_m") and standard deviations (add "_sd") Default parameters are set with very low sd's.
+#' @param TL Total length(s) in cm
+#' @param param List of all parameter means (add "_m") and standard deviations (add "_sd") Default parameters are set with very low sd's.
 #' parameters:
 #' \itemize{
 #' \item{Qc_m, Qc_sd:} percentage C of dry mass fish
@@ -33,27 +33,28 @@
 #' @param cor     A list of correlations between certain parameters: ro_Qc_Qn, ro_Qc_Qp, ro_Qn_Qp,
 #' ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
-#' @param ...     Arguments of rstan::sampling()
+#' @param ... Additional arguments to \code{\link[rstan]{sampling}}
 #'
-#' @details     Returns a list with two objects: A stanfit object and a dataframe with a summary of all model components.
-#'  See fishflux::extract() to extract a summary of predicted variables and
-#'  fishflux::limitation() to get information on the limiting element.
-#' @keywords    fish, stoichiometry, excretion, mcmc
+#' @details Returns a list with two objects: A stanfit object and a data.frame with a summary of all model components.
+#'  See \code{\link{extract}} to extract a summary of predicted variables and
+#'  \code{\link{limitation}} to get information on the limiting element.
+#' 
+#' @keywords fish, stoichiometry, excretion, mcmc
 #' @import rstan
 #' @importFrom stats median quantile sd
-#' @export cnp_model_mcmc
+#' @importFrom parallel mclapply
+#' @importFrom plyr ldply
 #'
 #' @examples
-#'
-#' model <- fishflux::cnp_model_mcmc(TL = 10, param = list(
+#' library(fishflux)
+#' model <- cnp_model_mcmc(TL = 10, param = list(
 #' Qc_m = 40, Qn_m = 10, Qp_m = 4, theta_m = 3))
-
+#' 
+#' @export
 cnp_model_mcmc <- function(TL, param, iter = 1000,
                            cor = list(ro_Qc_Qn = 0.5, ro_Qc_Qp = -0.3, ro_Qn_Qp = -0.2,
                                       ro_Dc_Dn = 0.2, ro_Dc_Dp = -0.1, ro_Dn_Dp = -0.1,
-                                      ro_lwa_lwb = 0.9, ro_alpha_f0 = 0.9), ...){
-
-  requireNamespace("rstan")
+                                      ro_lwa_lwb = 0.9, ro_alpha_f0 = 0.9), ...) {
 
   ##standard parameters, all sd's are quite low here!
   params_st <- list(lt_m = 10,
@@ -108,78 +109,94 @@ cnp_model_mcmc <- function(TL, param, iter = 1000,
   )
 
   #check input variable names
-  if (TRUE %in% (!names(param) %in% names(params_st))){
+  if (TRUE %in% (!names(param) %in% names(params_st))) {
     wrong <- names(param)[!(names(param) %in% names(params_st))]
     error <- paste("The following input parameters do not exist: ", paste(wrong, collapse = ", "),
-                   "  Check ?fishflux::cnp_model_mcmc for a description of valid input parameters")
+                   "  Check ?cnp_model_mcmc for a description of valid input parameters")
     stop(error)
   }
 
-
-  if (missing(TL)){
+  if (missing(TL)) {
     stop("please provide TL: total length")
   }
 
-
-
-  if ("Qc_m" %in% names(param)){
-    if (param$Qc_m <= 0 | param$Qc_m >= 100){
+  if ("Qc_m" %in% names(param)) {
+    if (param$Qc_m <= 0 | param$Qc_m >= 100) {
       stop("Qc_m should be between 0 and 100")
    }
   }
 
-  if ("Qn_m" %in% names(param)){
-    if (param$Qn_m <= 0 | param$Qn_m >= 100){
+  if ("Qn_m" %in% names(param)) {
+    if (param$Qn_m <= 0 | param$Qn_m >= 100) {
       stop("Qn_m should be between 0 and 100")
     }
   }
 
-  if ("Qp_m" %in% names(param)){
-    if (param$Qp_m <= 0 | param$Qp_m >= 100){
+  if ("Qp_m" %in% names(param)) {
+    if (param$Qp_m <= 0 | param$Qp_m >= 100) {
       stop("Qp_m should be between 0 and 100")
     }
   }
 
-  if ("Dc_m" %in% names(param)){
-    if (param$Dc_m <= 0 | param$Dc_m >= 100){
+  if ("Dc_m" %in% names(param)) {
+    if (param$Dc_m <= 0 | param$Dc_m >= 100) {
       stop("Dc_m should be between 0 and 100")
     }
   }
 
-  if ("Dn_m" %in% names(param)){
-    if (param$Dn_m <= 0 | param$Dn_m >= 100){
+  if ("Dn_m" %in% names(param)) {
+    if (param$Dn_m <= 0 | param$Dn_m >= 100) {
       stop("Dn_m should be between 0 and 100")
     }
   }
 
-  if ("Dp_m" %in% names(param)){
-    if (param$Dp_m <= 0 | param$Dp_m >= 100){
+  if ("Dp_m" %in% names(param)) {
+    if (param$Dp_m <= 0 | param$Dp_m >= 100) {
       stop("Dp_m should be between 0 and 100")
     }
   }
 
-  if ("ac_m" %in% names(param)){
-    if (param$ac_m <= 0 | param$ac_m >= 1){
+  if ("ac_m" %in% names(param)) {
+    if (param$ac_m <= 0 | param$ac_m >= 1) {
       stop("ac_m should be between 0 and 1")
     }
   }
 
-  if ("Dp_m" %in% names(param)){
-    if (param$an_m <= 0 | param$an_m >= 1){
+  if ("Dp_m" %in% names(param)) {
+    if (param$an_m <= 0 | param$an_m >= 1) {
       stop("an_m should be between 0 and 1")
     }
   }
 
-  if ("ap_m" %in% names(param)){
-    if (param$ap_m <= 0 | param$ap_m >= 1){
+  if ("ap_m" %in% names(param)) {
+    if (param$ap_m <= 0 | param$ap_m >= 1) {
       stop("ap_m should be between 0 and 1")
     }
   }
 
-  ## mcmc function
+  if (length(TL) == 1) { ## option for only one length ##
+    result <- cnp_mcmc(TL, param, iter, params_st, cor, ...)
+    list(stanfit = result[[1]], summary = result[[2]])
+  } else { ## option for vector of lengths ##
+    result <- mclapply(TL, FUN = cnp_mcmc, param = param,
+                       iter = iter, params_st = params_st,
+                       cor = cor, ...)
+    stanfit <- lapply(result, FUN = function(x) {x[[1]]})
+    summary <- lapply(result, FUN = function(x) {x[[2]]})
+    summary <- ldply(summary)
+    list(stanfit = stanfit, summary = summary)
+  }
+}
 
-  cnp_mcmc <- function(TL=TL, param = param, iter = iter, ...){
-
+#' cnp_mcmc
+#' 
+#' @inheritParams cnp_model_mcmc
+#' 
+#' @param params_st Standard parameters.
+#' 
+#' @importFrom rstan sampling extract
+#' @importFrom plyr ldply
+cnp_mcmc <- function(TL, param, iter, params_st, cor, ...) {
   ## add TL to parameter list
   param[["lt_m"]] <- TL
 
@@ -187,9 +204,9 @@ cnp_model_mcmc <- function(TL, param, iter = 1000,
   p_all <- names(params_st)
   unknown <- p_all[!p_all %in% p_given]
 
-  if (length(unknown > 0)){
+  if (length(unknown > 0)) {
     warning("not inputting certain parameters may give wrong results")
-    for (v in unknown){
+    for (v in unknown) {
       warning("adding standard values for ", v)
     }
   }
@@ -198,49 +215,27 @@ cnp_model_mcmc <- function(TL, param, iter = 1000,
   param <- append(param, params_missing)
   param <- append(param, cor)
 
-
   ##add others plus replace Qcnp
-
-  stanfit <-  rstan::sampling(stanmodels$cnp_model_mcmc, data = param,
-                              iter = iter, algorithm = "Fixed_param", chains = 1, ...)
+  stanfit <-  sampling(stanmodels$cnpmodelmcmc, data = param,
+                       iter = iter, algorithm = "Fixed_param", chains = 1,
+                       ...)
 
   ee <- rstan::extract(stanfit)
   par <- names(ee)
-
+  
   result <-
-    plyr::ldply(lapply(par, function(par){
-      summary <-
-        data.frame(
+    ldply(lapply(par, function(x, ee) {
+        data.frame(          
           TL = mean(ee[["lt"]]),
-          variable = par,
-          mean = mean(ee[[par]]),
-          median = median(ee[[par]]),
-          se = sd(ee[[par]])/sqrt(length(ee[[par]])),
-          sd = sd(ee[[par]]),
-          Q_2.5 = quantile(ee[[par]], 0.025),
-          Q_97.5 = quantile(ee[[par]], 0.975),
-          Q_25 = quantile(ee[[par]], 0.25),
-          Q_75 = quantile(ee[[par]], 0.75))
-      return(summary)
-    }))
-
-
-  return(list(stanfit, summary = result))
-
-  }
-
-
-  if (length(TL) == 1){ ## option for only one length ##
-  result <- cnp_mcmc(TL, param, iter)
-  return(list(stanfit = result[[1]], summary = result[[2]]))
-
-  } else{ ## option for vector of lengths ##
-    result <- parallel::mclapply(TL, param = param, iter = iter, FUN = cnp_mcmc)
-
-    stanfit <- lapply(result, FUN = function(x){x[[1]]})
-    summary <- lapply(result, FUN = function(x){x[[2]]})
-    summary <- plyr::ldply(summary)
-
-    return(list(stanfit = stanfit, summary = summary))
-  }
+          variable = x,
+          mean = mean(ee[[x]]),
+          median = median(ee[[x]]),
+          se = sd(ee[[x]]) / sqrt(length(ee[[x]])),
+          sd = sd(ee[[x]]),
+          Q_2.5 = quantile(ee[[x]], 0.025),
+          Q_97.5 = quantile(ee[[x]], 0.975),
+          Q_25 = quantile(ee[[x]], 0.25),
+          Q_75 = quantile(ee[[x]], 0.75))
+    }, ee = ee))
+  list(stanfit, summary = result)
 }
