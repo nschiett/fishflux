@@ -5,14 +5,15 @@
 #'
 #'
 #' @param sp A character value containing the species name
+#' 
 #' @keywords fish, fishbase taxonomy,
+#' 
 #' @examples
-#'
-#'
+#' library(fishflux)
 #' check_name_fishbase("Lutjanus griseus")
 #'
-#' @export check_name_fishbase
-check_name_fishbase <- function (sp) {
+#' @export
+check_name_fishbase <- function(sp) {
   if (length(suppressMessages(fishflux::name_errors(sp))) > 0) {
     stop("Species name is incorrect")
   }

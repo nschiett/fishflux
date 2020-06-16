@@ -6,21 +6,23 @@
 #'The default mirror for fishbase is set to "de", please change this if needed for your location
 #'
 #' @param sp A charachter value containing the species name
-#' @param mirror Mirror for fishbase (eg. "de", "org", "us", etc.) Default is "de".
+#' @param mirror Mirror for fishbase (eg. "de", "org", "us", etc.) Default is "us".
+#' 
 #' @keywords fish, l-w relationship, fishbase, bayesian
-#' @export
+#' 
 #' @examples
-#'
+#' library(fishflux)
+#' library(plyr)
 #' # find length-weight relationship parameters for one species
 #' find_lw("Lutjanus griseus")
 #'
 #' # find length-weight relationship parameters for multiple species and return in dataframe
-#' plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))
-#' @export find_lw
+#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))
+#' 
+#' @export
+find_lw <- function(sp, mirror = "us") {
 
-find_lw <- function(sp, mirror = "de"){
-
-  fishflux::check_name_fishbase(sp)
+  check_name_fishbase(sp)
 
   sp_ <- gsub(" ", "-", sp)
 
@@ -42,8 +44,7 @@ find_lw <- function(sp, mirror = "de"){
   lwb_up <- as.numeric(gsub("),", "", ob[8]))
   lwb_sd <- (lwb_up - lwb_m) / 1.96
 
-  return(data.frame(species = sp, lwa_m = lwa_m,
-                    lwa_sd = lwa_sd, lwb_m = lwb_m,
-                    lwb_sd = lwb_sd))
-
+  data.frame(species = sp, lwa_m = lwa_m,
+             lwa_sd = lwa_sd, lwb_m = lwb_m,
+             lwb_sd = lwb_sd)
 }

@@ -15,7 +15,7 @@ model_parameters(sp, family, otolith = TRUE, temp, ...)
 
 \item{temp}{temperature}
 
-\item{...}{Additional arguments. See find_lw()}
+\item{...}{Additional arguments to \code{\link{find_lw}}.}
 }
 \description{
 A function to find a set of parameters
@@ -24,8 +24,9 @@ A function to find a set of parameters
 Returns a dataframe with all parameters that can be estimated
 }
 \examples{
+library(fishflux)
+model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)
 
-fishflux::model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)
 }
 \keyword{cnp_model}
 \keyword{find}

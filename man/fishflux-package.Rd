@@ -4,7 +4,7 @@
 \name{fishflux-package}
 \alias{fishflux-package}
 \alias{fishflux}
-\title{fishflux-package}
+\title{The 'fishflux' package.}
 \description{
 The `r fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish.
 It combines basic priciples from elemental stoichiometry and metabolic theory.
@@ -19,5 +19,5 @@ Main assets:
 }
 }
 \references{
-Stan Development Team (2018). RStan: the R interface to Stan. R package version 2.17.3. http://mc-stan.org
+Stan Development Team (2020). RStan: the R interface to Stan. R package version 2.19.3. https://mc-stan.org
 }

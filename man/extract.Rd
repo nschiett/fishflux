@@ -9,7 +9,9 @@ extract(mod, par)
 \arguments{
 \item{mod}{Output from cnp_mod_mcmc()}
 
-\item{par}{Character vector specifying which output parameter that should be returned.
+\item{par}{Character vector specifying which output parameter that should be returned.}
+}
+\value{
 Main model output parameters:
 \itemize{
 \item{F0c:} C-specific minimal inorganic flux (g/day)
@@ -30,19 +32,17 @@ Main model output parameters:
 \item{Fc:} Total inorganic flux of C (respiration) (g/day)
 \item{Fn:} Total inorganic flux of N (excretion) (g/day)
 \item{Fp:} Total inorganic flux of P (excretion) (g/day)
-}}
+}
 }
 \description{
 A function to extract specific model output parameters from result
 }
 \details{
-Returns a dataframe with a summary of the selected output parameters
+Returns a data.frame with a summary of the selected output parameters
 }
 \examples{
-
-model <- fishflux::cnp_model_mcmc(TL = 5:10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4))
-fishflux::extract(model, c("Fn","Fp"))
-
+model <- cnp_model_mcmc(TL = 5:10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4))
+extract(model, c("Fn","Fp"))
 
 }
 \keyword{excretion,}
