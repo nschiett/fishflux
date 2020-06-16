@@ -3,7 +3,14 @@
 ^.*\.Rhistory$
 ^\.Rproj\.user$
 ^\.travis\.yml$
-^doc$
 ^docs$
-^Meta$
-^\.github/workflows$
+^\.github$
+^LICENSE\.md$
+^src/stanExports*
+^src/fishflux\.dll$
+^.*tmp
+^README\.Rmd$
+^_pkgdown\.yml$
+^pkgdown$
+^.*Rcheck$
+^ignore$

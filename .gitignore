@@ -1,9 +1,31 @@
-.Rproj.user
+.Rproj*
+.Rapp*
 .Rhistory
 .RData
 .Ruserdata
-inst/doc
-*.o
-*.so
-doc
+.DS_Store
+.Rproj.user
 Meta
+
+TODO.md
+*tmp*
+docs/
+ignore/
+
+# package development
+fishflux.Rcheck/
+fishflux*tar.gz
+inst/doc
+inst/web
+src/fishflux.so
+..Rcheck/
+src/fishflux.dll
+
+# cpp files
+src/*.o
+src/*.cc
+src/*.h
+docs
+
+# vignette
+vignettes/*_cache
