@@ -4,12 +4,12 @@
 \alias{find_lw}
 \title{A function to find length-weight relationship parameters a and b}
 \usage{
-find_lw(sp, mirror = "de")
+find_lw(sp, mirror = "us")
 }
 \arguments{
 \item{sp}{A charachter value containing the species name}
 
-\item{mirror}{Mirror for fishbase (eg. "de", "org", "us", etc.) Default is "de".}
+\item{mirror}{Mirror for fishbase (eg. "de", "org", "us", etc.) Default is "us".}
 }
 \description{
 A function to find estimates length-weight relationship parameters available on fishbase. It returns a list of means and standard deviations of a and b obtained from:
@@ -18,12 +18,14 @@ Please cite Froese et al. (2013), when using these values.
 The default mirror for fishbase is set to "de", please change this if needed for your location
 }
 \examples{
-
+library(fishflux)
+library(plyr)
 # find length-weight relationship parameters for one species
 find_lw("Lutjanus griseus")
 
 # find length-weight relationship parameters for multiple species and return in dataframe
-plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))
+ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))
+
 }
 \keyword{bayesian}
 \keyword{fish,}

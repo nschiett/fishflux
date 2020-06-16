@@ -17,8 +17,9 @@ on the family level. If the family is not available, an average is returned.
 Returns a dataframe with the weight ratio (mdw) and it's sd (mdw_sd).
 }
 \examples{
-
+library(fishflux)
 wprop(family="Scaridae")
+
 }
 \keyword{cnp_model}
 \keyword{find}

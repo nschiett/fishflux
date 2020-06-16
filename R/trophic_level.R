@@ -4,30 +4,35 @@
 #' level using rfishbase. It returns a data frame containing the trophic level
 #' and the level at which the trophic level was found (species or genus).
 #'
-
 #' @param sp A character value containing the species name
+#' 
 #' @keywords fish, trophic level, fishbase
-#' @export trophic_level
+#' 
+#' @importFrom rfishbase ecology species species_list
+#' @importFrom dplyr select
+#' 
 #' @examples
-#'
+#' library(fishflux)
+#' library(plyr)
 #' trophic_level("Lutjanus griseus")
-#' plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level))
-
-trophic_level <- function (sp) {
-    fishflux::check_name_fishbase(sp)
-    ecogn <- rfishbase::ecology(sp)
-    if (length(ecogn) == 0) {
-        genus <- rfishbase::species(sp)$Genus
-        gn    <- rfishbase::species_list(Genus = genus)
-        ecogn <- rfishbase::ecology(gn)
-        level <- "genus"
-    } else {
-        level <- "species"
-    }
-    troph       <- dplyr::select(ecogn, .data$Species, .data$DietTroph, .data$FoodTroph)
-    troph$troph <- rowMeans(troph[, 2:3], na.rm = TRUE)
-    troph       <- mean(troph$troph, na.rm = TRUE)
-    data.frame(species       = sp,
-               trophic_level = troph,
-               level         = level)
+#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level))
+#' 
+#' @export
+trophic_level <- function(sp) {
+  check_name_fishbase(sp)
+  ecogn <- ecology(sp)
+  if (length(ecogn) == 0) {
+    genus <- species(sp)$Genus
+    gn    <- species_list(Genus = genus)
+    ecogn <- ecology(gn)
+    level <- "genus"
+  } else {
+    level <- "species"
+  }
+  troph <- select(ecogn, Species, DietTroph, FoodTroph)
+  troph$troph <- rowMeans(troph[, 2:3], na.rm = TRUE)
+  troph <- mean(troph$troph, na.rm = TRUE)
+  data.frame(species = sp,
+             trophic_level = troph,
+             level = level)
 }

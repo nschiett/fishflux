@@ -1,10 +1,9 @@
 #' A function to extract specific model output parameters from result
 #'
-#'
-#'
-#' @param mod     Output from cnp_mod_mcmc()
-#' @param par     Character vector specifying which output parameter that should be returned.
-#' Main model output parameters:
+#' @param mod Output from cnp_mod_mcmc()
+#' @param par Character vector specifying which output parameter that should be returned.
+#' 
+#' @return Main model output parameters:
 #' \itemize{
 #' \item{F0c:} C-specific minimal inorganic flux (g/day)
 #' \item{F0n:} N-specific minimal inorganic flux (g/day)
@@ -25,25 +24,26 @@
 #' \item{Fn:} Total inorganic flux of N (excretion) (g/day)
 #' \item{Fp:} Total inorganic flux of P (excretion) (g/day)
 #' }
-#' @details       Returns a dataframe with a summary of the selected output parameters
-#' @keywords      fish, stoichiometry, excretion, mcmc
-#' @export extract
+#' 
+#' @details Returns a data.frame with a summary of the selected output parameters
+#' 
+#' @keywords fish, stoichiometry, excretion, mcmc
 #'
+#' @importFrom dplyr filter
+#' 
 #' @examples
+#' model <- cnp_model_mcmc(TL = 5:10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4))
+#' extract(model, c("Fn","Fp"))
 #'
-#' model <- fishflux::cnp_model_mcmc(TL = 5:10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4))
-#' fishflux::extract(model, c("Fn","Fp"))
-#'
-#'
-
-extract <- function(mod, par){
-
+#' @export
+extract <- function(mod, par) {
   summary <- mod$summary
   TL <- unique(summary$TL)
-
-  list <- lapply(par, FUN = function(p){
-    sub <- dplyr::filter(summary, .data$variable == p)
-    sub <- data.frame(sub$mean, sub$median, sub$sd, sub$`Q_2.5`, sub$`Q_97.5`,  sub$`Q_25`,  sub$`Q_75` )
+  list <- lapply(par, FUN = function(p) {
+    sub <- filter(summary, variable == p)
+    sub <- data.frame(sub$mean, sub$median, sub$sd,
+                      sub$`Q_2.5`, sub$`Q_97.5`, sub$`Q_25`,
+                      sub$`Q_75`)
     colnames(sub) <- c(paste(p, "mean", sep = "_"),
                        paste(p, "median", sep = "_"),
                        paste(p, "sd", sep = "_"),
@@ -51,12 +51,10 @@ extract <- function(mod, par){
                        paste(p, "97.5%", sep = "_"),
                        paste(p, "25%", sep = "_"),
                        paste(p, "75%", sep = "_"))
-    return(sub)
-    })
+    sub
+  })
 
   df <- do.call(cbind, list)
-
   tl <- data.frame(TL = TL)
-  df <- cbind(tl, df)
-  return(df)
+  cbind(tl, df)
 }

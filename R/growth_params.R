@@ -7,33 +7,38 @@
 #'
 #' @param sp A charachter value containing the species name
 #' @param otolith A logical value. If TRUE, only results from otolith analysis are returned. If false, all growth studies will be returned.
+#' 
 #' @keywords fish, trophic level, fishbase
-#' @export growth_params
+#' 
+#' @importFrom rfishbase popgrowth
+#' @importFrom dplyr select filter
+#' 
 #' @examples
-#'
+#' library(fishflux)
 #' growth_params("Lutjanus griseus")
-
-growth_params <- function(sp, otolith=TRUE){
-  if (length(suppressMessages(fishflux::name_errors(sp))) > 0){
+#' 
+#' @export
+growth_params <- function(sp, otolith = TRUE) {
+  if (length(suppressMessages(name_errors(sp))) > 0) {
     stop("Species name is incorrect")
   }
- pop <- rfishbase::popgrowth(sp)
- if (length(pop) == 0){
+ pop <- popgrowth(sp)
+ if (length(pop) == 0) {
    growth <- data.frame(species = NA, Locality = NA, k = NA,
                         Linf = NA, t0 = NA, method = NA, comments = NA)
- }else{
-   growth <- dplyr::select(pop, species = .data$Species, .data$Locality,
-                           k = .data$K, Linf = .data$Loo, t0 = .data$to,
-                           method = .data$Data,
-                           comments = .data$Comment)
-    if (otolith){
-      growth <- dplyr::filter(growth, .data$method %in%
-                c("annuli on otoliths", "annuli on many otoliths"))
+ } else {
+   growth <- select(pop, species = Species, Locality,
+                    k = K, Linf = Loo, t0 = to,
+                    method = Data,
+                    comments = Comment)
+    if (otolith) {
+      growth <- filter(growth, method %in%
+                  c("annuli on otoliths", "annuli on many otoliths"))
     }
- if (nrow(growth) < 1){
-   stop("No otolith based parameters available in fishbase.
-        Try otolith=FALSE or search literature.")
- }
-}
- return(growth)
+    if (nrow(growth) < 1) {
+      stop("No otolith based parameters available in fishbase.
+           Try otolith = FALSE or search literature.")
+    }
+  }
+ growth
 }

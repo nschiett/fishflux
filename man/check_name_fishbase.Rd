@@ -14,8 +14,7 @@ This is a wrapper function to which will return an error (via
 \code{\link[fishflux]{name_errors}}) if the provided species name is wrong.
 }
 \examples{
-
-
+library(fishflux)
 check_name_fishbase("Lutjanus griseus")
 
 }

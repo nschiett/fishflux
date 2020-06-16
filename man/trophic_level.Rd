@@ -15,9 +15,11 @@ level using rfishbase. It returns a data frame containing the trophic level
 and the level at which the trophic level was found (species or genus).
 }
 \examples{
-
+library(fishflux)
+library(plyr)
 trophic_level("Lutjanus griseus")
-plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level))
+ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level))
+
 }
 \keyword{fish,}
 \keyword{fishbase}

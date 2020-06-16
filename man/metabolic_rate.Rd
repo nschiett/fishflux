@@ -36,9 +36,10 @@ a covariate.
 All model parameters below were estimated by Barneche & Allen 2018 Ecology Letters doi: 10.1111/ele.12947. These parameters are for the best model (Model 2 in the paper online supplementary material) of fish resting metabolic rates reported in the paper, which also includes trophic level as a covariate.
 }
 \examples{
-
+library(fishflux)
 fishflux::metabolic_rate(temp = 27, m_max = 600, m = 300, asp = 3,
 troph = 2, f = 2, growth_g_day = 0.05, B0 = 0.2, a = 0.6 )
+
 }
 \keyword{Fish,}
 \keyword{fishbase}
