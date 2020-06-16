@@ -3,7 +3,7 @@ Title: A Tool To Model Elemental Fluxes In Fishes
 Version: 0.0.0.9001
 Authors@R: c(
     person("Nina M. D.", "Schiettekatte", , "nina.schiettekatte@gmail.com", c("aut", "cre")),
-    person("Barneche", "Diego", , "d.barneche@aims.gov.au", "aut")
+    person("Diego", "Barneche", , "d.barneche@aims.gov.au", "aut")
     )
 Description: Model fluxes of carbon, nitrogen, and phosphorus with the use of a coupled 
     bioenergetics and stoichiometric model that incorporates flexible elemental limitation. 
