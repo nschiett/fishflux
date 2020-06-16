@@ -20,6 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          system("brew install brew install tbb")
           install.packages(c("ps", "remotes"))
           remotes::install_deps(dependencies = TRUE)
           remotes::install_dev("pkgdown")
