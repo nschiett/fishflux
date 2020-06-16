@@ -10,6 +10,7 @@ Status](https://api.travis-ci.org/nschiett/fishflux.png?branch=master)](https://
 Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishflux/actions)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9001-orange.svg)](commits/master)
 [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
+![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
 
 <img src="man/figures/fishflux.png" width = 120 alt="fishflux logo"/>
 
