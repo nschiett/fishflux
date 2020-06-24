@@ -11,6 +11,8 @@ Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](h
 [![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9001-orange.svg)](commits/master)
 [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
 ![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
+[![Codecov test
+coverage](https://codecov.io/gh/nschiett/fishflux/branch/master/graph/badge.svg)](https://codecov.io/gh/nschiett/fishflux?branch=maste)
 
 <img src="man/figures/fishflux.png" width = 120 alt="fishflux logo"/>
 
