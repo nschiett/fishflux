@@ -34,3 +34,9 @@ install:
 
 script:
   - R -e "rstan::stan_version()"
+
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e 'covr::codecov()'
