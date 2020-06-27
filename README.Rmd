@@ -93,7 +93,7 @@ library(fishflux)
 Documentation
 -------------
 
-See package [vignette](https://nschiett.github.io/fishflux/articles/intro_to_fishflux.html) for an introduction and help pages.
+See package [vignette](https://nschiett.github.io/fishflux/articles/intro_to_fishflux.html) for an introduction and help pages. For more information on the theoretical model see [here](https://doi.org/10.1111/1365-2435.13618).
 
 License
 --------
@@ -106,4 +106,4 @@ Citation
 
 When using the bioenergetic model featured in this package, please cite:
 
-Schiettekatte, N. M. D., Barneche, D. R., Villéger, S., Allgeier, J, Burkepile, D.; Brandl, S.J., Casey, J. M.; Mercière, A; Munsterman, K; Morat, F; Parravicini, V (2020) (in press.) Nutrient limitation, bioenergetics, and stoichiometry: a new model to predict elemental fluxes mediated by fishes. *Functional ecology*
+Schiettekatte, N.M.D., Barneche, D.R., Villéger, S., Allgeier, J.E., Burkepile, D.E., Brandl, S.J., Casey, J.M., Mercière, A., Munsterman, K.S., Morat, F. and Parravicini, V. (2020), Nutrient limitation, bioenergetics, and stoichiometry: a new model to predict elemental fluxes mediated by fishes. Funct Ecol. Accepted Author Manuscript. doi:10.1111/1365-2435.13618

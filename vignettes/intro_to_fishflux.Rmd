@@ -215,7 +215,7 @@ fishflux::sensitivity(TL = 10, param = param_zebsco, par = c("Dn_sd", "Dp_sd", "
 \newline
 ## More information
 
-For more information on the theoretical framework of the model, see paper (**ADD LINK**).
+For more information on the theoretical framework of the model, see @Schiettekatte2020 ( [paper](https://doi.org/10.1111/1365-2435.13618) ).
 Every function of `fishflux` has a help page with more documentation.
 In the case of errors, bugs or discomfort, you are invited to raise an [issue](https://github.com/nschiett/fishflux/issues) on GitHub.
 `fishflux` is always in development and we are happy to take your comments or suggestions into consideration.
