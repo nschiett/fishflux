@@ -1,14 +1,14 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-fishflux: A tool to model nutrient fluxes in fish
-=================================================
+fishflux: A tool to model elemental fluxes in fishes
+====================================================
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Build
 Status](http://badges.herokuapp.com/travis/nschiett/fishflux?branch=master&label=build&style=plastic&logo=travisci)](https://travis-ci.org/nschiett/fishflux)
 [![Actions
 Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishflux/actions)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1-orange.svg)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1-blue.svg)](commits/master)
 [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
 ![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
 [![Codecov test
