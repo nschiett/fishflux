@@ -8,7 +8,7 @@ fishflux: A tool to model nutrient fluxes in fish
 Status](http://badges.herokuapp.com/travis/nschiett/fishflux?branch=master&label=build&style=plastic&logo=travisci)](https://travis-ci.org/nschiett/fishflux)
 [![Actions
 Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishflux/actions)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9001-orange.svg)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1-orange.svg)](commits/master)
 [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
 ![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
 [![Codecov test
@@ -86,7 +86,8 @@ Documentation
 
 See package
 [vignette](https://nschiett.github.io/fishflux/articles/intro_to_fishflux.html)
-for an introduction and help pages.
+for an introduction and help pages. For more information on the
+theoretical model see [here](https://doi.org/10.1111/1365-2435.13618).
 
 License
 -------
@@ -99,8 +100,9 @@ Citation
 
 When using the bioenergetic model featured in this package, please cite:
 
-Schiettekatte, N. M. D., Barneche, D. R., Villéger, S., Allgeier, J,
-Burkepile, D.; Brandl, S.J., Casey, J. M.; Mercière, A; Munsterman, K;
-Morat, F; Parravicini, V (2020) (in press.) Nutrient limitation,
+Schiettekatte, N.M.D., Barneche, D.R., Villéger, S., Allgeier, J.E.,
+Burkepile, D.E., Brandl, S.J., Casey, J.M., Mercière, A., Munsterman,
+K.S., Morat, F. and Parravicini, V. (2020), Nutrient limitation,
 bioenergetics, and stoichiometry: a new model to predict elemental
-fluxes mediated by fishes. *Functional ecology*
+fluxes mediated by fishes. Funct Ecol. Accepted Author Manuscript.
+<a href="doi:10.1111/1365-2435.13618" class="uri">doi:10.1111/1365-2435.13618</a>
