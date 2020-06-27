@@ -12,7 +12,7 @@ bibentry(
     person("Mercière", "A." ),
     person("Munsterman", "K.S."),
     person("Morat", "F."),
-    person("Parravicini", "V."),
+    person("Parravicini", "V.")),
   journal = "Functional ecology",
   year = "2020",
   doi = "10.1111/1365-2435.13618",

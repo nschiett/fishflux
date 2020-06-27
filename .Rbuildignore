@@ -15,3 +15,4 @@
 ^.*Rcheck$
 ^ignore$
 ^codecov.yml$
+^codecov\.yml$

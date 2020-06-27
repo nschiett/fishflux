@@ -1,6 +1,6 @@
 Package: fishflux
 Title: A Tool To Model Elemental Fluxes In Fishes
-Version: 0.0.0.9001
+Version: 0.0.1
 Authors@R: c(
     person("Nina M. D.", "Schiettekatte", , "nina.schiettekatte@gmail.com", c("aut", "cre")),
     person("Diego", "Barneche", , "d.barneche@aims.gov.au", "aut")
