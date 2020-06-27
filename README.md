@@ -3,7 +3,7 @@
 fishflux: A tool to model nutrient fluxes in fish
 =================================================
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Build
 Status](http://badges.herokuapp.com/travis/nschiett/fishflux?branch=master&label=build&style=plastic&logo=travisci)](https://travis-ci.org/nschiett/fishflux)
 [![Actions
