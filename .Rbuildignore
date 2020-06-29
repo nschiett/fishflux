@@ -16,3 +16,5 @@
 ^ignore$
 ^codecov.yml$
 ^codecov\.yml$
+^CRAN-RELEASE$
+^cran-comments\.md$

@@ -23,7 +23,7 @@
 #' \item{mdw_m, wprop_sd:} Ratio between dry weight and wet weight of fish
 #' \item{F0nz_m, F0nz_sd:} N-specific turnover rate
 #' \item{F0pz_m, F0pz_sd:} P-specific turnover rate
-#' \item{f0_m, f0_sd:} Metabolic normalisation constant independent of body mass (g C g^−α d^−1)
+#' \item{f0_m, f0_sd:} Metabolic normalisation constant independent of body mass (g C g^-alpha d^-1)
 #' \item{alpha_m, alpha_sd:} Metabolic rate mass-scaling exponent
 #' \item{theta_m, theta_sd:} Activity scope
 #' \item{r_m, r_sd:} Aspect ratio of caudal fin
@@ -33,7 +33,7 @@
 #' @param cor     A list of correlations between certain parameters: ro_Qc_Qn, ro_Qc_Qp, ro_Qn_Qp,
 #' ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
-#' @param ... Additional arguments to \code{\link[rstan]{sampling}}
+#' @param ... Additional arguments to \code{\link[rstan:sampling]{sampling}}
 #'
 #' @details Returns a list with two objects: A stanfit object and a data.frame with a summary of all model components.
 #'  See \code{\link{extract}} to extract a summary of predicted variables and
