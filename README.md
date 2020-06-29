@@ -105,4 +105,4 @@ Burkepile, D.E., Brandl, S.J., Casey, J.M., Mercière, A., Munsterman,
 K.S., Morat, F. and Parravicini, V. (2020), Nutrient limitation,
 bioenergetics, and stoichiometry: a new model to predict elemental
 fluxes mediated by fishes. Funct Ecol. Accepted Author Manuscript.
-<a href="doi:10.1111/1365-2435.13618" class="uri">doi:10.1111/1365-2435.13618</a>
+:10.1111/1365-2435.13618
