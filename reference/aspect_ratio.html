@@ -146,10 +146,12 @@ and the level at which the aspect ratio was found (species or genus).</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>#library(fishflux)</span>
-<span class='co'>#library(plyr)</span>
-<span class='co'>#aspect_ratio("Lutjanus griseus")</span>
-<span class='co'>#ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))</span>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://nschiett.github.io/fishflux'>fishflux</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://had.co.nz/plyr'>plyr</a></span>)
+<span class='fu'><a href='https://rdrr.io/pkg/fishflux/man/aspect_ratio.html'>aspect_ratio</a></span>(<span class='st'>"Lutjanus griseus"</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/plyr/man/ldply.html'>ldply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Chlorurus spilurus"</span>,<span class='st'>"Zebrasoma scopas"</span>), <span class='kw'>aspect_ratio</span>))
+}
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
