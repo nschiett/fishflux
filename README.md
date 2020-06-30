@@ -100,9 +100,9 @@ Citation
 
 When using the bioenergetic model featured in this package, please cite:
 
-Schiettekatte, N.M.D., Barneche, D.R., Villéger, S., Allgeier, J.E.,
-Burkepile, D.E., Brandl, S.J., Casey, J.M., Mercière, A., Munsterman,
-K.S., Morat, F. and Parravicini, V. (2020), Nutrient limitation,
-bioenergetics, and stoichiometry: a new model to predict elemental
-fluxes mediated by fishes. Funct Ecol. Accepted Author Manuscript.
-:10.1111/1365-2435.13618
+Schiettekatte NMD, Barneche DR, Villéger S, Allgeier JE, Burkepile DE,
+Brandl, SJ, Casey, JM, Mercière, A, Munsterman, KS, Morat, F and
+Parravicini, V, Nutrient limitation, bioenergetics, and stoichiometry: a
+new model to predict elemental fluxes mediated by fishes. Funct Ecol.
+2020;00:1-13.
+<a href="https://doi.org/10.1111/1365-2435.13618" class="uri">https://doi.org/10.1111/1365-2435.13618</a>
