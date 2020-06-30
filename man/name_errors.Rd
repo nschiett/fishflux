@@ -19,6 +19,6 @@ name_errors(c("Chlorurus spilurus", "Zebrasoma scopas"))
 name_errors(c("Chlorurus spilurus", "Zebrasoma copas"))
 
 }
-\keyword{fish,}
+\keyword{fish}
 \keyword{names}
 \keyword{scientific}

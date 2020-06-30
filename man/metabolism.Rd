@@ -35,5 +35,5 @@ library(fishflux)
 metabolism(family = "Pomacentridae", temp = 27, troph_m = 2)
 
 }
-\keyword{Fish,}
+\keyword{Fish}
 \keyword{metabolism}

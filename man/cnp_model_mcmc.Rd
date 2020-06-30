@@ -49,7 +49,8 @@ parameters:
 \item{cor}{A list of correlations between certain parameters: ro_Qc_Qn, ro_Qc_Qp, ro_Qn_Qp,
 ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0}
 
-\item{...}{Additional arguments to \code{\link[rstan:sampling]{sampling}}}
+\item{...}{Additional arguments to 
+\code{\link[rstan:sampling]{sampling}}}
 }
 \description{
 This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.
@@ -65,7 +66,7 @@ model <- cnp_model_mcmc(TL = 10, param = list(
 Qc_m = 40, Qn_m = 10, Qp_m = 4, theta_m = 3))
 
 }
-\keyword{excretion,}
-\keyword{fish,}
+\keyword{excretion}
+\keyword{fish}
 \keyword{mcmc}
-\keyword{stoichiometry,}
+\keyword{stoichiometry}

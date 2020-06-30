@@ -45,7 +45,7 @@ model <- cnp_model_mcmc(TL = 5:10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4))
 extract(model, c("Fn","Fp"))
 
 }
-\keyword{excretion,}
-\keyword{fish,}
+\keyword{excretion}
+\keyword{fish}
 \keyword{mcmc}
-\keyword{stoichiometry,}
+\keyword{stoichiometry}

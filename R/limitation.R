@@ -12,7 +12,7 @@
 #'   \item{prop_lim}{the proportion of iterations for which there is limitation by the element}
 #' }
 #' 
-#' @keywords fish, plot, limitation
+#' @keywords fish plot limitation
 #' 
 #' @importFrom dplyr %>% mutate bind_rows
 #' @importFrom tidyr gather

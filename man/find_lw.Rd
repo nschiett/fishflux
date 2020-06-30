@@ -28,7 +28,7 @@ ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))
 
 }
 \keyword{bayesian}
-\keyword{fish,}
-\keyword{fishbase,}
+\keyword{fish}
+\keyword{fishbase}
 \keyword{l-w}
-\keyword{relationship,}
+\keyword{relationship}

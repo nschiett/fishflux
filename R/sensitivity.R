@@ -12,7 +12,7 @@
 #' @details Returns a dataframe with sd's of model predictions. Row names indicate the variable, who's sd was used for the model run.
 #' Plots a heatplot with width of the 95%CI of output predictions.
 #' 
-#' @keywords fish, stoichiometry, excretion, mcmc
+#' @keywords fish stoichiometry excretion mcmc sensitivity plot
 #'
 #' @importFrom parallel mcmapply
 #' @importFrom tidyr gather

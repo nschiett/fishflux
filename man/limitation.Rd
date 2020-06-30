@@ -29,6 +29,6 @@ mod <- cnp_model_mcmc(TL = 5, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4,
 limitation(mod)
 
 }
-\keyword{fish,}
+\keyword{fish}
 \keyword{limitation}
-\keyword{plot,}
+\keyword{plot}

@@ -18,6 +18,6 @@ library(fishflux)
 check_name_fishbase("Lutjanus griseus")
 
 }
-\keyword{fish,}
+\keyword{fish}
 \keyword{fishbase}
-\keyword{taxonomy,}
+\keyword{taxonomy}

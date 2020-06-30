@@ -6,16 +6,16 @@
 #'
 #' @param sp A character value containing the species name
 #' 
-#' @keywords fish, aspect ratio, fishbase
+#' @keywords fish aspect-ratio fishbase
 #' 
 #' @importFrom rfishbase morphometrics species_list
 #' @importFrom dplyr select summarise group_by select
 #'
 #' @examples
-#' library(fishflux)
-#' library(plyr)
-#' aspect_ratio("Lutjanus griseus")
-#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
+#' #library(fishflux)
+#' #library(plyr)
+#' #aspect_ratio("Lutjanus griseus")
+#' #ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
 #' 
 #' @export
 aspect_ratio <- function(sp) {

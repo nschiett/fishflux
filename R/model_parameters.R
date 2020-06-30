@@ -8,7 +8,6 @@
 #' 
 #' @details Returns a dataframe with all parameters that can be estimated
 #' 
-#' @keywords fish, find some parameters needed for cnp_model
 #' 
 #' @examples
 #' library(fishflux)

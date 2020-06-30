@@ -7,7 +7,7 @@
 #'
 #' @param family family
 #' 
-#' @keywords fish, find some parameters needed for cnp_model
+#' @keywords fish weight proportion
 #' 
 #' @importFrom stats median quantile sd
 #'

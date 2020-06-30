@@ -28,10 +28,3 @@ library(fishflux)
 model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)
 
 }
-\keyword{cnp_model}
-\keyword{find}
-\keyword{fish,}
-\keyword{for}
-\keyword{needed}
-\keyword{parameters}
-\keyword{some}

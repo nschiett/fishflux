@@ -4,7 +4,7 @@
 #' in your fish species list and returns inaccurate scientific names
 #' @param sp A vector containing all your scientific species names.
 #' 
-#' @keywords fish, scientific names
+#' @keywords fish scientific names
 #' 
 #' @importFrom rfishbase validate_names
 #' 

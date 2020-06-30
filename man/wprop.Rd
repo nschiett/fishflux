@@ -21,10 +21,6 @@ library(fishflux)
 wprop(family="Scaridae")
 
 }
-\keyword{cnp_model}
-\keyword{find}
-\keyword{fish,}
-\keyword{for}
-\keyword{needed}
-\keyword{parameters}
-\keyword{some}
+\keyword{fish}
+\keyword{proportion}
+\keyword{weight}

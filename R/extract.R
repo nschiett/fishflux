@@ -27,7 +27,7 @@
 #' 
 #' @details Returns a data.frame with a summary of the selected output parameters
 #' 
-#' @keywords fish, stoichiometry, excretion, mcmc
+#' @keywords fish stoichiometry excretion mcmc
 #'
 #' @importFrom dplyr filter
 #' 

@@ -22,7 +22,7 @@ library(fishflux)
 growth_params("Lutjanus griseus")
 
 }
-\keyword{fish,}
+\keyword{fish}
 \keyword{fishbase}
-\keyword{level,}
+\keyword{level}
 \keyword{trophic}

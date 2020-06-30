@@ -6,7 +6,7 @@
 #'
 #' @param sp A character value containing the species name
 #' 
-#' @keywords fish, trophic level, fishbase
+#' @keywords fish trophic level fishbase
 #' 
 #' @importFrom rfishbase ecology species species_list
 #' @importFrom dplyr select

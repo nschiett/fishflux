@@ -46,7 +46,5 @@ fishflux::metabolic_rate(temp = 27, m_max = 600, m = 300, asp = 3,
 troph = 2, f = 2, growth_g_day = 0.05, B0 = 0.2, a = 0.6 )
 
 }
-\keyword{Fish,}
-\keyword{fishbase}
-\keyword{level,}
-\keyword{trophic}
+\keyword{fish}
+\keyword{metabolism}

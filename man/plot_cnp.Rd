@@ -29,7 +29,7 @@ plot_cnp(mod = mod, y = "Fp", x = "tl",
 
 }
 \keyword{bioenergetic}
-\keyword{fish,}
-\keyword{model,}
-\keyword{plot,}
+\keyword{fish}
+\keyword{model}
+\keyword{plot}
 \keyword{stoichiometry}

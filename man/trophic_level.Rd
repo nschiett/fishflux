@@ -21,7 +21,7 @@ trophic_level("Lutjanus griseus")
 ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level))
 
 }
-\keyword{fish,}
+\keyword{fish}
 \keyword{fishbase}
-\keyword{level,}
+\keyword{level}
 \keyword{trophic}

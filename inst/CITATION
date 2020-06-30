@@ -18,10 +18,10 @@ bibentry(
   doi = "10.1111/1365-2435.13618",
   header = "When using the model in publications use:",
   textVersion = paste(
-    "Schiettekatte, N.M., Barneche, D.R., Villéger, S., Allgeier, J.E., Burkepile, D.E., Brandl, S.J., Casey, J.M., Mercière, A., Munsterman, K.S., Morat, F. and Parravicini, V. (2020),",
+    "Schiettekatte, N.M., Barneche, D.R., Villéger, S., Allgeier, J.E., Burkepile, D.E., Brandl, S.J., Casey, J.M., Mercière, A., Munsterman, K.S., Morat, F. and Parravicini, V.,",
     "Nutrient limitation, bioenergetics, and stoichiometry: a new model to predict elemental fluxes mediated by fishes.",
-    "Funct Ecol. Accepted Author Manuscript.",
-    "doi:10.1111/1365-2435.13618"
+    "Funct Ecol. 2020;00:1-13",
+    "https://doi.org/10.1111/1365-2435.13618"
   ),
   encoding = "UTF-8"
 )

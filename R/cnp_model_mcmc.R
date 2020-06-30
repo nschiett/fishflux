@@ -33,13 +33,14 @@
 #' @param cor     A list of correlations between certain parameters: ro_Qc_Qn, ro_Qc_Qp, ro_Qn_Qp,
 #' ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
-#' @param ... Additional arguments to \code{\link[rstan:sampling]{sampling}}
+#' @param ... Additional arguments to 
+#'   \code{\link[rstan:sampling]{sampling}} 
 #'
 #' @details Returns a list with two objects: A stanfit object and a data.frame with a summary of all model components.
 #'  See \code{\link{extract}} to extract a summary of predicted variables and
 #'  \code{\link{limitation}} to get information on the limiting element.
 #' 
-#' @keywords fish, stoichiometry, excretion, mcmc
+#' @keywords fish stoichiometry excretion mcmc
 #' @import rstan
 #' @importFrom stats median quantile sd
 #' @importFrom parallel mclapply

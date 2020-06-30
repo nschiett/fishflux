@@ -15,13 +15,12 @@ level using rfishbase. It returns a data frame containing the aspect ratio
 and the level at which the aspect ratio was found (species or genus).
 }
 \examples{
-library(fishflux)
-library(plyr)
-aspect_ratio("Lutjanus griseus")
-ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
+#library(fishflux)
+#library(plyr)
+#aspect_ratio("Lutjanus griseus")
+#ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
 
 }
-\keyword{aspect}
-\keyword{fish,}
+\keyword{aspect-ratio}
+\keyword{fish}
 \keyword{fishbase}
-\keyword{ratio,}

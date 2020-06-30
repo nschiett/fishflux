@@ -8,7 +8,7 @@
 #' @param sp A charachter value containing the species name
 #' @param mirror Mirror for fishbase (eg. "de", "org", "us", etc.) Default is "us".
 #' 
-#' @keywords fish, l-w relationship, fishbase, bayesian
+#' @keywords fish l-w relationship fishbase bayesian
 #' 
 #' @examples
 #' library(fishflux)

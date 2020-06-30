@@ -6,7 +6,7 @@
 #'
 #' @param sp A character value containing the species name
 #' 
-#' @keywords fish, fishbase taxonomy,
+#' @keywords fish fishbase taxonomy
 #' 
 #' @examples
 #' library(fishflux)

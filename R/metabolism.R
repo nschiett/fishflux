@@ -18,7 +18,7 @@
 #' of fish resting metabolic rates reported in the paper, 
 #' which also includes trophic level as a covariate.
 #' 
-#' @keywords    Fish, metabolism
+#' @keywords    Fish metabolism
 #' @importFrom rstan sampling summary
 #' 
 #' @examples

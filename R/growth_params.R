@@ -8,7 +8,7 @@
 #' @param sp A charachter value containing the species name
 #' @param otolith A logical value. If TRUE, only results from otolith analysis are returned. If false, all growth studies will be returned.
 #' 
-#' @keywords fish, trophic level, fishbase
+#' @keywords fish trophic level fishbase
 #' 
 #' @importFrom rfishbase popgrowth
 #' @importFrom dplyr select filter

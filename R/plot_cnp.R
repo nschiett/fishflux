@@ -7,7 +7,7 @@
 #' @param y Output variable(s) to be plotted. Can be a character or a character vector.
 #' @param probs Width of the confidence
 #' 
-#' @keywords fish, plot, bioenergetic model, stoichiometry
+#' @keywords fish plot bioenergetic model stoichiometry
 #'
 #' @importFrom rstan extract
 #' @importFrom dplyr %>% bind_rows mutate group_by

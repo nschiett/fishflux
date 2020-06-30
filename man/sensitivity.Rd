@@ -39,7 +39,9 @@ sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1),
             par = c("k_sd","Dn_sd","Dc_sd"), out = c("Ic", "In", "Ip", "Gc"))
 
 }
-\keyword{excretion,}
-\keyword{fish,}
+\keyword{excretion}
+\keyword{fish}
 \keyword{mcmc}
-\keyword{stoichiometry,}
+\keyword{plot}
+\keyword{sensitivity}
+\keyword{stoichiometry}

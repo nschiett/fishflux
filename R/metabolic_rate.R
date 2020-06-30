@@ -23,7 +23,7 @@
 #' of fish resting metabolic rates reported in the paper, 
 #' which also includes trophic level as a covariate.
 #' 
-#' @keywords Fish, trophic level, fishbase
+#' @keywords fish metabolism
 #' 
 #' @examples
 #' library(fishflux)
