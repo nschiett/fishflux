@@ -1,5 +1,5 @@
 # example
-mp <- fishflux::model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)
+mp <- suppressMessages(suppressWarnings(fishflux::model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)))
 
 
 test_that("Simple corner cases", {

@@ -2,6 +2,7 @@
 ar <- fishflux::aspect_ratio("Zebrasoma scopas")
 
 test_that("Simple corner cases", {
+  needs_api()
   expect_error(fishflux::aspect_ratio("wrong name"))
   expect_s3_class(ar, "data.frame")
   expect_equal(ar, fishflux::aspect_ratio("Zebrasoma scopas"))

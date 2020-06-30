@@ -5,8 +5,8 @@ test_that("simple corner case", {
   #name_errors
   expect_message(fishflux::name_errors("name"))
   expect_message(fishflux::name_errors("name"), "Inaccurate species names found:")
-  expect_equal(fishflux::name_errors("name"), "name")
-  expect_null(fishflux::name_errors("Zebrasoma scopas"))
+  expect_message(expect_equal(fishflux::name_errors("name"), "name"))
+  expect_message(expect_null(fishflux::name_errors("Zebrasoma scopas")))
   expect_message(fishflux::name_errors("Zebrasoma scopas"))
   expect_message(fishflux::name_errors("Zebrasoma scopas"), "All species names are correct")
 })

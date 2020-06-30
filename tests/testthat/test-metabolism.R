@@ -1,6 +1,5 @@
 # example
-m <- fishflux::metabolism(family = "Pomacentridae", temp = 27, troph_m = 2)
-
+m <- suppressMessages(suppressWarnings(fishflux::metabolism(family = "Pomacentridae", temp = 27, troph_m = 2)))
 
 test_that("Simple corner cases", {
   expect_gt(min(m), 0)

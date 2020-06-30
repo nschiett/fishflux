@@ -1,6 +1,6 @@
 # example
-sens <- fishflux::sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1),
-                      par = c("k_sd","Dn_sd","Dc_sd"), out = c("Ic", "In", "Ip", "Gc"))
+sens <- suppressMessages(suppressWarnings(fishflux::sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1),
+                                                                par = c("k_sd","Dn_sd","Dc_sd"), out = c("Ic", "In", "Ip", "Gc"))))
 
 test_that("Simple corner cases", {
   expect_gt(min(sens), 0)
