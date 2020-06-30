@@ -12,10 +12,12 @@
 #' @importFrom dplyr select summarise group_by select
 #'
 #' @examples
-#' #library(fishflux)
-#' #library(plyr)
-#' #aspect_ratio("Lutjanus griseus")
-#' #ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
+#' \dontrun{
+#' library(fishflux)
+#' library(plyr)
+#' aspect_ratio("Lutjanus griseus")
+#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
+#' }
 #' 
 #' @export
 aspect_ratio <- function(sp) {
