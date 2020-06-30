@@ -50,7 +50,7 @@ parameters:
 ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0}
 
 \item{...}{Additional arguments to 
-\code{\link[rstan:sampling]{sampling}}}
+\code{\link[rstan]{sampling}}}
 }
 \description{
 This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.

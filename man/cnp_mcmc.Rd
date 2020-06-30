@@ -45,7 +45,7 @@ parameters:
 ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0}
 
 \item{...}{Additional arguments to 
-\code{\link[rstan:sampling]{sampling}}}
+\code{\link[rstan]{sampling}}}
 }
 \description{
 cnp_mcmc
