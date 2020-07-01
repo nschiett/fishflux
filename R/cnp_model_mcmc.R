@@ -40,7 +40,6 @@
 #'  \code{\link{limitation}} to get information on the limiting element.
 #' 
 #' @keywords fish stoichiometry excretion mcmc
-#' @import rstan
 #' @importFrom stats median quantile sd
 #' @importFrom parallel mclapply
 #' @importFrom plyr ldply
@@ -193,6 +192,7 @@ cnp_model_mcmc <- function(TL, param, iter = 1000,
 #' @inheritParams cnp_model_mcmc
 #' 
 #' @param params_st Standard parameters.
+#' @param ... Additional arguments to \code{\link[rstan]{sampling}}
 #' 
 #' @importFrom rstan sampling extract
 #' @importFrom plyr ldply
