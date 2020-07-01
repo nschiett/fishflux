@@ -12,7 +12,7 @@
 #' @importFrom dplyr select summarise group_by select
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(fishflux)
 #' library(plyr)
 #' aspect_ratio("Lutjanus griseus")

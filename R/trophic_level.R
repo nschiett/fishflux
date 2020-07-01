@@ -12,10 +12,11 @@
 #' @importFrom dplyr select
 #' 
 #' @examples
+#' \donttest{
 #' library(fishflux)
 #' library(plyr)
 #' trophic_level("Lutjanus griseus")
-#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level))
+#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level))}
 #' 
 #' @export
 trophic_level <- function(sp) {

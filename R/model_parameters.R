@@ -10,8 +10,9 @@
 #' 
 #' 
 #' @examples
+#' \donttest{
 #' library(fishflux)
-#' model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)
+#' model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)}
 #' 
 #' @export
 model_parameters <- function(sp, family, otolith = TRUE, temp, ...) {

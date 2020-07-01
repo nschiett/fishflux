@@ -9,9 +9,10 @@
 #' @importFrom rfishbase validate_names
 #' 
 #' @examples
+#' \donttest{
 #' library(fishflux)
 #' name_errors(c("Chlorurus spilurus", "Zebrasoma scopas"))
-#' name_errors(c("Chlorurus spilurus", "Zebrasoma copas"))
+#' name_errors(c("Chlorurus spilurus", "Zebrasoma copas"))}
 #' 
 #' @export
 name_errors  <- function(sp) {

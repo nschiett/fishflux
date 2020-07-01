@@ -11,13 +11,13 @@
 #' @keywords fish l-w relationship fishbase bayesian
 #' 
 #' @examples
-#' library(fishflux)
+#' \donttest{library(fishflux)
 #' library(plyr)
 #' # find length-weight relationship parameters for one species
 #' find_lw("Lutjanus griseus")
 #'
 #' # find length-weight relationship parameters for multiple species and return in dataframe
-#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))
+#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))}
 #' 
 #' @export
 find_lw <- function(sp, mirror = "us") {
