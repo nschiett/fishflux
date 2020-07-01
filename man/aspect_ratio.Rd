@@ -15,7 +15,7 @@ level using rfishbase. It returns a data frame containing the aspect ratio
 and the level at which the aspect ratio was found (species or genus).
 }
 \examples{
-\dontrun{
+\donttest{
 library(fishflux)
 library(plyr)
 aspect_ratio("Lutjanus griseus")

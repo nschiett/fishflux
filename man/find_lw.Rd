@@ -18,13 +18,13 @@ Please cite Froese et al. (2013), when using these values.
 The default mirror for fishbase is set to "de", please change this if needed for your location
 }
 \examples{
-library(fishflux)
+\donttest{library(fishflux)
 library(plyr)
 # find length-weight relationship parameters for one species
 find_lw("Lutjanus griseus")
 
 # find length-weight relationship parameters for multiple species and return in dataframe
-ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))
+ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))}
 
 }
 \keyword{bayesian}

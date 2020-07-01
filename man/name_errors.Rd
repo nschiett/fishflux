@@ -14,9 +14,10 @@ This function allows you to check if there are errors
 in your fish species list and returns inaccurate scientific names
 }
 \examples{
+\donttest{
 library(fishflux)
 name_errors(c("Chlorurus spilurus", "Zebrasoma scopas"))
-name_errors(c("Chlorurus spilurus", "Zebrasoma copas"))
+name_errors(c("Chlorurus spilurus", "Zebrasoma copas"))}
 
 }
 \keyword{fish}
