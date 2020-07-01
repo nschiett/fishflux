@@ -1,5 +1,5 @@
 Package: fishflux
-Title: A Tool to Model Elemental Fluxes in Fishes
+Title: Model Elemental Fluxes in Fishes
 Version: 0.0.1
 Authors@R: c(
     person("Nina M. D.", "Schiettekatte", , "nina.schiettekatte@gmail.com", c("aut", "cre")),
@@ -8,7 +8,9 @@ Authors@R: c(
 Description: Model fluxes of carbon, nitrogen, and phosphorus with the use of a coupled 
     bioenergetics and stoichiometric model that incorporates flexible elemental limitation. 
     Additional functions to help the user to find parameters are included. Finally, functions to 
-    extract and visualize results are available as well. For an introduction, see vignette.
+    extract and visualize results are available as well. For an introduction, see vignette. 
+    For more information on the theoretical background of this model, 
+    see Schiettekatte et al. (2020) <doi:10.1111/1365-2435.13618> 
 URL: https://nschiett.github.io/fishflux/
 BugReports: https://github.com/nschiett/fishflux/issues
 License: MIT + file LICENSE
