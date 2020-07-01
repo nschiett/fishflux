@@ -8,7 +8,7 @@ fishflux: A tool to model elemental fluxes in fishes
 Status](http://badges.herokuapp.com/travis/nschiett/fishflux?branch=master&label=build&style=plastic&logo=travisci)](https://travis-ci.org/nschiett/fishflux)
 [![Actions
 Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishflux/actions)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1-blue.svg)](commits/master)
+![packageversion](https://img.shields.io/badge/Package%20version-0.0.1-blue.svg)
 [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
 ![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
 [![Codecov test
