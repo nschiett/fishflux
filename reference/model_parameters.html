@@ -161,8 +161,9 @@
     <p>Returns a dataframe with all parameters that can be estimated</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://nschiett.github.io/fishflux'>fishflux</a></span>)
-<span class='fu'><a href='https://rdrr.io/pkg/fishflux/man/model_parameters.html'>model_parameters</a></span>(sp = <span class='st'>"Scarus psittacus"</span>, family = <span class='st'>"Scaridae"</span>, temp = <span class='fl'>27</span>)</div><div class='output co'>#&gt; <span class='message'>average values for b0 and alpha used</span></div><div class='output co'>#&gt; 
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://nschiett.github.io/fishflux'>fishflux</a></span>)
+<span class='fu'><a href='https://rdrr.io/pkg/fishflux/man/model_parameters.html'>model_parameters</a></span>(sp = <span class='st'>"Scarus psittacus"</span>, family = <span class='st'>"Scaridae"</span>, temp = <span class='fl'>27</span>)<span class='co'># }</span></div><div class='output co'>#&gt; <span class='message'>average values for b0 and alpha used</span></div><div class='output co'>#&gt; 
 #&gt; SAMPLING FOR MODEL 'getB0' NOW (CHAIN 1).
 #&gt; Chain 1: Iteration:   1 / 1000 [  0%]  (Sampling)
 #&gt; Chain 1: Iteration: 100 / 1000 [ 10%]  (Sampling)
@@ -177,8 +178,8 @@
 #&gt; Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
 #&gt; Chain 1: 
 #&gt; Chain 1:  Elapsed Time: 0 seconds (Warm-up)
-#&gt; Chain 1:                0.001406 seconds (Sampling)
-#&gt; Chain 1:                0.001406 seconds (Total)
+#&gt; Chain 1:                0.002138 seconds (Sampling)
+#&gt; Chain 1:                0.002138 seconds (Total)
 #&gt; Chain 1: </div><div class='output co'>#&gt;            species      t0  Linf     k     asp troph   lwa_m      lwa_sd lwb_m
 #&gt; 1 Scarus psittacus -0.6025 23.05 0.814 1.80877     2 0.01585 0.001760204  3.06
 #&gt;       lwb_sd     mdw_m        f0_m        f0_sd alpha_m   alpha_sd
