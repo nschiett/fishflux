@@ -192,7 +192,7 @@ cnp_model_mcmc <- function(TL, param, iter = 1000,
 #' @inheritParams cnp_model_mcmc
 #' 
 #' @param params_st Standard parameters.
-#' @param ... Additional arguments to \code{\link[rstan]{sampling}}
+#' @param ... Additional arguments rstan::sampling, see ?rstan:sampling
 #' 
 #' @importFrom rstan sampling extract
 #' @importFrom plyr ldply

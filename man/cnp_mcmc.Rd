@@ -44,7 +44,7 @@ parameters:
 \item{cor}{A list of correlations between certain parameters: ro_Qc_Qn, ro_Qc_Qp, ro_Qn_Qp,
 ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0}
 
-\item{...}{Additional arguments to \code{\link[rstan]{sampling}}}
+\item{...}{Additional arguments rstan::sampling, see ?rstan:sampling}
 }
 \description{
 cnp_mcmc

@@ -14,8 +14,8 @@
 #' @importFrom dplyr select filter
 #' 
 #' @examples
-#' library(fishflux)
-#' growth_params("Lutjanus griseus")
+#' \donttest{library(fishflux)
+#' growth_params("Lutjanus griseus")}
 #' 
 #' @export
 growth_params <- function(sp, otolith = TRUE) {
