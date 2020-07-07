@@ -13,6 +13,9 @@ Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](h
 ![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
 [![Codecov test
 coverage](https://codecov.io/gh/nschiett/fishflux/branch/master/graph/badge.svg)](https://codecov.io/gh/nschiett/fishflux?branch=maste)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/fishflux)](https://CRAN.R-project.org/package=fishflux)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/fishflux?color=brightgreen)](https://cran.rstudio.com/package=fishflux)
 [![Ask Us Anything
 !](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg)](https://github.com/nschiett/fishflux/issues/new)
 ![Open Source
@@ -28,11 +31,11 @@ The `fishflux` package provides a tool to model fluxes of C (carbon), N
 from elemental stoichiometry and metabolic theory. The package offers a
 user-friendly interface to apply the model. `fishflux` is ideal for fish
 ecologists wishing to predict ingestion, egestion and excretion to study
-fluxes of nutrients and energy.
+fluxes of elements.
 
 Main assets:
 
--   Provides function to model fluxes of Carbon, Nitrogen and Phosphorus
+-   Provides function to model fluxes of carbon, nitrogen and phosphorus
     for fishes
 -   Allows for the estimation of uncertainty, dpending on the uncertainy
     of the input parameters
@@ -43,14 +46,21 @@ Main assets:
 Theoretical framework
 ---------------------
 
-For more information on the theoretical framework behind `cnp_model`,
-check out the paper (add link to paper).
+For more information on the theoretical framework behind
+`cnp_model_mcmc()`, check out the
+[paper](https://doi.org/10.1111/1365-2435.13618).
 
 Installing and loading fishflux
 -------------------------------
 
-First, make sure your R version is 3.4 or higher. Further, `fishflux`
-uses Markov Chain Monte Carlo simulations provided by
+First, make sure your R version is 3.4 or higher and you have rtools
+installed.
+
+### GitHub
+
+Please follow these steps to install the latest version of the package
+from Github. `fishflux` uses Markov Chain Monte Carlo simulations
+provided by
 [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
 Therefore, the first step is to install
 [rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
@@ -61,10 +71,8 @@ C++ compiler. Furthermore, `fishflux` depends on the package
 have an older version of `rstantools` installed, you will have to
 reinstall it, prior to the installation of `fishflux`.
 
-### GitHub
-
-Once you have your c++ compiler set up correctly, the best way to
-install the latest version of `fishflux` is to install it from GitHub.
+Once you have your c++ compiler set up correctly, you are ready to
+install it from GitHub.
 
     install.packages("devtools")
     devtools::install_github("nschiett/fishflux", dependencies=TRUE)
@@ -72,17 +80,22 @@ install the latest version of `fishflux` is to install it from GitHub.
 
 ### CRAN
 
-`fishflux` will be available on CRAN in the future:
+`fishflux` is now available on CRAN:
 
     install.packages("fishflux")
     library(fishflux)
+
+Note that if you are using a linux operating system, you still need a
+c++ compiler to install the package from CRAN. If you are using Windows
+or Mac, you can install a pre-compiled binary version and thus don’t
+need a compiler.
 
 ### Downloaded package file
 
 Another option is to download the source file available on github
 [here](https://github.com/nschiett/fishflux).
 
-    install.packages(path_to_fishflux_file, repos = NULL, type="source")
+    install.packages(path_to_fishflux_file, repos = NULL, type = "source")
     library(fishflux)
 
 Documentation
