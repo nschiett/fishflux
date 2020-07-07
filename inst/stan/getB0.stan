@@ -13,7 +13,7 @@ real get_B0_rng(real troph_m, real troph_sd, real temp, real b0_m, real b0_sd) {
 		real Ei     = 2.43; // inactivation parameter (eV)
 		real tl     = 0.81; // trophic level slope
 		real lnb0tc = log(b0); // metabolic normalization independent of mass, temperature, and trophic level (g C / troph^0.81 / g^0.77 / day)
-		real k      = 8.62 * 10^-5; // Boltzmann constant (eV / K)
+		real k      = 8.62e-5; // Boltzmann constant (eV / K)
 		real Tc     = 293.15; // arbitrary absolute temperature (K)
 		real Tk     = temp + 273.15; // temperature (K)
 		real Topt   = 306.4; // optimum temperature (K)
