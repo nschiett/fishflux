@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fishflux</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
       </span>
     </div>
 
@@ -91,10 +91,10 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>The <code>fishflux</code> package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fishes. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user-friendly interface to apply the model. <code>fishflux</code> is ideal for fish ecologists wishing to predict ingestion, egestion and excretion to study fluxes of nutrients and energy.</p>
+<p>The <code>fishflux</code> package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fishes. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user-friendly interface to apply the model. <code>fishflux</code> is ideal for fish ecologists wishing to predict ingestion, egestion and excretion to study fluxes of elements.</p>
 <p>Main assets:</p>
 <ul>
-<li>Provides function to model fluxes of Carbon, Nitrogen and Phosphorus for fishes</li>
+<li>Provides function to model fluxes of carbon, nitrogen and phosphorus for fishes</li>
 <li>Allows for the estimation of uncertainty, dpending on the uncertainy of the input parameters</li>
 <li>Provides some functions to help find parameters as inputs for the model</li>
 <li>Provides functions to extract and illustrate results</li>
@@ -103,16 +103,17 @@
 <div id="theoretical-framework" class="section level2">
 <h2 class="hasAnchor">
 <a href="#theoretical-framework" class="anchor"></a>Theoretical framework</h2>
-<p>For more information on the theoretical framework behind <code>cnp_model</code>, check out the paper (add link to paper).</p>
+<p>For more information on the theoretical framework behind <code><a href="reference/cnp_model_mcmc.html">cnp_model_mcmc()</a></code>, check out the <a href="https://doi.org/10.1111/1365-2435.13618">paper</a>.</p>
 </div>
 <div id="installing-and-loading-fishflux" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installing-and-loading-fishflux" class="anchor"></a>Installing and loading fishflux</h2>
-<p>First, make sure your R version is 3.4 or higher. Further, <code>fishflux</code> uses Markov Chain Monte Carlo simulations provided by <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">stan</a>. Therefore, the first step is to install <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">rstan</a>. It’s important to closely follow all the steps described on the page depending on your operating system, because rstan requires a functioning C++ compiler. Furthermore, <code>fishflux</code> depends on the package <code>rstantools</code> version 2.0.0 or higher. This means that if you already have an older version of <code>rstantools</code> installed, you will have to reinstall it, prior to the installation of <code>fishflux</code>.</p>
+<p>First, make sure your R version is 3.4 or higher and you have rtools installed.</p>
 <div id="github" class="section level3">
 <h3 class="hasAnchor">
 <a href="#github" class="anchor"></a>GitHub</h3>
-<p>Once you have your c++ compiler set up correctly, the best way to install the latest version of <code>fishflux</code> is to install it from GitHub.</p>
+<p>Please follow these steps to install the latest version of the package from Github. <code>fishflux</code> uses Markov Chain Monte Carlo simulations provided by <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">stan</a>. Therefore, the first step is to install <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">rstan</a>. It’s important to closely follow all the steps described on the page depending on your operating system, because rstan requires a functioning C++ compiler. Furthermore, <code>fishflux</code> depends on the package <code>rstantools</code> version 2.0.0 or higher. This means that if you already have an older version of <code>rstantools</code> installed, you will have to reinstall it, prior to the installation of <code>fishflux</code>.</p>
+<p>Once you have your c++ compiler set up correctly, you are ready to install it from GitHub.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">"devtools"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"nschiett/fishflux"</span>, <span class="dt">dependencies=</span><span class="ot">TRUE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
@@ -120,15 +121,16 @@
 <div id="cran" class="section level3">
 <h3 class="hasAnchor">
 <a href="#cran" class="anchor"></a>CRAN</h3>
-<p><code>fishflux</code> will be available on CRAN in the future:</p>
+<p><code>fishflux</code> is now available on CRAN:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">"fishflux"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
+<p>Note that if you are using a linux operating system, you still need a c++ compiler to install the package from CRAN. If you are using Windows or Mac, you can install a pre-compiled binary version and thus don’t need a compiler.</p>
 </div>
 <div id="downloaded-package-file" class="section level3">
 <h3 class="hasAnchor">
 <a href="#downloaded-package-file" class="anchor"></a>Downloaded package file</h3>
 <p>Another option is to download the source file available on github <a href="https://github.com/nschiett/fishflux">here</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">install.packages</span>(path_to_fishflux_file, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type=</span><span class="st">"source"</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">install.packages</span>(path_to_fishflux_file, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
 </div>
 </div>
@@ -192,6 +194,8 @@
 <li><a href="https://github.com/nschiett/fishflux/actions"><img src="https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg" alt="Actions Status"></a></li>
 <li><a href="https://choosealicense.com/"><img src="https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg" alt="license"></a></li>
 <li><a href="https://codecov.io/gh/nschiett/fishflux?branch=maste"><img src="https://codecov.io/gh/nschiett/fishflux/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://CRAN.R-project.org/package=fishflux"><img src="https://www.r-pkg.org/badges/version/fishflux" alt="CRAN status"></a></li>
+<li><a href="https://cran.rstudio.com/package=fishflux"><img src="http://cranlogs.r-pkg.org/badges/grand-total/fishflux?color=brightgreen" alt="Downloads"></a></li>
 <li><a href="https://github.com/nschiett/fishflux/issues/new"><img src="https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg" alt="Ask Us Anything !"></a></li>
 </ul>
 </div>
