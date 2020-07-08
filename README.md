@@ -14,8 +14,8 @@ Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](h
 [![Codecov test
 coverage](https://codecov.io/gh/nschiett/fishflux/branch/master/graph/badge.svg)](https://codecov.io/gh/nschiett/fishflux?branch=maste)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/fishflux)](https://cran.rstudio.com/web/packages/fishflux/index.html)
-[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/fishflux?color=brightgreen)](https://cran.rstudio.com/web/packages/fishflux/index.html)
+status](https://www.r-pkg.org/badges/version/fishflux)](https://CRAN.R-project.org/package=fishflux)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/fishflux?color=brightgreen)](https://CRAN.R-project.org/package=fishflux)
 [![Ask Us Anything
 !](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg)](https://github.com/nschiett/fishflux/issues/new)
 ![Open Source
