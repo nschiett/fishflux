@@ -73,19 +73,13 @@ on the family level. If the family is not available, an average is returned." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fishflux</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -99,6 +93,9 @@ on the family level. If the family is not available, an average is returned." />
       <a href="../articles/intro_to_fishflux.html">Intro to fishflux</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -131,7 +128,7 @@ on the family level. If the family is not available, an average is returned." />
 on the family level. If the family is not available, an average is returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/fishflux/man/wprop.html'>wprop</a></span>(<span class='kw'>family</span>)</pre>
+    <pre class="usage"><span class='fu'>wprop</span><span class='op'>(</span><span class='va'>family</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -147,9 +144,11 @@ on the family level. If the family is not available, an average is returned.</p>
     <p>Returns a dataframe with the weight ratio (mdw) and it's sd (mdw_sd).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://nschiett.github.io/fishflux'>fishflux</a></span>)
-<span class='fu'><a href='https://rdrr.io/pkg/fishflux/man/wprop.html'>wprop</a></span>(family=<span class='st'>"Scaridae"</span>)</div><div class='output co'>#&gt;         mdw     mdw_sd
-#&gt; 1 0.2372406 0.03458567</div><div class='input'></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://nschiett.github.io/fishflux/'>fishflux</a></span><span class='op'>)</span>
+<span class='fu'>wprop</span><span class='op'>(</span>family<span class='op'>=</span><span class='st'>"Scaridae"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;         mdw     mdw_sd
+#&gt; 1 0.2372406 0.03458567</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -165,7 +164,7 @@ on the family level. If the family is not available, an average is returned.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

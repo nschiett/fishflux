@@ -76,19 +76,13 @@ a covariate." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fishflux</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -102,6 +96,9 @@ a covariate." />
       <a href="../articles/intro_to_fishflux.html">Intro to fishflux</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -137,7 +134,7 @@ metabolic rates reported in the paper, which also includes trophic level as
 a covariate.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/fishflux/man/metabolic_rate.html'>metabolic_rate</a></span>(<span class='kw'>temp</span>, <span class='kw'>troph</span>, <span class='kw'>asp</span>, <span class='kw'>B0</span>, <span class='kw'>m_max</span>, <span class='kw'>m</span>, <span class='kw'>a</span>, <span class='kw'>growth_g_day</span>, <span class='kw'>f</span>)</pre>
+    <pre class="usage"><span class='fu'>metabolic_rate</span><span class='op'>(</span><span class='va'>temp</span>, <span class='va'>troph</span>, <span class='va'>asp</span>, <span class='va'>B0</span>, <span class='va'>m_max</span>, <span class='va'>m</span>, <span class='va'>a</span>, <span class='va'>growth_g_day</span>, <span class='va'>f</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -190,12 +187,14 @@ of fish resting metabolic rates reported in the paper,
 which also includes trophic level as a covariate.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://nschiett.github.io/fishflux'>fishflux</a></span>)
-<span class='kw'>fishflux</span>::<span class='fu'><a href='https://rdrr.io/pkg/fishflux/man/metabolic_rate.html'>metabolic_rate</a></span>(temp = <span class='fl'>27</span>, m_max = <span class='fl'>600</span>, m = <span class='fl'>300</span>, asp = <span class='fl'>3</span>,
-troph = <span class='fl'>2</span>, f = <span class='fl'>2</span>, growth_g_day = <span class='fl'>0.05</span>, B0 = <span class='fl'>0.2</span>, a = <span class='fl'>0.6</span> )</div><div class='output co'>#&gt;   Total_metabolic_rate_C_g_d Total_metabolic_rate_j_d
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://nschiett.github.io/fishflux/'>fishflux</a></span><span class='op'>)</span>
+<span class='fu'>fishflux</span><span class='fu'>::</span><span class='fu'>metabolic_rate</span><span class='op'>(</span>temp <span class='op'>=</span> <span class='fl'>27</span>, m_max <span class='op'>=</span> <span class='fl'>600</span>, m <span class='op'>=</span> <span class='fl'>300</span>, asp <span class='op'>=</span> <span class='fl'>3</span>,
+troph <span class='op'>=</span> <span class='fl'>2</span>, f <span class='op'>=</span> <span class='fl'>2</span>, growth_g_day <span class='op'>=</span> <span class='fl'>0.05</span>, B0 <span class='op'>=</span> <span class='fl'>0.2</span>, a <span class='op'>=</span> <span class='fl'>0.6</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt;   Total_metabolic_rate_C_g_d Total_metabolic_rate_j_d
 #&gt; 1                   9.288811                 362263.6
 #&gt;   Resting_metabolic_rate_j_d Cost_growth_j_g
-#&gt; 1                   181131.8        16.42453</div><div class='input'></div></pre>
+#&gt; 1                   181131.8        16.42453</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -211,7 +210,7 @@ troph = <span class='fl'>2</span>, f = <span class='fl'>2</span>, growth_g_day =
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

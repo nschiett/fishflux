@@ -75,19 +75,13 @@ Nevertheless, we strongly recommend to check the source and only use otolith bas
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fishflux</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -101,6 +95,9 @@ Nevertheless, we strongly recommend to check the source and only use otolith bas
       <a href="../articles/intro_to_fishflux.html">Intro to fishflux</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -135,7 +132,7 @@ This function is useful to see what is available on fishbase.
 Nevertheless, we strongly recommend to check the source and only use otolith based studies.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/fishflux/man/growth_params.html'>growth_params</a></span>(<span class='kw'>sp</span>, otolith = <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>growth_params</span><span class='op'>(</span><span class='va'>sp</span>, otolith <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,8 +149,9 @@ Nevertheless, we strongly recommend to check the source and only use otolith bas
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://nschiett.github.io/fishflux'>fishflux</a></span>)
-<span class='fu'><a href='https://rdrr.io/pkg/fishflux/man/growth_params.html'>growth_params</a></span>(<span class='st'>"Lutjanus griseus"</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 7</span><span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://nschiett.github.io/fishflux/'>fishflux</a></span><span class='op'>)</span>
+<span class='fu'>growth_params</span><span class='op'>(</span><span class='st'>"Lutjanus griseus"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 7</span><span>
 #&gt;   species        Locality             k  Linf     t0 method             comments
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
 #&gt; </span><span style='color: #555555;'>1</span><span> Lutjanus gris… Southeast Cuba   0.24   51   -</span><span style='color: #BB0000;'>0.62</span><span>  annuli on many ot… </span><span style='color: #BB0000;'>NA</span><span>      
@@ -161,7 +159,8 @@ Nevertheless, we strongly recommend to check the source and only use otolith bas
 #&gt; </span><span style='color: #555555;'>3</span><span> Lutjanus gris… Southwest  Zone  0.15   50.3 -</span><span style='color: #BB0000;'>1.84</span><span>  annuli on many ot… </span><span style='color: #BB0000;'>NA</span><span>      
 #&gt; </span><span style='color: #555555;'>4</span><span> Lutjanus gris… Florida (east c… 0.1    89   -</span><span style='color: #BB0000;'>0.32</span><span>  annuli on many ot… </span><span style='color: #BB0000;'>NA</span><span>      
 #&gt; </span><span style='color: #555555;'>5</span><span> Lutjanus gris… South Florida    0.13   62.5 -</span><span style='color: #BB0000;'>1.33</span><span>  annuli on many ot… </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #555555;'>6</span><span> Lutjanus gris… North Florida    0.17   71.7 -</span><span style='color: #BB0000;'>0.025</span><span> annuli on many ot… </span><span style='color: #BB0000;'>NA</span><span>      </div><div class='input'></div></span></pre>
+#&gt; </span><span style='color: #555555;'>6</span><span> Lutjanus gris… North Florida    0.17   71.7 -</span><span style='color: #BB0000;'>0.025</span><span> annuli on many ot… </span><span style='color: #BB0000;'>NA</span><span>      </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -177,7 +176,7 @@ Nevertheless, we strongly recommend to check the source and only use otolith bas
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

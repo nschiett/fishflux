@@ -31,18 +31,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fishflux</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -57,6 +51,9 @@
       <a href="../articles/intro_to_fishflux.html">Intro to fishflux</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -82,7 +79,7 @@
       <h1 data-toc-skip>Intro to fishflux</h1>
                         <h4 class="author">Nina M. D. Schiettekatte</h4>
             
-            <h4 class="date">2020-07-08</h4>
+            <h4 class="date">2020-10-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nschiett/fishflux/blob/master/vignettes/intro_to_fishflux.Rmd"><code>vignettes/intro_to_fishflux.Rmd</code></a></small>
       <div class="hidden name"><code>intro_to_fishflux.Rmd</code></div>
@@ -112,28 +109,25 @@
 <a href="#github" class="anchor"></a>GitHub</h3>
 <p>The best way to install the latest development version of <code>fishflux</code> is to install it from GitHub.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
-<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"nschiett/fishflux"</span>, dependencies = <span class="fl">TRUE</span>) <span class="co"># if errors are returned, try adding `args = "--preclean"` to `install_github`</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://nschiett.github.io/fishflux">fishflux</a></span>)
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"nschiett/fishflux"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># if errors are returned, try adding `args = "--preclean"` to `install_github`</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nschiett.github.io/fishflux/">fishflux</a></span><span class="op">)</span></pre></div>
 </div>
 <div id="cran" class="section level3">
 <h3 class="hasAnchor">
 <a href="#cran" class="anchor"></a>CRAN</h3>
 <p><code>fishflux</code> will be available on CRAN in the future:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"fishflux"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://nschiett.github.io/fishflux">fishflux</a></span>)
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"fishflux"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nschiett.github.io/fishflux/">fishflux</a></span><span class="op">)</span></pre></div>
 </div>
 <div id="downloaded-package-file" class="section level3">
 <h3 class="hasAnchor">
 <a href="#downloaded-package-file" class="anchor"></a>Downloaded package file</h3>
 <p>Another option is to download the source file available on GitHub <a href="https://github.com/nschiett/fishflux">here</a>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="kw">path_to_fishflux_file</span>, repos = <span class="kw">NULL</span>, type = <span class="st">"source"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://nschiett.github.io/fishflux">fishflux</a></span>)
-</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">path_to_fishflux_file</span>, repos <span class="op">=</span> <span class="cn">NULL</span>, type <span class="op">=</span> <span class="st">"source"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://nschiett.github.io/fishflux/">fishflux</a></span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="how-to-use-fishflux" class="section level2">
@@ -369,27 +363,25 @@ Elemental stoichiometry of diet
 
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="co"># example</span>
-<span class="kw">fishflux</span>::<span class="fu"><a href="../reference/name_errors.html">name_errors</a></span>(<span class="st">"Zebrazoma scopas"</span>)
+<span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/name_errors.html">name_errors</a></span><span class="op">(</span><span class="st">"Zebrazoma scopas"</span><span class="op">)</span>
 <span class="co">#&gt; Inaccurate species names found:</span>
-<span class="co">#&gt; [1] "Zebrazoma scopas"</span>
-</pre></div>
+<span class="co">#&gt; [1] "Zebrazoma scopas"</span></pre></div>
 
 <p>Once the species names are verified and/or corrected we can continue with specifying some parameters.</p>
 <p>The <code>find_lw</code> function searches <a href="https://www.fishbase.de/">FishBase</a> to find length-weight relationship parameters <code>lw_a</code> and <code>lw_b</code> extracted from <span class="citation">Froese and Pauly (2018)</span>.</p>
 
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="co"># example</span>
-<span class="kw">fishflux</span>::<span class="fu"><a href="../reference/find_lw.html">find_lw</a></span>(<span class="st">"Zebrasoma scopas"</span>, mirror = <span class="st">"us"</span>)
+<span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/find_lw.html">find_lw</a></span><span class="op">(</span><span class="st">"Zebrasoma scopas"</span>, mirror <span class="op">=</span> <span class="st">"us"</span><span class="op">)</span>
 <span class="co">#&gt;            species   lwa_m      lwa_sd lwb_m    lwb_sd</span>
-<span class="co">#&gt; 1 Zebrasoma scopas 0.02455 0.002627551  2.98 0.0255102</span>
-</pre></div>
+<span class="co">#&gt; 1 Zebrasoma scopas 0.02455 0.002627551  2.98 0.0255102</span></pre></div>
 
 <p>The model uses parameters von Bertalanffy’s growth model (VBGM) to estimate growth rates. A quick way to get available information from FishBase is the function <code><a href="../reference/growth_params.html">growth_params()</a></code>. This can be a good indication, but users should interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. Alternatively, it is advised to use growth curves derived from otolith readings. In the absence of otolith data, one might consider extracting standardised estimations from <span class="citation">Morais and Bellwood (2018)</span>.</p>
 
 <div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="co"># example</span>
 <span class="co"># The option otolith=TRUE filters out sources that used otoliths for the estimation of growth parameters</span>
-<span class="kw">fishflux</span>::<span class="fu"><a href="../reference/growth_params.html">growth_params</a></span>(<span class="st">"Sargocentron microstoma"</span>, otolith = <span class="fl">FALSE</span>)
+<span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/growth_params.html">growth_params</a></span><span class="op">(</span><span class="st">"Sargocentron microstoma"</span>, otolith <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; Warning: `data_frame()` is deprecated as of tibble 1.1.0.</span>
 <span class="co">#&gt; Please use `tibble()` instead.</span>
 <span class="co">#&gt; This warning is displayed once every 8 hours.</span>
@@ -397,22 +389,19 @@ Elemental stoichiometry of diet
 <span class="co">#&gt; # A tibble: 1 x 7</span>
 <span class="co">#&gt;   species           Locality                k  Linf    t0 method        comments</span>
 <span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 Sargocentron mic… Tiahura reef, Moor…     1  18.6    NA length-frequ… &lt;NA&gt;</span>
-</pre></div>
+<span class="co">#&gt; 1 Sargocentron mic… Tiahura reef, Moor…     1  18.6    NA length-frequ… &lt;NA&gt;</span></pre></div>
 
 <p>Further, there are a couple more basic functions to get an indication of parameters that are available on FishBase such as <code><a href="../reference/trophic_level.html">trophic_level()</a></code> and <code><a href="../reference/aspect_ratio.html">aspect_ratio()</a></code>.  Note that it is always better to get the approximations through analysis, measurements and otolith analysis over parameters extracted from functions, such as <code><a href="../reference/growth_params.html">growth_params()</a></code>, <code><a href="../reference/trophic_level.html">trophic_level()</a></code> and <code><a href="../reference/aspect_ratio.html">aspect_ratio()</a></code>.  To get an overview of all parameters available, <code>fishflux</code> provides a wrapper function <code><a href="../reference/model_parameters.html">model_parameters()</a></code>. </p>
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="co"># example</span>
-<span class="kw">zebsco</span> <span class="op">&lt;-</span> <span class="kw">fishflux</span>::<span class="fu"><a href="../reference/model_parameters.html">model_parameters</a></span>(<span class="st">"Zebrasoma scopas"</span>, family = <span class="st">"Acanthuridae"</span>, temp = <span class="fl">27</span>, mirror = <span class="st">"se"</span>)
-<span class="co">## Here we set the temperature at 27 degrees as an example, this the average sea temperature in Moorea, French Polynesia</span>
-</pre></div>
+<span class="va">zebsco</span> <span class="op">&lt;-</span> <span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/model_parameters.html">model_parameters</a></span><span class="op">(</span><span class="st">"Zebrasoma scopas"</span>, family <span class="op">=</span> <span class="st">"Acanthuridae"</span>, temp <span class="op">=</span> <span class="fl">27</span>, mirror <span class="op">=</span> <span class="st">"se"</span><span class="op">)</span>
+<span class="co">## Here we set the temperature at 27 degrees as an example, this the average sea temperature in Moorea, French Polynesia</span></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw">zebsco</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">zebsco</span><span class="op">)</span>
 <span class="co">#&gt;            species    t0 Linf     k     asp troph   lwa_m      lwa_sd lwb_m</span>
 <span class="co">#&gt; 1 Zebrasoma scopas -0.49 13.3 0.425 2.02091     2 0.02455 0.002627551  2.98</span>
 <span class="co">#&gt;      lwb_sd     mdw_m        f0_m        f0_sd alpha_m   alpha_sd</span>
-<span class="co">#&gt; 1 0.0255102 0.2504833 0.001517989 3.221308e-10    0.77 0.05286288</span>
-</pre></div>
+<span class="co">#&gt; 1 0.0255102 0.2504833 0.001517989 3.107672e-10    0.77 0.05286288</span></pre></div>
 
 <p>All other parameters have to be provided by the user. For more information on how to acquire these parameters, take a look at (“this paper” add reference to methods paper).</p>
 </div>
@@ -423,66 +412,64 @@ Elemental stoichiometry of diet
 
 <div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="co">## load the example parameters for Zebrasoma scopas, a list</span>
-<span class="kw">param_zebsco</span> <span class="op">&lt;-</span> <span class="kw">fishflux</span>::<span class="kw"><a href="../reference/param_zebsco.html">param_zebsco</a></span>
+<span class="va">param_zebsco</span> <span class="op">&lt;-</span> <span class="fu">fishflux</span><span class="fu">::</span><span class="va"><a href="../reference/param_zebsco.html">param_zebsco</a></span>
 <span class="co">## Run the model, specifying the target length(s) and the parameter list</span>
-<span class="kw">model</span> <span class="op">&lt;-</span> <span class="kw">fishflux</span>::<span class="fu"><a href="../reference/cnp_model_mcmc.html">cnp_model_mcmc</a></span>(TL = <span class="fl">5</span><span class="op">:</span><span class="fl">20</span>, param = <span class="kw">param_zebsco</span>)
-</pre></div>
+<span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/cnp_model_mcmc.html">cnp_model_mcmc</a></span><span class="op">(</span>TL <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">20</span>, param <span class="op">=</span> <span class="va">param_zebsco</span><span class="op">)</span></pre></div>
 
 <p>The object <code>model</code> now contains all the samples generated from the MCMC simulation and a summary of all parameters generated. To extract certain variables of interest, use the <code><a href="../reference/extract.html">extract()</a></code> function. Predictions for fluxes of C, N and P are all in g / day. </p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="kw">fishflux</span>::<span class="fu"><a href="../reference/extract.html">extract</a></span>(<span class="kw">model</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Fn"</span>,<span class="st">"Fp"</span>))
-<span class="co">#&gt;    TL     Fn_mean    Fn_median        Fn_sd      Fn_2.5%    Fn_97.5%</span>
-<span class="co">#&gt; 1   5 0.000892330 0.0008202342 0.0004343086 0.0002536062 0.001934098</span>
-<span class="co">#&gt; 2   6 0.001305549 0.0012425834 0.0005884465 0.0003930769 0.002615290</span>
-<span class="co">#&gt; 3   7 0.001838132 0.0017144554 0.0008669609 0.0005657498 0.003709932</span>
-<span class="co">#&gt; 4   8 0.002485455 0.0023956921 0.0012063945 0.0005363409 0.005211186</span>
-<span class="co">#&gt; 5   9 0.003386492 0.0030859693 0.0016316142 0.0009776993 0.007057342</span>
-<span class="co">#&gt; 6  10 0.004343678 0.0040385811 0.0021655038 0.0011731566 0.009485440</span>
-<span class="co">#&gt; 7  11 0.005817225 0.0052338934 0.0032718147 0.0014472854 0.014556933</span>
-<span class="co">#&gt; 8  12 0.006968913 0.0059734538 0.0041568288 0.0016489904 0.016844476</span>
-<span class="co">#&gt; 9  13 0.008538738 0.0074534535 0.0053121502 0.0017109676 0.021789038</span>
-<span class="co">#&gt; 10 14 0.011092588 0.0094526917 0.0068176759 0.0025347410 0.027237908</span>
-<span class="co">#&gt; 11 15 0.013861626 0.0118337358 0.0087965569 0.0025589856 0.033941740</span>
-<span class="co">#&gt; 12 16 0.016623341 0.0145215076 0.0109202243 0.0027593312 0.042442711</span>
-<span class="co">#&gt; 13 17 0.019302753 0.0158535730 0.0132386823 0.0042491541 0.049960035</span>
-<span class="co">#&gt; 14 18 0.022844673 0.0202565559 0.0148284399 0.0043497765 0.057211186</span>
-<span class="co">#&gt; 15 19 0.026398929 0.0216344702 0.0172599153 0.0062146314 0.067948789</span>
-<span class="co">#&gt; 16 20 0.032744726 0.0278280982 0.0205804837 0.0071949647 0.078197147</span>
+<span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/extract.html">extract</a></span><span class="op">(</span><span class="va">model</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Fn"</span>,<span class="st">"Fp"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt;    TL      Fn_mean    Fn_median        Fn_sd      Fn_2.5%    Fn_97.5%</span>
+<span class="co">#&gt; 1   5 0.0008573712 0.0007969734 0.0004208342 0.0002360145 0.001837332</span>
+<span class="co">#&gt; 2   6 0.0012988338 0.0012060198 0.0005738761 0.0003893815 0.002523597</span>
+<span class="co">#&gt; 3   7 0.0018933829 0.0018283658 0.0008328197 0.0005039827 0.003646902</span>
+<span class="co">#&gt; 4   8 0.0025087335 0.0023494271 0.0011724398 0.0007622322 0.005274868</span>
+<span class="co">#&gt; 5   9 0.0033544204 0.0029947172 0.0017204505 0.0007124995 0.007519506</span>
+<span class="co">#&gt; 6  10 0.0045819532 0.0041077207 0.0024508188 0.0010790583 0.010882272</span>
+<span class="co">#&gt; 7  11 0.0057914110 0.0050868444 0.0034317927 0.0014022475 0.013938702</span>
+<span class="co">#&gt; 8  12 0.0069979950 0.0060389490 0.0042639218 0.0014603406 0.017073812</span>
+<span class="co">#&gt; 9  13 0.0091244690 0.0074862921 0.0057996626 0.0017877439 0.023195631</span>
+<span class="co">#&gt; 10 14 0.0108497791 0.0096166769 0.0066650154 0.0024549418 0.027121033</span>
+<span class="co">#&gt; 11 15 0.0134302799 0.0115064412 0.0085942843 0.0024108822 0.032848465</span>
+<span class="co">#&gt; 12 16 0.0174161616 0.0145824300 0.0115570968 0.0029633519 0.045145877</span>
+<span class="co">#&gt; 13 17 0.0210108766 0.0182140614 0.0130917871 0.0044467496 0.052141820</span>
+<span class="co">#&gt; 14 18 0.0241537667 0.0212273748 0.0152854398 0.0048346271 0.058401795</span>
+<span class="co">#&gt; 15 19 0.0251576040 0.0208845150 0.0159013083 0.0064353801 0.062342380</span>
+<span class="co">#&gt; 16 20 0.0322919765 0.0257949697 0.0223606096 0.0074507151 0.091117513</span>
 <span class="co">#&gt;          Fn_25%      Fn_75%      Fp_mean    Fp_median        Fp_sd      Fp_2.5%</span>
-<span class="co">#&gt; 1  0.0005938415 0.001123955 0.0000826550 4.248378e-05 0.0001094517 2.300911e-06</span>
-<span class="co">#&gt; 2  0.0008585821 0.001675516 0.0001578149 8.118899e-05 0.0001890592 8.094315e-06</span>
-<span class="co">#&gt; 3  0.0011977908 0.002381596 0.0002784285 1.486901e-04 0.0003326177 1.101612e-05</span>
-<span class="co">#&gt; 4  0.0016013298 0.003163593 0.0004701323 2.877559e-04 0.0004763450 2.409779e-05</span>
-<span class="co">#&gt; 5  0.0022205604 0.004332193 0.0007357324 4.669388e-04 0.0006880070 5.220424e-05</span>
-<span class="co">#&gt; 6  0.0027248542 0.005558747 0.0010690426 8.064651e-04 0.0009176769 5.531072e-05</span>
-<span class="co">#&gt; 7  0.0032784955 0.007451357 0.0015625559 1.132585e-03 0.0013328287 9.405728e-05</span>
-<span class="co">#&gt; 8  0.0039083775 0.008938357 0.0019621198 1.507596e-03 0.0017037435 7.999178e-05</span>
-<span class="co">#&gt; 9  0.0044077413 0.011319973 0.0026252833 2.145482e-03 0.0021476490 1.552818e-04</span>
-<span class="co">#&gt; 10 0.0057324085 0.015153528 0.0036683755 3.070235e-03 0.0027599486 2.333634e-04</span>
-<span class="co">#&gt; 11 0.0068921494 0.019254643 0.0048319043 3.934304e-03 0.0035573224 5.411508e-04</span>
-<span class="co">#&gt; 12 0.0079872902 0.022809738 0.0059918614 5.164496e-03 0.0043286887 5.867184e-04</span>
-<span class="co">#&gt; 13 0.0091049239 0.025916679 0.0072282076 5.870616e-03 0.0052177496 1.351637e-03</span>
-<span class="co">#&gt; 14 0.0104379097 0.031567503 0.0088681264 7.868538e-03 0.0059496483 1.485253e-03</span>
-<span class="co">#&gt; 15 0.0124039072 0.037055107 0.0105174688 8.680346e-03 0.0068880634 2.366229e-03</span>
-<span class="co">#&gt; 16 0.0163069409 0.044658259 0.0130461778 1.102326e-02 0.0082288159 2.896745e-03</span>
+<span class="co">#&gt; 1  0.0005588361 0.001078431 8.395475e-05 4.435153e-05 0.0001024321 3.448095e-06</span>
+<span class="co">#&gt; 2  0.0009057112 0.001616025 1.456867e-04 8.283513e-05 0.0001718793 3.788436e-06</span>
+<span class="co">#&gt; 3  0.0013029487 0.002380320 2.810733e-04 1.498553e-04 0.0002978887 1.484608e-05</span>
+<span class="co">#&gt; 4  0.0016686013 0.003196515 4.528547e-04 2.662073e-04 0.0004678877 1.589903e-05</span>
+<span class="co">#&gt; 5  0.0021714634 0.004249383 6.993904e-04 4.128438e-04 0.0006886448 4.033401e-05</span>
+<span class="co">#&gt; 6  0.0028660986 0.005919801 1.135425e-03 8.040564e-04 0.0009805069 6.283652e-05</span>
+<span class="co">#&gt; 7  0.0032343118 0.007452516 1.557391e-03 1.136563e-03 0.0014112086 5.710172e-05</span>
+<span class="co">#&gt; 8  0.0037192679 0.009381491 2.022246e-03 1.599308e-03 0.0016878783 1.104374e-04</span>
+<span class="co">#&gt; 9  0.0046911318 0.012559335 2.802052e-03 2.079815e-03 0.0023488014 1.421644e-04</span>
+<span class="co">#&gt; 10 0.0054712244 0.015017145 3.535374e-03 2.975783e-03 0.0027006531 2.626958e-04</span>
+<span class="co">#&gt; 11 0.0066446415 0.018553379 4.626681e-03 3.858230e-03 0.0034524574 3.702363e-04</span>
+<span class="co">#&gt; 12 0.0081231172 0.024388100 6.356229e-03 5.301616e-03 0.0046466553 6.861483e-04</span>
+<span class="co">#&gt; 13 0.0104039198 0.028958072 7.896293e-03 7.078788e-03 0.0051805636 1.279317e-03</span>
+<span class="co">#&gt; 14 0.0108763076 0.034270176 9.355853e-03 8.369901e-03 0.0060646890 1.676160e-03</span>
+<span class="co">#&gt; 15 0.0126054649 0.035384387 1.001687e-02 8.249455e-03 0.0063839912 2.523928e-03</span>
+<span class="co">#&gt; 16 0.0147667834 0.044644773 1.284119e-02 1.037818e-02 0.0089374358 2.936864e-03</span>
 <span class="co">#&gt;        Fp_97.5%       Fp_25%       Fp_75%</span>
-<span class="co">#&gt; 1  0.0003993457 2.340244e-05 8.477846e-05</span>
-<span class="co">#&gt; 2  0.0007361324 4.047369e-05 1.945532e-04</span>
-<span class="co">#&gt; 3  0.0011466144 6.985265e-05 4.060408e-04</span>
-<span class="co">#&gt; 4  0.0017542168 1.219315e-04 6.651142e-04</span>
-<span class="co">#&gt; 5  0.0024516420 2.202994e-04 1.100870e-03</span>
-<span class="co">#&gt; 6  0.0033539254 3.395048e-04 1.544804e-03</span>
-<span class="co">#&gt; 7  0.0050328802 5.626677e-04 2.211616e-03</span>
-<span class="co">#&gt; 8  0.0061809597 6.763053e-04 2.784042e-03</span>
-<span class="co">#&gt; 9  0.0079028783 8.920328e-04 3.841104e-03</span>
-<span class="co">#&gt; 10 0.0100188424 1.387633e-03 5.397443e-03</span>
-<span class="co">#&gt; 11 0.0127060159 1.876138e-03 7.000961e-03</span>
-<span class="co">#&gt; 12 0.0159669666 2.501806e-03 8.234894e-03</span>
-<span class="co">#&gt; 13 0.0203323022 3.154684e-03 9.939561e-03</span>
-<span class="co">#&gt; 14 0.0221263918 4.013796e-03 1.236004e-02</span>
-<span class="co">#&gt; 15 0.0273607501 4.966495e-03 1.481783e-02</span>
-<span class="co">#&gt; 16 0.0311232895 6.625166e-03 1.777497e-02</span>
-</pre></div>
+<span class="co">#&gt; 1  0.0003501324 2.184471e-05 9.766436e-05</span>
+<span class="co">#&gt; 2  0.0006593893 3.677073e-05 1.871938e-04</span>
+<span class="co">#&gt; 3  0.0010904576 7.483430e-05 4.106997e-04</span>
+<span class="co">#&gt; 4  0.0016507800 1.317546e-04 6.576433e-04</span>
+<span class="co">#&gt; 5  0.0024127602 2.016490e-04 1.013186e-03</span>
+<span class="co">#&gt; 6  0.0034702679 3.746606e-04 1.636880e-03</span>
+<span class="co">#&gt; 7  0.0051301882 4.866037e-04 2.238370e-03</span>
+<span class="co">#&gt; 8  0.0058682195 6.707233e-04 3.086796e-03</span>
+<span class="co">#&gt; 9  0.0081488658 9.834909e-04 4.136797e-03</span>
+<span class="co">#&gt; 10 0.0098438863 1.346282e-03 5.074928e-03</span>
+<span class="co">#&gt; 11 0.0125130791 1.756717e-03 6.696334e-03</span>
+<span class="co">#&gt; 12 0.0177055623 2.611863e-03 8.950889e-03</span>
+<span class="co">#&gt; 13 0.0201371458 3.784320e-03 1.119453e-02</span>
+<span class="co">#&gt; 14 0.0227300733 3.983948e-03 1.350770e-02</span>
+<span class="co">#&gt; 15 0.0249303786 4.944736e-03 1.379844e-02</span>
+<span class="co">#&gt; 16 0.0363719424 5.890189e-03 1.766467e-02</span></pre></div>
 
 </div>
 <div id="plot-results" class="section level3">
@@ -491,8 +478,7 @@ Elemental stoichiometry of diet
 <p>To visualize main outputs of the model, <code>fishflux</code> contains a plotting function. The function <code><a href="../reference/limitation.html">limitation()</a></code> returns the proportion of iterations of the model simulation that had limitation of C, N and P respectively. The function <code><a href="../reference/plot_cnp.html">plot_cnp()</a></code> plots the predicted output of the model. </p>
 <div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="co">## limitation</span>
-<span class="kw">fishflux</span>::<span class="fu"><a href="../reference/limitation.html">limitation</a></span>(<span class="kw">model</span>)
-</pre></div>
+<span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/limitation.html">limitation</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></pre></div>
 <p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-1.png" width="768"></p>
 <pre><code><a href="../reference/plot_cnp.html">#&gt;    tl nutrient prop_lim
 #&gt; 1   5        c    0.000
@@ -503,53 +489,52 @@ Elemental stoichiometry of diet
 #&gt; 6  10        c    0.000
 #&gt; 7  11        c    0.000
 #&gt; 8  12        c    0.000
-#&gt; 9  13        c    0.004
-#&gt; 10 14        c    0.008
-#&gt; 11 15        c    0.014
-#&gt; 12 16        c    0.048
-#&gt; 13 17        c    0.064
-#&gt; 14 18        c    0.122
+#&gt; 9  13        c    0.006
+#&gt; 10 14        c    0.002
+#&gt; 11 15        c    0.036
+#&gt; 12 16        c    0.042
+#&gt; 13 17        c    0.056
+#&gt; 14 18        c    0.126
 #&gt; 15 19        c    0.178
-#&gt; 16 20        c    0.138
-#&gt; 17  5        n    0.328
-#&gt; 18  6        n    0.398
-#&gt; 19  7        n    0.454
-#&gt; 20  8        n    0.566
-#&gt; 21  9        n    0.616
-#&gt; 22 10        n    0.672
-#&gt; 23 11        n    0.740
-#&gt; 24 12        n    0.768
-#&gt; 25 13        n    0.768
-#&gt; 26 14        n    0.802
-#&gt; 27 15        n    0.864
-#&gt; 28 16        n    0.848
-#&gt; 29 17        n    0.870
-#&gt; 30 18        n    0.830
-#&gt; 31 19        n    0.804
-#&gt; 32 20        n    0.832
-#&gt; 33  5        p    0.672
-#&gt; 34  6        p    0.602
-#&gt; 35  7        p    0.546
-#&gt; 36  8        p    0.434
-#&gt; 37  9        p    0.384
-#&gt; 38 10        p    0.328
-#&gt; 39 11        p    0.260
-#&gt; 40 12        p    0.232
-#&gt; 41 13        p    0.228
-#&gt; 42 14        p    0.190
-#&gt; 43 15        p    0.122
-#&gt; 44 16        p    0.104
-#&gt; 45 17        p    0.066
-#&gt; 46 18        p    0.048
-#&gt; 47 19        p    0.018
-#&gt; 48 20        p    0.030
+#&gt; 16 20        c    0.174
+#&gt; 17  5        n    0.376
+#&gt; 18  6        n    0.382
+#&gt; 19  7        n    0.464
+#&gt; 20  8        n    0.512
+#&gt; 21  9        n    0.550
+#&gt; 22 10        n    0.722
+#&gt; 23 11        n    0.718
+#&gt; 24 12        n    0.772
+#&gt; 25 13        n    0.790
+#&gt; 26 14        n    0.830
+#&gt; 27 15        n    0.810
+#&gt; 28 16        n    0.876
+#&gt; 29 17        n    0.890
+#&gt; 30 18        n    0.828
+#&gt; 31 19        n    0.792
+#&gt; 32 20        n    0.794
+#&gt; 33  5        p    0.624
+#&gt; 34  6        p    0.618
+#&gt; 35  7        p    0.536
+#&gt; 36  8        p    0.488
+#&gt; 37  9        p    0.450
+#&gt; 38 10        p    0.278
+#&gt; 39 11        p    0.282
+#&gt; 40 12        p    0.228
+#&gt; 41 13        p    0.204
+#&gt; 42 14        p    0.168
+#&gt; 43 15        p    0.154
+#&gt; 44 16        p    0.082
+#&gt; 45 17        p    0.054
+#&gt; 46 18        p    0.046
+#&gt; 47 19        p    0.030
+#&gt; 48 20        p    0.032
 ## Plot one variable:
 fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))</a></code></pre>
 <p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-2.png" width="768"></p>
 <div class="sourceCode" id="cb13"><pre class="downlit">
 <span class="co">## Plot multiple variables:</span>
-<span class="kw">fishflux</span>::<span class="fu"><a href="../reference/plot_cnp.html">plot_cnp</a></span>(<span class="kw">model</span>,  y = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Fp"</span>, <span class="st">"Gp"</span>, <span class="st">"Ip"</span>, <span class="st">"Wp"</span>), x = <span class="st">"tl"</span>, probs = <span class="fl">0.5</span>)
-</pre></div>
+<span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/plot_cnp.html">plot_cnp</a></span><span class="op">(</span><span class="va">model</span>,  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Fp"</span>, <span class="st">"Gp"</span>, <span class="st">"Ip"</span>, <span class="st">"Wp"</span><span class="op">)</span>, x <span class="op">=</span> <span class="st">"tl"</span>, probs <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></pre></div>
 <p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-3.png" width="768"></p>
 </div>
 <div id="sensitivity" class="section level3">
@@ -558,15 +543,14 @@ fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))</a></c
 <p>The function <code><a href="../reference/sensitivity.html">sensitivity()</a></code> looks at how the distribution of the input variables affects the uncertainty of the model predictions. Basically, the model is run for each input parameter, while keeping all the others fixed. The output of the function gives a matrix of the width of the 95% CI for all model predictions (columns), depending on the input variables (rows). The input parameters and output variables of interest can be specified by arguments “par” and “out” respectively. </p>
 <div class="sourceCode" id="cb14"><pre class="downlit">
 <span class="co">## General overview:</span>
-<span class="kw">fishflux</span>::<span class="fu"><a href="../reference/sensitivity.html">sensitivity</a></span>(TL = <span class="fl">10</span>, param = <span class="kw">param_zebsco</span>, par = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Dn_sd"</span>, <span class="st">"Dp_sd"</span>, <span class="st">"Qn_sd"</span>, <span class="st">"Qp_sd"</span>, <span class="st">"k_sd"</span>), out = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Fn"</span>, <span class="st">"Fp"</span>, <span class="st">"Ic"</span>))
-</pre></div>
+<span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/sensitivity.html">sensitivity</a></span><span class="op">(</span>TL <span class="op">=</span> <span class="fl">10</span>, param <span class="op">=</span> <span class="va">param_zebsco</span>, par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Dn_sd"</span>, <span class="st">"Dp_sd"</span>, <span class="st">"Qn_sd"</span>, <span class="st">"Qp_sd"</span>, <span class="st">"k_sd"</span><span class="op">)</span>, out <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Fn"</span>, <span class="st">"Fp"</span>, <span class="st">"Ic"</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
 <pre><code>#&gt;              Fn_CI        Fp_CI        Ic_CI
-#&gt; Dn_sd 2.098920e-10 0.0002816666 1.005952e-02
-#&gt; Dp_sd 2.089410e-10 0.0007462453 2.201808e-09
-#&gt; Qn_sd 1.935921e-03 0.0007555289 2.698317e-02
-#&gt; Qp_sd 1.989976e-10 0.0007056065 2.087257e-09
-#&gt; k_sd  2.013695e-10 0.0001144880 1.100847e-02</code></pre>
+#&gt; Dn_sd 2.059607e-10 0.0002464645 8.802302e-03
+#&gt; Dp_sd 1.839931e-10 0.0008312872 1.941404e-09
+#&gt; Qn_sd 2.033265e-03 0.0007935192 2.833997e-02
+#&gt; Qp_sd 1.871793e-10 0.0007492813 1.927087e-09
+#&gt; k_sd  1.989785e-10 0.0001088726 1.046852e-02</code></pre>
 
 </div>
 </div>
@@ -603,7 +587,7 @@ fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))</a></c
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
