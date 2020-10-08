@@ -8,7 +8,7 @@ fishflux: A tool to model elemental fluxes in fishes
 Status](http://badges.herokuapp.com/travis/nschiett/fishflux?branch=master&label=build&style=plastic&logo=travisci)](https://travis-ci.org/nschiett/fishflux)
 [![Actions
 Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishflux/actions)
-![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.1-blue.svg)
+![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.2-blue.svg)
 [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
 ![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
 [![Codecov test
@@ -117,9 +117,7 @@ Citation
 
 When using the bioenergetic model featured in this package, please cite:
 
-Schiettekatte NMD, Barneche DR, Villéger S, Allgeier JE, Burkepile DE,
-Brandl, SJ, Casey, JM, Mercière, A, Munsterman, KS, Morat, F and
-Parravicini, V, Nutrient limitation, bioenergetics, and stoichiometry: a
-new model to predict elemental fluxes mediated by fishes. Funct Ecol.
-2020;00:1-13.
+Schiettekatte, NMD, Barneche, DR, Villéger, S, et al. Nutrient
+limitation, bioenergetics and stoichiometry: A new model to predict
+elemental fluxes mediated by fishes. Funct Ecol. 2020; 34: 1857– 1869.
 <a href="https://doi.org/10.1111/1365-2435.13618" class="uri">https://doi.org/10.1111/1365-2435.13618</a>
