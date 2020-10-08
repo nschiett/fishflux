@@ -6,6 +6,8 @@ This is a resubmission. In this version I have:
 informative message if the resource is not available or has changed (and
 not give a check warning nor error).'
 
+* Fixed url in readme 
+
 ## Test environments
 * local R installation, R 3.6.3
 * ubuntu 16.04 (on travis-ci), R 3.6.3

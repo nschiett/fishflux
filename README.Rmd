@@ -109,7 +109,7 @@ See package [vignette](https://nschiett.github.io/fishflux/articles/intro_to_fis
 License
 --------
 
-This R package is provided for use under the MIT License ([MIT](http://opensource.org/licenses/MIT)) by the author.
+This R package is provided for use under the MIT License ([MIT](https://opensource.org/licenses/MIT)) by the author.
 
 
 Citation
