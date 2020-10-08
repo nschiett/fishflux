@@ -21,6 +21,7 @@ inst/web
 src/fishflux.so
 ..Rcheck/
 src/fishflux.dll
+cran-comments.md
 
 # cpp files
 src/*.o
