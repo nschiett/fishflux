@@ -1,4 +1,6 @@
 test_that("simple corner case", {
+  needs_api()
+  check_api()
   #check_name_fishbase
   expect_error(fishflux::check_name_fishbase("name"))
   expect_null(fishflux::check_name_fishbase("Zebrasoma scopas"))

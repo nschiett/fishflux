@@ -1,7 +1,10 @@
 # example
-gp <- as.data.frame(fishflux::growth_params("Zebrasoma scopas"))
+#gp <- as.data.frame(fishflux::growth_params("Zebrasoma scopas"))
 
 test_that("Simple corner cases", {
+  needs_api()
+  check_api()
+  gp <- as.data.frame(fishflux::growth_params("Zebrasoma scopas"))
   expect_error(fishflux::gp("wrong name"))
   expect_s3_class(gp, "data.frame")
   expect_equal(gp, as.data.frame(fishflux::growth_params("Zebrasoma scopas")))

@@ -1,8 +1,11 @@
 # example
-mp <- suppressMessages(suppressWarnings(fishflux::model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)))
-
 
 test_that("Simple corner cases", {
+  needs_api()
+  check_api()
+  mp <- suppressMessages(suppressWarnings(
+    fishflux::model_parameters(
+      sp = "Scarus psittacus", family = "Scaridae", temp = 27)))
   expect_length(mp, 15)
   expect_equal(nrow(mp), 1)
   expect_true(!is.numeric(mp$species))
