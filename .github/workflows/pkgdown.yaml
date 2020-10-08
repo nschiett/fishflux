@@ -27,9 +27,8 @@ jobs:
       - name: Install dependencies
         run: |
           system("brew install tbb")
-          install.packages(c("ps", "remotes"))
+          install.packages(c("ps", "remotes", "pkgdown"))
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_dev("pkgdown")
         shell: Rscript {0}
 
       - name: Install package
