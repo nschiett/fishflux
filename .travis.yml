@@ -21,6 +21,12 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-7
+      - libudunits2-dev
+      - libv8-dev
+      - libgsl-dev
+      - libgdal-dev
+      - libproj-dev
+      
 env:
   - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
