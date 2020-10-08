@@ -1,7 +1,7 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fishflux: A tool to model elemental fluxes in fishes
+fishflux: A tool to model elemental fluxes in fishes
+====================================================
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Build
@@ -17,13 +17,14 @@ coverage](https://codecov.io/gh/nschiett/fishflux/branch/master/graph/badge.svg)
 status](https://www.r-pkg.org/badges/version/fishflux)](https://CRAN.R-project.org/package=fishflux)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/fishflux?color=brightgreen)](https://CRAN.R-project.org/package=fishflux)
 [![Ask Us Anything
-\!](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg)](https://github.com/nschiett/fishflux/issues/new)
+!](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg)](https://github.com/nschiett/fishflux/issues/new)
 ![Open Source
 Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 
 <img src="man/figures/fishflux.png" width = 120 alt="fishflux logo"/>
 
-## Overview
+Overview
+--------
 
 The `fishflux` package provides a tool to model fluxes of C (carbon), N
 (nitrogen) and P (phosphorus) in fishes. It combines basic principles
@@ -34,21 +35,23 @@ fluxes of elements.
 
 Main assets:
 
-  - Provides function to model fluxes of carbon, nitrogen and phosphorus
+-   Provides function to model fluxes of carbon, nitrogen and phosphorus
     for fishes
-  - Allows for the estimation of uncertainty, dpending on the uncertainy
+-   Allows for the estimation of uncertainty, dpending on the uncertainy
     of the input parameters
-  - Provides some functions to help find parameters as inputs for the
+-   Provides some functions to help find parameters as inputs for the
     model
-  - Provides functions to extract and illustrate results
+-   Provides functions to extract and illustrate results
 
-## Theoretical framework
+Theoretical framework
+---------------------
 
 For more information on the theoretical framework behind
 `cnp_model_mcmc()`, check out the
 [paper](https://doi.org/10.1111/1365-2435.13618).
 
-## Installing and loading fishflux
+Installing and loading fishflux
+-------------------------------
 
 First, make sure your R version is 3.4 or higher and you have rtools
 installed.
@@ -71,20 +74,16 @@ reinstall it, prior to the installation of `fishflux`.
 Once you have your c++ compiler set up correctly, you are ready to
 install it from GitHub.
 
-``` r
-install.packages("devtools")
-devtools::install_github("nschiett/fishflux", dependencies=TRUE)
-library(fishflux)
-```
+    install.packages("devtools")
+    devtools::install_github("nschiett/fishflux", dependencies=TRUE)
+    library(fishflux)
 
 ### CRAN
 
 `fishflux` is now available on CRAN:
 
-``` r
-install.packages("fishflux")
-library(fishflux)
-```
+    install.packages("fishflux")
+    library(fishflux)
 
 Note that if you are using a linux operating system, you still need a
 c++ compiler to install the package from CRAN. If you are using Windows
@@ -96,28 +95,29 @@ need a compiler.
 Another option is to download the source file available on github
 [here](https://github.com/nschiett/fishflux).
 
-``` r
-install.packages(path_to_fishflux_file, repos = NULL, type = "source")
-library(fishflux)
-```
+    install.packages(path_to_fishflux_file, repos = NULL, type = "source")
+    library(fishflux)
 
-## Documentation
+Documentation
+-------------
 
 See package
 [vignette](https://nschiett.github.io/fishflux/articles/intro_to_fishflux.html)
 for an introduction and help pages. For more information on the
 theoretical model see [here](https://doi.org/10.1111/1365-2435.13618).
 
-## License
+License
+-------
 
 This R package is provided for use under the MIT License
 ([MIT](https://opensource.org/licenses/MIT)) by the author.
 
-## Citation
+Citation
+--------
 
 When using the bioenergetic model featured in this package, please cite:
 
 Schiettekatte, NMD, Barneche, DR, Villéger, S, et al. Nutrient
 limitation, bioenergetics and stoichiometry: A new model to predict
 elemental fluxes mediated by fishes. Funct Ecol. 2020; 34: 1857– 1869.
-<https://doi.org/10.1111/1365-2435.13618>
+<a href="https://doi.org/10.1111/1365-2435.13618" class="uri">https://doi.org/10.1111/1365-2435.13618</a>
