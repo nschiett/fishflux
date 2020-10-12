@@ -139,7 +139,7 @@ The `find_lw` function searches [FishBase](https://www.fishbase.de/) to find len
 \newline
 ```{r,message=TRUE,echo=TRUE}
 # example
-fishflux::find_lw("Zebrasoma scopas", mirror = "us")
+fishflux::find_lw("Zebrasoma scopas", mirror = "se")
 ```
 \newline
 The model uses parameters von Bertalanffy's growth model (VBGM) to estimate growth rates. A quick way to get available information from FishBase is the function `growth_params()`. This can be a good indication, but users should interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. Alternatively, it is advised to use growth curves derived from otolith readings. In the absence of otolith data, one might consider extracting standardised estimations from @morais2018.
