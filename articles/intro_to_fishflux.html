@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fishflux</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.3</span>
       </span>
     </div>
 
@@ -400,8 +400,8 @@ Elemental stoichiometry of diet
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">zebsco</span><span class="op">)</span>
 <span class="co">#&gt;            species    t0 Linf     k     asp troph   lwa_m      lwa_sd lwb_m</span>
 <span class="co">#&gt; 1 Zebrasoma scopas -0.49 13.3 0.425 2.02091     2 0.02455 0.002627551  2.98</span>
-<span class="co">#&gt;      lwb_sd     mdw_m        f0_m        f0_sd alpha_m   alpha_sd</span>
-<span class="co">#&gt; 1 0.0255102 0.2504833 0.001517989 3.083058e-10    0.77 0.05286288</span></pre></div>
+<span class="co">#&gt;      lwb_sd     mdw_m        f0_m       f0_sd alpha_m   alpha_sd</span>
+<span class="co">#&gt; 1 0.0255102 0.2504833 0.001517989 2.99088e-10    0.77 0.05286288</span></pre></div>
 
 <p>All other parameters have to be provided by the user. For more information on how to acquire these parameters, take a look at (“this paper” add reference to methods paper).</p>
 </div>
@@ -420,56 +420,56 @@ Elemental stoichiometry of diet
 <div class="sourceCode" id="cb10"><pre class="downlit">
 <span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/extract.html">extract</a></span><span class="op">(</span><span class="va">model</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Fn"</span>,<span class="st">"Fp"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;    TL      Fn_mean    Fn_median        Fn_sd      Fn_2.5%    Fn_97.5%</span>
-<span class="co">#&gt; 1   5 0.0008995975 0.0008356675 0.0004501718 0.0001991565 0.001935200</span>
-<span class="co">#&gt; 2   6 0.0012574779 0.0011826660 0.0005949077 0.0003245522 0.002594938</span>
-<span class="co">#&gt; 3   7 0.0017815642 0.0016583034 0.0008157206 0.0004321666 0.003619874</span>
-<span class="co">#&gt; 4   8 0.0025263354 0.0022954031 0.0011620143 0.0009371622 0.005506227</span>
-<span class="co">#&gt; 5   9 0.0033740745 0.0030432790 0.0017929685 0.0009063995 0.007960575</span>
-<span class="co">#&gt; 6  10 0.0044382625 0.0039223763 0.0023925573 0.0010928039 0.010100547</span>
-<span class="co">#&gt; 7  11 0.0059045515 0.0052484756 0.0034308648 0.0015062425 0.014294394</span>
-<span class="co">#&gt; 8  12 0.0074837757 0.0067492180 0.0044436802 0.0017084654 0.018495047</span>
-<span class="co">#&gt; 9  13 0.0088363746 0.0075083549 0.0054132222 0.0020402028 0.022249079</span>
-<span class="co">#&gt; 10 14 0.0115747120 0.0100693129 0.0072403744 0.0023854176 0.030304176</span>
-<span class="co">#&gt; 11 15 0.0138855402 0.0120953828 0.0092695674 0.0022621354 0.035923966</span>
-<span class="co">#&gt; 12 16 0.0157942461 0.0135706280 0.0102850666 0.0026664477 0.040423566</span>
-<span class="co">#&gt; 13 17 0.0186892061 0.0156907376 0.0125628878 0.0034492445 0.049714349</span>
-<span class="co">#&gt; 14 18 0.0234129366 0.0205061648 0.0152512045 0.0046668058 0.059482754</span>
-<span class="co">#&gt; 15 19 0.0261829676 0.0217263908 0.0173094038 0.0068285939 0.067347257</span>
-<span class="co">#&gt; 16 20 0.0327418554 0.0282508801 0.0219838847 0.0070695325 0.085882215</span>
+<span class="co">#&gt; 1   5 0.0008812686 0.0008235356 0.0004328303 0.0002384015 0.001760192</span>
+<span class="co">#&gt; 2   6 0.0013258007 0.0012913356 0.0006177459 0.0003644033 0.002755424</span>
+<span class="co">#&gt; 3   7 0.0018520248 0.0017147691 0.0008552925 0.0005221026 0.003827689</span>
+<span class="co">#&gt; 4   8 0.0024955783 0.0022691806 0.0011744544 0.0007582033 0.005239428</span>
+<span class="co">#&gt; 5   9 0.0033594675 0.0030645399 0.0017593784 0.0008027211 0.007896552</span>
+<span class="co">#&gt; 6  10 0.0044427023 0.0038105732 0.0024817585 0.0009983687 0.010373224</span>
+<span class="co">#&gt; 7  11 0.0056018792 0.0050818190 0.0031276618 0.0013638631 0.012408699</span>
+<span class="co">#&gt; 8  12 0.0071700684 0.0061603963 0.0044810007 0.0013596635 0.018974660</span>
+<span class="co">#&gt; 9  13 0.0091006186 0.0078059917 0.0055584034 0.0019719075 0.023112483</span>
+<span class="co">#&gt; 10 14 0.0111509279 0.0097442706 0.0073693155 0.0021695742 0.028637060</span>
+<span class="co">#&gt; 11 15 0.0134713432 0.0117680462 0.0089187037 0.0021922154 0.034930769</span>
+<span class="co">#&gt; 12 16 0.0166723546 0.0147366213 0.0104757216 0.0032225340 0.041858269</span>
+<span class="co">#&gt; 13 17 0.0189434339 0.0164110237 0.0119481674 0.0041790129 0.045019645</span>
+<span class="co">#&gt; 14 18 0.0231042007 0.0194581939 0.0151278836 0.0055791577 0.059950559</span>
+<span class="co">#&gt; 15 19 0.0274471491 0.0237701337 0.0173273606 0.0064690370 0.068388780</span>
+<span class="co">#&gt; 16 20 0.0317089992 0.0272101447 0.0196819228 0.0079804906 0.079354290</span>
 <span class="co">#&gt;          Fn_25%      Fn_75%      Fp_mean    Fp_median        Fp_sd      Fp_2.5%</span>
-<span class="co">#&gt; 1  0.0005848646 0.001128908 8.113832e-05 4.097058e-05 0.0001038282 2.240077e-06</span>
-<span class="co">#&gt; 2  0.0008240332 0.001566237 1.663734e-04 8.302147e-05 0.0001941108 5.512705e-06</span>
-<span class="co">#&gt; 3  0.0012340021 0.002253510 2.826207e-04 1.612433e-04 0.0002914860 1.760030e-05</span>
-<span class="co">#&gt; 4  0.0016650374 0.003137568 4.657455e-04 2.801049e-04 0.0004627298 1.207938e-05</span>
-<span class="co">#&gt; 5  0.0021317130 0.004191334 7.354955e-04 4.462109e-04 0.0007212825 2.804260e-05</span>
-<span class="co">#&gt; 6  0.0026412060 0.005768890 1.079207e-03 7.342769e-04 0.0009661083 4.141256e-05</span>
-<span class="co">#&gt; 7  0.0035348007 0.007761986 1.637747e-03 1.178602e-03 0.0014613800 6.704690e-05</span>
-<span class="co">#&gt; 8  0.0039769469 0.009896079 2.266193e-03 1.875467e-03 0.0018009384 1.814145e-04</span>
-<span class="co">#&gt; 9  0.0047182181 0.012024400 2.750213e-03 2.108595e-03 0.0021745374 2.770463e-04</span>
-<span class="co">#&gt; 10 0.0060269288 0.015893853 3.838307e-03 3.003600e-03 0.0029507092 3.540970e-04</span>
-<span class="co">#&gt; 11 0.0066433429 0.018816430 4.836250e-03 3.961685e-03 0.0037486645 4.676923e-04</span>
-<span class="co">#&gt; 12 0.0078576284 0.020705451 5.722642e-03 4.861289e-03 0.0041060613 5.984771e-04</span>
-<span class="co">#&gt; 13 0.0088930346 0.024464854 6.991514e-03 5.789069e-03 0.0050336318 9.330765e-04</span>
-<span class="co">#&gt; 14 0.0111399579 0.032779664 9.095700e-03 7.887998e-03 0.0061419999 1.560891e-03</span>
-<span class="co">#&gt; 15 0.0126971018 0.035650673 1.040710e-02 8.559846e-03 0.0068711449 2.801891e-03</span>
-<span class="co">#&gt; 16 0.0161900435 0.044132139 1.300292e-02 1.130759e-02 0.0086456139 2.846253e-03</span>
+<span class="co">#&gt; 1  0.0005731828 0.001120930 7.901167e-05 4.262093e-05 9.636217e-05 1.769438e-06</span>
+<span class="co">#&gt; 2  0.0008725869 0.001668676 1.693996e-04 9.514647e-05 1.954007e-04 4.619992e-06</span>
+<span class="co">#&gt; 3  0.0012096329 0.002352575 2.481992e-04 1.360243e-04 2.892781e-04 9.856487e-06</span>
+<span class="co">#&gt; 4  0.0017157330 0.003143184 4.707332e-04 2.797757e-04 4.930189e-04 2.089223e-05</span>
+<span class="co">#&gt; 5  0.0021280784 0.004303073 7.136319e-04 4.656971e-04 6.976681e-04 3.296718e-05</span>
+<span class="co">#&gt; 6  0.0026399817 0.005693377 1.059754e-03 7.451556e-04 9.610281e-04 4.139310e-05</span>
+<span class="co">#&gt; 7  0.0032874885 0.007322587 1.530951e-03 1.143573e-03 1.285731e-03 8.666743e-05</span>
+<span class="co">#&gt; 8  0.0039232907 0.009516102 2.108272e-03 1.595223e-03 1.805492e-03 1.367883e-04</span>
+<span class="co">#&gt; 9  0.0049345179 0.012385438 2.847663e-03 2.240994e-03 2.282329e-03 1.426152e-04</span>
+<span class="co">#&gt; 10 0.0054598903 0.014898217 3.686355e-03 3.075416e-03 2.942267e-03 2.575545e-04</span>
+<span class="co">#&gt; 11 0.0066444537 0.018763595 4.693189e-03 3.977092e-03 3.577911e-03 5.232711e-04</span>
+<span class="co">#&gt; 12 0.0081617495 0.023365235 6.028523e-03 5.089274e-03 4.188773e-03 7.179604e-04</span>
+<span class="co">#&gt; 13 0.0092474664 0.025789070 7.145662e-03 6.230212e-03 4.791509e-03 1.250463e-03</span>
+<span class="co">#&gt; 14 0.0111159207 0.031291327 8.956436e-03 7.574565e-03 6.087325e-03 1.880206e-03</span>
+<span class="co">#&gt; 15 0.0127549185 0.039211442 1.090561e-02 9.438208e-03 6.882298e-03 2.507441e-03</span>
+<span class="co">#&gt; 16 0.0157018379 0.043334661 1.263614e-02 1.093755e-02 7.860730e-03 3.143533e-03</span>
 <span class="co">#&gt;        Fp_97.5%       Fp_25%       Fp_75%</span>
-<span class="co">#&gt; 1  0.0003844986 2.031821e-05 8.836758e-05</span>
-<span class="co">#&gt; 2  0.0007130689 4.220267e-05 2.123593e-04</span>
-<span class="co">#&gt; 3  0.0010538036 7.959827e-05 3.752558e-04</span>
-<span class="co">#&gt; 4  0.0016874451 1.308397e-04 6.916587e-04</span>
-<span class="co">#&gt; 5  0.0027256465 2.245282e-04 1.053150e-03</span>
-<span class="co">#&gt; 6  0.0036103336 3.230574e-04 1.623859e-03</span>
-<span class="co">#&gt; 7  0.0051018042 5.285212e-04 2.398718e-03</span>
-<span class="co">#&gt; 8  0.0066188297 7.289220e-04 3.335430e-03</span>
-<span class="co">#&gt; 9  0.0081327495 1.041416e-03 4.029931e-03</span>
-<span class="co">#&gt; 10 0.0115463374 1.489892e-03 5.467561e-03</span>
-<span class="co">#&gt; 11 0.0139018424 1.880325e-03 6.856950e-03</span>
-<span class="co">#&gt; 12 0.0156937442 2.275339e-03 7.922698e-03</span>
-<span class="co">#&gt; 13 0.0194944505 3.068349e-03 9.321498e-03</span>
-<span class="co">#&gt; 14 0.0231232738 4.132501e-03 1.294133e-02</span>
-<span class="co">#&gt; 15 0.0272645295 5.099123e-03 1.411327e-02</span>
-<span class="co">#&gt; 16 0.0338970630 6.403016e-03 1.730218e-02</span></pre></div>
+<span class="co">#&gt; 1  0.0003813117 2.066783e-05 9.071778e-05</span>
+<span class="co">#&gt; 2  0.0006910814 4.649674e-05 2.286414e-04</span>
+<span class="co">#&gt; 3  0.0010155546 7.028683e-05 3.167641e-04</span>
+<span class="co">#&gt; 4  0.0017828806 1.196509e-04 6.533386e-04</span>
+<span class="co">#&gt; 5  0.0025701470 1.980511e-04 1.007623e-03</span>
+<span class="co">#&gt; 6  0.0034296188 3.302923e-04 1.565533e-03</span>
+<span class="co">#&gt; 7  0.0046330963 5.288092e-04 2.269363e-03</span>
+<span class="co">#&gt; 8  0.0068843395 6.964291e-04 3.034089e-03</span>
+<span class="co">#&gt; 9  0.0084119003 9.763717e-04 4.172867e-03</span>
+<span class="co">#&gt; 10 0.0102418477 1.368398e-03 5.155713e-03</span>
+<span class="co">#&gt; 11 0.0129396242 1.795076e-03 6.722186e-03</span>
+<span class="co">#&gt; 12 0.0156817228 2.599549e-03 8.765427e-03</span>
+<span class="co">#&gt; 13 0.0177168997 3.193866e-03 9.982705e-03</span>
+<span class="co">#&gt; 14 0.0234772567 4.145680e-03 1.219971e-02</span>
+<span class="co">#&gt; 15 0.0271361022 5.121089e-03 1.554783e-02</span>
+<span class="co">#&gt; 16 0.0323245239 6.115753e-03 1.722432e-02</span></pre></div>
 
 </div>
 <div id="plot-results" class="section level3">
@@ -490,45 +490,45 @@ Elemental stoichiometry of diet
 #&gt; 7  11        c    0.000
 #&gt; 8  12        c    0.000
 #&gt; 9  13        c    0.002
-#&gt; 10 14        c    0.006
-#&gt; 11 15        c    0.016
-#&gt; 12 16        c    0.042
-#&gt; 13 17        c    0.074
-#&gt; 14 18        c    0.122
-#&gt; 15 19        c    0.164
-#&gt; 16 20        c    0.152
-#&gt; 17  5        n    0.328
-#&gt; 18  6        n    0.420
-#&gt; 19  7        n    0.502
-#&gt; 20  8        n    0.534
-#&gt; 21  9        n    0.616
-#&gt; 22 10        n    0.662
-#&gt; 23 11        n    0.724
-#&gt; 24 12        n    0.772
-#&gt; 25 13        n    0.794
-#&gt; 26 14        n    0.844
-#&gt; 27 15        n    0.846
-#&gt; 28 16        n    0.832
-#&gt; 29 17        n    0.862
-#&gt; 30 18        n    0.836
-#&gt; 31 19        n    0.820
-#&gt; 32 20        n    0.820
-#&gt; 33  5        p    0.672
-#&gt; 34  6        p    0.580
-#&gt; 35  7        p    0.498
-#&gt; 36  8        p    0.466
-#&gt; 37  9        p    0.384
-#&gt; 38 10        p    0.338
-#&gt; 39 11        p    0.276
-#&gt; 40 12        p    0.228
-#&gt; 41 13        p    0.204
-#&gt; 42 14        p    0.150
-#&gt; 43 15        p    0.138
-#&gt; 44 16        p    0.126
-#&gt; 45 17        p    0.064
-#&gt; 46 18        p    0.042
-#&gt; 47 19        p    0.016
-#&gt; 48 20        p    0.028
+#&gt; 10 14        c    0.004
+#&gt; 11 15        c    0.024
+#&gt; 12 16        c    0.050
+#&gt; 13 17        c    0.060
+#&gt; 14 18        c    0.126
+#&gt; 15 19        c    0.188
+#&gt; 16 20        c    0.166
+#&gt; 17  5        n    0.320
+#&gt; 18  6        n    0.444
+#&gt; 19  7        n    0.418
+#&gt; 20  8        n    0.570
+#&gt; 21  9        n    0.596
+#&gt; 22 10        n    0.668
+#&gt; 23 11        n    0.734
+#&gt; 24 12        n    0.744
+#&gt; 25 13        n    0.808
+#&gt; 26 14        n    0.826
+#&gt; 27 15        n    0.848
+#&gt; 28 16        n    0.850
+#&gt; 29 17        n    0.872
+#&gt; 30 18        n    0.838
+#&gt; 31 19        n    0.790
+#&gt; 32 20        n    0.816
+#&gt; 33  5        p    0.680
+#&gt; 34  6        p    0.556
+#&gt; 35  7        p    0.582
+#&gt; 36  8        p    0.430
+#&gt; 37  9        p    0.404
+#&gt; 38 10        p    0.332
+#&gt; 39 11        p    0.266
+#&gt; 40 12        p    0.256
+#&gt; 41 13        p    0.190
+#&gt; 42 14        p    0.170
+#&gt; 43 15        p    0.128
+#&gt; 44 16        p    0.100
+#&gt; 45 17        p    0.068
+#&gt; 46 18        p    0.036
+#&gt; 47 19        p    0.022
+#&gt; 48 20        p    0.018
 ## Plot one variable:
 fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))</a></code></pre>
 <p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-2.png" width="768"></p>
@@ -546,11 +546,11 @@ fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))</a></c
 <span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/sensitivity.html">sensitivity</a></span><span class="op">(</span>TL <span class="op">=</span> <span class="fl">10</span>, param <span class="op">=</span> <span class="va">param_zebsco</span>, par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Dn_sd"</span>, <span class="st">"Dp_sd"</span>, <span class="st">"Qn_sd"</span>, <span class="st">"Qp_sd"</span>, <span class="st">"k_sd"</span><span class="op">)</span>, out <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Fn"</span>, <span class="st">"Fp"</span>, <span class="st">"Ic"</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
 <pre><code>#&gt;              Fn_CI        Fp_CI        Ic_CI
-#&gt; Dn_sd 2.078582e-10 0.0002668196 9.529272e-03
-#&gt; Dp_sd 1.917325e-10 0.0008267637 1.997586e-09
-#&gt; Qn_sd 1.984451e-03 0.0007744688 2.765960e-02
-#&gt; Qp_sd 1.934787e-10 0.0006974468 2.031448e-09
-#&gt; k_sd  2.046995e-10 0.0001122325 1.079159e-02</code></pre>
+#&gt; Dn_sd 2.058257e-10 0.0002510894 8.967479e-03
+#&gt; Dp_sd 2.080024e-10 0.0007505586 2.122006e-09
+#&gt; Qn_sd 1.970958e-03 0.0007692026 2.747152e-02
+#&gt; Qp_sd 1.905995e-10 0.0007283809 2.020027e-09
+#&gt; k_sd  2.073855e-10 0.0001094801 1.052693e-02</code></pre>
 
 </div>
 </div>
