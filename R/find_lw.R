@@ -10,6 +10,10 @@
 #' 
 #' @keywords fish l-w relationship fishbase bayesian
 #' 
+#' @importFrom httr GET
+#' @importFrom httr message_for_status
+#' @importFrom curl has_internet
+#' 
 #' @examples
 #' \donttest{library(fishflux)
 #' library(plyr)
@@ -25,8 +29,38 @@ find_lw <- function(sp, mirror = "us") {
   check_name_fishbase(sp)
 
   sp_ <- gsub(" ", "-", sp)
-
-  page <-  readLines(paste("https://www.fishbase.", mirror, "/summary/", sp_, ".html", sep = ""))
+  url <- paste("https://www.fishbase.", mirror, "/summary/", sp_, ".html", sep = "")
+  
+  try_GET <- function(x, ...) {
+    tryCatch(
+      httr::GET(url = x, httr::timeout(10), ...),
+      error = function(e) conditionMessage(e),
+      warning = function(w) conditionMessage(w)
+    )
+  }
+  is_response <- function(x) {
+    class(x) == "response"
+  }
+  
+  # First check internet connection
+  if (!curl::has_internet()) {
+    message("No internet connection.")
+    return(invisible(NULL))
+  }
+  # Then try for timeout problems
+  resp <- try_GET(url)
+  if (!is_response(resp)) {
+    message(resp)
+    return(invisible(NULL))
+  }
+  # Then stop if status > 400
+  if (httr::http_error(resp)) { 
+    httr::message_for_status(resp)
+    return(invisible(NULL))
+  }
+  
+  # ready to read page
+  page <-  readLines(url)
 
   l <- grep("Bayesian length-weight:", page)
   line <- page[l]
