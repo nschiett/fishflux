@@ -209,8 +209,9 @@ Basically, the model is run for each input parameter, while keeping all the othe
 The input parameters and output variables of interest can be specified by arguments "par" and "out" respectively.
 \newline 
 ```{r, message=FALSE}
-## General overview:
-fishflux::sensitivity(TL = 10, param = param_zebsco, par = c("Dn_sd", "Dp_sd", "Qn_sd", "Qp_sd", "k_sd"), out = c("Fn", "Fp", "Ic"))
+fishflux::sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1),
+            par = c("k_sd","Dn_sd","Dc_sd"), 
+            out = c("Ic", "In", "Ip", "Gc"))
 ```
 \newline
 ## More information
@@ -219,3 +220,5 @@ For more information on the theoretical framework of the model, see @Schiettekat
 Every function of `fishflux` has a help page with more documentation.
 In the case of errors, bugs or discomfort, you are invited to raise an [issue](https://github.com/nschiett/fishflux/issues) on GitHub.
 `fishflux` is always in development and we are happy to take your comments or suggestions into consideration.
+
+## references

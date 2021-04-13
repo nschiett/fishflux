@@ -1,3 +1,9 @@
+## Resubmission v0.0.1.4
+This is a resubmission. In this version I have:
+
+* Fixed issues with the package vignette
+
+
 ## Resubmission v0.0.1.2
 This is a resubmission. In this version I have:
 
