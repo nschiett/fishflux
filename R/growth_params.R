@@ -14,9 +14,10 @@
 #' @importFrom dplyr select filter
 #' 
 #' @examples
+#' \dontrun{
 #' library(fishflux)
 #' growth_params("Lutjanus griseus")
-#' 
+#' }
 #' @export
 growth_params <- function(sp, otolith = TRUE) {
   if (length(suppressMessages(name_errors(sp))) > 0) {

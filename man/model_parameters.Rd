@@ -24,7 +24,7 @@ A function to find a set of parameters
 Returns a dataframe with all parameters that can be estimated
 }
 \examples{
-\donttest{
+\dontrun{
 library(fishflux)
 model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)}
 

@@ -9,7 +9,7 @@
 #' @importFrom rfishbase validate_names
 #' 
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' library(fishflux)
 #' name_errors(c("Chlorurus spilurus", "Zebrasoma scopas"))
 #' name_errors(c("Chlorurus spilurus", "Zebrasoma copas"))}

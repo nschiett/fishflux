@@ -10,7 +10,7 @@
 #' 
 #' 
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' library(fishflux)
 #' model_parameters(sp = "Scarus psittacus", family = "Scaridae", temp = 27)}
 #' 

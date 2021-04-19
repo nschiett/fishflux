@@ -12,7 +12,7 @@
 #' @importFrom dplyr select
 #' 
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' library(fishflux)
 #' library(plyr)
 #' trophic_level("Lutjanus griseus")

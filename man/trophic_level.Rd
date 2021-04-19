@@ -15,7 +15,7 @@ level using rfishbase. It returns a data frame containing the trophic level
 and the level at which the trophic level was found (species or genus).
 }
 \examples{
-\donttest{
+\dontrun{
 library(fishflux)
 library(plyr)
 trophic_level("Lutjanus griseus")

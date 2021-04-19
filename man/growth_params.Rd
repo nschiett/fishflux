@@ -18,9 +18,10 @@ This function is useful to see what is available on fishbase.
 Nevertheless, we strongly recommend to check the source and only use otolith based studies.
 }
 \examples{
+\dontrun{
 library(fishflux)
 growth_params("Lutjanus griseus")
-
+}
 }
 \keyword{fish}
 \keyword{fishbase}

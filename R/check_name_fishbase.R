@@ -8,7 +8,7 @@
 #' @keywords fish fishbase taxonomy
 #' 
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' library(fishflux)
 #' check_name_fishbase("Lutjanus griseus")
 #' }
