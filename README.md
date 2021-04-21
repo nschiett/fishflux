@@ -1,9 +1,9 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-fishflux: A tool to model elemental fluxes in fishes
-====================================================
+# fishflux: A tool to model elemental fluxes in fishes
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Build
 Status](http://badges.herokuapp.com/travis/nschiett/fishflux?branch=master&label=build&style=plastic&logo=travisci)](https://travis-ci.org/nschiett/fishflux)
 [![Actions
@@ -23,8 +23,7 @@ Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 
 <img src="man/figures/fishflux.png" width = 120 alt="fishflux logo"/>
 
-Overview
---------
+## Overview
 
 The `fishflux` package provides a tool to model fluxes of C (carbon), N
 (nitrogen) and P (phosphorus) in fishes. It combines basic principles
@@ -43,15 +42,13 @@ Main assets:
     model
 -   Provides functions to extract and illustrate results
 
-Theoretical framework
----------------------
+## Theoretical framework
 
 For more information on the theoretical framework behind
 `cnp_model_mcmc()`, check out the
 [paper](https://doi.org/10.1111/1365-2435.13618).
 
-Installing and loading fishflux
--------------------------------
+## Installing and loading fishflux
 
 First, make sure your R version is 3.4 or higher and you have rtools
 installed.
@@ -74,16 +71,20 @@ reinstall it, prior to the installation of `fishflux`.
 Once you have your c++ compiler set up correctly, you are ready to
 install it from GitHub.
 
-    install.packages("devtools")
-    devtools::install_github("nschiett/fishflux", dependencies=TRUE)
-    library(fishflux)
+``` r
+install.packages("devtools")
+devtools::install_github("nschiett/fishflux", dependencies=TRUE)
+library(fishflux)
+```
 
 ### CRAN
 
 `fishflux` is now available on CRAN:
 
-    install.packages("fishflux")
-    library(fishflux)
+``` r
+install.packages("fishflux")
+library(fishflux)
+```
 
 Note that if you are using a linux operating system, you still need a
 c++ compiler to install the package from CRAN. If you are using Windows
@@ -95,29 +96,28 @@ need a compiler.
 Another option is to download the source file available on github
 [here](https://github.com/nschiett/fishflux).
 
-    install.packages(path_to_fishflux_file, repos = NULL, type = "source")
-    library(fishflux)
+``` r
+install.packages(path_to_fishflux_file, repos = NULL, type = "source")
+library(fishflux)
+```
 
-Documentation
--------------
+## Documentation
 
 See package
 [vignette](https://nschiett.github.io/fishflux/articles/intro_to_fishflux.html)
 for an introduction and help pages. For more information on the
 theoretical model see [here](https://doi.org/10.1111/1365-2435.13618).
 
-License
--------
+## License
 
 This R package is provided for use under the MIT License
 ([MIT](https://opensource.org/licenses/MIT)) by the author.
 
-Citation
---------
+## Citation
 
 When using the bioenergetic model featured in this package, please cite:
 
 Schiettekatte, NMD, Barneche, DR, Villéger, S, et al. Nutrient
 limitation, bioenergetics and stoichiometry: A new model to predict
 elemental fluxes mediated by fishes. Funct Ecol. 2020; 34: 1857– 1869.
-<a href="https://doi.org/10.1111/1365-2435.13618" class="uri">https://doi.org/10.1111/1365-2435.13618</a>
+<https://doi.org/10.1111/1365-2435.13618>
