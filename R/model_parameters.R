@@ -6,7 +6,7 @@
 #' @param temp temperature
 #' @param ... Additional arguments to \code{\link{find_lw}}.
 #' 
-#' @details Returns a dataframe with all parameters that can be estimated
+#' @returns Returns a dataframe with all parameters that can be estimated
 #' 
 #' 
 #' @examples

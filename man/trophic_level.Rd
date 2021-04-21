@@ -9,6 +9,9 @@ trophic_level(sp)
 \arguments{
 \item{sp}{A character value containing the species name}
 }
+\value{
+Returns a dataframe with species, trophic level, and taxonomy level.
+}
 \description{
 A function to find trophic level of a species on either species or genus
 level using rfishbase. It returns a data frame containing the trophic level

@@ -25,6 +25,9 @@ metabolic_rate(temp, troph, asp, B0, m_max, m, a, growth_g_day, f)
 
 \item{f}{Activity scope (from 1 to 4)}
 }
+\value{
+A dataframe with metabolic rates.
+}
 \description{
 All model parameters below were estimated by Barneche & Allen 2018 Ecology
 Letters doi: 10.1111/ele.12947. These parameters are for the best model

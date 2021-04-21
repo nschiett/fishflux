@@ -15,6 +15,9 @@ metabolism(family, temp, troph_m, troph_sd = 1e-10)
 
 \item{troph_sd}{Trophic level sd (optional)}
 }
+\value{
+dataframe with predicted metabolic parameters.
+}
 \description{
 All model parameters below were estimated by Barneche & Allen 2018 Ecology
 Letters doi: 10.1111/ele.12947. These parameters are for the best model

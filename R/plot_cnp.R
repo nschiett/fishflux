@@ -7,6 +7,8 @@
 #' @param y Output variable(s) to be plotted. Can be a character or a character vector.
 #' @param probs Width of the confidence
 #' 
+#' @returns a ggplot object
+#' 
 #' @keywords fish plot bioenergetic model stoichiometry
 #'
 #' @importFrom rstan extract
@@ -85,9 +87,7 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)) {
  plot
 }
 
-#' get_iter
-#' @param x something
-#' @importFrom plyr ldply
+
 get_iter <- function(x) {
   get <- t(ldply(x))
   colnames(get) <- get[1, ]

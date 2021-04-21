@@ -21,6 +21,8 @@
 #' @keywords    Fish metabolism
 #' @importFrom rstan sampling summary
 #' 
+#' @returns dataframe with predicted metabolic parameters. 
+#' 
 #' @examples
 #' library(fishflux)
 #' metabolism(family = "Pomacentridae", temp = 27, troph_m = 2)

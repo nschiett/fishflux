@@ -2,7 +2,8 @@
 This is a resubmission. In this version I have:
 
 * Fixed issues with the package vignette
-
+* I was asked to add \value to each function, which I did but with \returns 
+* I added dontrun{} around all examples relying on the r package rfishbase, just as the developers of that package did. 
 
 ## Resubmission v0.0.1.2
 This is a resubmission. In this version I have:

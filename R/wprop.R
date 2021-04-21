@@ -3,7 +3,7 @@
 #' This function searches the ratio of dry weight and wet weight of fish
 #' on the family level. If the family is not available, an average is returned.
 #'
-#' Returns a dataframe with the weight ratio (mdw) and it's sd (mdw_sd).
+#' @returns Returns a dataframe with the weight ratio (mdw) and it's sd (mdw_sd).
 #'
 #' @param family family
 #' 

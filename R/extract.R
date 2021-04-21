@@ -25,7 +25,7 @@
 #' \item{Fp:} Total inorganic flux of P (excretion) (g/day)
 #' }
 #' 
-#' @details Returns a data.frame with a summary of the selected output parameters
+#' @returns Returns a data.frame with a summary of the selected output parameters
 #' 
 #' @keywords fish stoichiometry excretion mcmc
 #'

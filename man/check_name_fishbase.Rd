@@ -9,6 +9,9 @@ check_name_fishbase(sp)
 \arguments{
 \item{sp}{A character value containing the species name}
 }
+\value{
+returns an error if the species name is wrong.
+}
 \description{
 This is a wrapper function to which will return an error (via
 \code{\link[fishflux]{name_errors}}) if the provided species name is wrong.

@@ -8,6 +8,8 @@
 #' 
 #' @importFrom rfishbase validate_names
 #' 
+#' @returns A vector with the incorrect species names. 
+#' 
 #' @examples
 #' \dontrun{
 #' library(fishflux)

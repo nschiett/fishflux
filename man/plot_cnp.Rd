@@ -15,6 +15,9 @@ plot_cnp(mod, y, x = "tl", probs = c(0.8, 0.95))
 
 \item{probs}{Width of the confidence}
 }
+\value{
+a ggplot object
+}
 \description{
 This function allows you to plot an overview of the model results in function of the total length of fish
 }

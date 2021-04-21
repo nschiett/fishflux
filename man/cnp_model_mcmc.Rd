@@ -51,13 +51,13 @@ ro_Dc_Dn, ro_Dc_Dp, ro_Dn_Dp, ro_lwa_lwb, ro_alpha_f0}
 
 \item{...}{Additional arguments rstan::sampling, see ?rstan:sampling}
 }
-\description{
-This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.
-}
-\details{
+\value{
 Returns a list with two objects: A stanfit object and a data.frame with a summary of all model components.
  See \code{\link{extract}} to extract a summary of predicted variables and
  \code{\link{limitation}} to get information on the limiting element.
+}
+\description{
+This function combines MTE and stoichiometric theory in order to predict nescessary ingestion and excretion processes. A probability distribution is obtained by including uncertainty of parameters and using MCMC sampling with stan.
 }
 \examples{
 library(fishflux)

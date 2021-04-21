@@ -5,7 +5,7 @@
 #' @param mod Model output from cnp_model_mcmc().
 #' @param plot Argument to specify if results should be shown in a plot.
 #' 
-#' @details Returns a data frame with:
+#' @returns Returns a data frame with:
 #' \describe{
 #'   \item{tl}{Total length, in cm}
 #'   \item{nutrient}{c, n or p}

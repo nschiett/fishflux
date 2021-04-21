@@ -8,6 +8,8 @@
 #' @param sp A charachter value containing the species name
 #' @param otolith A logical value. If TRUE, only results from otolith analysis are returned. If false, all growth studies will be returned.
 #' 
+#' @returns dataframe with available growth rate parameters from fishbase. 
+#' 
 #' @keywords fish growth fishbase
 #' 
 #' @importFrom rfishbase popgrowth

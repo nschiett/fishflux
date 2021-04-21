@@ -9,6 +9,9 @@ aspect_ratio(sp)
 \arguments{
 \item{sp}{A character value containing the species name}
 }
+\value{
+dataframe with species, aspect ratio and taxonomy level.
+}
 \description{
 A function to find aspect ratio of a species on either species or genus
 level using rfishbase. It returns a data frame containing the aspect ratio

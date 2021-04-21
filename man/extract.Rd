@@ -33,12 +33,11 @@ Main model output parameters:
 \item{Fn:} Total inorganic flux of N (excretion) (g/day)
 \item{Fp:} Total inorganic flux of P (excretion) (g/day)
 }
+
+Returns a data.frame with a summary of the selected output parameters
 }
 \description{
 A function to extract specific model output parameters from result
-}
-\details{
-Returns a data.frame with a summary of the selected output parameters
 }
 \examples{
 model <- cnp_model_mcmc(TL = 5:10, param = list(Qc_m = 40, Qn_m = 10, Qp_m = 4))

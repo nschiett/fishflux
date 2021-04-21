@@ -26,12 +26,12 @@ sensitivity(
 
 \item{...}{Other arguments that can be used from \link[fishflux]{cnp_model_mcmc}}
 }
-\description{
-This function runs the cnp_model fixing all parameters SD's but one to test for sensitivity
-}
-\details{
+\value{
 Returns a dataframe with sd's of model predictions. Row names indicate the variable, who's sd was used for the model run.
 Plots a heatplot with width of the 95%CI of output predictions.
+}
+\description{
+This function runs the cnp_model fixing all parameters SD's but one to test for sensitivity
 }
 \examples{
 library(fishflux)

@@ -9,7 +9,7 @@
 #' @param out Charachter vector specifying which output parameter sd's should be returned.
 #' @param ... Other arguments that can be used from \link[fishflux]{cnp_model_mcmc}
 #' 
-#' @details Returns a dataframe with sd's of model predictions. Row names indicate the variable, who's sd was used for the model run.
+#' @returns Returns a dataframe with sd's of model predictions. Row names indicate the variable, who's sd was used for the model run.
 #' Plots a heatplot with width of the 95%CI of output predictions.
 #' 
 #' @keywords fish stoichiometry excretion mcmc sensitivity plot

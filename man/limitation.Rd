@@ -11,16 +11,16 @@ limitation(mod, plot = TRUE)
 
 \item{plot}{Argument to specify if results should be shown in a plot.}
 }
-\description{
-This function allows you extract the proportions of the iterations for which c, n and p are the limiting element in the model.
-}
-\details{
+\value{
 Returns a data frame with:
 \describe{
   \item{tl}{Total length, in cm}
   \item{nutrient}{c, n or p}
   \item{prop_lim}{the proportion of iterations for which there is limitation by the element}
 }
+}
+\description{
+This function allows you extract the proportions of the iterations for which c, n and p are the limiting element in the model.
 }
 \examples{
 library(fishflux)

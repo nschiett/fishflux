@@ -8,6 +8,9 @@
 #' @param sp A charachter value containing the species name
 #' @param mirror Mirror for fishbase (eg. "de", "org", "us", etc.) Default is "us".
 #' 
+#' @returns A dataframe with means and standard deviations of 
+#' length-weight parameters
+#' 
 #' @keywords fish l-w relationship fishbase bayesian
 #' 
 #' @importFrom httr GET

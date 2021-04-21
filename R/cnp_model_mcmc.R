@@ -35,7 +35,7 @@
 #' @param iter    A positive integer specifying the number of iterations. The default is 2000.
 #' @param ... Additional arguments rstan::sampling, see ?rstan:sampling
 #'
-#' @details Returns a list with two objects: A stanfit object and a data.frame with a summary of all model components.
+#' @returns Returns a list with two objects: A stanfit object and a data.frame with a summary of all model components.
 #'  See \code{\link{extract}} to extract a summary of predicted variables and
 #'  \code{\link{limitation}} to get information on the limiting element.
 #' 

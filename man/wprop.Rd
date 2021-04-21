@@ -9,12 +9,12 @@ wprop(family)
 \arguments{
 \item{family}{family}
 }
+\value{
+Returns a dataframe with the weight ratio (mdw) and it's sd (mdw_sd).
+}
 \description{
 This function searches the ratio of dry weight and wet weight of fish
 on the family level. If the family is not available, an average is returned.
-}
-\details{
-Returns a dataframe with the weight ratio (mdw) and it's sd (mdw_sd).
 }
 \examples{
 library(fishflux)
