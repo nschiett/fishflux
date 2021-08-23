@@ -37,18 +37,10 @@ Main assets:
 Therefore, the first step is to install
 [rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). It's important to closely follow all the steps described on the page depending on your operating system. 
 
-### GitHub
 
-The best way to install the latest development version of `fishflux` is to install it from GitHub. 
-
-``` r
-install.packages("devtools")
-devtools::install_github("nschiett/fishflux", dependencies = TRUE) # if errors are returned, try adding `args = "--preclean"` to `install_github`
-library(fishflux)
-```
 ### CRAN
 
-`fishflux` will be available on CRAN in the future:
+You can install `fishflux` on CRAN:
   
 ``` r
 install.packages("fishflux")
