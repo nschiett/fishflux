@@ -84,12 +84,12 @@
   <div class="contents col-md-9">
 <div id="fishflux-a-tool-to-model-elemental-fluxes-in-fishes" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#fishflux-a-tool-to-model-elemental-fluxes-in-fishes" class="anchor"></a>fishflux: A tool to model elemental fluxes in fishes</h1></div>
+<a href="#fishflux-a-tool-to-model-elemental-fluxes-in-fishes" class="anchor" aria-hidden="true"></a>fishflux: A tool to model elemental fluxes in fishes</h1></div>
 
 <p><img src="reference/figures/fishflux.png" width="120" alt="fishflux logo"></p>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<a href="#overview" class="anchor" aria-hidden="true"></a>Overview</h2>
 <p>The <code>fishflux</code> package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fishes. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user-friendly interface to apply the model. <code>fishflux</code> is ideal for fish ecologists wishing to predict ingestion, egestion and excretion to study fluxes of elements.</p>
 <p>Main assets:</p>
 <ul>
@@ -101,33 +101,33 @@
 </div>
 <div id="theoretical-framework" class="section level2">
 <h2 class="hasAnchor">
-<a href="#theoretical-framework" class="anchor"></a>Theoretical framework</h2>
+<a href="#theoretical-framework" class="anchor" aria-hidden="true"></a>Theoretical framework</h2>
 <p>For more information on the theoretical framework behind <code><a href="reference/cnp_model_mcmc.html">cnp_model_mcmc()</a></code>, check out the <a href="https://doi.org/10.1111/1365-2435.13618" class="external-link">paper</a>.</p>
 </div>
 <div id="installing-and-loading-fishflux" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installing-and-loading-fishflux" class="anchor"></a>Installing and loading fishflux</h2>
+<a href="#installing-and-loading-fishflux" class="anchor" aria-hidden="true"></a>Installing and loading fishflux</h2>
 <p>First, make sure your R version is 3.4 or higher and you have rtools installed.</p>
-<div id="github" class="section level3">
-<h3 class="hasAnchor">
-<a href="#github" class="anchor"></a>GitHub</h3>
-<p>Please follow these steps to install the latest version of the package from Github. <code>fishflux</code> uses Markov Chain Monte Carlo simulations provided by <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started" class="external-link">stan</a>. Therefore, the first step is to install <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started" class="external-link">rstan</a>. It’s important to closely follow all the steps described on the page depending on your operating system, because rstan requires a functioning C++ compiler. Furthermore, <code>fishflux</code> depends on the package <code>rstantools</code> version 2.0.0 or higher. This means that if you already have an older version of <code>rstantools</code> installed, you will have to reinstall it, prior to the installation of <code>fishflux</code>.</p>
-<p>Once you have your c++ compiler set up correctly, you are ready to install it from GitHub.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">"devtools"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"nschiett/fishflux"</span>, <span class="dt">dependencies=</span><span class="ot">TRUE</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
-</div>
 <div id="cran" class="section level3">
 <h3 class="hasAnchor">
-<a href="#cran" class="anchor"></a>CRAN</h3>
+<a href="#cran" class="anchor" aria-hidden="true"></a>CRAN</h3>
 <p><code>fishflux</code> is now available on CRAN:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">"fishflux"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">"fishflux"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
 <p>Note that if you are using a linux operating system, you still need a c++ compiler to install the package from CRAN. If you are using Windows or Mac, you can install a pre-compiled binary version and thus don’t need a compiler.</p>
+</div>
+<div id="github" class="section level3">
+<h3 class="hasAnchor">
+<a href="#github" class="anchor" aria-hidden="true"></a>GitHub</h3>
+<p>Please follow these steps to install the development version of the package from Github. <code>fishflux</code> uses Markov Chain Monte Carlo simulations provided by <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started" class="external-link">stan</a>. Therefore, the first step is to install <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started" class="external-link">rstan</a>. It’s important to closely follow all the steps described on the page depending on your operating system, because rstan requires a functioning C++ compiler. Furthermore, <code>fishflux</code> depends on the package <code>rstantools</code> version 2.0.0 or higher. This means that if you already have an older version of <code>rstantools</code> installed, you will have to reinstall it, prior to the installation of <code>fishflux</code>.</p>
+<p>Once you have your c++ compiler set up correctly, you are ready to install it from GitHub.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">"devtools"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"nschiett/fishflux"</span>, <span class="dt">dependencies=</span><span class="ot">TRUE</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
 </div>
 <div id="downloaded-package-file" class="section level3">
 <h3 class="hasAnchor">
-<a href="#downloaded-package-file" class="anchor"></a>Downloaded package file</h3>
+<a href="#downloaded-package-file" class="anchor" aria-hidden="true"></a>Downloaded package file</h3>
 <p>Another option is to download the source file available on github <a href="https://github.com/nschiett/fishflux" class="external-link">here</a>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">install.packages</span>(path_to_fishflux_file, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
@@ -135,17 +135,17 @@
 </div>
 <div id="documentation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#documentation" class="anchor"></a>Documentation</h2>
+<a href="#documentation" class="anchor" aria-hidden="true"></a>Documentation</h2>
 <p>See package <a href="https://nschiett.github.io/fishflux/articles/intro_to_fishflux.html" class="external-link">vignette</a> for an introduction and help pages. For more information on the theoretical model see <a href="https://doi.org/10.1111/1365-2435.13618" class="external-link">here</a>.</p>
 </div>
 <div id="license" class="section level2">
 <h2 class="hasAnchor">
-<a href="#license" class="anchor"></a>License</h2>
+<a href="#license" class="anchor" aria-hidden="true"></a>License</h2>
 <p>This R package is provided for use under the MIT License (<a href="https://opensource.org/licenses/MIT" class="external-link">MIT</a>) by the author.</p>
 </div>
 <div id="citation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h2>
+<a href="#citation" class="anchor" aria-hidden="true"></a>Citation</h2>
 <p>When using the bioenergetic model featured in this package, please cite:</p>
 <p>Schiettekatte, NMD, Barneche, DR, Villéger, S, et al. Nutrient limitation, bioenergetics and stoichiometry: A new model to predict elemental fluxes mediated by fishes. Funct Ecol. 2020; 34: 1857– 1869. <a href="https://doi.org/10.1111/1365-2435.13618" class="external-link uri">https://doi.org/10.1111/1365-2435.13618</a></p>
 </div>

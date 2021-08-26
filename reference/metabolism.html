@@ -62,9 +62,6 @@ a covariate." />
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -145,7 +142,7 @@ metabolic rates reported in the paper, which also includes trophic level as
 a covariate.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>metabolism</span><span class='op'>(</span><span class='va'>family</span>, <span class='va'>temp</span>, <span class='va'>troph_m</span>, troph_sd <span class='op'>=</span> <span class='fl'>1e-10</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>metabolism</span><span class='op'>(</span><span class='va'>family</span>, <span class='va'>temp</span>, <span class='va'>troph_m</span>, troph_sd <span class='op'>=</span> <span class='fl'>1e-10</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,28 +178,31 @@ of fish resting metabolic rates reported in the paper,
 which also includes trophic level as a covariate.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://nschiett.github.io/fishflux/'>fishflux</a></span><span class='op'>)</span>
-<span class='fu'>metabolism</span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"Pomacentridae"</span>, temp <span class='op'>=</span> <span class='fl'>27</span>, troph_m <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>values for b0 and alpha on family level</span></div><div class='output co'>#&gt; 
-#&gt; SAMPLING FOR MODEL 'getB0' NOW (CHAIN 1).
-#&gt; Chain 1: Iteration:   1 / 1000 [  0%]  (Sampling)
-#&gt; Chain 1: Iteration: 100 / 1000 [ 10%]  (Sampling)
-#&gt; Chain 1: Iteration: 200 / 1000 [ 20%]  (Sampling)
-#&gt; Chain 1: Iteration: 300 / 1000 [ 30%]  (Sampling)
-#&gt; Chain 1: Iteration: 400 / 1000 [ 40%]  (Sampling)
-#&gt; Chain 1: Iteration: 500 / 1000 [ 50%]  (Sampling)
-#&gt; Chain 1: Iteration: 600 / 1000 [ 60%]  (Sampling)
-#&gt; Chain 1: Iteration: 700 / 1000 [ 70%]  (Sampling)
-#&gt; Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)
-#&gt; Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)
-#&gt; Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)
-#&gt; Chain 1: 
-#&gt; Chain 1:  Elapsed Time: 0 seconds (Warm-up)
-#&gt; Chain 1:                0.00116 seconds (Sampling)
-#&gt; Chain 1:                0.00116 seconds (Total)
-#&gt; Chain 1: </div><div class='output co'>#&gt;          f0_m       f0_sd   alpha_m  alpha_sd        b0_m        b0_sd
-#&gt; 1 0.004599403 0.001893164 0.4256931 0.1035894 0.001415727 0.0006612888</div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://nschiett.github.io/fishflux/'>fishflux</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>metabolism</span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"Pomacentridae"</span>, temp <span class='op'>=</span> <span class='fl'>27</span>, troph_m <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> values for b0 and alpha on family level</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> SAMPLING FOR MODEL 'getB0' NOW (CHAIN 1).</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration:   1 / 1000 [  0%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 100 / 1000 [ 10%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 200 / 1000 [ 20%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 300 / 1000 [ 30%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 400 / 1000 [ 40%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 500 / 1000 [ 50%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 600 / 1000 [ 60%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 700 / 1000 [ 70%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1:  Elapsed Time: 0 seconds (Warm-up)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1:                0.001378 seconds (Sampling)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1:                0.001378 seconds (Total)</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Chain 1: </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          f0_m       f0_sd   alpha_m  alpha_sd        b0_m        b0_sd</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 0.004580384 0.001995686 0.4256931 0.1035894 0.001415727 0.0006612888</span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

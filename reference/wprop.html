@@ -59,9 +59,6 @@ on the family level. If the family is not available, an average is returned." />
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -139,7 +136,7 @@ on the family level. If the family is not available, an average is returned." />
 on the family level. If the family is not available, an average is returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>wprop</span><span class='op'>(</span><span class='va'>family</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>wprop</span><span class='op'>(</span><span class='va'>family</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,11 +152,12 @@ on the family level. If the family is not available, an average is returned.</p>
     <p>Returns a dataframe with the weight ratio (mdw) and it's sd (mdw_sd).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://nschiett.github.io/fishflux/'>fishflux</a></span><span class='op'>)</span>
-<span class='fu'>wprop</span><span class='op'>(</span>family<span class='op'>=</span><span class='st'>"Scaridae"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;         mdw     mdw_sd
-#&gt; 1 0.2372406 0.03458567</div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://nschiett.github.io/fishflux/'>fishflux</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>wprop</span><span class='op'>(</span>family<span class='op'>=</span><span class='st'>"Scaridae"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         mdw     mdw_sd</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 0.2372406 0.03458567</span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

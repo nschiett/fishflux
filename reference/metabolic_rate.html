@@ -62,9 +62,6 @@ a covariate." />
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -145,7 +142,7 @@ metabolic rates reported in the paper, which also includes trophic level as
 a covariate.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>metabolic_rate</span><span class='op'>(</span><span class='va'>temp</span>, <span class='va'>troph</span>, <span class='va'>asp</span>, <span class='va'>B0</span>, <span class='va'>m_max</span>, <span class='va'>m</span>, <span class='va'>a</span>, <span class='va'>growth_g_day</span>, <span class='va'>f</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>metabolic_rate</span><span class='op'>(</span><span class='va'>temp</span>, <span class='va'>troph</span>, <span class='va'>asp</span>, <span class='va'>B0</span>, <span class='va'>m_max</span>, <span class='va'>m</span>, <span class='va'>a</span>, <span class='va'>growth_g_day</span>, <span class='va'>f</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,14 +198,15 @@ of fish resting metabolic rates reported in the paper,
 which also includes trophic level as a covariate.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://nschiett.github.io/fishflux/'>fishflux</a></span><span class='op'>)</span>
-<span class='fu'>fishflux</span><span class='fu'>::</span><span class='fu'>metabolic_rate</span><span class='op'>(</span>temp <span class='op'>=</span> <span class='fl'>27</span>, m_max <span class='op'>=</span> <span class='fl'>600</span>, m <span class='op'>=</span> <span class='fl'>300</span>, asp <span class='op'>=</span> <span class='fl'>3</span>,
-troph <span class='op'>=</span> <span class='fl'>2</span>, f <span class='op'>=</span> <span class='fl'>2</span>, growth_g_day <span class='op'>=</span> <span class='fl'>0.05</span>, B0 <span class='op'>=</span> <span class='fl'>0.2</span>, a <span class='op'>=</span> <span class='fl'>0.6</span> <span class='op'>)</span>
-</div><div class='output co'>#&gt;   Total_metabolic_rate_C_g_d Total_metabolic_rate_j_d
-#&gt; 1                   9.288811                 362263.6
-#&gt;   Resting_metabolic_rate_j_d Cost_growth_j_g
-#&gt; 1                   181131.8        16.42453</div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://nschiett.github.io/fishflux/'>fishflux</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>fishflux</span><span class='fu'>::</span><span class='fu'>metabolic_rate</span><span class='op'>(</span>temp <span class='op'>=</span> <span class='fl'>27</span>, m_max <span class='op'>=</span> <span class='fl'>600</span>, m <span class='op'>=</span> <span class='fl'>300</span>, asp <span class='op'>=</span> <span class='fl'>3</span>,</span>
+<span class='r-in'>troph <span class='op'>=</span> <span class='fl'>2</span>, f <span class='op'>=</span> <span class='fl'>2</span>, growth_g_day <span class='op'>=</span> <span class='fl'>0.05</span>, B0 <span class='op'>=</span> <span class='fl'>0.2</span>, a <span class='op'>=</span> <span class='fl'>0.6</span> <span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Total_metabolic_rate_C_g_d Total_metabolic_rate_j_d</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                   9.288811                 362263.6</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Resting_metabolic_rate_j_d Cost_growth_j_g</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                   181131.8        16.42453</span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
