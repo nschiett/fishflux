@@ -18,6 +18,6 @@
 #' @export
 check_name_fishbase <- function(sp) {
   if (length(suppressMessages(name_errors(sp))) > 0) {
-    warning("Species name is incorrect")
+    stop("Species name is incorrect")
   }
 }
