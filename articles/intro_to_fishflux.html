@@ -81,7 +81,7 @@
       <h1 data-toc-skip>Intro to fishflux</h1>
                         <h4 data-toc-skip class="author">Nina M. D. Schiettekatte</h4>
             
-            <h4 data-toc-skip class="date">2021-08-26</h4>
+            <h4 data-toc-skip class="date">2021-08-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nschiett/fishflux/blob/master/vignettes/intro_to_fishflux.Rmd" class="external-link"><code>vignettes/intro_to_fishflux.Rmd</code></a></small>
       <div class="hidden name"><code>intro_to_fishflux.Rmd</code></div>
@@ -390,7 +390,7 @@ Elemental stoichiometry of diet
 <span class="co">#&gt;            species    t0 Linf     k     asp troph   lwa_m     lwa_sd lwb_m</span>
 <span class="co">#&gt; 1 Zebrasoma scopas -0.49 13.3 0.425 2.02091     2 0.02455 0.00269898  2.98</span>
 <span class="co">#&gt;      lwb_sd     mdw_m        f0_m        f0_sd alpha_m   alpha_sd</span>
-<span class="co">#&gt; 1 0.0255102 0.2504833 0.001517989 3.168634e-10    0.77 0.05286288</span></code></pre></div>
+<span class="co">#&gt; 1 0.0255102 0.2504833 0.001517989 3.217989e-10    0.77 0.05286288</span></code></pre></div>
 
 <p>All other parameters have to be provided by the user. For more information on how to acquire these parameters, take a look at (“this paper” add reference to methods paper).</p>
 </div>
@@ -408,57 +408,57 @@ Elemental stoichiometry of diet
 <p>The object <code>model</code> now contains all the samples generated from the MCMC simulation and a summary of all parameters generated. To extract certain variables of interest, use the <code><a href="../reference/extract.html">extract()</a></code> function. Predictions for fluxes of C, N and P are all in g / day. </p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">fishflux</span><span class="fu">::</span><span class="fu"><a href="../reference/extract.html">extract</a></span><span class="op">(</span><span class="va">model</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Fn"</span>,<span class="st">"Fp"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt;    TL     Fn_mean    Fn_median        Fn_sd      Fn_2.5%    Fn_97.5%</span>
-<span class="co">#&gt; 1   5 0.000896493 0.0008225686 0.0004544826 0.0002349612 0.001965040</span>
-<span class="co">#&gt; 2   6 0.001327534 0.0012337760 0.0006574076 0.0003278974 0.002791817</span>
-<span class="co">#&gt; 3   7 0.001795447 0.0016780200 0.0008679925 0.0004524014 0.003763912</span>
-<span class="co">#&gt; 4   8 0.002551092 0.0023739367 0.0012143544 0.0006958249 0.005429545</span>
-<span class="co">#&gt; 5   9 0.003389572 0.0031300406 0.0016008594 0.0007863843 0.006853283</span>
-<span class="co">#&gt; 6  10 0.004263882 0.0038003349 0.0022668771 0.0011547357 0.009951775</span>
-<span class="co">#&gt; 7  11 0.005571213 0.0048247828 0.0032824013 0.0013091743 0.012918218</span>
-<span class="co">#&gt; 8  12 0.007154161 0.0064029689 0.0042682909 0.0017000338 0.018357586</span>
-<span class="co">#&gt; 9  13 0.009393524 0.0086798607 0.0055322587 0.0018981040 0.022881447</span>
-<span class="co">#&gt; 10 14 0.011231342 0.0095533518 0.0069900619 0.0024100012 0.027543480</span>
-<span class="co">#&gt; 11 15 0.012743502 0.0109330163 0.0082654924 0.0023887483 0.034262081</span>
-<span class="co">#&gt; 12 16 0.016173126 0.0140295468 0.0104406051 0.0029812184 0.041842472</span>
-<span class="co">#&gt; 13 17 0.019015991 0.0162662390 0.0125209368 0.0036403541 0.050532841</span>
-<span class="co">#&gt; 14 18 0.023500614 0.0205093617 0.0150878311 0.0049980716 0.061094568</span>
-<span class="co">#&gt; 15 19 0.026991071 0.0237495131 0.0171069689 0.0062290990 0.066829384</span>
-<span class="co">#&gt; 16 20 0.031365140 0.0269259678 0.0197702348 0.0076968417 0.073027379</span>
+<span class="co">#&gt;    TL      Fn_mean    Fn_median        Fn_sd      Fn_2.5%    Fn_97.5%</span>
+<span class="co">#&gt; 1   5 0.0008546533 0.0008038873 0.0004144153 0.0001998085 0.001797999</span>
+<span class="co">#&gt; 2   6 0.0012958943 0.0012082779 0.0006416649 0.0002740151 0.002787062</span>
+<span class="co">#&gt; 3   7 0.0019119386 0.0017886705 0.0008781237 0.0005514953 0.004123222</span>
+<span class="co">#&gt; 4   8 0.0025208907 0.0023682008 0.0012506529 0.0005779676 0.005356291</span>
+<span class="co">#&gt; 5   9 0.0033497757 0.0030086054 0.0016401211 0.0007139823 0.007127591</span>
+<span class="co">#&gt; 6  10 0.0045298957 0.0040790669 0.0024466336 0.0008824888 0.010828903</span>
+<span class="co">#&gt; 7  11 0.0054946957 0.0047544699 0.0032609332 0.0011084720 0.013726323</span>
+<span class="co">#&gt; 8  12 0.0072525463 0.0062067508 0.0043320512 0.0015790254 0.017714952</span>
+<span class="co">#&gt; 9  13 0.0089584044 0.0079178084 0.0051528353 0.0022618884 0.021321885</span>
+<span class="co">#&gt; 10 14 0.0107883786 0.0092966443 0.0069102033 0.0019557474 0.028680585</span>
+<span class="co">#&gt; 11 15 0.0131452304 0.0113500525 0.0083987154 0.0025225606 0.033434256</span>
+<span class="co">#&gt; 12 16 0.0167934383 0.0149965136 0.0106181241 0.0029779120 0.043607912</span>
+<span class="co">#&gt; 13 17 0.0198843097 0.0172231019 0.0126733048 0.0036850550 0.050466597</span>
+<span class="co">#&gt; 14 18 0.0233926274 0.0204350095 0.0141015595 0.0058354621 0.053710684</span>
+<span class="co">#&gt; 15 19 0.0280678936 0.0245265438 0.0186486962 0.0066510007 0.073826678</span>
+<span class="co">#&gt; 16 20 0.0306777977 0.0259539986 0.0200633424 0.0072876674 0.083135761</span>
 <span class="co">#&gt;          Fn_25%      Fn_75%      Fp_mean    Fp_median        Fp_sd      Fp_2.5%</span>
-<span class="co">#&gt; 1  0.0005861915 0.001125817 7.208089e-05 4.174056e-05 8.799847e-05 2.558347e-06</span>
-<span class="co">#&gt; 2  0.0008935570 0.001670504 1.558115e-04 8.605600e-05 1.861236e-04 8.581564e-06</span>
-<span class="co">#&gt; 3  0.0011800896 0.002250627 2.844633e-04 1.572520e-04 3.302841e-04 7.723794e-06</span>
-<span class="co">#&gt; 4  0.0016975969 0.003241249 4.629327e-04 2.794817e-04 4.752127e-04 1.816269e-05</span>
-<span class="co">#&gt; 5  0.0022125970 0.004355843 7.360810e-04 5.003677e-04 6.720673e-04 4.373025e-05</span>
-<span class="co">#&gt; 6  0.0026780038 0.005420975 1.009376e-03 7.245719e-04 9.309433e-04 4.123259e-05</span>
-<span class="co">#&gt; 7  0.0030438236 0.007255018 1.493219e-03 1.030028e-03 1.310185e-03 8.702829e-05</span>
-<span class="co">#&gt; 8  0.0040704754 0.009294193 2.039111e-03 1.550322e-03 1.741878e-03 1.105401e-04</span>
-<span class="co">#&gt; 9  0.0049800695 0.012756620 2.986554e-03 2.545390e-03 2.242047e-03 2.601003e-04</span>
-<span class="co">#&gt; 10 0.0057064982 0.015648093 3.745518e-03 3.012693e-03 2.869787e-03 3.198055e-04</span>
-<span class="co">#&gt; 11 0.0061308662 0.017260917 4.394642e-03 3.604630e-03 3.317430e-03 3.062363e-04</span>
-<span class="co">#&gt; 12 0.0079404993 0.021775221 5.859997e-03 5.050083e-03 4.192694e-03 6.031274e-04</span>
-<span class="co">#&gt; 13 0.0093276757 0.025616810 7.107149e-03 6.004262e-03 4.973900e-03 1.023363e-03</span>
-<span class="co">#&gt; 14 0.0114231329 0.032045857 9.127618e-03 7.957037e-03 6.056979e-03 1.736585e-03</span>
-<span class="co">#&gt; 15 0.0127363871 0.036758781 1.073347e-02 9.390529e-03 6.810011e-03 2.482303e-03</span>
-<span class="co">#&gt; 16 0.0157139492 0.041798046 1.247468e-02 1.066973e-02 7.858567e-03 3.071280e-03</span>
+<span class="co">#&gt; 1  0.0005640741 0.001088045 7.971835e-05 4.271667e-05 9.959071e-05 2.423432e-06</span>
+<span class="co">#&gt; 2  0.0008356812 0.001654652 1.626165e-04 9.108806e-05 1.772264e-04 7.289876e-06</span>
+<span class="co">#&gt; 3  0.0013487820 0.002379703 2.808812e-04 1.658513e-04 3.024019e-04 9.935954e-06</span>
+<span class="co">#&gt; 4  0.0015824302 0.003309697 4.807916e-04 3.115284e-04 4.799866e-04 2.033033e-05</span>
+<span class="co">#&gt; 5  0.0021944637 0.004282386 7.135685e-04 4.584309e-04 6.873180e-04 3.045267e-05</span>
+<span class="co">#&gt; 6  0.0029016873 0.005623815 1.084854e-03 7.787646e-04 9.982786e-04 5.908719e-05</span>
+<span class="co">#&gt; 7  0.0031757301 0.007169939 1.441184e-03 9.342537e-04 1.357338e-03 7.977185e-05</span>
+<span class="co">#&gt; 8  0.0039722743 0.009490589 2.113791e-03 1.591799e-03 1.782599e-03 7.394955e-05</span>
+<span class="co">#&gt; 9  0.0048450587 0.011981228 2.780360e-03 2.406535e-03 2.124570e-03 1.572148e-04</span>
+<span class="co">#&gt; 10 0.0056079229 0.014372478 3.543937e-03 2.845315e-03 2.790056e-03 3.376807e-04</span>
+<span class="co">#&gt; 11 0.0066757547 0.017765534 4.503295e-03 3.723139e-03 3.310371e-03 4.472207e-04</span>
+<span class="co">#&gt; 12 0.0082413616 0.022541772 6.149082e-03 5.435799e-03 4.285804e-03 6.962652e-04</span>
+<span class="co">#&gt; 13 0.0100571909 0.027105011 7.449724e-03 6.613934e-03 5.053260e-03 9.799704e-04</span>
+<span class="co">#&gt; 14 0.0121809229 0.031814602 9.107580e-03 8.030672e-03 5.647102e-03 1.959221e-03</span>
+<span class="co">#&gt; 15 0.0131159161 0.036832597 1.113986e-02 9.794457e-03 7.399675e-03 2.680950e-03</span>
+<span class="co">#&gt; 16 0.0152530542 0.041169693 1.221758e-02 1.017977e-02 8.052837e-03 2.955732e-03</span>
 <span class="co">#&gt;        Fp_97.5%       Fp_25%       Fp_75%</span>
-<span class="co">#&gt; 1  0.0003413114 2.140653e-05 7.975923e-05</span>
-<span class="co">#&gt; 2  0.0007485614 4.179204e-05 1.855849e-04</span>
-<span class="co">#&gt; 3  0.0012518852 6.970609e-05 3.655440e-04</span>
-<span class="co">#&gt; 4  0.0017045979 1.332142e-04 6.250080e-04</span>
-<span class="co">#&gt; 5  0.0024112450 2.308655e-04 1.056070e-03</span>
-<span class="co">#&gt; 6  0.0035134898 3.020639e-04 1.422275e-03</span>
-<span class="co">#&gt; 7  0.0046042435 4.615268e-04 2.194834e-03</span>
-<span class="co">#&gt; 8  0.0063459263 6.603148e-04 3.016435e-03</span>
-<span class="co">#&gt; 9  0.0086593012 1.112303e-03 4.326292e-03</span>
-<span class="co">#&gt; 10 0.0104716056 1.396297e-03 5.595812e-03</span>
-<span class="co">#&gt; 11 0.0127669718 1.726505e-03 6.123485e-03</span>
-<span class="co">#&gt; 12 0.0162303539 2.500973e-03 7.990584e-03</span>
-<span class="co">#&gt; 13 0.0195651073 3.285538e-03 9.452138e-03</span>
-<span class="co">#&gt; 14 0.0237581365 4.331271e-03 1.247253e-02</span>
-<span class="co">#&gt; 15 0.0263007423 5.087370e-03 1.489434e-02</span>
-<span class="co">#&gt; 16 0.0298239420 6.208585e-03 1.698956e-02</span></code></pre></div>
+<span class="co">#&gt; 1  0.0003705802 2.343608e-05 9.029384e-05</span>
+<span class="co">#&gt; 2  0.0007077811 4.940089e-05 2.110878e-04</span>
+<span class="co">#&gt; 3  0.0011382117 7.109317e-05 3.973492e-04</span>
+<span class="co">#&gt; 4  0.0017817686 1.425520e-04 6.763111e-04</span>
+<span class="co">#&gt; 5  0.0025694710 1.960698e-04 1.025301e-03</span>
+<span class="co">#&gt; 6  0.0039887930 3.552542e-04 1.526282e-03</span>
+<span class="co">#&gt; 7  0.0050362355 4.462109e-04 2.077890e-03</span>
+<span class="co">#&gt; 8  0.0064895656 7.260992e-04 3.151229e-03</span>
+<span class="co">#&gt; 9  0.0078084204 1.026047e-03 3.991146e-03</span>
+<span class="co">#&gt; 10 0.0104615377 1.336454e-03 4.952184e-03</span>
+<span class="co">#&gt; 11 0.0124107090 1.872149e-03 6.242626e-03</span>
+<span class="co">#&gt; 12 0.0171067846 2.603757e-03 8.403089e-03</span>
+<span class="co">#&gt; 13 0.0197703021 3.459480e-03 1.040229e-02</span>
+<span class="co">#&gt; 14 0.0212568349 4.634669e-03 1.248962e-02</span>
+<span class="co">#&gt; 15 0.0297095570 5.240650e-03 1.470505e-02</span>
+<span class="co">#&gt; 16 0.0338011999 6.067140e-03 1.646919e-02</span></code></pre></div>
 
 </div>
 <div id="plot-results" class="section level3">
@@ -477,47 +477,47 @@ Elemental stoichiometry of diet
 #&gt; 5   9        c    0.000
 #&gt; 6  10        c    0.000
 #&gt; 7  11        c    0.000
-#&gt; 8  12        c    0.002
-#&gt; 9  13        c    0.002
+#&gt; 8  12        c    0.000
+#&gt; 9  13        c    0.000
 #&gt; 10 14        c    0.002
-#&gt; 11 15        c    0.016
-#&gt; 12 16        c    0.040
-#&gt; 13 17        c    0.084
+#&gt; 11 15        c    0.022
+#&gt; 12 16        c    0.036
+#&gt; 13 17        c    0.092
 #&gt; 14 18        c    0.094
-#&gt; 15 19        c    0.164
-#&gt; 16 20        c    0.144
-#&gt; 17  5        n    0.302
-#&gt; 18  6        n    0.388
-#&gt; 19  7        n    0.460
-#&gt; 20  8        n    0.542
-#&gt; 21  9        n    0.630
-#&gt; 22 10        n    0.672
-#&gt; 23 11        n    0.706
-#&gt; 24 12        n    0.746
-#&gt; 25 13        n    0.804
-#&gt; 26 14        n    0.810
-#&gt; 27 15        n    0.830
-#&gt; 28 16        n    0.862
-#&gt; 29 17        n    0.858
-#&gt; 30 18        n    0.866
-#&gt; 31 19        n    0.814
-#&gt; 32 20        n    0.832
-#&gt; 33  5        p    0.698
-#&gt; 34  6        p    0.612
-#&gt; 35  7        p    0.540
-#&gt; 36  8        p    0.458
-#&gt; 37  9        p    0.370
-#&gt; 38 10        p    0.328
-#&gt; 39 11        p    0.294
-#&gt; 40 12        p    0.252
-#&gt; 41 13        p    0.194
-#&gt; 42 14        p    0.188
-#&gt; 43 15        p    0.154
-#&gt; 44 16        p    0.098
+#&gt; 15 19        c    0.150
+#&gt; 16 20        c    0.162
+#&gt; 17  5        n    0.332
+#&gt; 18  6        n    0.442
+#&gt; 19  7        n    0.492
+#&gt; 20  8        n    0.564
+#&gt; 21  9        n    0.600
+#&gt; 22 10        n    0.690
+#&gt; 23 11        n    0.662
+#&gt; 24 12        n    0.762
+#&gt; 25 13        n    0.780
+#&gt; 26 14        n    0.814
+#&gt; 27 15        n    0.832
+#&gt; 28 16        n    0.884
+#&gt; 29 17        n    0.850
+#&gt; 30 18        n    0.876
+#&gt; 31 19        n    0.832
+#&gt; 32 20        n    0.822
+#&gt; 33  5        p    0.668
+#&gt; 34  6        p    0.558
+#&gt; 35  7        p    0.508
+#&gt; 36  8        p    0.436
+#&gt; 37  9        p    0.400
+#&gt; 38 10        p    0.310
+#&gt; 39 11        p    0.338
+#&gt; 40 12        p    0.238
+#&gt; 41 13        p    0.220
+#&gt; 42 14        p    0.184
+#&gt; 43 15        p    0.146
+#&gt; 44 16        p    0.080
 #&gt; 45 17        p    0.058
-#&gt; 46 18        p    0.040
-#&gt; 47 19        p    0.022
-#&gt; 48 20        p    0.024
+#&gt; 46 18        p    0.030
+#&gt; 47 19        p    0.018
+#&gt; 48 20        p    0.016
 ## Plot one variable:
 fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))</code></pre>
 <p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-8-2.png" width="768"></p>
@@ -536,9 +536,9 @@ fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))</code>
             out <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ic"</span>, <span class="st">"In"</span>, <span class="st">"Ip"</span>, <span class="st">"Gc"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="intro_to_fishflux_files/figure-html/unnamed-chunk-9-1.png" width="768"></p>
 <pre><code>#&gt;            Ic_CI        In_CI        Ip_CI        Gc_CI
-#&gt; k_sd  0.03385468 4.062562e-03 1.354187e-03 1.300020e-02
-#&gt; Dn_sd 0.23267742 4.553398e-03 9.307097e-03 7.142485e-11
-#&gt; Dc_sd 0.01106178 2.536122e-10 8.448875e-11 7.455834e-11</code></pre>
+#&gt; k_sd  0.03190144 3.828173e-03 1.276058e-03 1.225015e-02
+#&gt; Dn_sd 0.22480022 3.787352e-03 8.992009e-03 7.004380e-11
+#&gt; Dc_sd 0.01146323 2.543852e-10 8.487308e-11 7.097993e-11</code></pre>
 
 </div>
 </div>
