@@ -1,6 +1,6 @@
 Package: fishflux
 Title: Model Elemental Fluxes in Fishes
-Version: 0.0.1.4
+Version: 0.0.1.5
 Authors@R: c(
     person("Nina M. D.", "Schiettekatte", , "nina.schiettekatte@gmail.com", c("aut", "cre")),
     person("Diego", "Barneche", , "d.barneche@aims.gov.au", "aut")
