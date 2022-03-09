@@ -1,3 +1,6 @@
+## Resubmission v0.0.1.5
+* Fixed dependency issue. Dependent package fishualize was archived but is now back on cran
+
 ## Resubmission v0.0.1.4
 This is a resubmission. In this version I have:
 

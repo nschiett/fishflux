@@ -1,6 +1,6 @@
 Package: fishflux
 Title: Model Elemental Fluxes in Fishes
-Version: 0.0.1.4
+Version: 0.0.1.5
 Authors@R: c(
     person("Nina M. D.", "Schiettekatte", , "nina.schiettekatte@gmail.com", c("aut", "cre")),
     person("Diego", "Barneche", , "d.barneche@aims.gov.au", "aut")
@@ -11,7 +11,7 @@ Description: Model fluxes of carbon, nitrogen, and phosphorus with the use of a 
     extract and visualize results are available as well. For an introduction, see vignette. 
     For more information on the theoretical background of this model, 
     see Schiettekatte et al. (2020) <doi:10.1111/1365-2435.13618>. 
-URL: https://nschiett.github.io/fishflux/
+URL: https://nschiett.github.io/fishflux
 BugReports: https://github.com/nschiett/fishflux/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -47,6 +47,6 @@ LinkingTo:
     StanHeaders (>= 2.18.0)
 SystemRequirements: GNU make
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Biarch: true
