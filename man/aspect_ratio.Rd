@@ -22,7 +22,7 @@ and the level at which the aspect ratio was found (species or genus).
 library(fishflux)
 library(plyr)
 aspect_ratio("Lutjanus griseus")
-ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
+plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
 }
 
 }

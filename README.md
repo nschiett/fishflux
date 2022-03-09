@@ -8,7 +8,7 @@ fishflux: A tool to model elemental fluxes in fishes
 Status](http://badges.herokuapp.com/travis/nschiett/fishflux?branch=master&label=build&style=plastic&logo=travisci)](https://travis-ci.org/nschiett/fishflux)
 [![Actions
 Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishflux/actions)
-![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.4-blue.svg)
+![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.5-blue.svg)
 [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
 ![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
 [![Codecov test
@@ -56,11 +56,23 @@ Installing and loading fishflux
 First, make sure your R version is 3.4 or higher and you have rtools
 installed.
 
+### CRAN
+
+`fishflux` is now available on CRAN:
+
+    install.packages("fishflux")
+    library(fishflux)
+
+Note that if you are using a linux operating system, you still need a
+c++ compiler to install the package from CRAN. If you are using Windows
+or Mac, you can install a pre-compiled binary version and thus don’t
+need a compiler.
+
 ### GitHub
 
-Please follow these steps to install the latest version of the package
-from Github. `fishflux` uses Markov Chain Monte Carlo simulations
-provided by
+Please follow these steps to install the development version of the
+package from Github. `fishflux` uses Markov Chain Monte Carlo
+simulations provided by
 [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
 Therefore, the first step is to install
 [rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
@@ -77,18 +89,6 @@ install it from GitHub.
     install.packages("devtools")
     devtools::install_github("nschiett/fishflux", dependencies=TRUE)
     library(fishflux)
-
-### CRAN
-
-`fishflux` is now available on CRAN:
-
-    install.packages("fishflux")
-    library(fishflux)
-
-Note that if you are using a linux operating system, you still need a
-c++ compiler to install the package from CRAN. If you are using Windows
-or Mac, you can install a pre-compiled binary version and thus don’t
-need a compiler.
 
 ### Downloaded package file
 

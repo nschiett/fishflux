@@ -18,7 +18,7 @@
 #' library(fishflux)
 #' library(plyr)
 #' aspect_ratio("Lutjanus griseus")
-#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
+#' plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
 #' }
 #' 
 #' @export

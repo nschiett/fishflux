@@ -64,9 +64,22 @@ Installing and loading fishflux
 -------------------------------
 First, make sure your R version is 3.4 or higher and you have rtools installed. 
 
+
+
+### CRAN
+
+`fishflux` is now available on CRAN:
+
+``` r
+install.packages("fishflux")
+library(fishflux)
+```
+Note that if you are using a linux operating system, you still need a c++ compiler to install the package from CRAN. 
+If you are using Windows or Mac, you can install a pre-compiled binary version and thus don't need a compiler. 
+
 ### GitHub
 
-Please follow these steps to install the latest version of the package from Github.
+Please follow these steps to install the development version of the package from Github.
 `fishflux` uses Markov Chain Monte Carlo simulations provided by
 [stan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started).
 Therefore, the first step is to install
@@ -79,17 +92,6 @@ install.packages("devtools")
 devtools::install_github("nschiett/fishflux", dependencies=TRUE)
 library(fishflux)
 ```
-
-### CRAN
-
-`fishflux` is now available on CRAN:
-
-``` r
-install.packages("fishflux")
-library(fishflux)
-```
-Note that if you are using a linux operating system, you still need a c++ compiler to install the package from CRAN. 
-If you are using Windows or Mac, you can install a pre-compiled binary version and thus don't need a compiler. 
 
 ### Downloaded package file
 

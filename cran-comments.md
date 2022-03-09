@@ -4,6 +4,14 @@
 ## Resubmission v0.0.1.4
 This is a resubmission. In this version I have:
 
+* Adapted a table in the package vignette so that pandoc is not nescessary
+* Fixed concerns with the package vignette -> I now recommend installation through cran.
+* Changed package dependency with rfishbase, which solved the API error
+
+
+## Resubmission v0.0.1.4
+This is a resubmission. In this version I have:
+
 * Fixed issues with the package vignette
 * I was asked to add \value to each function, which I did but with \returns 
 * I added dontrun{} around all examples relying on the r package rfishbase, just as the developers of that package did. 

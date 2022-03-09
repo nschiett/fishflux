@@ -37,18 +37,10 @@ Main assets:
 Therefore, the first step is to install
 [rstan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started). It's important to closely follow all the steps described on the page depending on your operating system. 
 
-### GitHub
 
-The best way to install the latest development version of `fishflux` is to install it from GitHub. 
-
-``` r
-install.packages("devtools")
-devtools::install_github("nschiett/fishflux", dependencies = TRUE) # if errors are returned, try adding `args = "--preclean"` to `install_github`
-library(fishflux)
-```
 ### CRAN
 
-`fishflux` will be available on CRAN in the future:
+You can install `fishflux` on CRAN:
   
 ``` r
 install.packages("fishflux")
@@ -77,50 +69,109 @@ library(fishflux)
 Before running the model, the parameters have to be specified. Below, there is a table showing all parameters needed to run the model simulation. `fishflux` provides several functions to find some of these parameters, but note that others have to be provided by the user at this stage. Ideally, all parameters should also have a standard deviation, so that their uncertainty can be reflected in the model predictions
 \newline
 
-```{r, echo = FALSE, results = "asis", message = FALSE}
-library(knitr)
+<table>
+<caption>. Overview of inputs, including input parameters, to be specified by the user of the model. k indicates c, n or p. VBGC = von Bertalanffy growth curve.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Symbol</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline"><em>a</em><sub>k</sub></span></td>
+<td style="text-align: left;">Element-specific assimilation efficiency</td>
+<td style="text-align: left;">_</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline"><em>l</em><sub>t</sub></span></td>
+<td style="text-align: left;">Total length of individual</td>
+<td style="text-align: left;">cm</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline"><em>l</em><em>i</em><em>n</em><em>f</em></span></td>
+<td style="text-align: left;">Asymptotic adult length (VBGC)</td>
+<td style="text-align: left;">cm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline"><em>κ</em></span></td>
+<td style="text-align: left;">Growth rate parameter (VBGC)</td>
+<td style="text-align: left;"><span class="math inline">yr<sup> − 1</sup></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline"><em>t</em><sub>0</sub></span></td>
+<td style="text-align: left;">Age at settlement (VBGC)</td>
+<td style="text-align: left;"><span class="math inline">yr</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline"><em>l</em><em>w</em><sub><em>a</em></sub></span></td>
+<td style="text-align: left;">Parameter length-weight relationship</td>
+<td style="text-align: left;"><span class="math inline">g cm<sup> − 1</sup></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline"><em>l</em><em>w</em><sub><em>b</em></sub></span></td>
+<td style="text-align: left;">Parameter length-weight relationship</td>
+<td style="text-align: left;">_</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline"><em>Q</em><sub>k</sub></span></td>
+<td style="text-align: left;">Element-specific body content percentage</td>
+<td style="text-align: left;">%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline"><em>f</em><sub>0</sub></span></td>
+<td style="text-align: left;">Metabolic normalisation constant independent of body mass</td>
+<td style="text-align: left;"><span class="math inline">g Cg<sup> − <em>α</em></sup>d<sup> − 1</sup></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline"><em>a</em><em>l</em><em>p</em><em>h</em><em>a</em></span></td>
+<td style="text-align: left;">Mass-scaling exponent</td>
+<td style="text-align: left;">_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline"><em>t</em><em>h</em><em>e</em><em>t</em><em>a</em></span></td>
+<td style="text-align: left;">Activity scope</td>
+<td style="text-align: left;">_</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline"><em>v</em></span></td>
+<td style="text-align: left;">Environmental temperature</td>
+<td style="text-align: left;">C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline"><em>h</em></span></td>
+<td style="text-align: left;">trophic level</td>
+<td style="text-align: left;">_</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline"><em>r</em></span></td>
+<td style="text-align: left;">Aspect ratio of caudal fin</td>
+<td style="text-align: left;">_</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline"><em>F</em>0<em>n</em><em>z</em></span></td>
+<td style="text-align: left;">Mass-specific turnover rate of N</td>
+<td style="text-align: left;"><span class="math inline">g Ng<sup> − 1</sup>d<sup> − 1</sup></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline"><em>F</em>0<em>p</em><em>z</em></span></td>
+<td style="text-align: left;">Mass-specific turnover rate of P</td>
+<td style="text-align: left;"><span class="math inline">g Pg<sup> − 1</sup>d<sup> − 1</sup></span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline"><em>m</em><em>d</em><em>w</em></span></td>
+<td style="text-align: left;">Ratio of dry mass and wet mass of fish</td>
+<td style="text-align: left;">_</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline"><em>D</em><sub>k</sub></span></td>
+<td style="text-align: left;">Elemental stoichiometry of diet</td>
+<td style="text-align: left;">%</td>
+</tr>
+</tbody>
+</table>
 
-tex2markdown <- function(texstring) {
-  writeLines(text = texstring,
-             con = myfile <- tempfile(fileext = ".tex"))
-  texfile <- pandoc(input = myfile, format = "html")
-  cat(readLines(texfile), sep = "\n")
-  unlink(c(myfile, texfile))
-}
-
-textable <- "
-\\begin{table}[h!]
-\\centering
-\\caption{. Overview of inputs, including input parameters, to be specified by the user of the model. k indicates c, n or p. VBGC = von Bertalanffy growth curve.}
-\\begin{tabular}{l l l}
-\\hline
-Symbol & Description & Unit\\\\
-\\hline
-$a_\\textrm{k}$  & Element-specific assimilation efficiency & \\_ \\\\
-$l_\\textrm{t}$  & Total length of individual & cm \\\\
-$linf$  & Asymptotic adult length (VBGC) & cm \\\\
-$\\kappa$  & Growth rate parameter (VBGC) & $\\textrm{yr}^{-1}$ \\\\
-$t_0$  & Age at settlement (VBGC) & $\\textrm{yr}$ \\\\
-$lw_a$  & Parameter length-weight relationship & $\\textrm{g cm}^{-1}$ \\\\
-$lw_b$  & Parameter length-weight relationship & \\_\\\\
-$Q_\\textrm{k}$  & Element-specific body content percentage & \\% \\\\
-$f_\\textrm{0}$  & Metabolic normalisation constant independent of body mass & $\\textrm{g C} \\textrm{g}^{-\\alpha} \\textrm{d}^{-1}$ \\\\
-$alpha$  & Mass-scaling exponent &  \\_\\\\
-$theta$  & Activity scope & \\_ \\\\
-$v$  & Environmental temperature & \\textdegree C \\\\
-$h$  & trophic level & \\_ \\\\
-$r$  & Aspect ratio of caudal fin & \\_ \\\\
-$F0nz$  & Mass-specific turnover rate of N & $\\textrm{g N} \\textrm{g}^{-1} \\textrm{d}^{-1}$ \\\\
-$F0pz$  & Mass-specific turnover rate of P & $\\textrm{g P} \\textrm{g}^{-1} \\textrm{d}^{-1}$ \\\\
-$mdw$ & Ratio of dry mass and wet mass of fish & \\_ \\\\
-$D_\\textrm{k}$  & Elemental stoichiometry of diet & \\% \\\\
-\\hline
-\\end{tabular}
-\\end{table}
-"
-
-tex2markdown(textable)
-```
 
 \newline
 
