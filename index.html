@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fishflux</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.5</span>
       </span>
     </div>
 
@@ -48,7 +48,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -65,7 +65,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/nschiett/fishflux/">
+  <a href="https://github.com/nschiett/fishflux/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,14 +82,14 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="fishflux-a-tool-to-model-elemental-fluxes-in-fishes" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#fishflux-a-tool-to-model-elemental-fluxes-in-fishes" class="anchor" aria-hidden="true"></a>fishflux: A tool to model elemental fluxes in fishes</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="fishflux-a-tool-to-model-elemental-fluxes-in-fishes">fishflux: A tool to model elemental fluxes in fishes<a class="anchor" aria-label="anchor" href="#fishflux-a-tool-to-model-elemental-fluxes-in-fishes"></a>
+</h1></div>
 
 <p><img src="reference/figures/fishflux.png" width="120" alt="fishflux logo"></p>
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor" aria-hidden="true"></a>Overview</h2>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p>The <code>fishflux</code> package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fishes. It combines basic principles from elemental stoichiometry and metabolic theory. The package offers a user-friendly interface to apply the model. <code>fishflux</code> is ideal for fish ecologists wishing to predict ingestion, egestion and excretion to study fluxes of elements.</p>
 <p>Main assets:</p>
 <ul>
@@ -99,53 +99,53 @@
 <li>Provides functions to extract and illustrate results</li>
 </ul>
 </div>
-<div id="theoretical-framework" class="section level2">
-<h2 class="hasAnchor">
-<a href="#theoretical-framework" class="anchor" aria-hidden="true"></a>Theoretical framework</h2>
+<div class="section level2">
+<h2 id="theoretical-framework">Theoretical framework<a class="anchor" aria-label="anchor" href="#theoretical-framework"></a>
+</h2>
 <p>For more information on the theoretical framework behind <code><a href="reference/cnp_model_mcmc.html">cnp_model_mcmc()</a></code>, check out the <a href="https://doi.org/10.1111/1365-2435.13618" class="external-link">paper</a>.</p>
 </div>
-<div id="installing-and-loading-fishflux" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installing-and-loading-fishflux" class="anchor" aria-hidden="true"></a>Installing and loading fishflux</h2>
+<div class="section level2">
+<h2 id="installing-and-loading-fishflux">Installing and loading fishflux<a class="anchor" aria-label="anchor" href="#installing-and-loading-fishflux"></a>
+</h2>
 <p>First, make sure your R version is 3.4 or higher and you have rtools installed.</p>
-<div id="cran" class="section level3">
-<h3 class="hasAnchor">
-<a href="#cran" class="anchor" aria-hidden="true"></a>CRAN</h3>
+<div class="section level3">
+<h3 id="cran">CRAN<a class="anchor" aria-label="anchor" href="#cran"></a>
+</h3>
 <p><code>fishflux</code> is now available on CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">"fishflux"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
 <p>Note that if you are using a linux operating system, you still need a c++ compiler to install the package from CRAN. If you are using Windows or Mac, you can install a pre-compiled binary version and thus don’t need a compiler.</p>
 </div>
-<div id="github" class="section level3">
-<h3 class="hasAnchor">
-<a href="#github" class="anchor" aria-hidden="true"></a>GitHub</h3>
+<div class="section level3">
+<h3 id="github">GitHub<a class="anchor" aria-label="anchor" href="#github"></a>
+</h3>
 <p>Please follow these steps to install the development version of the package from Github. <code>fishflux</code> uses Markov Chain Monte Carlo simulations provided by <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started" class="external-link">stan</a>. Therefore, the first step is to install <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started" class="external-link">rstan</a>. It’s important to closely follow all the steps described on the page depending on your operating system, because rstan requires a functioning C++ compiler. Furthermore, <code>fishflux</code> depends on the package <code>rstantools</code> version 2.0.0 or higher. This means that if you already have an older version of <code>rstantools</code> installed, you will have to reinstall it, prior to the installation of <code>fishflux</code>.</p>
 <p>Once you have your c++ compiler set up correctly, you are ready to install it from GitHub.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">"devtools"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"nschiett/fishflux"</span>, <span class="dt">dependencies=</span><span class="ot">TRUE</span>)</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
 </div>
-<div id="downloaded-package-file" class="section level3">
-<h3 class="hasAnchor">
-<a href="#downloaded-package-file" class="anchor" aria-hidden="true"></a>Downloaded package file</h3>
+<div class="section level3">
+<h3 id="downloaded-package-file">Downloaded package file<a class="anchor" aria-label="anchor" href="#downloaded-package-file"></a>
+</h3>
 <p>Another option is to download the source file available on github <a href="https://github.com/nschiett/fishflux" class="external-link">here</a>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">install.packages</span>(path_to_fishflux_file, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="kw">library</span>(fishflux)</span></code></pre></div>
 </div>
 </div>
-<div id="documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#documentation" class="anchor" aria-hidden="true"></a>Documentation</h2>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
 <p>See package <a href="https://nschiett.github.io/fishflux/articles/intro_to_fishflux.html" class="external-link">vignette</a> for an introduction and help pages. For more information on the theoretical model see <a href="https://doi.org/10.1111/1365-2435.13618" class="external-link">here</a>.</p>
 </div>
-<div id="license" class="section level2">
-<h2 class="hasAnchor">
-<a href="#license" class="anchor" aria-hidden="true"></a>License</h2>
+<div class="section level2">
+<h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
+</h2>
 <p>This R package is provided for use under the MIT License (<a href="https://opensource.org/licenses/MIT" class="external-link">MIT</a>) by the author.</p>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor" aria-hidden="true"></a>Citation</h2>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
 <p>When using the bioenergetic model featured in this package, please cite:</p>
 <p>Schiettekatte, NMD, Barneche, DR, Villéger, S, et al. Nutrient limitation, bioenergetics and stoichiometry: A new model to predict elemental fluxes mediated by fishes. Funct Ecol. 2020; 34: 1857– 1869. <a href="https://doi.org/10.1111/1365-2435.13618" class="external-link uri">https://doi.org/10.1111/1365-2435.13618</a></p>
 </div>
@@ -156,12 +156,9 @@
     <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=fishflux">https://​cloud.r-project.org/​package=fishflux</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/nschiett/fishflux/">https://​github.com/​nschiett/​fishflux/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/nschiett/fishflux/issues">https://​github.com/​nschiett/​fishflux/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=fishflux" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/nschiett/fishflux/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/nschiett/fishflux/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -169,7 +166,7 @@
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 
@@ -177,7 +174,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html">Citing fishflux</a></li>
+<li><a href="authors.html#citation">Citing fishflux</a></li>
 </ul>
 </div>
 
@@ -214,7 +211,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
 </div>
 
       </footer>
