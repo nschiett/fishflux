@@ -30,7 +30,7 @@ fishflux: A tool to model elemental fluxes in fishes
 [![license](https://img.shields.io/badge/license-MIT + file LICENSE-lightgrey.svg)](https://choosealicense.com/)
 ![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
 [![Codecov test
-coverage](https://codecov.io/gh/nschiett/fishflux/branch/master/graph/badge.svg)](https://codecov.io/gh/nschiett/fishflux?branch=maste)
+coverage](https://app.codecov.io/gh/nschiett/fishflux/branch/master/graph/badge.svg)](https://app.codecov.io/gh/nschiett/fishflux?branch=maste)
 [![CRAN status](https://www.r-pkg.org/badges/version/fishflux)](https://CRAN.R-project.org/package=fishflux)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/fishflux?color=brightgreen)](https://CRAN.R-project.org/package=fishflux)
 [![Ask Us Anything
@@ -48,7 +48,7 @@ The `fishflux` package provides a tool to model fluxes of C (carbon), N (nitroge
 Main assets:
   
 - Provides function to model fluxes of carbon, nitrogen and phosphorus for fishes
-- Allows for the estimation of uncertainty, dpending on the uncertainy of the input parameters
+- Allows for the estimation of uncertainty, depending on the uncertainty of the input parameters
 - Provides some functions to help find parameters as inputs for the model
 - Provides functions to extract and illustrate results
 
