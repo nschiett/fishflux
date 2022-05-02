@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fishflux</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.6</span>
       </span>
     </div>
 
@@ -101,19 +101,19 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="cnp_model_mcmc.html">cnp_model_mcmc</a></span><span class="op">(</span>TL <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">10</span>, param <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>Qc_m <span class="op">=</span> <span class="fl">40</span>, Qn_m <span class="op">=</span> <span class="fl">10</span>, Qp_m <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">extract</span><span class="op">(</span><span class="va">model</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Fn"</span>,<span class="st">"Fp"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   TL      Fn_mean    Fn_median        Fn_sd      Fn_2.5%     Fn_97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  5 0.0006047886 0.0006047886 6.501450e-12 0.0006047886 0.0006047886</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  6 0.0010610097 0.0010610097 1.081441e-11 0.0010610097 0.0010610097</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  7 0.0017065393 0.0017065393 1.743413e-11 0.0017065393 0.0017065394</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  8 0.0025757605 0.0025757605 2.482172e-11 0.0025757604 0.0025757605</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  9 0.0037034689 0.0037034689 3.558761e-11 0.0037034688 0.0037034690</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 10 0.0051248251 0.0051248251 5.172689e-11 0.0051248250 0.0051248252</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  5 0.0006047886 0.0006047886 6.373602e-12 0.0006047886 0.0006047886</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  6 0.0010610097 0.0010610097 1.019216e-11 0.0010610097 0.0010610097</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  7 0.0017065393 0.0017065393 1.674986e-11 0.0017065393 0.0017065394</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  8 0.0025757605 0.0025757605 2.606714e-11 0.0025757604 0.0025757605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  9 0.0037034689 0.0037034689 3.741558e-11 0.0037034688 0.0037034690</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 10 0.0051248251 0.0051248251 5.345928e-11 0.0051248250 0.0051248252</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Fn_25%       Fn_75%      Fp_mean    Fp_median        Fp_sd      Fp_2.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.0006047886 0.0006047886 0.0001097965 0.0001097965 1.905610e-12 0.0001097965</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.0010610097 0.0010610097 0.0002186548 0.0002186548 3.145278e-12 0.0002186548</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 0.0017065393 0.0017065394 0.0003815567 0.0003815567 5.078797e-12 0.0003815567</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 0.0025757605 0.0025757605 0.0006096826 0.0006096826 7.242953e-12 0.0006096826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 0.0037034689 0.0037034689 0.0009143614 0.0009143614 1.034990e-11 0.0009143614</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 0.0051248250 0.0051248251 0.0013070515 0.0013070515 1.512917e-11 0.0013070515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.0006047886 0.0006047886 0.0001097965 0.0001097965 1.850902e-12 0.0001097965</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.0010610097 0.0010610097 0.0002186548 0.0002186548 2.971083e-12 0.0002186548</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 0.0017065393 0.0017065394 0.0003815567 0.0003815567 4.874323e-12 0.0003815567</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 0.0025757605 0.0025757605 0.0006096826 0.0006096826 7.607875e-12 0.0006096826</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 0.0037034689 0.0037034689 0.0009143614 0.0009143614 1.089897e-11 0.0009143614</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 0.0051248250 0.0051248251 0.0013070515 0.0013070515 1.561418e-11 0.0013070515</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Fp_97.5%       Fp_25%       Fp_75%</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.0001097965 0.0001097965 0.0001097965</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.0002186548 0.0002186548 0.0002186548</span>
@@ -136,7 +136,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
 </div>
 
       </footer></div>
