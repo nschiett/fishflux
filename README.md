@@ -8,11 +8,11 @@ fishflux: A tool to model elemental fluxes in fishes
 Status](http://badges.herokuapp.com/travis/nschiett/fishflux?branch=master&label=build&style=plastic&logo=travisci)](https://travis-ci.org/nschiett/fishflux)
 [![Actions
 Status](https://github.com/nschiett/fishflux/workflows/R-CMD-check/badge.svg)](https://github.com/nschiett/fishflux/actions)
-![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.5-blue.svg)
+![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.6-blue.svg)
 [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](https://choosealicense.com/)
 ![pkgdown](https://github.com/nschiett/fishflux/workflows/pkgdown/badge.svg)
 [![Codecov test
-coverage](https://codecov.io/gh/nschiett/fishflux/branch/master/graph/badge.svg)](https://codecov.io/gh/nschiett/fishflux?branch=maste)
+coverage](https://app.codecov.io/gh/nschiett/fishflux/branch/master/graph/badge.svg)](https://app.codecov.io/gh/nschiett/fishflux?branch=maste)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fishflux)](https://CRAN.R-project.org/package=fishflux)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/fishflux?color=brightgreen)](https://CRAN.R-project.org/package=fishflux)
@@ -37,8 +37,8 @@ Main assets:
 
 -   Provides function to model fluxes of carbon, nitrogen and phosphorus
     for fishes
--   Allows for the estimation of uncertainty, dpending on the uncertainy
-    of the input parameters
+-   Allows for the estimation of uncertainty, depending on the
+    uncertainty of the input parameters
 -   Provides some functions to help find parameters as inputs for the
     model
 -   Provides functions to extract and illustrate results
