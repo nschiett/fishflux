@@ -25,7 +25,7 @@
 aspect_ratio <- function(sp) {
     check_name_fishbase(sp)
     ma <- morphometrics(sp)
-    if (length(ma) == 0) {
+    if (is.na(mean(ma$AspectRatio, na.rm = TRUE))) {
         genus <- strsplit(sp, " ")[[1]][1]
         gn    <- species_list(Genus = genus)
         ma    <- morphometrics(gn)

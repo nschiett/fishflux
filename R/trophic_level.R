@@ -24,8 +24,8 @@
 trophic_level <- function(sp) {
   check_name_fishbase(sp)
   ecogn <- ecology(sp)
-  if (length(ecogn) == 0) {
-    genus <- species(sp)$Genus
+  if (is.na(mean(ecogn$DietTroph, na.rm = TRUE) & is.na(mean(ecogn$FoodTroph, na.rm = TRUE)))) {
+    genus <- strsplit(sp, " ")[[1]][1]
     gn    <- species_list(Genus = genus)
     ecogn <- ecology(gn)
     level <- "genus"
