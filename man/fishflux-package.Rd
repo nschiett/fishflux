@@ -18,6 +18,20 @@ Main assets:
 \item Provides a plotting function to illustrate results
 }
 }
-\references{
-Stan Development Team (2020). RStan: the R interface to Stan. R package version 2.19.3. https://mc-stan.org
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://nschiett.github.io/fishflux/}
+  \item Report bugs at \url{https://github.com/nschiett/fishflux/issues/}
+}
+
+}
+\author{
+\strong{Maintainer}: Nina M. D. Schiettekatte \email{nina.schiettekatte@gmail.com}
+
+Authors:
+\itemize{
+  \item Diego Barneche \email{d.barneche@aims.gov.au}
+}
+
 }

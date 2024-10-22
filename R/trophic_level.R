@@ -8,17 +8,20 @@
 #' 
 #' @keywords fish trophic level fishbase
 #' 
-#' @importFrom rfishbase ecology species species_list
-#' @importFrom dplyr select
+#' @importFrom rfishbase ecology species load_taxa
+#' @importFrom dplyr filter pull select
+#' @importFrom rlang .env .data
 #' 
 #' @returns Returns a dataframe with species, trophic level, and taxonomy level.
 #' 
 #' @examples
 #' \dontrun{
 #' library(fishflux)
-#' library(plyr)
+#' library(dplyr)
 #' trophic_level("Lutjanus griseus")
-#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level))}
+#' lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level) |>
+#'   bind_rows(.id = ".id")
+#' }
 #' 
 #' @export
 trophic_level <- function(sp) {
@@ -26,7 +29,9 @@ trophic_level <- function(sp) {
   ecogn <- ecology(sp)
   if (length(ecogn) == 0) {
     genus <- species(sp)$Genus
-    gn    <- species_list(Genus = genus)
+    gn    <- load_taxa() |>
+      filter(.data$Genus %in% .env$genus) |>
+      pull(Species)
     ecogn <- ecology(gn)
     level <- "genus"
   } else {

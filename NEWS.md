@@ -1,3 +1,9 @@
+# fishflux 0.0.1.7
+## Minor update 
+* Increased R version dependency in `DESCRIPTION`.
+* Substituted deprecated dependency on `plyr::ldply` for `dplyr::bind_rows`.
+* Updated deprecated dependency on `rfishbase::species_list` in `aspect_ratio` and `trophic_level`.
+
 # fishflux 0.0.1.2
 
 ## Minor update 

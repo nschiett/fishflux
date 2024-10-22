@@ -3,10 +3,12 @@
 #' A function to find estimates length-weight relationship parameters available on fishbase. It returns a list of means and standard deviations of a and b obtained from:
 #'*Froese, R., J. Thorson and R.B. Reyes Jr., 2013. A Bayesian approach for estimating length-weight relationships in fishes. J. Appl. Ichthyol. (2013):1-7.*
 #'Please cite Froese et al. (2013), when using these values.
-#'The default mirror for fishbase is set to "de", please change this if needed for your location
+#'The default mirror for fishbase is set to "se", please change this if needed
+# for your location
 #'
 #' @param sp A charachter value containing the species name
-#' @param mirror Mirror for fishbase (eg. "de", "org", "us", etc.) Default is "us".
+#' @param mirror Mirror for fishbase (eg. "se", "org", "us", etc.) Default is
+# "se".
 #' 
 #' @returns A dataframe with means and standard deviations of 
 #' length-weight parameters
@@ -18,16 +20,20 @@
 #' @importFrom curl has_internet
 #' 
 #' @examples
-#' \donttest{library(fishflux)
-#' library(plyr)
+#' \donttest{
+#' library(fishflux)
+#' library(dplyr)
 #' # find length-weight relationship parameters for one species
 #' find_lw("Lutjanus griseus")
 #'
-#' # find length-weight relationship parameters for multiple species and return in dataframe
-#' ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw))}
+#' # find length-weight relationship parameters for multiple species and return
+#' #   in data.frame
+#' lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw) |>
+#'   dplyr::bind_rows()
+#' }
 #' 
 #' @export
-find_lw <- function(sp, mirror = "us") {
+find_lw <- function(sp, mirror = "se") {
 
   check_name_fishbase(sp)
 

@@ -20,9 +20,10 @@ and the level at which the aspect ratio was found (species or genus).
 \examples{
 \dontrun{
 library(fishflux)
-library(plyr)
+library(dplyr)
 aspect_ratio("Lutjanus griseus")
-plyr::ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio))
+lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio) |>
+  bind_rows(.id = ".id")
 }
 
 }
