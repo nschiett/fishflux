@@ -12,12 +12,12 @@ find_lw(sp, mirror = "se")
 \item{mirror}{Mirror for fishbase (eg. "se", "org", "us", etc.) Default is}
 }
 \value{
-A dataframe with means and standard deviations of 
+A dataframe with means and standard deviations of
 length-weight parameters
 }
 \description{
 A function to find estimates length-weight relationship parameters available on fishbase. It returns a list of means and standard deviations of a and b obtained from:
-*Froese, R., J. Thorson and R.B. Reyes Jr., 2013. A Bayesian approach for estimating length-weight relationships in fishes. J. Appl. Ichthyol. (2013):1-7.*
+\emph{Froese, R., J. Thorson and R.B. Reyes Jr., 2013. A Bayesian approach for estimating length-weight relationships in fishes. J. Appl. Ichthyol. (2013):1-7.}
 Please cite Froese et al. (2013), when using these values.
 The default mirror for fishbase is set to "se", please change this if needed
 }

@@ -14,9 +14,9 @@ limitation(mod, plot = TRUE)
 \value{
 Returns a data frame with:
 \describe{
-  \item{tl}{Total length, in cm}
-  \item{nutrient}{c, n or p}
-  \item{prop_lim}{the proportion of iterations for which there is limitation by the element}
+\item{tl}{Total length, in cm}
+\item{nutrient}{c, n or p}
+\item{prop_lim}{the proportion of iterations for which there is limitation by the element}
 }
 }
 \description{

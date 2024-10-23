@@ -28,7 +28,7 @@ sensitivity(
 }
 \value{
 Returns a dataframe with sd's of model predictions. Row names indicate the variable, who's sd was used for the model run.
-Plots a heatplot with width of the 95%CI of output predictions.
+Plots a heatplot with width of the 95\%CI of output predictions.
 }
 \description{
 This function runs the cnp_model fixing all parameters SD's but one to test for sensitivity
