@@ -22,7 +22,7 @@ and the level at which the trophic level was found (species or genus).
 library(fishflux)
 library(dplyr)
 trophic_level("Lutjanus griseus")
-lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level) |>
+lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level) \%>\%
   bind_rows(.id = ".id")
 }
 

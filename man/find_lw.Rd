@@ -30,7 +30,7 @@ find_lw("Lutjanus griseus")
 
 # find length-weight relationship parameters for multiple species and return
 #   in data.frame
-lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw) |>
+lapply(c("Chlorurus spilurus","Zebrasoma scopas"), find_lw) \%>\%
   dplyr::bind_rows()
 }
 

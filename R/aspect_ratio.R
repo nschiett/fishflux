@@ -11,7 +11,7 @@
 #' @keywords fish aspect-ratio fishbase
 #' 
 #' @importFrom rfishbase morphometrics load_taxa
-#' @importFrom dplyr filter pull select summarise group_by select
+#' @importFrom dplyr filter pull select summarise group_by select %>%
 #' @importFrom rlang .env .data
 #'
 #' @examples
@@ -19,7 +19,7 @@
 #' library(fishflux)
 #' library(dplyr)
 #' aspect_ratio("Lutjanus griseus")
-#' lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio) |>
+#' lapply(c("Chlorurus spilurus","Zebrasoma scopas"), aspect_ratio) %>%
 #'   bind_rows(.id = ".id")
 #' }
 #' 
@@ -29,8 +29,8 @@ aspect_ratio <- function(sp) {
     ma <- morphometrics(sp)
     if (length(ma) == 0) {
         genus <- strsplit(sp, " ")[[1]][1]
-        gn    <- load_taxa() |>
-          filter(.data$Genus %in% .env$genus) |>
+        gn    <- load_taxa() %>%
+          filter(.data$Genus %in% .env$genus) %>%
           pull(Species)
         ma    <- morphometrics(gn)
         asp   <- select(ma, Species, AspectRatio, SL, TL)
