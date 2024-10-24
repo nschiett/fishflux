@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.width=8, fig.height=6
 )
+# forcing number of cores to be 1 so it works for all OS on CI
+options("mc.cores" = 1)
 ```
 ## Introduction
   
@@ -179,7 +181,7 @@ A good place to start is checking if you are using the correct scientific name o
 ```{r, message=TRUE, echo=TRUE}
 library(fishflux)
 # example
-fishflux::name_errors("Zebrazoma scopas")
+name_errors("Zebrazoma scopas")
 ```
 \newline
 Once the species names are verified and/or corrected we can continue with specifying some parameters. 
@@ -189,16 +191,16 @@ The `find_lw` function searches [FishBase](https://www.fishbase.de/) to find len
 \newline
 ```{r,message=TRUE,echo=TRUE}
 # example
-fishflux::find_lw("Zebrasoma scopas", mirror = "se")
+find_lw("Zebrasoma scopas", mirror = "se")
 ```
 \newline
 The model uses parameters von Bertalanffy's growth model (VBGM) to estimate growth rates. A quick way to get available information from FishBase is the function `growth_params()`. This can be a good indication, but users should interpret these estimates with a critical eye, as they come from disparate sources of varying accuracy. Alternatively, it is advised to use growth curves derived from otolith readings. In the absence of otolith data, one might consider extracting standardised estimations from @morais2018.
 
 \newline
-```{r,message=FALSE,echo=TRUE}
+```{r, message = FALSE, echo = TRUE}
 # example
 # The option otolith=TRUE filters out sources that used otoliths for the estimation of growth parameters
-fishflux::growth_params("Sargocentron microstoma", otolith = FALSE)
+growth_params("Sargocentron microstoma", otolith = FALSE)
 ```
 
 \newline
@@ -208,9 +210,10 @@ Note that it is always better to get the approximations through analysis, measur
 \newline
 To get an overview of all parameters available, `fishflux` provides a wrapper function `model_parameters()`.
 \newline
-```{r,cache=TRUE,results='hide',message=FALSE}
+```{r, cache = TRUE, results = "hide", message = FALSE}
 # example
-zebsco <- fishflux::model_parameters("Zebrasoma scopas", family = "Acanthuridae", temp = 27, mirror = "se")
+zebsco <- model_parameters("Zebrasoma scopas", family = "Acanthuridae",
+                           temp = 27, mirror = "se")
 ## Here we set the temperature at 27 degrees as an example, this the average sea temperature in Moorea, French Polynesia
 ```
 ```{r}
@@ -227,15 +230,15 @@ Once all the parameters are collected, we can run the model through `cnp_model_m
 \newline
 ```{r, message=FALSE}
 ## load the example parameters for Zebrasoma scopas, a list
-param_zebsco <- fishflux::param_zebsco
+data(param_zebsco)
 ## Run the model, specifying the target length(s) and the parameter list
-model <- fishflux::cnp_model_mcmc(TL = 5:20, param = param_zebsco)
+model <- cnp_model_mcmc(TL = 5:20, param = param_zebsco)
 ```
 \newline
 The object `model` now contains all the samples generated from the MCMC simulation and a summary of all parameters generated. To extract certain variables of interest, use the `extract()` function. Predictions for fluxes of C, N and P are all in g / day.
 \newline
 ```{r}
-fishflux::extract(model, c("Fn","Fp"))
+extract(model, c("Fn","Fp"))
 ```
 
 \newline
@@ -243,13 +246,13 @@ fishflux::extract(model, c("Fn","Fp"))
 ### Plot results 
 To visualize main outputs of the model, `fishflux` contains a plotting function. The function `limitation()` returns the proportion of iterations of the model simulation that had limitation of C, N and P respectively. The function `plot_cnp()` plots the predicted output of the model. 
 \newline
-```{r, message=FALSE, warning=FALSE}
+```{r, message = FALSE, warning = FALSE}
 ## limitation
-fishflux::limitation(model)
+limitation(model)
 ## Plot one variable:
-fishflux::plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))
+plot_cnp(model,  y = "Fp", x = "tl", probs = c(0.5, 0.8, 0.95))
 ## Plot multiple variables:
-fishflux::plot_cnp(model,  y = c("Fp", "Gp", "Ip", "Wp"), x = "tl", probs = 0.5)
+plot_cnp(model,  y = c("Fp", "Gp", "Ip", "Wp"), x = "tl", probs = 0.5)
 ```
 
 ### Sensitivity
@@ -258,8 +261,8 @@ The function `sensitivity()` looks at how the distribution of the input variable
 Basically, the model is run for each input parameter, while keeping all the others fixed. The output of the function gives a matrix of the width of the 95% CI for all model predictions (columns), depending on the input variables (rows). 
 The input parameters and output variables of interest can be specified by arguments "par" and "out" respectively.
 \newline 
-```{r, message=FALSE}
-fishflux::sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1),
+```{r, message = FALSE}
+sensitivity(TL = 10, param = list(k_sd = 0.2, Dn_sd = 0.2, Dc_sd = 0.1),
             par = c("k_sd","Dn_sd","Dc_sd"), 
             out = c("Ic", "In", "Ip", "Gc"))
 ```

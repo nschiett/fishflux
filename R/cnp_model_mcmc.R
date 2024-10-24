@@ -41,6 +41,7 @@
 #' 
 #' @keywords fish stoichiometry excretion mcmc
 #' @importFrom stats median quantile sd
+#' @importFrom parallel mclapply
 #' @importFrom dplyr bind_rows
 #'
 #' @examples
@@ -176,7 +177,7 @@ cnp_model_mcmc <- function(TL, param, iter = 1000,
     result <- cnp_mcmc(TL, param, iter, params_st, cor, ...)
     list(stanfit = result[[1]], summary = result[[2]])
   } else { ## option for vector of lengths ##
-    result <- lapply(TL, FUN = cnp_mcmc, param = param,
+    result <- mclapply(TL, FUN = cnp_mcmc, param = param,
                        iter = iter, params_st = params_st,
                        cor = cor, ...)
     stanfit <- lapply(result, FUN = function(x) {x[[1]]})
