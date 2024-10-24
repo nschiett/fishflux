@@ -42,18 +42,16 @@ Therefore, the first step is to install
 
 You can install `fishflux` on CRAN:
   
-``` r
+```{r, eval = FALSE}
 install.packages("fishflux")
-library(fishflux)
 ```
 
 ### Downloaded package file
 
 Another option is to download the source file available on GitHub [here](https://github.com/nschiett/fishflux).
 
-``` r
+```{r, eval = FALSE}
 install.packages(path_to_fishflux_file, repos = NULL, type = "source")
-library(fishflux)
 ```
 
 ## How to use fishflux?
@@ -179,6 +177,7 @@ A good place to start is checking if you are using the correct scientific name o
 
 \newline
 ```{r, message=TRUE, echo=TRUE}
+library(fishflux)
 # example
 fishflux::name_errors("Zebrazoma scopas")
 ```
