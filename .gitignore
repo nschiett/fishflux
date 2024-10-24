@@ -31,3 +31,5 @@ docs
 
 # vignette
 vignettes/*_cache
+/doc/
+/Meta/
