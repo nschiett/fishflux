@@ -1,90 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/intro_to_fishflux.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/aspect_ratio.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check_name_fishbase.html</loc>
-  </url>
-  <url>
-    <loc>/reference/cnp_mcmc.html</loc>
-  </url>
-  <url>
-    <loc>/reference/cnp_model_mcmc.html</loc>
-  </url>
-  <url>
-    <loc>/reference/extract.html</loc>
-  </url>
-  <url>
-    <loc>/reference/find_lw.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fishflux-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/growth_params.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/limitation.html</loc>
-  </url>
-  <url>
-    <loc>/reference/metabolic_parameters.html</loc>
-  </url>
-  <url>
-    <loc>/reference/metabolic_rate.html</loc>
-  </url>
-  <url>
-    <loc>/reference/metabolism.html</loc>
-  </url>
-  <url>
-    <loc>/reference/model_parameters.html</loc>
-  </url>
-  <url>
-    <loc>/reference/name_errors.html</loc>
-  </url>
-  <url>
-    <loc>/reference/param_zebsco.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot_cnp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/sensitivity.html</loc>
-  </url>
-  <url>
-    <loc>/reference/trophic_level.html</loc>
-  </url>
-  <url>
-    <loc>/reference/weight_prop.html</loc>
-  </url>
-  <url>
-    <loc>/reference/wprop.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/intro_to_fishflux.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/aspect_ratio.html</loc></url>
+<url><loc>/reference/check_name_fishbase.html</loc></url>
+<url><loc>/reference/cnp_mcmc.html</loc></url>
+<url><loc>/reference/cnp_model_mcmc.html</loc></url>
+<url><loc>/reference/extract.html</loc></url>
+<url><loc>/reference/find_lw.html</loc></url>
+<url><loc>/reference/fishflux-package.html</loc></url>
+<url><loc>/reference/growth_params.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/limitation.html</loc></url>
+<url><loc>/reference/metabolic_parameters.html</loc></url>
+<url><loc>/reference/metabolic_rate.html</loc></url>
+<url><loc>/reference/metabolism.html</loc></url>
+<url><loc>/reference/model_parameters.html</loc></url>
+<url><loc>/reference/name_errors.html</loc></url>
+<url><loc>/reference/param_zebsco.html</loc></url>
+<url><loc>/reference/plot_cnp.html</loc></url>
+<url><loc>/reference/sensitivity.html</loc></url>
+<url><loc>/reference/trophic_level.html</loc></url>
+<url><loc>/reference/weight_prop.html</loc></url>
+<url><loc>/reference/wprop.html</loc></url>
 </urlset>
+
