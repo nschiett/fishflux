@@ -18,9 +18,6 @@
 ^codecov\.yml$
 ^CRAN-RELEASE$
 ^cran-comments\.md$
-<<<<<<< HEAD
 ^CRAN-SUBMISSION$
-=======
 ^doc$
 ^Meta$
->>>>>>> 1f1e0435a629f30a57fc0a68981c3cfbc2877fc1
