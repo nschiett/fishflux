@@ -1,4 +1,7 @@
 ## Resubmission v0.0.1.5
+* modified url's in readme and description
+
+## Resubmission v0.0.1.5
 * Fixed dependency issue. Dependent package fishualize was archived but is now back on cran
 
 ## Resubmission v0.0.1.4
