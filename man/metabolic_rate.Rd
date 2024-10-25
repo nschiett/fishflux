@@ -36,11 +36,13 @@ metabolic rates reported in the paper, which also includes trophic level as
 a covariate.
 }
 \details{
-All model parameters below were estimated by 
-Barneche & Allen 2018 Ecology Letters doi: 10.1111/ele.12947. 
-These parameters are for the best model 
-(Model 2 in the paper online supplementary material) 
-of fish resting metabolic rates reported in the paper, 
+\if{html}{\out{<div class="sourceCode">}}\preformatted{All model parameters below were estimated by 
+}\if{html}{\out{</div>}}
+
+Barneche & Allen 2018 Ecology Letters doi: 10.1111/ele.12947.
+These parameters are for the best model
+(Model 2 in the paper online supplementary material)
+of fish resting metabolic rates reported in the paper,
 which also includes trophic level as a covariate.
 }
 \examples{

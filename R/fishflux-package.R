@@ -1,10 +1,13 @@
 #' The 'fishflux' package.
 #'
-#' @description The `r fishflux` package provides a tool to model fluxes of C (carbon), N (nitrogen) and P (phosphorus) in fish.
-#' It combines basic priciples from elemental stoichiometry and metabolic theory.
-#' The package offers a userfriendly interface to make nutrient dynamic modelling available for anyone.
-#' `r fishflux` is mostly targeted towards fish ecologists,
-#' wishing to predict nutrient ingestion, egestion and excretion to study fluxes of nutrients and energy.
+#' @description
+#' The \code{fishflux} package provides a tool to model fluxes of C (carbon),
+#' N (nitrogen) and P (phosphorus) in fish. It combines basic principles from
+#' elemental stoichiometry and metabolic theory. The package offers a
+#' user-friendly interface to make nutrient dynamic modelling available for
+#' anyone. \code{fishflux} is mostly targeted towards fish ecologists, wishing
+#' to predict nutrient ingestion, egestion and excretion to study fluxes of
+#' nutrients and energy.
 #' Main assets:
 #' \itemize{
 #' \item Provides functions to model fluxes of Carbon, Nitrogen and Phosphorus for fish with or without the MCMC sampler provided by stan.
@@ -12,14 +15,13 @@
 #' \item Provides a plotting function to illustrate results
 #'}
 #'
-#' @docType package
 #' @name fishflux-package
 #' @aliases fishflux
 #' @useDynLib fishflux, .registration = TRUE
 #' @import methods
 #' @import Rcpp
-#'
+"_PACKAGE"
+
 #' @references
 #' Stan Development Team (2020). RStan: the R interface to Stan. R package version 2.19.3. https://mc-stan.org
 #'
-NULL

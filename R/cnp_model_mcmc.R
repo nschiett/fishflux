@@ -42,7 +42,7 @@
 #' @keywords fish stoichiometry excretion mcmc
 #' @importFrom stats median quantile sd
 #' @importFrom parallel mclapply
-#' @importFrom plyr ldply
+#' @importFrom dplyr bind_rows
 #'
 #' @examples
 #' library(fishflux)
@@ -182,7 +182,7 @@ cnp_model_mcmc <- function(TL, param, iter = 1000,
                        cor = cor, ...)
     stanfit <- lapply(result, FUN = function(x) {x[[1]]})
     summary <- lapply(result, FUN = function(x) {x[[2]]})
-    summary <- ldply(summary)
+    summary <- bind_rows(summary, .id = ".id")
     list(stanfit = stanfit, summary = summary)
   }
 }
@@ -195,7 +195,7 @@ cnp_model_mcmc <- function(TL, param, iter = 1000,
 #' @param ... Additional arguments rstan::sampling, see ?rstan:sampling
 #' 
 #' @importFrom rstan sampling extract
-#' @importFrom plyr ldply
+#' @importFrom dplyr bind_rows
 cnp_mcmc <- function(TL, param, iter, params_st, cor, ...) {
   ## add TL to parameter list
   param[["lt_m"]] <- TL
@@ -224,7 +224,7 @@ cnp_mcmc <- function(TL, param, iter, params_st, cor, ...) {
   par <- names(ee)
   
   result <-
-    ldply(lapply(par, function(x, ee) {
+    bind_rows(lapply(par, function(x, ee) {
         data.frame(          
           TL = mean(ee[["lt"]]),
           variable = x,
@@ -236,6 +236,6 @@ cnp_mcmc <- function(TL, param, iter, params_st, cor, ...) {
           Q_97.5 = quantile(ee[[x]], 0.975),
           Q_25 = quantile(ee[[x]], 0.25),
           Q_75 = quantile(ee[[x]], 0.75))
-    }, ee = ee))
+    }, ee = ee), .id = ".id")
   list(stanfit, summary = result)
 }

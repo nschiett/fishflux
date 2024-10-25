@@ -3,7 +3,7 @@
 \docType{data}
 \name{param_zebsco}
 \alias{param_zebsco}
-\title{List of all parameters needed to run cnp_model for *Zebrasoma scopas*}
+\title{List of all parameters needed to run cnp_model for \emph{Zebrasoma scopas}}
 \format{
 An object of class \code{list} of length 37.
 }
@@ -11,7 +11,7 @@ An object of class \code{list} of length 37.
 data(param_zebsco)
 }
 \description{
-List of all parameters needed to run cnp_model for *Zebrasoma scopas*
+List of all parameters needed to run cnp_model for \emph{Zebrasoma scopas}
 }
 \examples{
 data(param_zebsco)

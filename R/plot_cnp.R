@@ -12,7 +12,7 @@
 #' @keywords fish plot bioenergetic model stoichiometry
 #'
 #' @importFrom rstan extract
-#' @importFrom dplyr %>% bind_rows mutate group_by
+#' @importFrom dplyr bind_rows mutate group_by %>%
 #' @importFrom tidyr gather
 #' @importFrom fishualize scale_color_fish_d scale_fill_fish_d
 #' @importFrom ggplot2 ggplot aes theme_bw labs scale_fill_brewer
@@ -30,17 +30,14 @@
 #' @export
 plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)) {
   vars <- c("lt", "lwa", "lwb", y)
-
   iter <- lapply(mod$stanfit, FUN = function(x, vars) {
     rstan::extract(x, vars)
   }, vars)
   iter <- iter %>%
-    lapply( FUN = get_iter) %>%
+    lapply(FUN = get_iter) %>%
     bind_rows() %>%
     mutate(lt = round(lt))
-
   iter$w <- mean(iter$lwa) * iter$lt^mean(iter$lwb)
-
   if (length(y) > 1) {
     iter_t <- gather(iter, "output", "value", y)
     if (x == "biomass") {
@@ -87,11 +84,10 @@ plot_cnp <- function(mod, y, x = "tl", probs = c(0.8, 0.95)) {
  plot
 }
 
-
+#' @importFrom dplyr bind_rows mutate n %>%
 get_iter <- function(x) {
-  get <- t(ldply(x))
-  colnames(get) <- get[1, ]
-  get <- data.frame(apply(get[-1, ], 2, as.numeric))
-  get$iter <- seq_len(nrow(get))
-  get
+  bind_rows(x) %>%
+    lapply(unlist) %>%
+    data.frame() %>%
+    mutate(iter = seq_len(n()))
 }
