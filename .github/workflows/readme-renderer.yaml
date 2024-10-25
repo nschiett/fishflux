@@ -1,17 +1,8 @@
-# This is a basic workflow to help you get started with Actions
-# Adapted from 
-# https://raw.githubusercontent.com/gavinsimpson/gratia/master/.github/workflows/readme-renderer.yaml
-
-name: render readme
-
-# Controls when the action will run
 on:
   push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+    branches: [main, master]
+
+name: render readme
 
 jobs:
   render:
@@ -20,9 +11,9 @@ jobs:
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    - uses: r-lib/actions/setup-r@v1
-    - uses: r-lib/actions/setup-pandoc@v1
+    - uses: actions/checkout@v4
+    - uses: r-lib/actions/setup-r@v2
+    - uses: r-lib/actions/setup-pandoc@v2
 
     # install packages needed
     - name: install required packages
@@ -34,6 +25,5 @@ jobs:
 
     - name: commit rendered README
       run: |
-        git add README.md man/figures/*
-        git commit -m "Re-build README.md" || echo "No changes to commit"
+        git add README.md        git commit -m "Re-build README.md" || echo "No changes to commit"
         git push origin master || echo "No changes to commit"

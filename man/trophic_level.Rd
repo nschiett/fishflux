@@ -20,9 +20,11 @@ and the level at which the trophic level was found (species or genus).
 \examples{
 \dontrun{
 library(fishflux)
-library(plyr)
+library(dplyr)
 trophic_level("Lutjanus griseus")
-ldply(lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level))}
+lapply(c("Chlorurus spilurus","Zebrasoma scopas"), trophic_level) \%>\%
+  bind_rows(.id = ".id")
+}
 
 }
 \keyword{fish}
