@@ -15,7 +15,7 @@
 #' @returns Returns a dataframe with species, trophic level, and taxonomy level.
 #' 
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(fishflux)
 #' library(dplyr)
 #' trophic_level("Lutjanus griseus")

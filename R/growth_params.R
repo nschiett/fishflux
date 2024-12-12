@@ -16,7 +16,7 @@
 #' @importFrom dplyr select filter
 #' 
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(fishflux)
 #' growth_params("Lutjanus griseus")
 #' }

@@ -15,7 +15,7 @@
 #' @importFrom rlang .env .data
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(fishflux)
 #' library(dplyr)
 #' aspect_ratio("Lutjanus griseus")

@@ -11,7 +11,7 @@
 #' @returns A vector with the incorrect species names. 
 #' 
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(fishflux)
 #' name_errors(c("Chlorurus spilurus", "Zebrasoma scopas"))
 #' name_errors(c("Chlorurus spilurus", "Zebrasoma copas"))}

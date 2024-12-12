@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
   fig.width=8, fig.height=6
 )
 # forcing number of cores to be 1 so it works for all OS on CI
+old <- options()
 options("mc.cores" = 1)
 ```
 ## Introduction
@@ -273,5 +274,11 @@ For more information on the theoretical framework of the model, see @Schiettekat
 Every function of `fishflux` has a help page with more documentation.
 In the case of errors, bugs or discomfort, you are invited to raise an [issue](https://github.com/nschiett/fishflux/issues) on GitHub.
 `fishflux` is always in development and we are happy to take your comments or suggestions into consideration.
+
+```{r, include = FALSE}
+# restore old options
+options(old)
+```
+
 
 ## references
